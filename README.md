@@ -1,41 +1,84 @@
-# Bratwurst Remastered — projektstart
+# Bratwurst Reheated
 
-**Mål:** återskapa Amiga-spelet Bratwurst som ett fristående Windows-spel med GameMaker Studio 1.4, med originalets spelkänsla som första prioritet och en struktur som gör framtida uppdateringar enkla.
+A fan remake of the Amiga shooter **Bratwurst**, built in GameMaker Studio 1.4 as a stand-alone Windows game. Float, shoot, crash and repeat, with one to four players, keyboard and Xbox controllers, and a terminal-style look with 30 colour themes.
 
-## Status just nu
+The goal is to keep the feel and the physics of the original wherever it can be verified, and then grow it with new maps, game modes, ships, weapons and music.
 
-Detta är en **analys- och planeringsbas**, inte en färdig port. Arkivet har inventerats och den medföljande dokumentationen har lästs. Originalets körbara Amiga-program har identifierats, men spelets kod har inte dekompilerats till GML och `.SOB`-formatet är bara strukturellt avkodat (se `docs/06`, `docs/13`, `docs/14`).
+## What's new
 
-## Börja här
+<!-- UPDATES:START -->
 
-1. Läs [`CLAUDE.md`](CLAUDE.md) innan du gör ändringar.
-2. Läs [`docs/01_PROJECT_BRIEF.md`](docs/01_PROJECT_BRIEF.md) och [`docs/02_SOURCE_INVENTORY.md`](docs/02_SOURCE_INVENTORY.md).
-3. Följ [`docs/07_ROADMAP.md`](docs/07_ROADMAP.md). Första uppgiften är endast analys, inte att börja implementera hela spelet.
-4. Kör originalet i en lämplig Amiga-emulator och spela in/referensdokumentera beteendet innan viktiga spelregler återskapas.
-5. Använd Git och gör små, verifierbara ändringar.
+### UPDATE 9 - 2026-10-13 - New title screen, no gravity
 
-## Viktiga begränsningar
+- New title screen: a centred line logo, a circular equalizer ring around it that dances to the music, pulsing planets, twinkling stars and the drifting ships in the background.
+- Ships no longer sink when you let go of the controls. A ship you are not steering stands completely still.
 
-- Den uppladdade arkivversionen innehåller ett Amiga-exekverbart program, dokumentation, Amiga-verktyg/bibliotek och 15 skeppsdefinitioner med filändelsen `.SOB`/`.sob`.
-- Ingen tydlig källkod, banredigerare, banfil, musikfil eller separat grafikfil har identifierats i arkivlistan.
-- Dokumentationen beskriver en beta från 1994–1995, medan `file_id.diz` marknadsför Bratwurst V3.5. Denna versionsskillnad är inte löst.
-- Gör inga antaganden om att `.SOB` är ett öppet eller enkelt textformat. Filerna är binära.
-- Återskapande av spelet är inte samma sak som automatisk konvertering av Amiga-programmet.
-- Kontrollera rättigheter innan en offentlig distribution av en remake, originalresurser, namn eller musik.
+### UPDATE 8 - 2026-10-13 - Astro Duel
 
-## Föreslagen mappstruktur
+- New game mode: ASTRO DUEL. Every hit costs a life (default 1 life, so one hit kills). Choose 1-9 lives.
+- No damage from crashing into walls.
+- Only 3 shots, then a 4 second reload. Fire them as fast or as slow as you like.
+- Bigger projectiles (30 percent) that are easier to hit with.
+- Only Missile (twice as fast) and Turbo Boost, for every ship.
 
-```text
-Bratwurst_Remastered/
-├── CLAUDE.md
-├── README.md
-├── CHANGELOG.md
-├── docs/
-├── original/                 # orörda referensfiler från arkivet
-├── game/                     # framtida GameMaker Studio 1.4-projekt
-├── tools/                    # egna analys-/konverteringsverktyg vid behov
-├── tests/                    # testplaner och eventuella automatiserade tester
-└── references/               # skärmbilder, videor och mätningar från originalet
-```
+### UPDATE 7 - 2026-10-13 - Explosions and sparks
 
-`original/` ska behandlas som skrivskyddad referens. Lägg inte till remake-kod i den mappen.
+- Ships explode when they lose a life: pixel particles in all directions plus five pieces of the hull that spin away and fade out.
+- Sparks fly when a ship is hit and when it crashes into a wall. The harder the crash, the more sparks.
+- Fixed shots and missiles that could fly straight through thin walls.
+
+### UPDATE 6 - 2026-10-13 - Music and sound
+
+- The seven sound effects from the Amiga original are in the game: cannon, missile, guided missile, explosion, wall crash, ship against ship and cannon hit.
+- Title music and a live equalizer on the title screen and in the menu.
+- Options: music and sound effects can be switched on and off.
+
+### UPDATE 5 - 2026-10-13 - Rounds and game modes
+
+- Rounds: play several rounds in a match (default 3). The last ship flying wins a round.
+- Results screen after the last round with rematch or main menu. A rematch lets you pick new ships.
+- Game Modes menu with Classic and Astro Duel. Astro Duel is playable, Race and Capture the Bratwurst are on the way.
+
+### UPDATE 4 - 2026-10-13 - Maps and map editor
+
+- Three maps: the original arena (Sirius Bratwurst) and two remixes (Kepler Chorizo, Proxima Merguez). Pick the map in the menu.
+- Map editor: draw solid walls and boxes with the mouse, place start positions and save your own maps. New maps get a random name (a star or planet plus a sausage).
+- Every wall object has its own colour from the colour theme.
+
+### UPDATE 3 - 2026-10-13 - Ships and weapons
+
+- Ships can collide with each other and knock each other away. A boosting ship hits much harder.
+- Every player has a unique colour from the theme, on the ship and on the player panel.
+- Switch special weapon and weapon position during a match, with the left trigger (weapon) and left bumper (weapon position).
+- Player panels along the bottom of the screen show energy, ammo, lives, special weapon and the weapon position.
+
+### UPDATE 2 - 2026-10-13 - Terminal look
+
+- New menus in a terminal style: title screen, main menu, ship select and the match screen.
+- 30 dark colour themes (Base16) and a choice of accent colour. Settings are saved in files next to the game.
+- Sharp text at every resolution, a wide playfield option, scanlines and glow.
+- Players can join on the ship select screen, up to four.
+
+### UPDATE 1 - 2026-10-13 - First playable version
+
+- Vector ships drawn from the 15 original ship files, with the original movement, shooting, arena, camera zoom and crashes.
+- One to four players with keyboard and Xbox controllers.
+- Special weapons: Missile, Guided Missile, Turbo Boost, Tractor Beam and Cannon Turret.
+- Ship select with weapon and weapon position.
+
+<!-- UPDATES:END -->
+
+*The same list ships with the game as `updates.txt` (Included Files).*
+
+## Play
+
+- Open `gms/Bratwurst.gmx/Bratwurst.project.gmx` in GameMaker Studio 1.4 and press F5.
+- Controls and settings are described in [`gms/README.md`](gms/README.md). Placeholder keys: player 1 arrows + space, player 2 WASD + left shift, player 3 IJKL, any Xbox controller.
+- Settings, colour themes and maps are saved as `.ini` files in the game's save folder (the path is shown under Options, Data folder).
+
+## About this repository
+
+- [`CHANGELOG.md`](CHANGELOG.md) is the detailed technical log; the list above covers the big features.
+- [`docs/`](docs/) holds the research and decisions (in Swedish): how the original works, what is verified and what is not, and the test plan.
+- `tools/` has the scripts that extract and convert data from the original and generate game data.
+- The original game files are **not** included in this repository. Some game data derived from the original (ship shapes, the original arena, sound effects) is, so the repository is private until the rights question is settled (see [`docs/09_RIGHTS_AND_PROVENANCE.md`](docs/09_RIGHTS_AND_PROVENANCE.md)).

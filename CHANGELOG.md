@@ -162,3 +162,6 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-13 — Ny titelskärm (Radial Ring)
 - `scr_title_draw` omgjord: linjelogotyp (`scr_logo_init/add/glyph/word`), cirkulär equalizer runt loggan efter musiken, dithrade planeter (förberäknat prickmönster), stjärnor; bakgrunden med roterande skepp är kvar. D-025. Ej körd.
+
+## 2026-10-13 — updates.txt och README
+- `gms/Bratwurst.gmx/datafiles/updates.txt` (Included Files) listar de stora uppdateringarna och nya funktionerna; `tools/sync_updates.py` synkar projektfilens filstorlek och README-blocket "What's new" på GitHub-sidan. README.md är omskriven som publik förstasida.

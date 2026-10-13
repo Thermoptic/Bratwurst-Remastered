@@ -1,0 +1,51 @@
+BRATWURST REHEATED - UPDATES
+Newest first. Only the big changes and new features are listed.
+
+== UPDATE 9 - 2026-10-13 - New title screen, no gravity ==
+* New title screen: a centred line logo, a circular equalizer ring around it that dances to the music, pulsing planets, twinkling stars and the drifting ships in the background.
+* Ships no longer sink when you let go of the controls. A ship you are not steering stands completely still.
+
+== UPDATE 8 - 2026-10-13 - Astro Duel ==
+* New game mode: ASTRO DUEL. Every hit costs a life (default 1 life, so one hit kills). Choose 1-9 lives.
+* No damage from crashing into walls.
+* Only 3 shots, then a 4 second reload. Fire them as fast or as slow as you like.
+* Bigger projectiles (30 percent) that are easier to hit with.
+* Only Missile (twice as fast) and Turbo Boost, for every ship.
+
+== UPDATE 7 - 2026-10-13 - Explosions and sparks ==
+* Ships explode when they lose a life: pixel particles in all directions plus five pieces of the hull that spin away and fade out.
+* Sparks fly when a ship is hit and when it crashes into a wall. The harder the crash, the more sparks.
+* Fixed shots and missiles that could fly straight through thin walls.
+
+== UPDATE 6 - 2026-10-13 - Music and sound ==
+* The seven sound effects from the Amiga original are in the game: cannon, missile, guided missile, explosion, wall crash, ship against ship and cannon hit.
+* Title music and a live equalizer on the title screen and in the menu.
+* Options: music and sound effects can be switched on and off.
+
+== UPDATE 5 - 2026-10-13 - Rounds and game modes ==
+* Rounds: play several rounds in a match (default 3). The last ship flying wins a round.
+* Results screen after the last round with rematch or main menu. A rematch lets you pick new ships.
+* Game Modes menu with Classic and Astro Duel. Astro Duel is playable, Race and Capture the Bratwurst are on the way.
+
+== UPDATE 4 - 2026-10-13 - Maps and map editor ==
+* Three maps: the original arena (Sirius Bratwurst) and two remixes (Kepler Chorizo, Proxima Merguez). Pick the map in the menu.
+* Map editor: draw solid walls and boxes with the mouse, place start positions and save your own maps. New maps get a random name (a star or planet plus a sausage).
+* Every wall object has its own colour from the colour theme.
+
+== UPDATE 3 - 2026-10-13 - Ships and weapons ==
+* Ships can collide with each other and knock each other away. A boosting ship hits much harder.
+* Every player has a unique colour from the theme, on the ship and on the player panel.
+* Switch special weapon and weapon position during a match, with the left trigger (weapon) and left bumper (weapon position).
+* Player panels along the bottom of the screen show energy, ammo, lives, special weapon and the weapon position.
+
+== UPDATE 2 - 2026-10-13 - Terminal look ==
+* New menus in a terminal style: title screen, main menu, ship select and the match screen.
+* 30 dark colour themes (Base16) and a choice of accent colour. Settings are saved in files next to the game.
+* Sharp text at every resolution, a wide playfield option, scanlines and glow.
+* Players can join on the ship select screen, up to four.
+
+== UPDATE 1 - 2026-10-13 - First playable version ==
+* Vector ships drawn from the 15 original ship files, with the original movement, shooting, arena, camera zoom and crashes.
+* One to four players with keyboard and Xbox controllers.
+* Special weapons: Missile, Guided Missile, Turbo Boost, Tractor Beam and Cannon Turret.
+* Ship select with weapon and weapon position.
