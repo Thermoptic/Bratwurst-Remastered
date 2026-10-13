@@ -5,22 +5,21 @@
 // Snabb attack, langsammare fall. g_mv_on = musiken spelas just nu; annars faller staplarna till en lugn grundrorelse.
 var i, f, s, v, pos, r, idle;
 g_mv_on = false;
-if (g_music_id >= 0)
+if (g_music_id >= 0 && g_trk_viz[g_trk_idx])
 {
     if (audio_is_playing(g_music_id))
     {
         pos = audio_sound_get_track_position(g_music_id);
-        f = floor(pos * 50) mod g_mv_n;
-        s = g_mv_frame[f];
+        f = floor(pos * g_trk_fps[g_trk_idx]) mod g_tv_n[g_trk_idx];
+        s = g_tv[g_trk_idx, f];
         for (i = 0; i < 12; i += 1)
         {
             v = (string_pos(string_char_at(s, i + 1), "0123456789abcdefghijklmnopqrstuvwxyz") - 1) / 35;
             g_mv[i] = max(v, g_mv[i] * 0.8);
         }
-        s = g_mw_frame[f];
         for (i = 0; i < 32; i += 1)
         {
-            v = (string_pos(string_char_at(s, i + 1), "0123456789abcdefghijklmnopqrstuvwxyz") - 1) / 35;
+            v = (string_pos(string_char_at(s, i + 13), "0123456789abcdefghijklmnopqrstuvwxyz") - 1) / 35;
             g_mw[i] = max(v, g_mw[i] * 0.84);
         }
         g_mv_on = true;

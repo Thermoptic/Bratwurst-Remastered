@@ -4,6 +4,8 @@
 //   centrum = mitten av omskrivande rektangel;  skarm = (varld*Z >> 15) - (centrum*Z >> 15) + (160,118)
 // Prototypen anvander bara LEVANDE spelare (originalet: alla fyra platserna; hantering av doda ar OKAND).
 var dx, dy, zx, zy, cx, cy;
+// Flera spelare: nar bara en ar kvar ar matchen over (rundslut), da laser sig bilden i stallet for att zooma in pa den sista spelaren.
+if (g_n_players > 1 && scr_count_alive() <= 1) { exit; }
 g_tmp_n = 0;
 with (obj_player)
 {

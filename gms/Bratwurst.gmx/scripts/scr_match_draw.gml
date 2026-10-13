@@ -103,12 +103,10 @@ draw_rectangle(g_OX - 2, g_OY - 2, g_OX - 1, g_OY + 10, false);
 draw_rectangle(g_OX + pwx - 10, g_OY + phx, g_OX + pwx + 2, g_OY + phx + 1, false);
 draw_rectangle(g_OX + pwx + 1, g_OY + phx - 10, g_OX + pwx + 2, g_OY + phx + 1, false);
 
-scr_ui_header("BRATWURST // " + scr_mode_name() + " // ROUND " + string(g_round) + " OF " + string(g_rounds_total), "ESC MENU   F2 SHIP SELECT   F1 DEBUG   TICK " + string(g_tick));
+scr_ui_header("BRATWURST // " + scr_mode_name() + " // ROUND " + string(g_round) + " OF " + string(g_rounds_total) + " // MAP: " + string_upper(g_match_map), "ESC MENU   F2 SHIP SELECT   F1 DEBUG   TICK " + string(g_tick));
 scr_hud_draw();
 
 g_fs = g_f_sm;
-g_fs = g_f_sm;
-scr_ui_text(g_vx + 20 + scr_ui_tw("[] BRATWURST // " + scr_mode_name() + " // ROUND " + string(g_round) + " OF " + string(g_rounds_total)) + 28, g_vy + 8, "// MAP: " + string_upper(g_match_map), g_c[5]);   // bana till hoger om rundtexten i rubrikraden
 if (g_debug)
 {
     scr_ui_text(g_OX + 10, g_OY + 28, "Z=" + string(g_zoom) + "  shots=" + string(instance_number(obj_shot)) + "  F1 debug", g_c[3]);

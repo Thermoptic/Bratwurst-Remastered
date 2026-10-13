@@ -190,3 +190,6 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | COL-06 | Kör långsamt och sned in i ett stillastående skepp (mitt på och i vingspetsen) | Det stillastående skeppet puttas åt rörelseriktningen och vrids lite beroende på träffpunkt och fart; gnistor vid träffpunkten; inget fastnar |
 | FX-08 | Låt en missil självdetonera nära (och långt ifrån) ett skepp; titta på energistapeln | Skepp som ringen når förlorar 3 energi en gång; skepp utanför ringen påverkas inte; ingen skada i Astro Duel |
 | UI-20 | Starta en match | Banans namn står i rubrikraden efter "ROUND n OF m", inte inne i spelytan |
+| CAM-05 | Spela med 2+ spelare, förstör alla utom en | Bilden stannar kvar (ingen inzoomning på vinnaren) tills resultatet visas; nästa runda startar med normal kamera; en spelare som väntar på respawn låser inte kameran |
+| MUS-05 | Titel, huvudmeny och skeppsval: tryck LB/RB (gamepad) eller PageUp/PageDown | Med en låt: ingen ändring och inget avbrott; med flera låtar: byter åt respektive håll med omslag; "NOW PLAYING" visar namn och nummer; MUSIC OFF visas om musiken är avstängd |
+| MUS-06 | Tryck LB/RB (PageUp/PageDown) i titel, meny och skeppsval | Låten byter mellan tre låtar med omslag och "NOW PLAYING" visar rätt namn och nummer; spektrumet följer varje låt; ingen hack vid start (alla ogg och viz laddas) |

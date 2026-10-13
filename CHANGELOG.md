@@ -228,3 +228,15 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-14 — Banans namn i rubrikraden
 - "MAP: <namn>" flyttad från spelytans övre vänstra hörn till rubrikraden, till höger om "ROUND n OF m" (`scr_match_draw`). Ej körd.
+
+## 2026-10-14 — Banans namn i rubrikens färg
+- "MAP: <namn>" är nu en del av rubrikraden (samma färg och samma "//"-avstånd som resten) i stället för en separat text (`scr_match_draw`). Ej körd.
+
+## 2026-10-14 — Kameran låses när bara en spelare är kvar
+- I matcher med fler än en spelare slutar kameran (zoom och position) uppdateras när bara en spelare är kvar, så bilden stannar kvar under rundslutets fördröjning i stället för att zooma in på vinnaren. Spelare som väntar på respawn räknas som kvar. `scr_camera_update`. Ej körd.
+
+## 2026-10-14 — Now playing och byte av låt
+- Under spektrumet står nu "NOW PLAYING" med låtens namn (3ELKS - DAS BRATWURST (DNB EDIT)) i stället för INI KEY, samt låtnummer och LB/RB-hint. Spellista i `scr_config_init` (`g_trk_n`, `g_trk_name`, `g_trk_snd`, `g_trk_viz`, `g_trk_idx`); axelknapparna LB/RB (gamepad) eller PageUp/PageDown i titel, meny och skeppsval byter låt åt respektive håll (`scr_music_switch`, `scr_music_update`). Med en låt händer inget. Låtar utan förberäknad equalizerdata (`g_trk_viz` = false) får lugn grundrörelse i spektrumet. Ej körd.
+
+## 2026-10-14 — Spellista från mappen Music
+- Thermoptic-låtarna i `Music/` (No Safe Orbit, Sectorwurst) ligger nu i spellistan efter titellåten: LB/RB (PageUp/PageDown) bläddrar 3ELKS - DAS BRATWURST (DNB EDIT) → THERMOPTIC - NO SAFE ORBIT → THERMOPTIC - SECTORWURST med omslag. `tools/gen_tracks.py` gör om mp3 till ogg (`sound/audio/snd_music_N.ogg` + `sound/snd_music_N.sound.gmx`), analyserar equalizerdata (`datafiles/viz_N.txt`, 25 rutor/s, 12 + 32 band) och skriver `scr_data_tracks` samt projektposter; `scr_tracks_load` läser datan vid start; `scr_musicviz_update` använder låtens egen data. Varje låt loopar tills man byter. Lägg nya mp3 i `Music/` och kör `python tools/gen_tracks.py` (befintliga viz-filer behålls, `--redo` gör om). Ej körd i GMS.

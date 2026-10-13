@@ -7,6 +7,8 @@ scr_data_ships();
 scr_data_themes();
 scr_data_levels();
 scr_data_musicviz();
+scr_data_tracks();   // latar fran mappen Music (tools/gen_tracks.py)
+scr_tracks_load();   // equalizerdata per lat
 randomize();
 scr_phys_tables();
 scr_levels_init();    // levels.ini (inbyggda banor skrivs vid forsta start)

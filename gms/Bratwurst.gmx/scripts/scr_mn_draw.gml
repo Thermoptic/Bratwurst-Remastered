@@ -112,9 +112,10 @@ for (k = 0; k < 16; k += 1)
 }
 scr_ui_text(ix, py + 298, "SPECTRUM", g_c[4]);
 scr_viz_draw(ix, py + 320, iw, 110);
-scr_ui_text(ix, py + 446, "INI KEY", g_c[4]);
-if (g_mn_ini[item] != "") { scr_ui_text(ix, py + 466, g_mn_ini[item], g_c[10]); }
-else { scr_ui_text(ix, py + 466, "-", g_c[3]); }
+scr_ui_text(ix, py + 446, "NOW PLAYING", g_c[4]);
+scr_ui_text_r(ix + iw, py + 446, scr_pad2(g_trk_idx + 1) + "/" + scr_pad2(g_trk_n) + "  LB/RB CHANGE", g_c[3]);
+if (g_sv[g_SV_MUSIC]) { scr_ui_text(ix, py + 466, g_trk_name[g_trk_idx], g_c[10]); }
+else { scr_ui_text(ix, py + 466, "MUSIC OFF", g_c[3]); }
 scr_ui_text(ix, py + 494, "FILES", g_c[4]);
 scr_ui_text(ix, py + 514, "settings.ini  themes.ini", g_c[3]);
 // ---- hjalprad ----
