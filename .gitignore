@@ -1,0 +1,10 @@
+# Originalfiler (upphovsrattsskyddade, docs/09): laggs aldrig i repot. Kontrollsummor finns i docs/12.
+original/
+
+# GMS 1.4 byggutdata och tillfalliga filer
+*.tmp
+*.bak
+Thumbs.db
+*.exe
+gms/Bratwurst.gmx/Configs/**/output/
+__pycache__/

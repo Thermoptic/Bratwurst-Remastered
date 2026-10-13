@@ -1,0 +1,29 @@
+/// scr_set_init()
+// Laser settings.ini over standardvardena (okanda/ogiltiga varden ger standard), skapar themes.ini vid forsta start och applicerar temat.
+var t, k, s;
+scr_set_defaults();
+ini_open("settings.ini");
+s = ini_read_string("theme", "name", "");
+for (t = 0; t < g_th_count; t += 1)
+{
+    if (g_th_id[t] == s) { g_sv[g_SV_THEME] = t; }
+}
+s = ini_read_string("theme", "accent", "");
+for (k = 0; k < 7; k += 1)
+{
+    if (string_lower(g_acc_name[k]) == s) { g_sv[g_SV_ACCENT] = k; }
+}
+s = ini_read_string("display", "scale", "");
+for (k = 0; k < 4; k += 1)
+{
+    if (string_lower(g_scale_name[k]) == s) { g_sv[g_SV_SCALE] = k; }
+}
+g_sv[g_SV_VSYNC] = clamp(ini_read_real("display", "vsync", g_sv[g_SV_VSYNC]), 0, 1);
+g_sv[g_SV_SCAN] = clamp(ini_read_real("display", "scanlines", g_sv[g_SV_SCAN]), 0, 1);
+g_sv[g_SV_GLOW] = clamp(ini_read_real("display", "glow", g_sv[g_SV_GLOW]), 0, 1);
+g_sv[g_SV_PLAYERS] = clamp(round(ini_read_real("gameplay", "players", g_sv[g_SV_PLAYERS])), 1, 4);
+ini_close();
+g_n_players = g_sv[g_SV_PLAYERS];
+scr_theme_ini_write();
+scr_theme_apply();
+scr_set_save();

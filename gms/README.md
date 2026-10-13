@@ -1,0 +1,64 @@
+# GMS 1.4-prototyp — Fas 1
+
+**Status: KÖRD I GMS 1.4 (2026-10-13, användarens test): startar, ritar bana + skepp, spelas utan felmeddelanden.** Detaljerade beteendetester (PHY/COL/WPN/CAM) återstår.
+
+*(Äldre text:)* Projektet är skrivet för hand i GMS 1.4:s `.gmx`-format och GML-logiken är rimlighetskontrollerad med en Python-spegling (`tools/proto_sim.py`), men **ingen GameMaker-kompilering eller körning har gjorts** (kommandoradskompilering av GMS 1.4 gav ingen utdata och hängde sig; avbröts). Öppna projektet i GMS 1.4 och rapportera eventuella kompileringsfel — se "Testa" nedan.
+
+## Öppna
+`gms/Bratwurst.gmx/Bratwurst.project.gmx` i GameMaker Studio 1.4 (`D:\program\GameMaker-Studio14`) → F5 (Run).
+
+## Vad prototypen innehåller
+- Vektorskepp ritade ur de 15 `.SOB`-filerna (data genererad av `tools/gen_gms_data.py`; byt skepp med **F3** (spelare 1) / **F4** (spelare 2)).
+- Originalets rörelse: accelererande sväng, thrust, gravitation, hastighetsproportionellt motstånd, 24.8-fixpunkt, 256 vinkelsteg, fysiktabeller (sin/cos × 20/32).
+- Kanonskott från alla pods (ammo, RELOAD), skottgravitation, bort utanför skärm/vägg, träff = −1 energi och knuff.
+- Banan som 68 vektorväggar; väggkrasch (skada ∝ fart², återställning, v = −v/4).
+- Energi (P3), 6 liv, respawn på originalets startpositioner; sista överlevande vinner (2 spelare).
+- Kamerans zoom enligt originalets formel (alla levande spelare), skärm 320×256 ritad i skala 2.
+- **Specialvapen (Fas 2, ej körda ännu):** MISSILE, GUIDED MISSILE, TURBO BOOST, TRACTOR BEAM, CANNON TURRET enligt kodverifierade regler (`docs/15` steg 5): tillgänglighet per skepp ur `.SOB`, ammo = P10·tabell, nedräkning 40/100/20/0/3 ticks, skada −12/−5, max 16 objekt. Vapen och pod väljs i skeppsvalsmenyn.
+- **Skeppsvalsmeny (Fas 2, ej körd):** spelet startar i skeppsvalet. Flöde enligt originalet: SHIP → SPECIAL WEAPON → (pod) → IS THIS OK? YES/NO → "PLAYER … IS READY TO EAT/ROCK/SWIM/SNEEZE" (texterna finns i originalets exe); matchen startar när alla aktiva spelare är redo. Navigering: vänster/höger bläddrar, fire bekräftar (spelare 1: ←/→ + ↑ eller Enter; spelare 2: A/D + W; Xbox: D-pad/vänster spak + A). Roterande skeppsförhandsvisning, tillgängliga vapen och valbar pod visas. Layout/färger/pod-steget är placeholders.
+- Inte med: huvudmeny, Options (grid/extra lines), ljud/musik,  riktiga explosionspartiklar.
+
+## Terminal-UI (Fas 3, ej körd)
+Flöde: titelskärm → huvudmeny (Game modes / Options / Controls / Quit) → skeppsval → match. Esc = ett steg tillbaka (match/skeppsval → huvudmenyn, huvudmeny → titel, titel → avsluta). Menyn styrs med pilar/WASD, Enter/Space/Z = OK, Esc/Backspace/X = tillbaka eller gamepad (D-pad/vänster spak, A/Start = OK, B = tillbaka). Inställningar sparas i `settings.ini`, temafärger i `themes.ini` (GMS 1.4:s sparmapp; sökvägen visas i Options → DATA FOLDER). Se `docs/10_DECISIONS.md` D-016. Rummet är 1024×640; Text ritas med typsnittsresurserna `fnt_*_k*` (Cascadia Mono, OFL; `tools/gen_gms_fonts.ps1`) via `scr_ui_dt`, 1:1 mot skärmpixlarna för UI-skala 1/1,5/2/3 (`scr_display_apply`), så allt är skarpt.
+
+## Kontroller (PLACEHOLDER — originalets mappning är okänd)
+| | Spelare 1 | Spelare 2 |
+|---|---|---|
+| Sväng | ←/→ | A/D |
+| Kanon | ↑ | W |
+| Thrust | Mellanslag / Höger-Ctrl | Vänster-Shift |
+| Special | ↓ | S |
+
+**Xbox-kontroll** (kontroll 1 = spelare 1, kontroll 2 = spelare 2; fungerar parallellt med tangentbordet; samma placeholder-mappning):
+| Funktion | Knapp |
+|---|---|
+| Sväng | Vänster spak ←/→ eller D-pad ←/→ |
+| Kanon | A |
+| Specialvapen | B |
+| Thrust | X eller höger trigger (RT) |
+| **Under matchen:** nästa skepp (test) | RB (höger axelknapp) |
+| **Under matchen:** nästa specialpod (t.ex. fram/bak) | LB (vänster axelknapp) |
+| Tillbaka till skeppsvalet / cykla antal spelare 1–4 | Start / Back |
+| Skeppsvalet: bläddra / bekräfta | Vänster spak eller D-pad ←/→ / A |
+
+**4 spelare:** F5 (eller Back) växlar 1 → 2 → 3 → 4 spelare och går till skeppsvalet (3–4 spelare visas i ett 2×2-rutnät). Spelare 3 tangentbord (placeholder): J/L sväng, I kanon, K special, O thrust; spelare 3–4 kan också styras med Xbox-kontroll 3 och 4; spelare 4 har ingen tangentbordsstyrning (originalets fyrspelaradapter). Alla fyra startpositioner och kameran över alla levande spelare finns.
+
+F1 debugtext · F2 tillbaka till skeppsvalet · F5 växla 1→4 spelare (går till skeppsvalet) · Esc tillbaka till huvudmenyn.
+
+## Rättigheter
+`scr_data_*.gml` är **härledd data ur originalet** (skeppsgeometri, bana, tabeller). Publicera/distribuera inte projektet förrän rättighetsfrågan är löst (`docs/09`). Själva logikskripten är egen kod.
+
+## Avvikelser från originalet (alla dokumenterade i skripten som PLACEHOLDER)
+- 1 tick per rumssteg (originalet kör "förlorade tick" som extra steg).
+- Kollision i världsrymd (segmentskärning, punkt-i-polygon) i stället för originalets skärmbitmappar.
+- Skeppet antas vara fyllt för träfftest.
+- Endast levande spelare styr kameran.
+
+## Strukturen
+`scripts/`: `scr_config_init` (alla konstanter), `scr_data_*` (genererat), `scr_game_*` (loop/rita), `scr_camera_update`, `scr_player_*`, `scr_shot_step`, geometri (`scr_seg_intersect`, `scr_point_*`). Objekt: `obj_game` (Create/Step/Draw anropar scripts), `obj_player`, `obj_shot` (inga egna events). Rum `rm_arena` 640×512, 50 steg/s (placeholder; tickfrekvens okänd).
+
+## GMS 1.4-egenheter som upptäckts (viktigt för framtida kod)
+- Projektfilen kräver mappprefix: `<object>objects\obj_x</object>`, `<room>rooms
+m_x</room>`; tomt `<constants>`-element ger fel (utelämnas).
+- `global.namn[variabel]` fungerar **inte** (fel "trying to index a variable which is not an array"). Använd `globalvar g_namn;` (deklareras i `scr_config_init`) och `g_namn[i]`.
+- GML-filer ska vara ren ASCII (generatorn translittererar å/ä/ö).

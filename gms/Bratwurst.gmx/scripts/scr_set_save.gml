@@ -1,0 +1,11 @@
+/// scr_set_save()
+// Sparar installningarna i settings.ini (GMS 1.4 lagger filen i spelets sparmapp; sokvagen visas i Options -> DATA FOLDER).
+ini_open("settings.ini");
+ini_write_string("theme", "name", g_th_id[g_sv[g_SV_THEME]]);
+ini_write_string("theme", "accent", string_lower(g_acc_name[g_sv[g_SV_ACCENT]]));
+ini_write_string("display", "scale", string_lower(g_scale_name[g_sv[g_SV_SCALE]]));
+ini_write_real("display", "vsync", g_sv[g_SV_VSYNC]);
+ini_write_real("display", "scanlines", g_sv[g_SV_SCAN]);
+ini_write_real("display", "glow", g_sv[g_SV_GLOW]);
+ini_write_real("gameplay", "players", g_sv[g_SV_PLAYERS]);
+ini_close();
