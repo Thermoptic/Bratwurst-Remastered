@@ -19,6 +19,7 @@ if (p == noone)
 if (p.alive) { scr_ui_pane(px, py, pw, ph, "P" + string(sl + 1) + " // " + string_upper(p.ship_name), c); }
 else { scr_ui_pane(px, py, pw, ph, "P" + string(sl + 1) + " // ELIMINATED", g_c[8]); }
 g_fs = g_f_sm;
+scr_ui_text_r(px + pw - 12, py + 14, "WINS " + string(g_wins[sl]), c);
 bw = min(pw - 150, 320);
 y0 = py + 16;
 

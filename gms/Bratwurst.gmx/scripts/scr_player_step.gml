@@ -42,7 +42,7 @@ if (in_fire && reload <= 0 && instance_number(obj_shot) < g_MAX_SHOTS)
         sh.owner = slot;
         cannon_ammo -= 1;
     }
-    if (fired_all) { reload = reload_val; }
+    if (fired_all) { reload = reload_val; scr_sfx_play(snd_sfx_shot, 0, 1); }
 }
 
 // 3b) Specialvapen (val under de forsta 5 s, sedan avfyrning)
@@ -76,6 +76,7 @@ scr_player_outline();
 if (scr_player_hits_wall())
 {
     px = prev_px; py = prev_py; ang = prev_ang;
+    if (abs(vx) > 1000 || abs(vy) > 1000) { scr_sfx_play(snd_sfx_crash, 2, 1); }   // original: ljud bara om farten ligger utanfor +-1000 (0x5dc4)
     energy -= floor(floor((vx * vx + vy * vy) / 65536) / 64) + 1;
     vx = floor(-vx / 4);
     vy = floor(-vy / 4);

@@ -192,3 +192,22 @@ Rutinen `0x3414` (anropas från `0x254` vid programstart, ovillkorligt) gör:
 - `gravitation 50 → (50·20)>>5 = 31` och `skottgravitation 25 → (25·20)>>5 = 15` (skrivs över i hunk 4 `0x9963e` / `0x99646`).
 
 Konsekvenser för tidigare avsnitt ovan: skotthastighet relativt skeppet är `160<<5 = 5 120` enheter (≈ 20 px/tick), inte 32 px; missilens/guidade missilens/turretens utgångshastighet likaså (`·32` på skalad tabell), turbo `·64` ⇒ ≈ 40 px/tick; thrust = `160·P1/8`. Siffrorna "32 px/tick", "gravitation 50" och "skottgravitation 25" i steg 3–5 ska läsas med denna skalning. Zoom, kamera, vinklar, energi, skada och liv påverkas inte.
+
+
+## Ljudeffekter — VERIFIERAD kod (2026-10-13)
+Spelet har en egen effektmotor ovanpå ProTracker-spelaren: skuggregister vid `0xa045c..0xa048c` (4 kanaler × 12 byte: flagga, pekare, längd i ord, volym, period) som en rutin vid `0x5ba4` kopierar till Paulas kanalregister (`0xdff0a0/b0/c0/d0`). Sju små rutiner sätter en kanals skuggregister; alla sampel ligger sammanhängande i hunk 2 (bas `0x40000`):
+
+| Rutin | Kanal | Sampel (adress, längd) | Vol | Period (→ Hz, PAL) | Anropas från | Händelse |
+|---|---|---|---:|---|---|---|
+| `0x5cf4` | 0 | `0x40000`, 6 472 B | 64 | 450 (7 882) | `0x17d4/0x1b38/0x1e9c/0x21fc` (efter kanonsalvan, per spelare), `0x7322` (cannon turret) | **kanonskott** |
+| `0x5d90` | 1 | `0x41948`, 11 236 B | 64 | 500 (7 094) | `0x660a`, `0x667e` | **missil/guidad missil exploderar** |
+| `0x5d28` | 1 | `0x4452c`, 5 932 B | 64 | 300 (11 823) | `0x6c2a` | **MISSILE avfyras** |
+| `0x5d5c` | 1 | `0x45c58`, 17 496 B | 64 | 400 (8 867) | `0x6c50` | **GUIDED MISSILE avfyras** |
+| `0x5dc4` | 2 | `0x4a0b0`, 31 850 B | 64 | 300 (11 823) | `0x277c/0x27fa/0x2878/0x28f6` (väggkraschen) | **väggkrasch**, bara om hastighetskomponenten ligger utanför ±1000 (`cmp2` mot `0x5e0c`) |
+| `0x5e14` | 2 | `0x51d1a`, 31 850 B | 64 | 300 (11 823) | `0x292a…0x2a7e` (6 par) | **skepp mot skepp** (se nedan) |
+| `0x5e48` | 2 | `0x59984`, 12 992 B | 26 | 130 (27 284) | `0x5f70/0x5fbc/0x6008/0x6054` | **kanonskott träffar skepp** |
+
+- TURBO BOOST och TRACTOR BEAM har inget eget ljud (ingen rutin anropas). Effekterna använder kanal 0, 1 och 2; en ny effekt avbryter den som spelas på samma kanal.
+- De två krasch-samplen (`0x4a0b0`, `0x51d1a`) är nästan identiska kopior.
+- Exet saknar de sista ~508 byten av hunk 2 (docs/13): bara svansen på träffljudet är avkortad.
+- **Skepp mot skepp finns i originalet** (rutinen `0x2920…`): ett par skepp som kolliderar **byter hastighetsvektorer** (`v1 ↔ v2`), ljudet spelas och en nedräkning på 10 ticks per par (`0x2ab8…`) hindrar upprepning. Vår egen modell (D-018) använder en impulsmodell med boostknuff i stället; originalets byte kan läggas till som alternativ.

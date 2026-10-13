@@ -131,3 +131,22 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | MAP-06 | N skapar ny bana med slumpat namn (två ord: stjärna + korv); Del två gånger tar bort | Banlistan i menyn uppdateras; sista banan kan inte tas bort |
 | MAP-07 | Esc med osparade ändringar | Kräver ett andra Esc för att slänga ändringarna |
 
+### Rundor (ej körda)
+| ID | Test | Förväntat |
+|---|---|---|
+| RND-01 | Classic → Rounds visar 3 som standard; ändra och starta om spelet | Värdet sparas |
+| RND-02 | Spela en runda med 2 spelare | När en är kvar visas "PLAYER n WINS" ca 3 s, vinnaren får +1 i sin panel, ny runda startar med full energi/liv |
+| RND-03 | Spela alla rundor | Resultatskärm: vinster per spelare, matchvinnare eller TIE |
+| RND-04 | REMATCH | Skeppsval (nya skepp), nytt spel med samma antal rundor och nollade vinster |
+| RND-05 | MAIN MENU / Esc på resultatskärmen | Huvudmenyn |
+| SND-01 | Starta spelet | Titelmusiken startar och loopar; fortsätter genom menyerna |
+| SND-02 | Starta en match / avsluta den | Musiken stoppar under matchen och startar igen i menyn/resultatskärmen |
+| SND-03 | Options → MUSIC av/på | Musiken tystnar/startar direkt; sparas |
+
+
+| SND-04 | Skjut kanon (alla skepp) | Kanonljudet en gång per salva |
+| SND-05 | MISSILE / GUIDED MISSILE avfyras, och när de exploderar | Respektive startljud, sedan explosionsljudet |
+| SND-06 | Krocka med vägg i hög respektive låg fart | Krasch bara vid hög fart (över ~4 px/tick) |
+| SND-07 | Skepp mot skepp | Kollisionsljudet |
+| SND-08 | Träffa ett skepp med kanonskott | Svagt, högt träff-ljud |
+| SND-09 | Options → SOUND EFFECTS av/på | Effekterna tystnar/startar; musiken påverkas inte |

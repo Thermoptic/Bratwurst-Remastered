@@ -64,7 +64,8 @@ if (vn > 0)
 
     if (sp > g_COL_VMAX) { ib.vx = round(ib.vx * g_COL_VMAX / sp); ib.vy = round(ib.vy * g_COL_VMAX / sp); }
 
-    scr_fx_spawn((ia.px + ib.px) / 2, (ia.py + ib.py) / 2, 2);
+    scr_sfx_play(snd_sfx_collide, 2, 1);   // original: samma ljudeffekt vid skepp mot skepp (0x5e14)
+    scr_fx_spawn((ia.px + ib.px) / 2, (ia.py + ib.py) / 2, 3);
 
 }
 

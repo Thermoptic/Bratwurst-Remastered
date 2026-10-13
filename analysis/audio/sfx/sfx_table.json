@@ -1,0 +1,93 @@
+[
+ {
+  "name": "snd_sfx_shot",
+  "address": "0x40000",
+  "bytes": 6472,
+  "bytes_available": 6472,
+  "bytes_missing_in_damaged_exe": 0,
+  "volume": 64,
+  "gain": 1.0,
+  "period": 450,
+  "rate_hz": 7882,
+  "channel": 0,
+  "use": "kanonsalva (0x17d4, 0x1b38, 0x1e9c, 0x21fc) och cannon turret (0x7322)"
+ },
+ {
+  "name": "snd_sfx_explosion",
+  "address": "0x41948",
+  "bytes": 11236,
+  "bytes_available": 11236,
+  "bytes_missing_in_damaged_exe": 0,
+  "volume": 64,
+  "gain": 1.0,
+  "period": 500,
+  "rate_hz": 7094,
+  "channel": 1,
+  "use": "explosion nar missil/guidad missil forstors (0x660a, 0x667e)"
+ },
+ {
+  "name": "snd_sfx_missile",
+  "address": "0x4452c",
+  "bytes": 5932,
+  "bytes_available": 5932,
+  "bytes_missing_in_damaged_exe": 0,
+  "volume": 64,
+  "gain": 1.0,
+  "period": 300,
+  "rate_hz": 11823,
+  "channel": 1,
+  "use": "missil avfyras (0x6c2a)"
+ },
+ {
+  "name": "snd_sfx_guided",
+  "address": "0x45c58",
+  "bytes": 17496,
+  "bytes_available": 17496,
+  "bytes_missing_in_damaged_exe": 0,
+  "volume": 64,
+  "gain": 1.0,
+  "period": 400,
+  "rate_hz": 8867,
+  "channel": 1,
+  "use": "guidad missil avfyras (0x6c50)"
+ },
+ {
+  "name": "snd_sfx_crash",
+  "address": "0x4a0b0",
+  "bytes": 31850,
+  "bytes_available": 31850,
+  "bytes_missing_in_damaged_exe": 0,
+  "volume": 64,
+  "gain": 1.0,
+  "period": 300,
+  "rate_hz": 11823,
+  "channel": 2,
+  "use": "skepp krockar i vagg om fart utanfor +-1000 (0x277c-0x28f6, hjalprutin 0x5dc4)"
+ },
+ {
+  "name": "snd_sfx_collide",
+  "address": "0x51d1a",
+  "bytes": 31850,
+  "bytes_available": 31850,
+  "bytes_missing_in_damaged_exe": 0,
+  "volume": 64,
+  "gain": 1.0,
+  "period": 300,
+  "rate_hz": 11823,
+  "channel": 2,
+  "use": "skepp krockar med skepp (0x292a-0x2a7e, rutin 0x5e14, spar 10 ticks per par)"
+ },
+ {
+  "name": "snd_sfx_hit",
+  "address": "0x59984",
+  "bytes": 12992,
+  "bytes_available": 12484,
+  "bytes_missing_in_damaged_exe": 508,
+  "volume": 26,
+  "gain": 0.406,
+  "period": 130,
+  "rate_hz": 27284,
+  "channel": 2,
+  "use": "kanonskott traffar skepp (0x5f70, 0x5fbc, 0x6008, 0x6054, rutin 0x5e48)"
+ }
+]

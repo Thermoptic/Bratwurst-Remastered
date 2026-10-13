@@ -22,7 +22,10 @@ g_sv[g_SV_VSYNC] = clamp(ini_read_real("display", "vsync", g_sv[g_SV_VSYNC]), 0,
 g_sv[g_SV_SCAN] = clamp(ini_read_real("display", "scanlines", g_sv[g_SV_SCAN]), 0, 1);
 g_sv[g_SV_GLOW] = clamp(ini_read_real("display", "glow", g_sv[g_SV_GLOW]), 0, 1);
 g_sv[g_SV_WIDE] = clamp(ini_read_real("display", "widescreen", g_sv[g_SV_WIDE]), 0, 1);
+g_sv[g_SV_MUSIC] = clamp(ini_read_real("audio", "music", g_sv[g_SV_MUSIC]), 0, 1);
+g_sv[g_SV_SFX] = clamp(ini_read_real("audio", "sfx", g_sv[g_SV_SFX]), 0, 1);
 g_sv[g_SV_PLAYERS] = clamp(round(ini_read_real("gameplay", "players", g_sv[g_SV_PLAYERS])), 1, 4);
+g_sv[g_SV_ROUNDS] = clamp(round(ini_read_real("gameplay", "rounds", g_sv[g_SV_ROUNDS])), 1, 15);
 ini_close();
 ini_open("settings.ini");
 s = ini_read_string("gameplay", "map", "");

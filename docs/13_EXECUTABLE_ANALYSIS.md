@@ -55,3 +55,7 @@ Se `15_GHIDRA_DISASSEMBLY.md`: skeppsladdaren (versaliserar filnamn, accepterar 
 - Hunk 0 innehåller en **ProTracker-replayer** (0x7450–0x8e00; tabellerna 0x7fb0/0x7fda är PT:s vibrato- och periodtabeller) — inte spelfysik.
 - S404-payloaden i hunk 0 (0x8f5c) är **StoneCracker 4.10** och är uppackad till 78 108 B planar bitmapdata (`analysis/derived/s404_payload.bin`, privat).
 - Hunk 4 innehåller sin/cos-tabeller (256 ord, ±256), fyra nollade skeppsstrukturer (42 B) och vapentabell vid `+0x9894`. Hunk 5 (BSS 1 416 B) är spelets variabelblock. Se `15`.
+
+## Uppdatering: ljud utplockat (2026-10-13)
+- Modulen och dess sampel samt hunk 2 och hunk 3 före modulen är exporterade till `analysis/audio/` (se README där). Hunk 3 innehåller ytterligare ca 38 kB sampelliknande data före modulen (SANNOLIK ljud). Uppdelning av hunk 2/3 i delljud är en heuristik (OKÄND tills koden eller emulatorn har kontrollerats). Vilka ljud som hör till vilka händelser är fortfarande OKÄNT.
+

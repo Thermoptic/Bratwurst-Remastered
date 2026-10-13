@@ -101,3 +101,12 @@
 - **Meny:** Game Modes → MAP (välj bana) och MAP EDITOR. Vald bana sparas i `settings.ini` (`gameplay.map`).
 - **Redigerare:** mus + tangentbord (B rektangel, P polygon, X radera, T startplats, G rutnät, U ångra, S spara, N ny bana, [ ] byt bana, Del ta bort bana, Esc ut). Enkel och avsiktligt begränsad (inget zoom/panorering, max 64 former à 32 punkter, ingen gamepad).
 - **Rättigheter:** originalbanans geometri är härledd data (docs/09); den skrivs till användarens sparmapp men distribueras inte med repot som egen fil förutom via `scr_data_levels.gml`/`scr_data_arena.gml` (privat).
+
+## D-020 — Rundor och slutresultat
+- **Status:** beslutat av användaren (2026-10-13). **Ny funktion** (originalets matchstruktur med rundor är ej verifierad).
+- **Beslut:** Game Modes → Classic → ROUNDS (1–15, standard 3, sparas som `gameplay.rounds`). En runda slutar när bara en spelare återstår; vinnaren får en rundvinst, rundresultatet visas ca 3 s och nästa runda startar med samma skepp (alla får full energi, alla liv och ammo, nya startplatser). Efter sista rundan visas en egen resultatskärm (`g_state = 30`): rundvinster per spelare, matchvinnaren (eller oavgjort), och valen REMATCH (tillbaka till skeppsvalet med samma antal rundor, nya skepp) och MAIN MENU. Vid dött lopp (ingen kvar) ger rundan ingen vinst. Med en spelare avslutas rundan aldrig.
+
+## D-021 — Originalets ljudeffekter inlagda
+- **Status:** beslutat (2026-10-13), kopplingarna VERIFIERADE ur koden (docs/15, "Ljudeffekter").
+- **Beslut:** de sju originalsamplen i hunk 2 klipps med exakta gränser (`tools/extract_sfx.py`, 16-bit WAV vid Paula-frekvensen period→Hz) och spelas via `scr_sfx_play` på originalets tre effektkanaler (ny effekt avbryter den på samma kanal). Kopplingar: kanonskott och cannon turret, missil/guidad missil avfyrning, explosion (`scr_fx_spawn` med typ 1–2), väggkrasch (fart över ±1000), skepp mot skepp, kanonträff (volym 26/64). Options → SOUND EFFECTS slår av/på. Titelmusiken är separat.
+- **Rättigheter:** härledd originaldata (docs/09): privat repo; gäller även `gms/Bratwurst.gmx/sound/audio/`. Användaren uppger att spelet är gratis och aldrig sålts kommersiellt (2026-10-13), men rättighetsfrågan är inte juridiskt klarlagd.

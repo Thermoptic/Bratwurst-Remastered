@@ -116,3 +116,27 @@ Alla betydande projektändringar dokumenteras här.
 ## 2026-10-13 — Banfiler och banredigerare
 - Banor lagras i `levels.ini` (D-019). Tre inbyggda banor (Sirius Bratwurst = original, Kepler Chorizo, Proxima Merguez), MAP-val och MAP EDITOR under Game Modes, ny banredigerare (`scr_ed_*`, `scr_level_*`), `tools/gen_gms_levels.py`. Ej körd.
 
+## 2026-10-13 — Spellägen i menyn
+- Game Modes: CLASSIC (innehåller START = dagens match), ASTRO DUEL, RACE och CAPTURE THE BRATWURST (tomma platshållare, "COMING SOON"). PLAYERS, MAP och MAP EDITOR ligger kvar. Ej körd.
+
+## 2026-10-13 — Menyomflyttning
+- Players och Map ligger nu under Game Modes → Classic (efter Start); Map Editor ligger under Options. Game Modes innehåller bara de fyra spellägena. Ej körd.
+
+## 2026-10-13 — Rundor och slutresultat
+- Classic → ROUNDS (standard 3). Rundflöde (`scr_round_reset`, `scr_round_over_step`), rundvinster i panelerna och rubriken, resultatskärm med REMATCH / MAIN MENU (`scr_results_step/draw`). D-020. Ej körd.
+
+## 2026-10-13 — Ljud ur originalet (utplockat, ej inlagt)
+- `tools/amiga_audio.py` + `tools/extract_audio.py` plockar ut modulen (hunk 3), dess sampel och två sampelblock (hunk 2 och början av hunk 3) till `analysis/audio/` (OGG/WAV). Hunk-parsern klarar nu att exet är 512 B trasigt per hunk. Ej lyssnat på; inget inlagt i spelet än.
+
+## 2026-10-13 — Ljudexport: normaliserad rendering
+- Musikrenderingen klippte (gain 1,4); nu normaliserad till 90 % topp. Ljudfilerna verifierade som icke tomma (toppvärden och RMS > 0).
+
+## 2026-10-13 — Titelmusik
+- `music_module.ogg` (originalets inbäddade modul, renderad) ligger som ljudresursen `snd_title_music` (`gms/Bratwurst.gmx/sound/`) och spelas i loop på titelskärm, menyer, skeppsval, redigerare och resultat; stoppas under matchen (`scr_music_update`). Options → MUSIC slår av/på (`audio.music` i `settings.ini`). Härledd originaldata: privat repo (docs/09). Ej körd.
+
+## 2026-10-13 — Bugfix: ingen musik
+- Projektet använde den gamla ljudmotorn (`option_use_new_audio` = false), som inte kör `audio_play_sound`. Satt till true i `Configs/Default.config.gmx` (som i användarens andra projekt). Ej körd.
+
+
+## 2026-10-13 — Originalets ljudeffekter
+- Spårade ljudmotorn i originalkoden (docs/15) och lade in alla sju effekter på rätt händelser (D-021): kanonskott, missil, guidad missil, explosion, väggkrasch, skepp mot skepp, kanonträff. `tools/extract_sfx.py`, `scr_sfx_play`, Options → SOUND EFFECTS. Fynd: originalet har skepp-mot-skepp-kollision med hastighetsbyte. Ej körd.

@@ -27,6 +27,7 @@ with (obj_player)
 }
 if (g_hit_id != noone)
 {
+    scr_sfx_play(snd_sfx_hit, 2, 0.41);   // original: kanonskott traffar skepp, volym 26/64 (0x5e48)
     with (g_hit_id)
     {
         energy -= 1;

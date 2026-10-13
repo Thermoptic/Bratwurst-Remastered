@@ -1,10 +1,10 @@
 /// scr_mn_build()
 // Bygger huvudmenyn som data (noder + barn). Att lagga till en rad = en rad har. Noderna: root = 0.
 // Typer: 0 undermeny, 1 handling (g_mn_act: 1 start, 2 avsluta, 3 aterstall val), 2 av/pa, 3 tal, 4 val ur lista, 5 text.
-var root, modes, opts, ctrls, quit, n, p, c;
+var root, modes, opts, ctrls, quit, n, p, c, classic;
 g_mn_cnt = 0;
 root = scr_mn_add(0, "MAIN", "BRATWURST - REHEATED");
-modes = scr_mn_add(0, "GAME MODES", "START A MATCH AND CHOOSE HOW MANY PLAYERS");
+modes = scr_mn_add(0, "GAME MODES", "CHOOSE A GAME MODE");
 opts = scr_mn_add(0, "OPTIONS", "COLOUR THEME, WINDOW AND SCREEN EFFECTS");
 ctrls = scr_mn_add(0, "CONTROLS", "KEYS AND GAMEPAD BUTTONS. PLACEHOLDER MAPPING, THE ORIGINAL IS UNKNOWN. READ ONLY FOR NOW");
 quit = scr_mn_add(1, "QUIT", "EXIT TO WINDOWS");
@@ -12,20 +12,35 @@ g_mn_act[quit] = 2;
 scr_mn_link(root, modes); scr_mn_link(root, opts); scr_mn_link(root, ctrls); scr_mn_link(root, quit);
 
 // GAME MODES
-n = scr_mn_add(1, "START", "OPEN THE SHIP SELECT SCREEN WITH THE CHOSEN NUMBER OF PLAYERS");
+// Spellagen: Classic ar dagens match (START). De andra ar tomma platshallare tills de byggs.
+p = scr_mn_add(0, "CLASSIC", "THE CLASSIC MATCH. LAST SHIP FLYING WINS");
+scr_mn_link(modes, p);
+classic = p;
+n = scr_mn_add(1, "START", "OPEN THE SHIP SELECT SCREEN. SET PLAYERS AND MAP BELOW");
 g_mn_act[n] = 1;
-scr_mn_link(modes, n);
+scr_mn_link(p, n);
 n = scr_mn_add(3, "PLAYERS", "NUMBER OF PLAYERS, 1 TO 4. MORE CAN ALSO JOIN ON THE SHIP SELECT SCREEN");
 scr_mn_setting(n, g_SV_PLAYERS, 1, 4, "gameplay.players");
-scr_mn_link(modes, n);
+scr_mn_link(classic, n);
 n = scr_mn_add(4, "MAP", "THE ARENA FOR THE MATCH. MAKE YOUR OWN WITH THE MAP EDITOR");
 scr_mn_setting(n, g_SV_MAP, 0, max(0, g_lv_count - 1), "gameplay.map");
 g_mn_map_node = n;
-scr_mn_link(modes, n);
-n = scr_mn_add(1, "MAP EDITOR", "DRAW SOLID WALLS AND BOXES WITH THE MOUSE, PLACE START POSITIONS AND SAVE YOUR OWN MAPS");
-g_mn_act[n] = 4;
-scr_mn_link(modes, n);
-
+scr_mn_link(classic, n);
+n = scr_mn_add(3, "ROUNDS", "HOW MANY ROUNDS A MATCH HAS. THE LAST SHIP FLYING WINS A ROUND, THE MOST ROUND WINS TAKES THE MATCH");
+scr_mn_setting(n, g_SV_ROUNDS, 1, 15, "gameplay.rounds");
+scr_mn_link(classic, n);
+p = scr_mn_add(0, "ASTRO DUEL", "NOT BUILT YET");
+scr_mn_link(modes, p);
+n = scr_mn_add(5, "STATUS", "THIS GAME MODE IS NOT BUILT YET"); g_mn_text[n] = "COMING SOON";
+scr_mn_link(p, n);
+p = scr_mn_add(0, "RACE", "NOT BUILT YET");
+scr_mn_link(modes, p);
+n = scr_mn_add(5, "STATUS", "THIS GAME MODE IS NOT BUILT YET"); g_mn_text[n] = "COMING SOON";
+scr_mn_link(p, n);
+p = scr_mn_add(0, "CAPTURE THE BRATWURST", "NOT BUILT YET");
+scr_mn_link(modes, p);
+n = scr_mn_add(5, "STATUS", "THIS GAME MODE IS NOT BUILT YET"); g_mn_text[n] = "COMING SOON";
+scr_mn_link(p, n);
 // OPTIONS
 n = scr_mn_add(4, "THEME", "BASE16 COLOUR THEME FOR THE WHOLE GAME. THE COLOURS ARE READ FROM THEMES.INI");
 scr_mn_setting(n, g_SV_THEME, 0, g_th_count - 1, "theme.name");
@@ -39,6 +54,12 @@ scr_mn_link(opts, n);
 n = scr_mn_add(2, "WIDE PLAYFIELD", "USE THE FULL WIDTH FOR THE PLAYFIELD. OFF = THE ORIGINAL 320 PIXEL WIDE VIEW");
 scr_mn_setting(n, g_SV_WIDE, 0, 1, "display.widescreen");
 scr_mn_link(opts, n);
+n = scr_mn_add(2, "MUSIC", "TITLE MUSIC: THE MODULE FROM THE ORIGINAL GAME. IT STOPS DURING MATCHES");
+scr_mn_setting(n, g_SV_MUSIC, 0, 1, "audio.music");
+scr_mn_link(opts, n);
+n = scr_mn_add(2, "SOUND EFFECTS", "SHOTS, EXPLOSIONS AND CRASHES: THE SOUNDS FROM THE ORIGINAL GAME");
+scr_mn_setting(n, g_SV_SFX, 0, 1, "audio.sfx");
+scr_mn_link(opts, n);
 n = scr_mn_add(2, "VSYNC", "SYNC WITH THE MONITOR TO AVOID TEARING");
 scr_mn_setting(n, g_SV_VSYNC, 0, 1, "display.vsync");
 scr_mn_link(opts, n);
@@ -47,6 +68,9 @@ scr_mn_setting(n, g_SV_SCAN, 0, 1, "display.scanlines");
 scr_mn_link(opts, n);
 n = scr_mn_add(2, "PHOSPHOR GLOW", "SOFT GLOW AROUND TEXT");
 scr_mn_setting(n, g_SV_GLOW, 0, 1, "display.glow");
+scr_mn_link(opts, n);
+n = scr_mn_add(1, "MAP EDITOR", "DRAW SOLID WALLS AND BOXES WITH THE MOUSE, PLACE START POSITIONS AND SAVE YOUR OWN MAPS");
+g_mn_act[n] = 4;
 scr_mn_link(opts, n);
 n = scr_mn_add(5, "DATA FOLDER", "WHERE SETTINGS.INI AND THEMES.INI ARE SAVED");
 g_mn_text[n] = game_save_id;

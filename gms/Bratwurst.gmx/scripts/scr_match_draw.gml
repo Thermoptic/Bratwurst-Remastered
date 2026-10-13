@@ -96,7 +96,7 @@ draw_rectangle(g_OX - 2, g_OY - 2, g_OX - 1, g_OY + 10, false);
 draw_rectangle(g_OX + pwx - 10, g_OY + phx, g_OX + pwx + 2, g_OY + phx + 1, false);
 draw_rectangle(g_OX + pwx + 1, g_OY + phx - 10, g_OX + pwx + 2, g_OY + phx + 1, false);
 
-scr_ui_header("BRATWURST // MATCH", "ESC MENU   F2 SHIP SELECT   F1 DEBUG   TICK " + string(g_tick));
+scr_ui_header("BRATWURST // MATCH // ROUND " + string(g_round) + " OF " + string(g_rounds_total), "ESC MENU   F2 SHIP SELECT   F1 DEBUG   TICK " + string(g_tick));
 scr_hud_draw();
 
 g_fs = g_f_sm;
@@ -106,9 +106,12 @@ if (g_debug)
 }
 if (g_state == 2)
 {
-    scr_ui_pane(g_OX + pwx / 2 - 150, g_OY + phx / 2 - 46, 300, 92, "RESULT", g_acc);
+    scr_ui_pane(g_OX + pwx / 2 - 190, g_OY + phx / 2 - 56, 380, 112, "ROUND " + string(g_round) + " OF " + string(g_rounds_total), g_acc);
     g_fs = g_f_lg;
-    scr_ui_text_c(g_OX + pwx / 2, g_OY + phx / 2 - 28, "PLAYER " + string(g_winner + 1) + " WINS", scr_slot_colour(g_winner));
+    if (g_winner >= 0) { scr_ui_text_c(g_OX + pwx / 2, g_OY + phx / 2 - 38, "PLAYER " + string(g_winner + 1) + " WINS", scr_slot_colour(g_winner)); }
+    else { scr_ui_text_c(g_OX + pwx / 2, g_OY + phx / 2 - 38, "NO WINNER", g_c[10]); }
     g_fs = g_f_sm;
-    scr_ui_text_c(g_OX + pwx / 2, g_OY + phx / 2 + 14, "F2 = SHIP SELECT   ESC = MAIN MENU", g_c[4]);
+    if (g_round >= g_rounds_total) { scr_ui_text_c(g_OX + pwx / 2, g_OY + phx / 2 + 14, "FINAL RESULT NEXT", g_c[4]); }
+    else { scr_ui_text_c(g_OX + pwx / 2, g_OY + phx / 2 + 14, "NEXT ROUND STARTING", g_c[4]); }
+    scr_ui_text_c(g_OX + pwx / 2, g_OY + phx / 2 + 34, "F2 SHIP SELECT   ESC MAIN MENU", g_c[3]);
 }

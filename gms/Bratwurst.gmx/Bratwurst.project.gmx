@@ -4,7 +4,16 @@
     <Config>Configs\Default</Config>
   </Configs>
   <NewExtensions/>
-  <sounds name="sound"/>
+  <sounds name="sound">
+    <sound>sound\snd_title_music</sound>
+    <sound>sound\snd_sfx_shot</sound>
+    <sound>sound\snd_sfx_explosion</sound>
+    <sound>sound\snd_sfx_missile</sound>
+    <sound>sound\snd_sfx_guided</sound>
+    <sound>sound\snd_sfx_crash</sound>
+    <sound>sound\snd_sfx_collide</sound>
+    <sound>sound\snd_sfx_hit</sound>
+  </sounds>
   <sprites name="sprites"/>
   <backgrounds name="background"/>
   <paths name="paths"/>
@@ -122,6 +131,12 @@
     <script>scripts\scr_levels_reload.gml</script>
     <script>scripts\scr_levels_write_defaults.gml</script>
     <script>scripts\scr_safe_real.gml</script>
+    <script>scripts\scr_results_draw.gml</script>
+    <script>scripts\scr_results_step.gml</script>
+    <script>scripts\scr_round_over_step.gml</script>
+    <script>scripts\scr_round_reset.gml</script>
+    <script>scripts\scr_music_update.gml</script>
+    <script>scripts\scr_sfx_play.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_lg_k10</font>

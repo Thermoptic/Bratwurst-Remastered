@@ -27,7 +27,7 @@ if (t == 1 || t == 2)
         m.py = pod_wy[p];
         m.vx = vx - g_psin[a] * 32;
         m.vy = vy + g_pcos[a] * 32;
-        if (t == 1) { m.mtimer = 50; } else { m.mtimer = -25; }
+        if (t == 1) { m.mtimer = 50; scr_sfx_play(snd_sfx_missile, 1, 1); } else { m.mtimer = -25; scr_sfx_play(snd_sfx_guided, 1, 1); }
     }
 }
 if (t == 3)
@@ -73,6 +73,7 @@ if (t == 5)
             sh.vx = vx + g_psin[aim] * 32;
             sh.vy = vy + g_pcos[aim] * 32;
             sh.owner = slot;
+            scr_sfx_play(snd_sfx_shot, 0, 1);
         }
     }
 }

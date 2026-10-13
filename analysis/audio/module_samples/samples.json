@@ -1,0 +1,68 @@
+[
+ {
+  "file": "01_JoyDrum1.wav",
+  "name": "JoyDrum1",
+  "bytes": 6510,
+  "declared": 6510,
+  "vol": 64,
+  "loop": [
+   0,
+   2
+  ]
+ },
+ {
+  "file": "02_JoyDrum2.wav",
+  "name": "JoyDrum2",
+  "bytes": 10822,
+  "declared": 10822,
+  "vol": 64,
+  "loop": [
+   0,
+   2
+  ]
+ },
+ {
+  "file": "03_JoyDrum3.wav",
+  "name": "JoyDrum3",
+  "bytes": 8302,
+  "declared": 8302,
+  "vol": 64,
+  "loop": [
+   0,
+   2
+  ]
+ },
+ {
+  "file": "04_JoyDrum4.wav",
+  "name": "JoyDrum4",
+  "bytes": 4042,
+  "declared": 4042,
+  "vol": 64,
+  "loop": [
+   0,
+   2
+  ]
+ },
+ {
+  "file": "07_Joy05Bass.wav",
+  "name": "Joy05Bass",
+  "bytes": 766,
+  "declared": 766,
+  "vol": 64,
+  "loop": [
+   512,
+   254
+  ]
+ },
+ {
+  "file": "08_sample.wav",
+  "name": "",
+  "bytes": 920,
+  "declared": 920,
+  "vol": 64,
+  "loop": [
+   666,
+   254
+  ]
+ }
+]

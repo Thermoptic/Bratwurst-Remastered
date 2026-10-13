@@ -4,6 +4,7 @@
 // g_state: 10 = titel, 11 = huvudmeny, 0 = skeppsval, 1 = match, 2 = matchen slut.
 var gi;
 scr_nav_input();
+scr_music_update();
 
 // Titelskarm: valfri tangent/knapp -> huvudmeny, Esc = avsluta
 if (g_state == 10)
@@ -15,6 +16,7 @@ if (g_state == 10)
 }
 if (g_state == 11) { scr_mn_step(); exit; }
 if (g_state == 20) { scr_ed_step(); exit; }   // banredigeraren
+if (g_state == 30) { scr_results_step(); exit; }   // slutresultat
 
 // Skeppsval och match: Esc = huvudmenyn
 if (keyboard_check_pressed(vk_escape)) { scr_goto_main(); exit; }
@@ -33,6 +35,7 @@ for (gi = 0; gi < 4; gi += 1)
 }
 
 if (g_state == 0) { scr_menu_step(); exit; }
+if (g_state == 2) { scr_round_over_step(); exit; }   // rundresultat visas
 if (g_state != 1) { exit; }
 
 g_tick += 1;
@@ -50,5 +53,7 @@ if (g_n_players > 1)
     {
         g_state = 2;
         g_winner = scr_last_alive();
+        g_round_timer = 0;
+        if (g_winner >= 0) { g_wins[g_winner] += 1; }
     }
 }
