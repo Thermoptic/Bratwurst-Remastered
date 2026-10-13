@@ -11,6 +11,8 @@ energy = energy_max;
 cannon_ammo = ammo_max;
 reload = 0;
 boost_timer = 0;
+ad_charges = g_AD_SHOTS;   // Astro Duel: full laddning efter respawn
+ad_cool = 0;
 sp_cool = 0;
 sp_ammo = scr_special_ammo();
 var wt, wsave;

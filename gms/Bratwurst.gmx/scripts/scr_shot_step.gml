@@ -18,12 +18,22 @@ if (scr_seg_hits_wall(floor((px - vx) / 256), floor((py - vy) / 256), wx, wy, to
 
 hx = wx;
 hy = wy;
+if (!variable_instance_exists(id, "sage")) { sage = 0; }
+sage += 1;
 g_hit_id = noone;
-with (obj_player)
+if (g_game_mode == 1)
 {
-    if (alive && g_hit_id == noone)
+    // Astro Duel: svept test med 30 % storre projektil
+    g_hit_id = scr_proj_hit(floor((px - vx) / 256), floor((py - vy) / 256), wx, wy, scr_proj_radius(), owner, sage);
+}
+else
+{
+    with (obj_player)
     {
-        if (scr_point_in_ship(other.hx, other.hy)) { g_hit_id = id; }
+        if (alive && g_hit_id == noone)
+        {
+            if (scr_point_in_ship(other.hx, other.hy)) { g_hit_id = id; }
+        }
     }
 }
 if (g_hit_id != noone)
@@ -32,7 +42,7 @@ if (g_hit_id != noone)
     scr_sfx_play(snd_sfx_hit, 2, 0.41);   // original: kanonskott traffar skepp, volym 26/64 (0x5e48)
     with (g_hit_id)
     {
-        energy -= 1;
+        if (g_game_mode == 1) { energy = 0; } else { energy -= 1; }   // Astro Duel: varje traff tar ett liv
         vx += floor((other.vx - vx) / power(2, bounce));
         vy += floor((other.vy - vy) / power(2, bounce));
         if (energy <= 0)

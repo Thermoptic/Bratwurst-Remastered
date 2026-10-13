@@ -115,3 +115,10 @@
 - **Status:** beslutat av användaren (2026-10-13).
 - **Beslut:** `snd_title_music` är `RollingBreakbeat_loop_150bpm.ogg`. GameMaker Studio 1.4 saknar spektrumanalys av ljud i realtid, så equalizern drivs av data som analyseras offline (`tools/gen_music_viz.py` → `scr_data_musicviz.gml`) och synkas mot `audio_sound_get_track_position`. Byts musikfilen måste verktyget köras om.
 - **Rättigheter:** filens ursprung och licens är okända för projektet (användarlevererad). Se docs/09.
+
+## D-023 — Spelläge ASTRO DUEL
+- **Status:** beslutat av användaren (2026-10-13). Nytt spelläge, finns inte i originalet.
+- **Meny:** Game Modes → Astro Duel: START, PLAYERS, MAP, ROUNDS (delade inställningar som i Classic) och LIFE (1–9, standard 1; `astro.lives` i `settings.ini`).
+- **Regler:** (1) Varje träff (kanonskott eller missil) tar ett liv; med LIFE = 1 dör man på en träff. (2) Ingen skada av väggkrasch (studs, gnistor och ljud finns kvar). (3) Kanon: tre skott per laddning, ett skott per knapptryck (kantat) hur snabbt man vill; efter det tredje skottet 4 s nedkylning (`g_AD_COOLDOWN` = 200 ticks), därefter tre nya skott; ingen kanonammo. (4) Projektiler (skott och missiler) 30 % större: ritade 1,3×, träffradie 1,5 × 1,3 skärmenheter i världsrymd (Classic: punkt) och svept träfftest längs rörelsen (`scr_proj_hit`). (5) Endast MISSILE och TURBO BOOST för alla skepp (oavsett skeppets .SOB-vapenlista). (6) Missilen flyger dubbelt så fort (`64` i stället för `32`); livslängden är oförändrad.
+- **Oförändrat (ej angivet av användaren):** specialammo per skepp enligt P10 (10–25 missiler), missilens och turbons nedräkning, skeppskrockar, rundor och resultatskärm.
+- **Att verifiera:** spelkänsla (dubbel missilfart/räckvidd, träffradie, nedkylningstid).

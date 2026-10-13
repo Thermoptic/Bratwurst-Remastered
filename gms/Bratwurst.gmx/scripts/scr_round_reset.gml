@@ -6,7 +6,7 @@ with (obj_fx) { instance_destroy(); }
 with (obj_player)
 {
     alive = true;
-    p_lives = g_START_LIVES;
+    p_lives = g_lives_max;
     rear_fire = false;   // D-015
     scr_player_respawn();
 }

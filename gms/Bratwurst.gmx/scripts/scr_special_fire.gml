@@ -25,8 +25,8 @@ if (t == 1 || t == 2)
         m.owner = slot;
         m.px = pod_wx[p];
         m.py = pod_wy[p];
-        m.vx = vx - g_psin[a] * 32;
-        m.vy = vy + g_pcos[a] * 32;
+        m.vx = vx - g_psin[a] * (32 + 32 * (g_game_mode == 1));   // Astro Duel: missilen gar dubbelt sa fort
+        m.vy = vy + g_pcos[a] * (32 + 32 * (g_game_mode == 1));
         if (t == 1) { m.mtimer = 50; scr_sfx_play(snd_sfx_missile, 1, 1); } else { m.mtimer = -25; scr_sfx_play(snd_sfx_guided, 1, 1); }
     }
 }

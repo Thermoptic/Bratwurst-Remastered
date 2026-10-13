@@ -155,3 +155,15 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | FX-02 | Krocka med väggen i låg respektive hög fart | Få gnistor vid låg fart, många och snabbare vid hög fart |
 | SND-10 | Titelskärm och huvudmeny med musik på | Värmebalken respektive SIGNAL-staplarna rör sig i takt med breakbeaten (kick/virvel syns) |
 | SND-11 | Options → MUSIC av | Staplarna faller tillbaka till den gamla sinusrörelsen |
+
+### Astro Duel (ej körda)
+| ID | Test | Förväntat |
+|---|---|---|
+| AD-01 | Game Modes → Astro Duel | Start, Players, Map, Rounds, Life (standard 1) |
+| AD-02 | Starta, bli träffad av kanonskott / missil med LIFE 1 | Ett liv förloras (rundan förloras); med LIFE 3 krävs tre träffar |
+| AD-03 | Åk in i väggar | Ingen energi/liv förloras (gnistor och ljud finns) |
+| AD-04 | Skjut kanon | Tre skott (ett per tryck), sedan 4 s nedkylning med synlig nedräkning i panelen; delvis användning och väntan fungerar |
+| AD-05 | Projektilstorlek | Skott och missiler ritas märkbart större; lättare att träffa än i Classic |
+| AD-06 | Skeppsval | Bara MISSILE och TURBO kan väljas för alla skepp; MISSILE är förvald |
+| AD-07 | Missil | Dubbelt så snabb som i Classic |
+| AD-08 | Classic efter Astro Duel | Alla Classic-regler är oförändrade (full energi, vapen enligt skepp) |

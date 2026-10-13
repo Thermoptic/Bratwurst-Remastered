@@ -38,7 +38,8 @@ if (g_nv_ok)
     else if (ok_adj) { scr_mn_adjust(item, 1); }
     else if (t == 1)
     {
-        if (g_mn_act[item] == 1) { scr_menu_enter(); }
+        if (g_mn_act[item] == 1) { g_game_mode = 0; scr_menu_enter(); }
+        if (g_mn_act[item] == 5) { g_game_mode = 1; scr_menu_enter(); }
         if (g_mn_act[item] == 2) { game_end(); }
         if (g_mn_act[item] == 4) { scr_ed_enter(g_sv[g_SV_MAP]); }
         if (g_mn_act[item] == 3)

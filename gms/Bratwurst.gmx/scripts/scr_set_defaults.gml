@@ -16,4 +16,5 @@ g_sv[g_SV_WIDE] = 1;
 g_sv[g_SV_MAP] = 0;
 g_sv[g_SV_ROUNDS] = 3;
 g_sv[g_SV_MUSIC] = 1;
+g_sv[g_SV_ADLIVES] = 1;
 g_sv[g_SV_SFX] = 1;

@@ -23,6 +23,27 @@ scr_ui_text_r(px + pw - 12, py + 14, "WINS " + string(g_wins[sl]), c);
 bw = min(pw - 150, 320);
 y0 = py + 16;
 
+if (g_game_mode == 1)
+{
+    // Astro Duel: skott kvar (3 rutor) + nedkylning, liv och laddningstext
+    scr_ui_text(px + 12, y0, "SH", g_c[4]);
+    for (i = 0; i < g_AD_SHOTS; i += 1)
+    {
+        if (i < p.ad_charges) { draw_set_color(c); draw_rectangle(px + 42 + i * 22, y0 + 2, px + 54 + i * 22, y0 + 12, false); }
+        else { draw_set_color(g_c[3]); draw_rectangle(px + 42 + i * 22, y0 + 2, px + 54 + i * 22, y0 + 12, true); }
+    }
+    if (p.ad_cool > 0) { scr_ui_bar(px + 42 + g_AD_SHOTS * 22 + 8, y0 + 4, max(24, bw - g_AD_SHOTS * 22 - 8), 10, 1 - p.ad_cool / g_AD_COOLDOWN, g_c[9]); }
+    scr_ui_text(px + 12, y0 + 18, "LV", g_c[4]);
+    for (i = 0; i < g_lives_max; i += 1)
+    {
+        if (i < p.p_lives) { draw_set_color(c); draw_rectangle(px + 42 + i * 18, y0 + 22, px + 51 + i * 18, y0 + 31, false); }
+        else { draw_set_color(g_c[3]); draw_rectangle(px + 42 + i * 18, y0 + 22, px + 51 + i * 18, y0 + 31, true); }
+    }
+    if (p.ad_cool > 0) { scr_ui_text(px + 12, y0 + 36, "RELOAD " + string(ceil(p.ad_cool / 50)) + "S", g_c[9]); }
+    else { scr_ui_text(px + 12, y0 + 36, "READY", c); }
+}
+else
+{
 scr_ui_text(px + 12, y0, "EN", g_c[4]);
 fr = max(0, p.energy) / max(1, p.energy_max);
 scr_ui_bar(px + 42, y0 + 4, bw, 10, fr, c);
@@ -30,10 +51,11 @@ scr_ui_text(px + 12, y0 + 18, "AM", g_c[4]);
 fr = p.cannon_ammo / max(1, p.ammo_max);
 scr_ui_bar(px + 42, y0 + 22, bw, 10, fr, c);
 scr_ui_text(px + 12, y0 + 36, "LV", g_c[4]);
-for (i = 0; i < g_START_LIVES; i += 1)
+for (i = 0; i < g_lives_max; i += 1)
 {
     if (i < p.p_lives) { draw_set_color(c); draw_rectangle(px + 42 + i * 18, y0 + 40, px + 51 + i * 18, y0 + 49, false); }
     else { draw_set_color(g_c[3]); draw_rectangle(px + 42 + i * 18, y0 + 40, px + 51 + i * 18, y0 + 49, true); }
+}
 }
 scr_ui_text(px + 12, y0 + 54, "SP", g_c[4]);
 scr_ui_text(px + 42, y0 + 54, g_wshort[p.sp_wtype] + " " + string(p.sp_ammo), c);

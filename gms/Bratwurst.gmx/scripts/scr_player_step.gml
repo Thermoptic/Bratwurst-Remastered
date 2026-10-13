@@ -26,7 +26,33 @@ scr_player_outline();
 
 // 3) Kanon: alla pods skjuter, 1 ammo per skott, RELOAD ticks mellan salvor (VERIFIERAD, kod 0x1732-0x17ca)
 if (reload > 0) { reload -= 1; }
-if (in_fire && reload <= 0 && instance_number(obj_shot) < g_MAX_SHOTS)
+if (g_game_mode == 1)
+{
+    // ASTRO DUEL (D-023): tre skott, sedan 4 s nedkylning. Ett skott per knapptryck (kantat), hur snabbt som helst; ingen ammo.
+    if (ad_cool > 0)
+    {
+        ad_cool -= 1;
+        if (ad_cool <= 0) { ad_charges = g_AD_SHOTS; }
+    }
+    if (in_fire && !fire_prev && ad_cool <= 0 && ad_charges > 0 && instance_number(obj_shot) < g_MAX_SHOTS)
+    {
+        for (p = 0; p < nk; p += 1)
+        {
+            if (pod_rear[p] && !rear_fire) { continue; }
+            a = (ang + g_ship_pod_ang[ship, p]) mod 256;
+            sh = instance_create(0, 0, obj_shot);
+            sh.px = pod_wx[p];
+            sh.py = pod_wy[p];
+            sh.vx = vx - g_psin[a] * power(2, shot_shift);
+            sh.vy = vy + g_pcos[a] * power(2, shot_shift);
+            sh.owner = slot;
+        }
+        ad_charges -= 1;
+        scr_sfx_play(snd_sfx_shot, 0, 1);
+        if (ad_charges <= 0) { ad_cool = g_AD_COOLDOWN; }
+    }
+}
+else if (in_fire && reload <= 0 && instance_number(obj_shot) < g_MAX_SHOTS)
 {
     fired_all = true;
     for (p = 0; p < nk; p += 1)
@@ -44,6 +70,8 @@ if (in_fire && reload <= 0 && instance_number(obj_shot) < g_MAX_SHOTS)
     }
     if (fired_all) { reload = reload_val; scr_sfx_play(snd_sfx_shot, 0, 1); }
 }
+
+fire_prev = in_fire;
 
 // 3b) Specialvapen (val under de forsta 5 s, sedan avfyrning)
 scr_special_select();
@@ -79,7 +107,7 @@ if (scr_player_hits_wall())
     // gnistor: antal och fart okar med kraschhastigheten (1/256 px per tick)
     scr_spark_burst(floor(px / 256), floor(py / 256), clamp(floor(sqrt(vx * vx + vy * vy) / 120), 2, 40), 1.1 + min(2.2, sqrt(vx * vx + vy * vy) / 3500), scr_slot_colour(slot));
     if (abs(vx) > 1000 || abs(vy) > 1000) { scr_sfx_play(snd_sfx_crash, 2, 1); }   // original: ljud bara om farten ligger utanfor +-1000 (0x5dc4)
-    energy -= floor(floor((vx * vx + vy * vy) / 65536) / 64) + 1;
+    if (g_game_mode != 1) { energy -= floor(floor((vx * vx + vy * vy) / 65536) / 64) + 1; }   // Astro Duel: ingen vaggskada
     vx = floor(-vx / 4);
     vy = floor(-vy / 4);
     scr_player_outline();

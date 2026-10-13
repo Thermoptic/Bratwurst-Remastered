@@ -8,6 +8,7 @@ ini_write_real("display", "vsync", g_sv[g_SV_VSYNC]);
 ini_write_real("display", "scanlines", g_sv[g_SV_SCAN]);
 ini_write_real("display", "glow", g_sv[g_SV_GLOW]);
 ini_write_real("audio", "music", g_sv[g_SV_MUSIC]);
+ini_write_real("astro", "lives", g_sv[g_SV_ADLIVES]);
 ini_write_real("audio", "sfx", g_sv[g_SV_SFX]);
 ini_write_real("display", "widescreen", g_sv[g_SV_WIDE]);
 ini_write_real("gameplay", "players", g_sv[g_SV_PLAYERS]);

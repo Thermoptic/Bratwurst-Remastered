@@ -4,7 +4,7 @@
 var i, px, py, pw, ph, c, st, ssh, pn, rdy, n, r, ry, rx, rw, rc, lbl, vtxt, t, wl, pod_i, a, hp, active, yy;
 pw = floor((g_vw - 32 - 12) / 2);
 ph = floor((g_vh - 44 - 32 - 12) / 2);
-scr_ui_header("BRATWURST // SHIP SELECT", scr_pad2(g_n_players) + " OF 04 PLAYERS");
+scr_ui_header("BRATWURST // SHIP SELECT // " + scr_mode_name(), scr_pad2(g_n_players) + " OF 04 PLAYERS");
 for (i = 0; i < 4; i += 1)
 {
     px = g_vx + 16 + (i mod 2) * (pw + 12);
@@ -89,6 +89,7 @@ for (i = 0; i < 4; i += 1)
         }
     }
     if (wl == "") { wl = "(NONE)"; }
+    if (g_game_mode == 1) { wl = "MSL, TURBO"; }
     g_fs = g_f_sm;
     scr_ui_text(rx + 12, py + 196, "AVAILABLE: " + wl, g_c[4]);
 

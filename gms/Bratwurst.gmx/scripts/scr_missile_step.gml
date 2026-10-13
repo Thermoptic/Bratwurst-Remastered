@@ -44,12 +44,21 @@ if (scr_seg_hits_wall(floor((px - vx) / 256), floor((py - vy) / 256), wxp, wyp, 
 
 hx = wxp;
 hy = wyp;
+if (!variable_instance_exists(id, "mage")) { mage = 0; }
+mage += 1;
 g_hit_id = noone;
-with (obj_player)
+if (g_game_mode == 1)
 {
-    if (alive && g_hit_id == noone)
+    g_hit_id = scr_proj_hit(floor((px - vx) / 256), floor((py - vy) / 256), wxp, wyp, scr_proj_radius(), owner, mage);
+}
+else
+{
+    with (obj_player)
     {
-        if (scr_point_in_ship(other.hx, other.hy)) { g_hit_id = id; }
+        if (alive && g_hit_id == noone)
+        {
+            if (scr_point_in_ship(other.hx, other.hy)) { g_hit_id = id; }
+        }
     }
 }
 if (g_hit_id != noone)
@@ -58,7 +67,8 @@ if (g_hit_id != noone)
     py -= vy;
     with (g_hit_id)
     {
-        if (other.mtype == 1) { energy -= 12; } else { energy -= 5; }
+        if (g_game_mode == 1) { energy = 0; }   // Astro Duel: varje traff tar ett liv
+        else if (other.mtype == 1) { energy -= 12; } else { energy -= 5; }
         vx += floor((other.vx - vx) * 16 / power(2, bounce));
         vy += floor((other.vy - vy) * 16 / power(2, bounce));
     }

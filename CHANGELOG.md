@@ -150,3 +150,6 @@ Alla betydande projektändringar dokumenteras här.
 ## 2026-10-13 — Ny titelmusik och equalizer som följer musiken
 - Titelmusiken är nu användarens `RollingBreakbeat_loop_150bpm.ogg` (6,4 s loop, 150 bpm) i stället för renderingen av originalets modul (`snd_title_music`). Originalmodulens rendering ligger kvar i `analysis/audio/`.
 - Equalizern på titelskärmen (värmebalken) och i menyn (SIGNAL) rör sig nu efter musiken: `tools/gen_music_viz.py` analyserar loopen i förväg (12 band, 50 rutor/s, `scr_data_musicviz`) och `scr_musicviz_update` läser upp raden vid musikens spelposition (`audio_sound_get_track_position`). Utan musik (avstängd/pågående match) används den gamla sinusrörelsen. Ej körd.
+
+## 2026-10-13 — Spelläge Astro Duel
+- Game Modes → Astro Duel är nu spelbart: ett liv per träff (LIFE 1–9), ingen väggskada, 3 skott + 4 s nedkylning, 30 % större projektiler, endast Missile (dubbel fart) och Turbo Boost. `g_game_mode`, `scr_proj_hit`, `scr_proj_radius`, `scr_mode_name`; panelen visar skott kvar, nedkylning och liv. D-023. Ej körd.

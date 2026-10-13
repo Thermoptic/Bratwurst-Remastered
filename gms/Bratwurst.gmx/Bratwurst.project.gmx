@@ -144,6 +144,9 @@
     <script>scripts\scr_spark_step.gml</script>
     <script>scripts\scr_data_musicviz.gml</script>
     <script>scripts\scr_musicviz_update.gml</script>
+    <script>scripts\scr_mode_name.gml</script>
+    <script>scripts\scr_proj_hit.gml</script>
+    <script>scripts\scr_proj_radius.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_lg_k10</font>

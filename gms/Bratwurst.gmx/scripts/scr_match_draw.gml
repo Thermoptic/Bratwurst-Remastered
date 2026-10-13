@@ -2,6 +2,8 @@
 // Ritar matchen: spelytan i originalets 320x256-koordinater skalad med g_SCALE (vektorlinjer, ingen bitmapp), placerad pa (g_OX, g_OY),
 // sedan ramen, spelarpanelerna och eventuell resultatruta. Farger kommer fran temat.
 var k, a, b, x1, y1, x2, y2, gx, gy, pwx, phx;
+g_proj_hs = 1;
+if (g_game_mode == 1) { g_proj_hs = 1.3; }   // Astro Duel: projektiler 30 % storre
 pwx = g_PLAY_W * g_SCALE;
 phx = g_PLAY_H * g_SCALE;
 
@@ -64,7 +66,7 @@ with (obj_missile)
     qx2 = g_OX + scr_w2s_x(floor((px - vx) / 256)) * g_SCALE;
     qy2 = g_OY + scr_w2s_y(floor((py - vy) / 256)) * g_SCALE;
     draw_line(qx1, qy1, qx2, qy2);
-    draw_rectangle(qx1 - 1, qy1 - 1, qx1 + 1, qy1 + 1, false);
+    draw_rectangle(qx1 - g_proj_hs, qy1 - g_proj_hs, qx1 + g_proj_hs, qy1 + g_proj_hs, false);
 }
 draw_set_color(g_c[8]);
 with (obj_fx)
@@ -79,7 +81,7 @@ with (obj_shot)
     var qx, qy;
     qx = g_OX + scr_w2s_x(floor(px / 256)) * g_SCALE;
     qy = g_OY + scr_w2s_y(floor(py / 256)) * g_SCALE;
-    draw_rectangle(qx - 1, qy - 1, qx + 1, qy + 1, false);
+    draw_rectangle(qx - g_proj_hs, qy - g_proj_hs, qx + g_proj_hs, qy + g_proj_hs, false);
 }
 
 scr_spark_draw();
@@ -98,7 +100,7 @@ draw_rectangle(g_OX - 2, g_OY - 2, g_OX - 1, g_OY + 10, false);
 draw_rectangle(g_OX + pwx - 10, g_OY + phx, g_OX + pwx + 2, g_OY + phx + 1, false);
 draw_rectangle(g_OX + pwx + 1, g_OY + phx - 10, g_OX + pwx + 2, g_OY + phx + 1, false);
 
-scr_ui_header("BRATWURST // MATCH // ROUND " + string(g_round) + " OF " + string(g_rounds_total), "ESC MENU   F2 SHIP SELECT   F1 DEBUG   TICK " + string(g_tick));
+scr_ui_header("BRATWURST // " + scr_mode_name() + " // ROUND " + string(g_round) + " OF " + string(g_rounds_total), "ESC MENU   F2 SHIP SELECT   F1 DEBUG   TICK " + string(g_tick));
 scr_hud_draw();
 
 g_fs = g_f_sm;
