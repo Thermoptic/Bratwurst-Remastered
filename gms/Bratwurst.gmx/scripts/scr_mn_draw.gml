@@ -88,9 +88,17 @@ scr_ui_pane(dx, py, dw0, ph, "DATA", g_acc);
 g_fs = g_f_sm;
 ix = dx + 16;
 iw = dw0 - 32;
-scr_ui_text(ix, py + 24, "INFO", g_c[4]);
-yy = scr_ui_wrap(ix, py + 48, g_mn_desc[item], iw, 19, g_c[5]);
-if (t == 5) { yy = scr_ui_wrap(ix, yy + 10, g_mn_text[item], iw, 19, g_acc); }
+if (t == 4 && (g_mn_set[item] == g_SV_MAP || g_mn_set[item] == g_SV_MAP2))
+{
+    // pa raden MAP visas en bild pa vald bana i stallet for informationstexten
+    scr_map_preview(ix, py + 20, iw, 190, g_sv[g_mn_set[item]]);
+}
+else
+{
+    scr_ui_text(ix, py + 24, "INFO", g_c[4]);
+    yy = scr_ui_wrap(ix, py + 48, g_mn_desc[item], iw, 19, g_c[5]);
+    if (t == 5) { yy = scr_ui_wrap(ix, yy + 10, g_mn_text[item], iw, 19, g_acc); }
+}
 scr_ui_text(ix, py + 218, "PALETTE // " + string_upper(g_th_name[ti]), g_c[4]);
 cw = floor((iw - 7 * 6) / 8);
 for (k = 0; k < 16; k += 1)

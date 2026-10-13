@@ -64,7 +64,7 @@ globalvar g_ed_n, g_ed_pn, g_ed_px, g_ed_py, g_ed_sx, g_ed_sy, g_ed_sa, g_ed_nam
 globalvar g_ed_spawn, g_ed_dirty, g_ed_cdel, g_ed_cesc, g_ed_snap, g_ed_msg, g_ed_msgt, g_ed_x0, g_ed_y0, g_ed_w, g_ed_h, g_ed_es, g_ed_cxs, g_ed_cys, g_ed_wx, g_ed_wy, g_ed_mx, g_ed_my, g_ed_inside;
 globalvar g_SV_MAP2, g_lv_modes, g_ed_modes, g_ed_dlg, g_ed_dname, g_ed_dmsg, g_dg_x, g_dg_y, g_dg_w, g_dg_h, g_mode_name, g_mn_mode;
 globalvar g_mw, g_mw_pk, g_mw_hist, g_mw_frame, g_bg_t, g_lg_n, g_lg_s, g_tt_sx, g_tt_sy, g_tt_st, g_tt_sp, g_tt_dx, g_tt_dy, g_tt_n, g_SHIP_GRAV, g_DB_MAX, g_db_x, g_db_y, g_db_hx, g_db_hy, g_db_vx, g_db_vy, g_db_w, g_db_life, g_db_col;
-globalvar g_end_timer, g_END_DELAY, g_game_mode, g_lives_max, g_SV_ADLIVES, g_AD_SHOTS, g_AD_COOLDOWN, g_pj_hit, g_pj_x, g_pj_y, g_pj_r, g_pj_owner, g_pj_age, g_mn_map_node2, g_proj_hs;
+globalvar g_ct_x, g_ct_y, g_pv_idx, g_ld_x, g_ld_y, g_ld_w, g_ld_h, g_ed_ldsel, g_ed_ldtop, g_ed_ldclick, g_mi_u, g_mi_d, g_mi_prevy, g_match_map, g_end_timer, g_END_DELAY, g_RESPAWN_DELAY, g_game_mode, g_lives_max, g_SV_ADLIVES, g_AD_SHOTS, g_AD_COOLDOWN, g_pj_hit, g_pj_x, g_pj_y, g_pj_r, g_pj_owner, g_pj_age, g_mn_map_node2, g_proj_hs;
 globalvar g_mv, g_mv_on, g_mv_n, g_mv_dur, g_mv_frame, g_SP_MAX, g_sp_x, g_sp_y, g_sp_vx, g_sp_vy, g_sp_life, g_sp_col, g_sp_size, g_sp_next, g_SV_SFX, g_sfx_ch, g_SV_MUSIC, g_music_id, g_SV_ROUNDS, g_round, g_rounds_total, g_wins, g_round_timer, g_res_sel;
 globalvar g_COL_REST, g_COL_BOOST, g_COL_TICKS, g_COL_VMAX, g_col_id, g_wall_grp, g_wall_gn, g_wall_tmp, g_wcol, g_pc, g_vx, g_vy, g_vw, g_vh, g_SV_WIDE, g_OX, g_OY, g_c, g_acc, g_sv, g_SV_THEME, g_SV_ACCENT, g_SV_SCALE, g_SV_VSYNC, g_SV_SCAN, g_SV_GLOW, g_SV_PLAYERS;
 globalvar g_th_count, g_th_id, g_th_name, g_th_hex, g_th_col, g_acc_name, g_scale_name;
@@ -77,7 +77,8 @@ g_OY = 36;
 // Installningsindex i g_sv[] (sparas i settings.ini)
 g_SV_THEME = 0; g_SV_ACCENT = 1; g_SV_SCALE = 2; g_SV_VSYNC = 3; g_SV_SCAN = 4; g_SV_GLOW = 5; g_SV_PLAYERS = 6; g_SV_WIDE = 7; g_SV_MAP = 8; g_SV_ROUNDS = 9; g_SV_MUSIC = 10;
 g_SV_ADLIVES = 12;
-g_end_timer = -1; g_END_DELAY = 200;   // 4 s mellan sista dodsfallet och rundresultatet
+g_match_map = ""; g_ct_x = 0; g_ct_y = 0; g_RESPAWN_DELAY = 150;   // ticks (3 s vid 50 steg/s) mellan forlorat liv och aterskapning
+ g_pv_idx = -1; g_ld_x = 0; g_ld_y = 0; g_ld_w = 740; g_ld_h = 450; g_ed_ldsel = 0; g_ed_ldtop = 0; g_ed_ldclick = 0; g_mi_u = false; g_mi_d = false; g_mi_prevy[0] = 0; g_mi_prevy[1] = 0; g_mi_prevy[2] = 0; g_mi_prevy[3] = 0; g_end_timer = -1; g_END_DELAY = 200;   // 4 s mellan sista dodsfallet och rundresultatet
 g_sv[g_SV_ADLIVES] = 1; g_game_mode = 0; g_lives_max = 6; g_mn_map_node2 = -1; g_proj_hs = 1;
 // Astro Duel (D-023): antal skott per laddning och nedkylning i ticks (4 s vid 50 steg/s)
 g_AD_SHOTS = 3; g_AD_COOLDOWN = 200; g_pj_hit = noone; g_pj_x = 0; g_pj_y = 0; g_pj_r = 0; g_pj_owner = 0; g_pj_age = 0;
@@ -100,9 +101,9 @@ g_ed_sx[0] = 0; g_ed_sy[0] = 0; g_ed_sa[0] = 0; g_ed_name = ""; g_ed_msg = ""; g
 g_vx = 0; g_vy = 0; g_vw = 1024; g_vh = 640;
 g_acc_name[0] = "RED"; g_acc_name[1] = "ORANGE"; g_acc_name[2] = "YELLOW"; g_acc_name[3] = "GREEN"; g_acc_name[4] = "CYAN"; g_acc_name[5] = "BLUE"; g_acc_name[6] = "MAGENTA";
 g_scale_name[0] = "1X"; g_scale_name[1] = "1.5X"; g_scale_name[2] = "2X"; g_scale_name[3] = "FULLSCREEN";
-g_keyhint[0] = "ARROWS + UP OR ENTER";
-g_keyhint[1] = "A / D + W";
-g_keyhint[2] = "J / L + I";
+g_keyhint[0] = "ARROWS + ENTER";
+g_keyhint[1] = "WASD + E";
+g_keyhint[2] = "IJKL + U";
 g_keyhint[3] = "GAMEPAD 4: D-PAD + A";
 g_nv_px[0] = 0; g_nv_px[1] = 0; g_nv_px[2] = 0; g_nv_px[3] = 0;
 g_nv_py[0] = 0; g_nv_py[1] = 0; g_nv_py[2] = 0; g_nv_py[3] = 0;

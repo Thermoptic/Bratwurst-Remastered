@@ -47,7 +47,7 @@ scr_spark_step();
 scr_debris_step();   // skepp mot skepp (D-018)
 with (obj_missile) { scr_missile_step(); }
 with (obj_shot) { scr_shot_step(); }
-with (obj_fx) { ftimer += 1; if (ftimer > fmax) { instance_destroy(); } }
+with (obj_fx) { scr_fx_damage(); ftimer += 1; if (ftimer > fmax) { instance_destroy(); } }
 scr_camera_update();
 
 // Slutkontroll (bara om fler an en spelare): den sista overlevande vinner (originalet: kod 0x498).

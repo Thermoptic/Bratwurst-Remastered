@@ -17,6 +17,7 @@ if (p == noone)
     exit;
 }
 if (p.alive) { scr_ui_pane(px, py, pw, ph, "P" + string(sl + 1) + " // " + string_upper(p.ship_name), c); }
+else if (p.respawn_t > 0) { scr_ui_pane(px, py, pw, ph, "P" + string(sl + 1) + " // RESPAWN", c); }
 else { scr_ui_pane(px, py, pw, ph, "P" + string(sl + 1) + " // ELIMINATED", g_c[8]); }
 g_fs = g_f_sm;
 scr_ui_text_r(px + pw - 12, py + 14, "WINS " + string(g_wins[sl]), c);
@@ -70,4 +71,9 @@ else { scr_ui_text(px + 42, y0 + 72, "LOCKED", g_c[3]); }
 hp = -1;
 if (p.sp_nsel > 0) { hp = p.sp_sel[p.sp_pod_i]; }   // vald specialpod: visas som en prick pa skeppsbilden
 if (p.alive) { scr_ui_ship(p.ship, px + pw - 62, py + ph / 2 + 4, 0.34, p.ang, c, hp, false); }
+else if (p.respawn_t > 0)
+{
+    g_fs = g_f_lg;
+    scr_ui_text_c(px + pw - 62, py + ph / 2 - 8, string(ceil(p.respawn_t / 50)), c);   // 3, 2, 1
+}
 else { g_fs = g_f_md; scr_ui_text_c(px + pw - 62, py + ph / 2 - 8, "OUT", g_c[8]); }

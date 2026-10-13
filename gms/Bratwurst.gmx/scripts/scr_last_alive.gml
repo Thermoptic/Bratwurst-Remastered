@@ -3,6 +3,6 @@
 g_tmp_slot = -1;
 with (obj_player)
 {
-    if (alive) { g_tmp_slot = slot; }
+    if (alive || respawn_t > 0) { g_tmp_slot = slot; }
 }
 return g_tmp_slot;

@@ -7,7 +7,7 @@
     <datafile>
       <name>updates.txt</name>
       <exists>-1</exists>
-      <size>4345</size>
+      <size>5408</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -185,6 +185,15 @@
     <script>scripts\scr_ed_dlg_step.gml</script>
     <script>scripts\scr_level_allowed.gml</script>
     <script>scripts\scr_levels_fix_selection.gml</script>
+    <script>scripts\scr_ed_load_draw.gml</script>
+    <script>scripts\scr_ed_load_layout.gml</script>
+    <script>scripts\scr_ed_load_open.gml</script>
+    <script>scripts\scr_ed_load_step.gml</script>
+    <script>scripts\scr_map_preview.gml</script>
+    <script>scripts\scr_player_lose_life.gml</script>
+    <script>scripts\scr_ship_separate.gml</script>
+    <script>scripts\scr_ship_contact.gml</script>
+    <script>scripts\scr_fx_damage.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_lg_k10</font>

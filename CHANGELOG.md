@@ -192,3 +192,39 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-14 — Fördröjning före rundresultatet
 - När sista motståndaren är död startar en nedräkning på 4 s (`g_END_DELAY` = 200 ticks, `g_end_timer`) innan rundresultatet visas; spelet fortsätter som vanligt under tiden (explosionen spelas klart, man kan flyga och skjuta). Vinnaren avgörs när tiden är ute (ingen vinnare om ingen är kvar). Gäller alla spellägen. Ej körd.
+
+## 2026-10-14 — Banans namn i spelytan
+- Spelytans övre vänstra hörn visar `MAP: <banans namn>` (`g_match_map`, satt vid matchstart); debugtexten ligger en rad under. Ej körd.
+
+## 2026-10-14 — Skeppsvalet: upp/ner byter rad, vänster/höger ändrar värdet
+- Skeppsvalets rader (SHIP, WEAPON, POD, CONFIRM) väljs nu fritt med upp/ner (tangentbord och gamepad) och vänster/höger ändrar värdet på vald rad; fire/OK går till nästa rad och bekräftar på CONFIRM, thrust-knappen går tillbaka en rad. Byte av skepp nollställer vapen och pod. Tangentmappningen ändrad: P1 Enter = OK (upp/ner är pilar), P2 E = OK, P3 U = OK. `scr_menu_input`, `scr_menu_step`. Ej körd.
+
+## 2026-10-14 — Banredigeraren: Load Map
+- L öppnar ett laddafönster (`scr_ed_load_*`) med alla banor i en tabell: NAME, CLASSIC, ASTRO DUEL, RACE, CAPTURE med YES/NO per spelläge. Upp/ner eller klick väljer, mushjulet rullar (10 rader syns), Enter/LOAD/dubbelklick laddar, Esc/CANCEL avbryter; banan som är öppen är markerad med *. Vägras med meddelande om det finns osparade ändringar. Ej körd.
+
+## 2026-10-14 — Kartbild i menyn
+- På raden MAP (Classic och Astro Duel) visar datapanelen en bild av vald bana i stället för informationstexten (`scr_map_preview`): väggobjekten i temafärger och spelarnas startplatser med riktning, skalade in i rutan. Banan läses en gång per val och cachas (`g_pv_idx`). Ej körd.
+
+## 2026-10-14 — Skeppsvalet: ny uppdelad layout
+- Varje spelarruta (fortfarande 2x2) är nu delad i en statuslist med de fyra stegen (1 SHIP, 2 WEAPON, 3 POD, 4 OK; klara fyllda, aktivt markerat), en radlista med radnummer 01–04 och avdelare, vapenchips (valt specialvapen fylls; Astro Duel visar bara MSL och TURBO), en ram med roterande skepp, radarringar, hörnmarkeringar, skeppsindex (03/15), podantal och skeppsnamn, samt fem statstaplar (SPEED, ENERGY, TURN, AMMO, RATE) från skeppets parametrar i förhållande till det bästa skeppet. Lediga rutor visar en tom ram. Samma bakgrund som titeln och huvudmenyn. `scr_menu_draw`. Ej körd; staplarnas mappning av parametrar är SANNOLIK.
+
+## 2026-10-14 — Respawn med nedräkning
+- När en spelare förlorar ett liv och har fler kvar väntar skeppet 3 sekunder (`g_RESPAWN_DELAY` = 150 ticks) innan det återskapas på startplatsen. Under tiden är skeppet ur spel (kan inte träffas, syns inte) men räknas som kvar i rundan, så rundan inte avslutas i förtid. Spelarpanelen visar siffran 3, 2, 1 i stället för skeppsbilden och rubriken RESPAWN. Ny `scr_player_lose_life` (används av väggkrasch och skott); `scr_player_step`, `scr_hud_panel`, `scr_count_alive`, `scr_last_alive`. Ej körd.
+
+## 2026-10-14 — Större missilexplosioner, mindre respawnsiffra
+- Missilexplosionen (självdetonering i luften, vägg eller skepp) har dubbel ringradie och en extra inre ring, plus ett moln av pixelpartiklar (70+30 för missil, 45+20 för guidad) via `scr_spark_burst` i `scr_fx_spawn`. Den har ingen skaderadie (bara direktträff skadar, som förut), så "radien" gäller den visuella explosionen. Respawnsiffran i spelarpanelen ritas i mindre typsnitt (`g_f_lg`) och centrerad på skeppsbildens mittpunkt. `scr_fx_spawn`, `scr_match_draw`, `scr_hud_panel`. Ej körd.
+
+## 2026-10-14 — Gnistor vid skeppskrock och skott mot vägg
+- Skepp mot skepp ger nu gnistor (pixelpartiklar) från kontaktpunkten i båda skeppens färger; antal (8–30 per skepp) och fart växer med stötens styrka (`scr_ship_bounce`). Kanonskott som träffar en vägg ger 5–8 gula gnistor (`scr_shot_step`). Ej körd.
+
+## 2026-10-14 — Skepp som fastnar i varandra skjuts isär
+- Om två skepp fortfarande överlappar efter stöten skjuts de automatiskt isär (`scr_ship_separate`, D-027) och får en liten isärglidande hastighet. Ej körd.
+
+## 2026-10-14 — Skeppskrock: putt och vridning
+- Skepp som kör in i ett stillastående skepp puttar nu iväg det även vid långsam eller sned inkörning (normalen faller tillbaka på relativa rörelseriktningen, minsta impuls), och båda skeppen vrids lite av stöten beroende på var på skrovet de träffas och hur hårt (`spin_v`). Gnistorna kommer från den verkliga kontaktpunkten. `scr_ship_bounce`, `scr_ship_contact`, `scr_player_step`. Ej körd (D-028).
+
+## 2026-10-14 — Explosionsringen skadar
+- Missilexplosionens expanderande ring skadar skepp som den når: 3 energi, en gång per skepp och explosion, med gnistor på det träffade skeppet (`scr_fx_damage`, D-029). Gäller Classic; Astro Duel och krockringen påverkas inte. Ej körd.
+
+## 2026-10-14 — Banans namn i rubrikraden
+- "MAP: <namn>" flyttad från spelytans övre vänstra hörn till rubrikraden, till höger om "ROUND n OF m" (`scr_match_draw`). Ej körd.

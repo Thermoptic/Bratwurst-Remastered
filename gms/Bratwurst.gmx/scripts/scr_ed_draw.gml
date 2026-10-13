@@ -101,7 +101,7 @@ scr_ui_text(tx + 16, line_y + 160, "U  UNDO LAST SHAPE", g_c[4]);
 scr_ui_text(tx + 16, line_y + 180, "RIGHT CLICK  CANCEL", g_c[4]);
 line_y += 214;
 scr_ui_text(tx + 16, line_y, "S  SAVE (NAME + MODES)", g_c[11]);
-scr_ui_text(tx + 16, line_y + 20, "N  NEW MAP", g_c[4]);
+scr_ui_text(tx + 16, line_y + 20, "N  NEW MAP    L  LOAD MAP", g_c[4]);
 scr_ui_text(tx + 16, line_y + 40, "[ ]  PREVIOUS / NEXT MAP", g_c[4]);
 scr_ui_text(tx + 16, line_y + 60, "DEL  DELETE MAP (TWICE)", g_c[4]);
 scr_ui_text(tx + 16, line_y + 80, "ESC  BACK TO MENU", g_c[4]);
@@ -110,3 +110,4 @@ draw_set_color(g_c[0]);
 if (g_ed_msgt > 0) { scr_ui_text(g_ed_x0, g_vy + g_vh - 32, g_ed_msg, g_c[10]); }
 else { scr_ui_text(g_ed_x0, g_vy + g_vh - 32, "ALL SHAPES ARE SOLID WALLS. SAVE WITH S, THEN PICK THE MAP UNDER GAME MODES", g_c[4]); }
 if (g_ed_dlg == 1) { scr_ed_dlg_draw(); }
+if (g_ed_dlg == 2) { scr_ed_load_draw(); }

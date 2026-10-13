@@ -179,3 +179,14 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | MAP-09 | Spara en bana bara för Astro Duel | Banan syns i Astro Duels MAP-val men inte i Classics (och tvärtom) |
 | MAP-10 | Avmarkera Classic på den enda Classic-banan, och försök ta bort den | Fönstret/raderingen vägras med ett meddelande |
 | RND-06 | Döda sista motståndaren | Skeppet exploderar, spelet fortsätter i 4 s (man kan flyga/skjuta), sedan visas rundresultatet; ingen paus däremellan |
+| MENU-10 | Skeppsval: upp/ner (tangentbord och gamepad) | Markeringen flyttas mellan SHIP, WEAPON, POD och CONFIRM; vänster/höger ändrar värdet på raden; fire = nästa rad, OK på CONFIRM = READY; upp eller thrust-knappen tar tillbaka READY |
+| MAP-11 | Banredigeraren: tryck L | Fönster med alla banor och kolumnerna Name, Classic, Astro Duel, Race, Capture (Yes/No); val och laddning med tangentbord, klick och dubbelklick; vägras om osparat |
+| MAP-12 | Markera MAP i Classic och Astro Duel och bläddra med vänster/höger | Datapanelen visar en bild av banan (väggar och startplatser) i stället för texten; bilden byter direkt med valet och följer temat |
+| MENU-11 | Skeppsval: öppna med 1–4 spelare, bläddra SHIP/WEAPON/POD | Fyra rutor med statuslist, radlista, vapenchips, skepp i ram och statstaplar; inget text överlappar vid 1024x640 och i större vyer; staplarna byter med skeppet; Astro Duel visar bara MSL och TURBO |
+| PLAY-30 | Förlora ett liv med fler liv kvar (Classic och Astro Duel) | Skeppet exploderar och försvinner; panelen visar 3, 2, 1 i stället för skeppsbilden; efter 3 s återskapas skeppet på startplatsen; rundan avslutas inte medan någon väntar på respawn; sista livet ger OUT |
+| FX-06 | Skjut en missil: låt den självdetonera, träffa vägg och träffa skepp | Dubbelt så stor ring och ett stort moln av pixelpartiklar i alla fall; respawnsiffran 3-2-1 är mindre och centrerad |
+| FX-07 | Ram ett annat skepp (långsamt och i full fart) och skjut kanonskott i en vägg | Gnistor sprutar från kontaktpunkten, fler och snabbare vid hårdare stöt; skott mot vägg ger små gula gnistor |
+| COL-05 | Lägg två skepp på varandra (kör in långsamt, rotera in i varandra, respawna intill varandra) | Skeppen glider isär och fastnar aldrig; skepp trycks inte in i väggar |
+| COL-06 | Kör långsamt och sned in i ett stillastående skepp (mitt på och i vingspetsen) | Det stillastående skeppet puttas åt rörelseriktningen och vrids lite beroende på träffpunkt och fart; gnistor vid träffpunkten; inget fastnar |
+| FX-08 | Låt en missil självdetonera nära (och långt ifrån) ett skepp; titta på energistapeln | Skepp som ringen når förlorar 3 energi en gång; skepp utanför ringen påverkas inte; ingen skada i Astro Duel |
+| UI-20 | Starta en match | Banans namn står i rubrikraden efter "ROUND n OF m", inte inne i spelytan |

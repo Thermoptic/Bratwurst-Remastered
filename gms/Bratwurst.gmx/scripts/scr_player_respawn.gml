@@ -3,6 +3,8 @@
 // hastighet 0, full energi och full kanonammo, nollade nedrakningar.
 px = g_start_x[slot];
 py = g_start_y[slot];
+spin_v = 0;
+spin_f = 0;
 vx = 0;
 vy = 0;
 ang = g_start_ang[slot];

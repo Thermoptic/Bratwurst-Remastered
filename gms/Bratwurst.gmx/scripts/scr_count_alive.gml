@@ -3,6 +3,6 @@
 g_tmp_n = 0;
 with (obj_player)
 {
-    if (alive) { g_tmp_n += 1; }
+    if (alive || respawn_t > 0) { g_tmp_n += 1; }
 }
 return g_tmp_n;

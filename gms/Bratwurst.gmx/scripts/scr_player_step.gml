@@ -3,7 +3,16 @@
 //   1) svang med accelererande vinkelhastighet  2) pod-positioner  3) kanon  4) thrust  5) gravitation+motstand+integration
 //   6) vaggkrasch  7) dod/respawn.  Specialvapen (bit3) ar INTE implementerat i Fas 1.
 var a, p, fired_all, sh, shx, shy;
-if (!alive) { exit; }
+if (!alive)
+{
+    // nedrakning till aterskapning (D: 3 sekunder efter att ett liv forlorats)
+    if (respawn_t > 0)
+    {
+        respawn_t -= 1;
+        if (respawn_t == 0) { alive = true; scr_player_respawn(); }
+    }
+    exit;
+}
 scr_player_input();
 if (in_shipcyc) { scr_player_change_ship(1); }   // test: byt skepp under matchen
 if ((in_podcyc || in_psel) && sp_nsel > 0) { sp_pod_i = (sp_pod_i + 1) mod sp_nsel; }   // byt specialpod (position pa skeppet) under matchen
@@ -17,6 +26,15 @@ var turned;
 turned = false;
 if (in_left)  { turned = true; ang -= turn_w; turn_w += turn_acc; }
 if (in_right) { turned = true; ang += turn_w; turn_w += turn_acc; }
+if (spin_v != 0)
+{
+    // vridning efter skeppskrock (D-028): vinkelhastigheten dar ut
+    spin_f += spin_v;
+    if (spin_f >= 1) { ang += floor(spin_f); spin_f -= floor(spin_f); }
+    if (spin_f <= -1) { ang -= floor(-spin_f); spin_f += floor(-spin_f); }
+    spin_v *= 0.9;
+    if (abs(spin_v) < 0.03) { spin_v = 0; spin_f = 0; }
+}
 ang = ((ang mod 256) + 256) mod 256;
 if (!turned) { turn_w = turn_init; }
 if (turn_w > turn_max) { turn_w = turn_max; }
@@ -118,8 +136,5 @@ if (scr_player_hits_wall())
 // 7) Dod: energi <= 0 -> liv-1; om liv kvar: aterskapa, annars eliminerad (VERIFIERAD, kod 0x3f12)
 if (energy <= 0)
 {
-    scr_ship_explode();   // skeppet exploderar
-    p_lives -= 1;
-    if (p_lives > 0) { scr_player_respawn(); }
-    else { alive = false; }
+    scr_player_lose_life();   // exploderar, tar ett liv och startar nedrakningen
 }

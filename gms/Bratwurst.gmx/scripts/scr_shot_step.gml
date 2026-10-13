@@ -14,7 +14,12 @@ if (sxs < 0 || sxs > g_PLAY_W - 1 || sys < 0 || sys > g_PLAY_H - 1) { instance_d
 
 tol = max(1, 32768 / g_zoom);   // en skarmpixel i varldspixlar
 // svep fran forra tickens position (px - vx, py - vy) sa att snabba skott inte flyger igenom tunna vaggar
-if (scr_seg_hits_wall(floor((px - vx) / 256), floor((py - vy) / 256), wx, wy, tol)) { instance_destroy(); exit; }
+if (scr_seg_hits_wall(floor((px - vx) / 256), floor((py - vy) / 256), wx, wy, tol))
+{
+    scr_spark_burst(wx, wy, 5 + irandom(3), 1.6, g_c[10]);   // gnistor dar skottet slar i vaggen
+    instance_destroy();
+    exit;
+}
 
 hx = wx;
 hy = wy;
@@ -47,10 +52,7 @@ if (g_hit_id != noone)
         vy += floor((other.vy - vy) / power(2, bounce));
         if (energy <= 0)
         {
-            scr_ship_explode();   // skeppet exploderar
-            p_lives -= 1;
-            if (p_lives > 0) { scr_player_respawn(); }
-            else { alive = false; }
+            scr_player_lose_life();   // exploderar, tar ett liv och startar nedrakningen
         }
     }
     instance_destroy();

@@ -10,47 +10,41 @@ for (i = 0; i < g_n_players; i += 1)
     d = 0;
     if (g_mi_l) { d = -1; }
     if (g_mi_r) { d = 1; }
-    if (g_mi_back && st > 0)
+    if (st == 4)
     {
-        // Ett steg tillbaka (thrust-knappen: X pa gamepad). Fran READY gar man tillbaka till IS THIS OK?
-        g_sel_stage[i] = st - 1;
-        g_sel_yes[i] = 1;
-        st = st - 1;
-        d = 0;
-        g_mi_ok = false;
+        // READY: upp eller tillbaka tar tillbaka bekraftelsen (raden IS THIS OK?)
+        if (g_mi_back || g_mi_u) { g_sel_stage[i] = 3; st = 3; }
     }
-    if (st == 0)
+    else
     {
-        // Skepp: vanster/hoger bladdrar, fire bekraftar
-        if (d != 0) { g_sel_ship[i] = (g_sel_ship[i] + d + g_ship_count) mod g_ship_count; }
-        if (g_mi_ok)
+        // upp/ner byter rad (SHIP, WEAPON, POD, CONFIRM), vanster/hoger andrar vardet, fire gar till nasta rad / bekraftar
+        if (g_mi_u || g_mi_back) { st = (st + 3) mod 4; }
+        if (g_mi_d) { st = (st + 1) mod 4; }
+        g_sel_stage[i] = st;
+        if (d != 0)
         {
-            g_sel_weapon[i] = scr_weapon_first(g_sel_ship[i]);
-            g_sel_pod[i] = 0;
-            g_sel_stage[i] = 1;
+            if (st == 0)
+            {
+                g_sel_ship[i] = (g_sel_ship[i] + d + g_ship_count) mod g_ship_count;
+                g_sel_weapon[i] = scr_weapon_first(g_sel_ship[i]);   // nytt skepp: vapen och pod borjar om
+                g_sel_pod[i] = 0;
+            }
+            else if (st == 1) { g_sel_weapon[i] = scr_weapon_cycle(g_sel_ship[i], g_sel_weapon[i], d); }
+            else if (st == 2)
+            {
+                n = scr_sel_pod_count(g_sel_ship[i]);
+                if (n > 0) { g_sel_pod[i] = (g_sel_pod[i] + d + n) mod n; }
+            }
+            else if (st == 3) { g_sel_yes[i] = 1 - g_sel_yes[i]; }
         }
-    }
-    else if (st == 1)
-    {
-        // Specialvapen
-        if (d != 0) { g_sel_weapon[i] = scr_weapon_cycle(g_sel_ship[i], g_sel_weapon[i], d); }
-        if (g_mi_ok) { g_sel_stage[i] = 2; }
-    }
-    else if (st == 2)
-    {
-        // Pod att avfyra specialvapnet fran
-        n = scr_sel_pod_count(g_sel_ship[i]);
-        if (d != 0 && n > 0) { g_sel_pod[i] = (g_sel_pod[i] + d + n) mod n; }
-        if (g_mi_ok) { g_sel_stage[i] = 3; }
-    }
-    else if (st == 3)
-    {
-        // IS THIS OK? YES / NO
-        if (d != 0) { g_sel_yes[i] = 1 - g_sel_yes[i]; }
         if (g_mi_ok)
         {
-            if (g_sel_yes[i] == 1) { g_sel_stage[i] = 4; }
-            else { g_sel_stage[i] = 0; g_sel_yes[i] = 1; }
+            if (st < 3) { g_sel_stage[i] = st + 1; }
+            else
+            {
+                if (g_sel_yes[i] == 1) { g_sel_stage[i] = 4; }
+                else { g_sel_stage[i] = 0; g_sel_yes[i] = 1; }
+            }
         }
     }
     if (g_sel_stage[i] != 4) { all_ready = false; }
@@ -59,7 +53,7 @@ for (i = 0; i < g_n_players; i += 1)
 if (g_n_players < 4)
 {
     scr_menu_input(g_n_players);
-    if (g_mi_ok)
+    if (g_mi_ok || g_mi_u)
     {
         i = g_n_players;
         g_sel_stage[i] = 0;

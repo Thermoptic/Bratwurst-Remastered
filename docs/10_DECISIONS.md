@@ -136,3 +136,14 @@
 - **Status:** beslutat av användaren (2026-10-13).
 - **Beslut:** varje bana har en bitmask `modes` i `levels.ini` (bit 0 Classic, 1 Astro Duel, 2 Race, 3 Capture the Bratwurst; saknas nyckeln gäller alla lägen). Banvalet i menyn visar bara banor som finns i läget; Classic och Astro Duel har var sitt banval (`gameplay.map`, `gameplay.map_astro` i `settings.ini`).
 - **Sparfönster:** S i banredigeraren öppnar ett fönster med namnfält (skrivs med tangentbordet), knappen GENERATE NAME (slumpat "stjärna + korv"-namn) och en ruta per spelläge. SAVE (Enter) sparar, CANCEL (Esc) avbryter. Minst ett läge måste vara valt, och varje spelbart läge (Classic, Astro Duel) måste ha minst en bana kvar; samma regel hindrar att man tar bort den sista banan i ett läge. Race och Capture the Bratwurst finns i listan så att banor kan förberedas, men lägena är inte byggda än.
+
+## D-027 — Skepp som fastnar i varandra skjuts isär
+- **Problem:** skeppskollisionen (D-018) återställer båda skeppen till föregående tick; om de redan överlappade där (respawn på varandra, rotation in i varandra, utebliven impuls) fastnar de.
+- **Beslut:** `scr_ship_separate` skjuter isär skeppen längs linjen mellan centrumen (2 px per varv, högst 24 varv; ett skepp som skulle hamna i en vägg flyttas inte) och ger en minsta isärhastighet. Nytt beteende, inte i originalet.
+
+## D-028 — Skeppskrock: normal från relativ rörelse och vridning
+- **Problem:** ett skepp som körde in i ett stillastående gav ingen reaktion när rörelsen var mest tangentiell mot linjen mellan centrumen (skeppet stoppades men impulsen uteblev).
+- **Beslut:** `scr_ship_bounce` använder centrumlinjen som normal, men faller tillbaka på den relativa rörelseriktningen när närmandet är under 35 % av relativa farten; minsta impuls 100. Kontaktpunkten (`scr_ship_contact`) ger båda skeppen en vridhastighet `spin_v` (hävarm × impuls / 12000, högst 3 steg/tick, avklingar 10 % per tick) som appliceras i `scr_player_step`. Nytt beteende, inte i originalet; konstanterna är PLACEHOLDERS.
+
+## D-029 — Missilexplosionens ring skadar
+- **Beslut (användaren):** när en missil exploderar och den expanderande ringen når ett skepp tar skeppet 3 energi (en gång per skepp och explosion). Ringens radie är exakt den som ritas (6 + 4 px per tick, 14 resp. 9 ticks för missil resp. guidad missil). Gäller missil och guidad missil i Classic; ingen splash i Astro Duel (där tar bara direktträffar liv) och inte skeppskrockens ring. En direkträff på ett skepp ger dessutom den vanliga träffskadan (12/5). Nytt beteende, inte i originalet.

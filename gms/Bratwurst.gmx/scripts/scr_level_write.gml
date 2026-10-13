@@ -1,6 +1,7 @@
 /// scr_level_write(section_id)
 // Skriver redigerarens bana till levels.ini under sektionen section_id (ersatter den).
 var s, i, k, str;
+g_pv_idx = -1;
 ini_open("levels.ini");
 ini_section_delete(argument0);
 ini_write_string(argument0, "name", g_ed_name);

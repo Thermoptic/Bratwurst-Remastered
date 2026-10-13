@@ -1,6 +1,7 @@
 /// scr_levels_reload()
 // Laser banlistan (index) fran levels.ini till g_lv_count, g_lv_id[], g_lv_name[]. Uppdaterar menyradens max och valt kartindex.
 var n, i, idn;
+g_pv_idx = -1;   // menyns kartbild laddas om
 ini_open("levels.ini");
 n = ini_read_real("index", "count", 0);
 g_lv_count = 0;

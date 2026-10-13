@@ -17,6 +17,10 @@ for (i = 0; i < n; i += 1)
     {
         a = g_col_id[i];
         b = g_col_id[j];
-        if (scr_ships_overlap(a, b)) { scr_ship_bounce(a, b); }
+        if (scr_ships_overlap(a, b))
+        {
+            scr_ship_bounce(a, b);
+            if (scr_ships_overlap(a, b)) { scr_ship_separate(a, b); }   // fortfarande ihopfastade: skjut isar
+        }
     }
 }

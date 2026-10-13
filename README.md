@@ -8,6 +8,15 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 11 - 2026-10-14 - Ship select redesign, respawn countdown, bigger explosions
+
+- New ship select screen: every player pane is divided into a step strip, a numbered row list, weapon chips, a framed rotating ship with radar rings, and stat bars (speed, energy, turn, ammo, rate). Up/Down changes the row, Left/Right changes the value.
+- Respawn: after losing a life the ship waits 3 seconds. The player panel shows 3, 2, 1 and then the ship spawns as usual.
+- Missile explosions are twice as big, with a large cloud of pixel particles. The expanding ring now hurts ships it reaches: 3 energy, once per explosion (Classic).
+- Sparks when ships crash into each other and when shots hit walls. Ramming a ship now pushes and slightly twists it depending on speed and where you hit, and ships that overlap are pushed apart so they cannot get stuck.
+- Map editor: Load Map window (L) with a table of which game modes each map is made for.
+- The main menu shows a picture of the selected map on the MAP row. The map name is shown in the header while you play.
+
 ### UPDATE 10 - 2026-10-14 - Maps per game mode, menu spectrum
 
 - Map editor save window: type a name (or press Generate name for a random star-and-sausage name) and tick the game modes where the map should be available.

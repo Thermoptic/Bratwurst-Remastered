@@ -8,6 +8,7 @@ if (g_ed_cdel > 0) { g_ed_cdel -= 1; }
 if (g_ed_cesc > 0) { g_ed_cesc -= 1; }
 scr_ed_cursor();
 if (g_ed_dlg == 1) { scr_ed_dlg_step(); exit; }   // sparfonstret ar modalt
+if (g_ed_dlg == 2) { scr_ed_load_step(); exit; }   // laddafonstret ar modalt
 
 if (keyboard_check_pressed(ord("B"))) { g_ed_tool = 0; g_ed_cn = 0; g_ed_bset = false; }
 if (keyboard_check_pressed(ord("P"))) { g_ed_tool = 1; g_ed_cn = 0; g_ed_bset = false; }
@@ -43,6 +44,11 @@ if (keyboard_check_pressed(ord("S")))
 {
     scr_ed_dlg_open();   // namn + spellagen (D-026)
     exit;
+}
+if (keyboard_check_pressed(ord("L")))
+{
+    if (g_ed_dirty) { scr_ed_msg("SAVE FIRST (S) OR DISCARD (ESC TWICE)"); }
+    else { scr_ed_load_open(); exit; }
 }
 if (keyboard_check_pressed(ord("N")))
 {
