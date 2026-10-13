@@ -240,3 +240,7 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-14 — Spellista från mappen Music
 - Thermoptic-låtarna i `Music/` (No Safe Orbit, Sectorwurst) ligger nu i spellistan efter titellåten: LB/RB (PageUp/PageDown) bläddrar 3ELKS - DAS BRATWURST (DNB EDIT) → THERMOPTIC - NO SAFE ORBIT → THERMOPTIC - SECTORWURST med omslag. `tools/gen_tracks.py` gör om mp3 till ogg (`sound/audio/snd_music_N.ogg` + `sound/snd_music_N.sound.gmx`), analyserar equalizerdata (`datafiles/viz_N.txt`, 25 rutor/s, 12 + 32 band) och skriver `scr_data_tracks` samt projektposter; `scr_tracks_load` läser datan vid start; `scr_musicviz_update` använder låtens egen data. Varje låt loopar tills man byter. Lägg nya mp3 i `Music/` och kör `python tools/gen_tracks.py` (befintliga viz-filer behålls, `--redo` gör om). Ej körd i GMS.
+
+## 2026-10-14 — Ny låt i spellistan
+- THERMOPTIC - WE WERE NEVER ORGANIC (DISCO EDIT) tillagd (lat 4 av 4) med `tools/gen_tracks.py`: ogg `snd_music_3`, equalizerdata `viz_3.txt`, projektposter och `scr_data_tracks` uppdaterade. Ej körd i GMS.
+- Långa låttitlar rullar i sidled på NOW PLAYING-raden (`scr_mn_draw`) om de inte ryms.

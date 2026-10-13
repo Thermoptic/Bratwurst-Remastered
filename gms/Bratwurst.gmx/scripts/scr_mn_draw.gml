@@ -1,6 +1,6 @@
 /// scr_mn_draw()
 // Huvudmenyn i "command deck"-stil: trad till vanster, lista i mitten, datapanel till hoger (konceptet godkant av anvandaren).
-var node, sel, cnt, item, i, k, kid, yy, rx, ry, rw, t, v, bh, bx, by, cw, col, ti, branch, kid2, pre, avail, tx, tw0, lx, lw0, dx, dw0, py, ph, ix, iw, bs;
+var node, sel, cnt, item, i, k, kid, yy, rx, ry, rw, t, v, bh, bx, by, cw, col, ti, branch, kid2, pre, avail, tx, tw0, lx, lw0, dx, dw0, py, ph, ix, iw, bs, mqs, mqn;
 scr_bg_draw();   // samma bakgrund som titelskarmen
 node = g_mn_stk_node[g_mn_depth];
 sel = g_mn_stk_sel[g_mn_depth];
@@ -114,7 +114,18 @@ scr_ui_text(ix, py + 298, "SPECTRUM", g_c[4]);
 scr_viz_draw(ix, py + 320, iw, 110);
 scr_ui_text(ix, py + 446, "NOW PLAYING", g_c[4]);
 scr_ui_text_r(ix + iw, py + 446, scr_pad2(g_trk_idx + 1) + "/" + scr_pad2(g_trk_n) + "  LB/RB CHANGE", g_c[3]);
-if (g_sv[g_SV_MUSIC]) { scr_ui_text(ix, py + 466, g_trk_name[g_trk_idx], g_c[10]); }
+if (g_sv[g_SV_MUSIC])
+{
+    // lang titel rullar i sidled (typsnittet ar monospace: teckenbredd = bredd / antal tecken)
+    mqs = g_trk_name[g_trk_idx];
+    if (scr_ui_tw(mqs) > iw)
+    {
+        mqn = max(1, floor(iw / (scr_ui_tw(mqs) / string_length(mqs))));
+        mqs = mqs + "   //   ";
+        mqs = string_copy(mqs + mqs, 1 + (floor(g_bg_t / 8) mod string_length(mqs)), mqn);
+    }
+    scr_ui_text(ix, py + 466, mqs, g_c[10]);
+}
 else { scr_ui_text(ix, py + 466, "MUSIC OFF", g_c[3]); }
 scr_ui_text(ix, py + 494, "FILES", g_c[4]);
 scr_ui_text(ix, py + 514, "settings.ini  themes.ini", g_c[3]);

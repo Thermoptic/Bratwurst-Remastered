@@ -11,7 +11,7 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 ### UPDATE 12 - 2026-10-14 - Music playlist, camera lock
 
 - The main menu shows NOW PLAYING with the name of the current song under the spectrum. Press LB / RB on a gamepad (or PageUp / PageDown) on the title screen, in the menu or on ship select to switch song.
-- Three songs in the playlist: 3Elks - Das Bratwurst (DnB edit) and two Thermoptic tracks (No Safe Orbit, Sectorwurst). The spectrum follows each song.
+- Four songs in the playlist: 3Elks - Das Bratwurst (DnB edit) and three Thermoptic tracks (No Safe Orbit, Sectorwurst, We Were Never Organic - Disco Edit). The spectrum follows each song, and long titles scroll.
 - When only one player is left the camera stays where it is instead of zooming in on the winner.
 - The map name is part of the header line during a match.
 
