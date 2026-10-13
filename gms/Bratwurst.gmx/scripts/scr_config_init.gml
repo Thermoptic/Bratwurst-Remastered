@@ -62,6 +62,7 @@ g_tick = 0;
 globalvar g_dl_count, g_dl_id, g_dl_name, g_dl_n, g_dl_shape, g_dl_spawn, g_lv_count, g_lv_id, g_lv_name, g_SV_MAP, g_mn_map_node;
 globalvar g_ed_n, g_ed_pn, g_ed_px, g_ed_py, g_ed_sx, g_ed_sy, g_ed_sa, g_ed_name, g_ed_idx, g_ed_tool, g_ed_cn, g_ed_cx, g_ed_cy, g_ed_bset, g_ed_bx, g_ed_by;
 globalvar g_ed_spawn, g_ed_dirty, g_ed_cdel, g_ed_cesc, g_ed_snap, g_ed_msg, g_ed_msgt, g_ed_x0, g_ed_y0, g_ed_w, g_ed_h, g_ed_es, g_ed_cxs, g_ed_cys, g_ed_wx, g_ed_wy, g_ed_mx, g_ed_my, g_ed_inside;
+globalvar g_lg_n, g_lg_s, g_tt_sx, g_tt_sy, g_tt_st, g_tt_sp, g_tt_dx, g_tt_dy, g_tt_n, g_SHIP_GRAV, g_DB_MAX, g_db_x, g_db_y, g_db_hx, g_db_hy, g_db_vx, g_db_vy, g_db_w, g_db_life, g_db_col;
 globalvar g_game_mode, g_lives_max, g_SV_ADLIVES, g_AD_SHOTS, g_AD_COOLDOWN, g_pj_hit, g_pj_x, g_pj_y, g_pj_r, g_pj_owner, g_pj_age, g_mn_map_node2, g_proj_hs;
 globalvar g_mv, g_mv_on, g_mv_n, g_mv_dur, g_mv_frame, g_SP_MAX, g_sp_x, g_sp_y, g_sp_vx, g_sp_vy, g_sp_life, g_sp_col, g_sp_size, g_sp_next, g_SV_SFX, g_sfx_ch, g_SV_MUSIC, g_music_id, g_SV_ROUNDS, g_round, g_rounds_total, g_wins, g_round_timer, g_res_sel;
 globalvar g_COL_REST, g_COL_BOOST, g_COL_TICKS, g_COL_VMAX, g_col_id, g_wall_grp, g_wall_gn, g_wall_tmp, g_wcol, g_pc, g_vx, g_vy, g_vw, g_vh, g_SV_WIDE, g_OX, g_OY, g_c, g_acc, g_sv, g_SV_THEME, g_SV_ACCENT, g_SV_SCALE, g_SV_VSYNC, g_SV_SCAN, g_SV_GLOW, g_SV_PLAYERS;
@@ -79,6 +80,9 @@ g_sv[g_SV_ADLIVES] = 1; g_game_mode = 0; g_lives_max = 6; g_mn_map_node2 = -1; g
 g_AD_SHOTS = 3; g_AD_COOLDOWN = 200; g_pj_hit = noone; g_pj_x = 0; g_pj_y = 0; g_pj_r = 0; g_pj_owner = 0; g_pj_age = 0;
 g_mv_on = false; g_mv_n = 1; g_mv_dur = 1; g_mv_frame[0] = "000000000000";
 for (g_tmp_n = 0; g_tmp_n < 12; g_tmp_n += 1) { g_mv[g_tmp_n] = 0; }
+g_SHIP_GRAV = 0;   // skeppens gravitation (originalet 31 efter skalning; D-024: 0 pa begaran)
+g_lg_n[0] = 0; g_lg_s[0, 0] = 0; g_tt_sx[0] = 0; g_tt_sy[0] = 0; g_tt_st[0] = 0; g_tt_sp[0] = 0; g_tt_dx[0] = 0; g_tt_dy[0] = 0; g_tt_n = 0;
+g_DB_MAX = 40; g_db_x[0] = 0; g_db_y[0] = 0; g_db_hx[0] = 0; g_db_hy[0] = 0; g_db_vx[0] = 0; g_db_vy[0] = 0; g_db_w[0] = 0; g_db_col[0] = 0; g_db_life[0] = 0;
 g_SP_MAX = 400; g_sp_next = 0; g_sp_x[0] = 0; g_sp_y[0] = 0; g_sp_vx[0] = 0; g_sp_vy[0] = 0; g_sp_col[0] = 0; g_sp_size[0] = 2; g_sp_life[0] = 0; g_SV_SFX = 11;
 g_sv[g_SV_SFX] = 1; g_sfx_ch[0] = -1; g_sfx_ch[1] = -1; g_sfx_ch[2] = -1;
 g_sv[g_SV_MUSIC] = 1; g_music_id = -1;

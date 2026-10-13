@@ -167,3 +167,8 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | AD-06 | Skeppsval | Bara MISSILE och TURBO kan väljas för alla skepp; MISSILE är förvald |
 | AD-07 | Missil | Dubbelt så snabb som i Classic |
 | AD-08 | Classic efter Astro Duel | Alla Classic-regler är oförändrade (full energi, vapen enligt skepp) |
+| FX-03 | Låt ett skepp förlora ett liv (kanon, missil, väggkrasch i Classic) | Pixelpartiklar åt alla håll och fem skrovlinjer som flyger ut, snurrar och försvinner efter ett par sekunder; explosionsljud |
+| PHY-04 | Starta en match och rör inte skeppet; ge thrust en stund och släpp | Skeppet står helt still; efter thrust glider det och stannar utan att sjunka eller driva |
+| UI-13 | Starta spelet | Titelskärmen visar linjeloggan centrerad med ring av staplar som rör sig i takt med musiken, planeter som svullnar med basen och skeppen i bakgrunden; PRESS START TO HEAT blinkar |
+| UI-14 | Options → MUSIC av | Staplarna går över till lugn animation; loggan fungerar som förut |
+| UI-15 | Byt tema | Logotyp, planeter och stapelfärger följer temat |

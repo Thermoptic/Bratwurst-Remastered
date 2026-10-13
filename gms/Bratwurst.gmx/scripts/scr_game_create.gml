@@ -15,6 +15,7 @@ scr_font_init();
 texture_set_interpolation(true);    // mjuk nedskalning av typsnitten (2x-resurser ritas med skala 0.5)
 scr_display_apply();   // satter ocksa layouten (scr_layout_update)
 scr_mn_build();
+scr_logo_init();
 scr_spark_clear();
 scr_menu_init();      // skeppsvalets tillstand (g_state = 0)
 g_state = 10;         // spelet startar pa titelskarmen

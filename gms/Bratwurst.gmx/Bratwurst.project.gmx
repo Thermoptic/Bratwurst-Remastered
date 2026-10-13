@@ -147,6 +147,15 @@
     <script>scripts\scr_mode_name.gml</script>
     <script>scripts\scr_proj_hit.gml</script>
     <script>scripts\scr_proj_radius.gml</script>
+    <script>scripts\scr_debris_add.gml</script>
+    <script>scripts\scr_debris_clear.gml</script>
+    <script>scripts\scr_debris_draw.gml</script>
+    <script>scripts\scr_debris_step.gml</script>
+    <script>scripts\scr_ship_explode.gml</script>
+    <script>scripts\scr_logo_add.gml</script>
+    <script>scripts\scr_logo_glyph.gml</script>
+    <script>scripts\scr_logo_init.gml</script>
+    <script>scripts\scr_logo_word.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_lg_k10</font>

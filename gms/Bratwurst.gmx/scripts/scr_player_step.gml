@@ -91,9 +91,11 @@ var ax, ay;
 if (vx != 0 || vy != 0 || in_thrust)
 {
     ax = vx;
-    ay = vy + g_GRAV;
-    vx = ax - floor(ax * drag / 256);
-    vy = ay - floor(ay * drag / 256);
+    ay = vy + g_SHIP_GRAV;   // D-024: ingen gravitation pa skeppen (g_SHIP_GRAV = 0)
+    // luftmotstand, avrundat mot noll (annars driver ett positivt langsamt skepp for evigt), och full stillestand nar farten ar liten
+    vx = ax - sign(ax) * floor(abs(ax) * drag / 256);
+    vy = ay - sign(ay) * floor(abs(ay) * drag / 256);
+    if (!in_thrust && abs(vx) < 24 && abs(vy) < 24) { vx = 0; vy = 0; }
     px += vx;
     py += vy;
 }
@@ -116,6 +118,7 @@ if (scr_player_hits_wall())
 // 7) Dod: energi <= 0 -> liv-1; om liv kvar: aterskapa, annars eliminerad (VERIFIERAD, kod 0x3f12)
 if (energy <= 0)
 {
+    scr_ship_explode();   // skeppet exploderar
     p_lives -= 1;
     if (p_lives > 0) { scr_player_respawn(); }
     else { alive = false; }

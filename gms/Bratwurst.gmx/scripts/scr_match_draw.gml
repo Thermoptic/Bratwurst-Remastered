@@ -85,6 +85,7 @@ with (obj_shot)
 }
 
 scr_spark_draw();
+scr_debris_draw();
 
 // Allt som hamnat utanfor spelytan tacks over av bakgrunden, sedan ram och paneler
 draw_set_color(g_c[0]);

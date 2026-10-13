@@ -42,7 +42,8 @@ if (g_state != 1) { exit; }
 g_tick += 1;
 with (obj_player) { scr_player_step(); }
 scr_ship_collisions();
-scr_spark_step();   // skepp mot skepp (D-018)
+scr_spark_step();
+scr_debris_step();   // skepp mot skepp (D-018)
 with (obj_missile) { scr_missile_step(); }
 with (obj_shot) { scr_shot_step(); }
 with (obj_fx) { ftimer += 1; if (ftimer > fmax) { instance_destroy(); } }

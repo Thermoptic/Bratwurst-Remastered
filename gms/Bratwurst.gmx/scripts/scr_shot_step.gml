@@ -47,6 +47,7 @@ if (g_hit_id != noone)
         vy += floor((other.vy - vy) / power(2, bounce));
         if (energy <= 0)
         {
+            scr_ship_explode();   // skeppet exploderar
             p_lives -= 1;
             if (p_lives > 0) { scr_player_respawn(); }
             else { alive = false; }

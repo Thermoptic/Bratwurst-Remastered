@@ -122,3 +122,12 @@
 - **Regler:** (1) Varje träff (kanonskott eller missil) tar ett liv; med LIFE = 1 dör man på en träff. (2) Ingen skada av väggkrasch (studs, gnistor och ljud finns kvar). (3) Kanon: tre skott per laddning, ett skott per knapptryck (kantat) hur snabbt man vill; efter det tredje skottet 4 s nedkylning (`g_AD_COOLDOWN` = 200 ticks), därefter tre nya skott; ingen kanonammo. (4) Projektiler (skott och missiler) 30 % större: ritade 1,3×, träffradie 1,5 × 1,3 skärmenheter i världsrymd (Classic: punkt) och svept träfftest längs rörelsen (`scr_proj_hit`). (5) Endast MISSILE och TURBO BOOST för alla skepp (oavsett skeppets .SOB-vapenlista). (6) Missilen flyger dubbelt så fort (`64` i stället för `32`); livslängden är oförändrad.
 - **Oförändrat (ej angivet av användaren):** specialammo per skepp enligt P10 (10–25 missiler), missilens och turbons nedräkning, skeppskrockar, rundor och resultatskärm.
 - **Att verifiera:** spelkänsla (dubbel missilfart/räckvidd, träffradie, nedkylningstid).
+
+## D-024 — Ingen gravitation på skeppen
+- **Status:** beslutat av användaren (2026-10-13). **Avvikelse från originalet:** originalets fysik har gravitation på skeppen (VERIFIERAD: 50, skalad till 31, docs/15) och luftmotstånd.
+- **Beslut:** skeppsgravitationen är `g_SHIP_GRAV = 0` (`scr_config_init`; originalvärdet `g_GRAV = 31` är kvar i konfigurationen). Luftmotståndet är kvar men avrundas nu mot noll (tidigare drev ett långsamt skepp med positiv fart för evigt) och farten nollas helt när båda komponenterna är under 24 (1/256 px/tick) utan thrust, så att ett skepp som inte styrs står helt stilla.
+- **Orört:** kanonskottens gravitation (`g_SHOT_GRAV` = 15) och missilerna (ingen gravitation).
+
+## D-025 — Ny titelskärm: "Radial Ring"
+- **Status:** beslutat av användaren (2026-10-13), vald bland sex förslag (artefakten "Bratwurst Radial Ring").
+- **Beslut:** titelskärmen har en centrerad logotyp i tunna linjer (B R A T W U R S T, A med öga, REHEATED under med linjer på sidorna), en cirkulär equalizer med 72 staplar runt loggan som följer musiken (`g_mv`, D-022; faller tillbaka på en lugn animation utan musik), två dithrade planeter som svullnar med basen, fasta blinkande stjärnor samt oförändrad bakgrund med rutnät och roterande skepp. Loggans glöd pulserar med basen. Gamla texten och värmebalken är borttagna; PRESS START TO HEAT finns kvar. Färgerna kommer från temat (logotyp och planeter = accent; staplar grön → gul → röd).

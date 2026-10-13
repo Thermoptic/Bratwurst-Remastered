@@ -153,3 +153,12 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-13 — Spelläge Astro Duel
 - Game Modes → Astro Duel är nu spelbart: ett liv per träff (LIFE 1–9), ingen väggskada, 3 skott + 4 s nedkylning, 30 % större projektiler, endast Missile (dubbel fart) och Turbo Boost. `g_game_mode`, `scr_proj_hit`, `scr_proj_radius`, `scr_mode_name`; panelen visar skott kvar, nedkylning och liv. D-023. Ej körd.
+
+## 2026-10-13 — Skeppsexplosion
+- När ett skepp förlorar ett liv exploderar det (`scr_ship_explode`): 36–44 pixelpartiklar (gnistpoolen) åt alla håll i olika hastigheter, plus fem skrovdelar (`scr_debris_*`): linjer ur skeppets egen form i sina egna längder som flyger ut, snurrar, blinkar sista halvsekunden och försvinner efter 2–3,6 s. Explosionsljudet spelas. Ny visuell effekt. Ej körd.
+
+## 2026-10-13 — Ingen gravitation på skeppen
+- Skeppen faller inte längre: `g_SHIP_GRAV = 0`, luftmotståndet avrundas mot noll och farten nollas under 24 enheter utan thrust (D-024). Skotten har kvar sin gravitation. Ej körd.
+
+## 2026-10-13 — Ny titelskärm (Radial Ring)
+- `scr_title_draw` omgjord: linjelogotyp (`scr_logo_init/add/glyph/word`), cirkulär equalizer runt loggan efter musiken, dithrade planeter (förberäknat prickmönster), stjärnor; bakgrunden med roterande skepp är kvar. D-025. Ej körd.
