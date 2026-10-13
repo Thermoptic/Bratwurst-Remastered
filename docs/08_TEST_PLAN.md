@@ -150,3 +150,8 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | SND-07 | Skepp mot skepp | Kollisionsljudet |
 | SND-08 | Träffa ett skepp med kanonskott | Svagt, högt träff-ljud |
 | SND-09 | Options → SOUND EFFECTS av/på | Effekterna tystnar/startar; musiken påverkas inte |
+| COL-05 | Skjut kanon och missiler mot tunna väggar och hörn på nära håll, i full fart och med skeppet i rörelse | Inga skott eller missiler flyger igenom en vägg |
+| FX-01 | Träffa ett skepp med kanonskott och missil | Små gnistor i skeppets färg flyger ut och försvinner en och en |
+| FX-02 | Krocka med väggen i låg respektive hög fart | Få gnistor vid låg fart, många och snabbare vid hög fart |
+| SND-10 | Titelskärm och huvudmeny med musik på | Värmebalken respektive SIGNAL-staplarna rör sig i takt med breakbeaten (kick/virvel syns) |
+| SND-11 | Options → MUSIC av | Staplarna faller tillbaka till den gamla sinusrörelsen |

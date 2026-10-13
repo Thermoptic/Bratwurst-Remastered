@@ -13,7 +13,8 @@ sys = scr_w2s_y(wy);
 if (sxs < 0 || sxs > g_PLAY_W - 1 || sys < 0 || sys > g_PLAY_H - 1) { instance_destroy(); exit; }
 
 tol = max(1, 32768 / g_zoom);   // en skarmpixel i varldspixlar
-if (scr_point_hits_wall(wx, wy, tol)) { instance_destroy(); exit; }
+// svep fran forra tickens position (px - vx, py - vy) sa att snabba skott inte flyger igenom tunna vaggar
+if (scr_seg_hits_wall(floor((px - vx) / 256), floor((py - vy) / 256), wx, wy, tol)) { instance_destroy(); exit; }
 
 hx = wx;
 hy = wy;
@@ -27,6 +28,7 @@ with (obj_player)
 }
 if (g_hit_id != noone)
 {
+    scr_spark_burst(wx, wy, 6 + irandom(3), 1.7, scr_slot_colour(g_hit_id.slot));   // gnistor dar skottet traffar
     scr_sfx_play(snd_sfx_hit, 2, 0.41);   // original: kanonskott traffar skepp, volym 26/64 (0x5e48)
     with (g_hit_id)
     {

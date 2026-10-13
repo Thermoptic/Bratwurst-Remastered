@@ -16,6 +16,7 @@ for (i = 0; i < 4; i += 1) { g_wins[i] = 0; }
 scr_level_read(g_sv[g_SV_MAP]);   // vald bana (levels.ini)
 scr_level_apply();
 scr_arena_prepare();
+scr_spark_clear();
 for (i = 0; i < g_n_players; i += 1)
 {
     p = instance_create(0, 0, obj_player);

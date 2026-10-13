@@ -110,3 +110,8 @@
 - **Status:** beslutat (2026-10-13), kopplingarna VERIFIERADE ur koden (docs/15, "Ljudeffekter").
 - **Beslut:** de sju originalsamplen i hunk 2 klipps med exakta gränser (`tools/extract_sfx.py`, 16-bit WAV vid Paula-frekvensen period→Hz) och spelas via `scr_sfx_play` på originalets tre effektkanaler (ny effekt avbryter den på samma kanal). Kopplingar: kanonskott och cannon turret, missil/guidad missil avfyrning, explosion (`scr_fx_spawn` med typ 1–2), väggkrasch (fart över ±1000), skepp mot skepp, kanonträff (volym 26/64). Options → SOUND EFFECTS slår av/på. Titelmusiken är separat.
 - **Rättigheter:** härledd originaldata (docs/09): privat repo; gäller även `gms/Bratwurst.gmx/sound/audio/`. Användaren uppger att spelet är gratis och aldrig sålts kommersiellt (2026-10-13), men rättighetsfrågan är inte juridiskt klarlagd.
+
+## D-022 — Titelmusik: användarens loop, förberäknad equalizer
+- **Status:** beslutat av användaren (2026-10-13).
+- **Beslut:** `snd_title_music` är `RollingBreakbeat_loop_150bpm.ogg`. GameMaker Studio 1.4 saknar spektrumanalys av ljud i realtid, så equalizern drivs av data som analyseras offline (`tools/gen_music_viz.py` → `scr_data_musicviz.gml`) och synkas mot `audio_sound_get_track_position`. Byts musikfilen måste verktyget köras om.
+- **Rättigheter:** filens ursprung och licens är okända för projektet (användarlevererad). Se docs/09.

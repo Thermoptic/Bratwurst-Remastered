@@ -40,7 +40,7 @@ if (expired) { scr_fx_spawn(px, py, mtype); instance_destroy(); exit; }
 wxp = floor(px / 256);
 wyp = floor(py / 256);
 tol = max(1, 32768 / g_zoom);
-if (scr_point_hits_wall(wxp, wyp, tol)) { scr_fx_spawn(px, py, mtype); instance_destroy(); exit; }
+if (scr_seg_hits_wall(floor((px - vx) / 256), floor((py - vy) / 256), wxp, wyp, tol)) { scr_fx_spawn(px, py, mtype); instance_destroy(); exit; }
 
 hx = wxp;
 hy = wyp;
@@ -62,6 +62,7 @@ if (g_hit_id != noone)
         vx += floor((other.vx - vx) * 16 / power(2, bounce));
         vy += floor((other.vy - vy) * 16 / power(2, bounce));
     }
+    scr_spark_burst(wxp, wyp, 12 + irandom(5), 2.2, scr_slot_colour(g_hit_id.slot));
     scr_fx_spawn(px, py, mtype);
     instance_destroy();
 }

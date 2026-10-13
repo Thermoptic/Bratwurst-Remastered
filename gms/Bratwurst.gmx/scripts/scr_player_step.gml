@@ -76,6 +76,8 @@ scr_player_outline();
 if (scr_player_hits_wall())
 {
     px = prev_px; py = prev_py; ang = prev_ang;
+    // gnistor: antal och fart okar med kraschhastigheten (1/256 px per tick)
+    scr_spark_burst(floor(px / 256), floor(py / 256), clamp(floor(sqrt(vx * vx + vy * vy) / 120), 2, 40), 1.1 + min(2.2, sqrt(vx * vx + vy * vy) / 3500), scr_slot_colour(slot));
     if (abs(vx) > 1000 || abs(vy) > 1000) { scr_sfx_play(snd_sfx_crash, 2, 1); }   // original: ljud bara om farten ligger utanfor +-1000 (0x5dc4)
     energy -= floor(floor((vx * vx + vy * vy) / 65536) / 64) + 1;
     vx = floor(-vx / 4);

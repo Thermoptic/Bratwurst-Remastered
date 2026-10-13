@@ -42,3 +42,6 @@ Detta är praktisk projektvägledning, inte juridisk rådgivning.
 - **Cascadia Mono** (Microsoft, SIL Open Font License 1.1): glyfatlaserna `gms/Bratwurst.gmx/fonts/fnt_*.png` är renderade ur typsnittet. OFL tillåter inbäddning/distribution men kräver att licenstext och upphovsangivelse följer med (ej ännu tillagd; krävs före distribution).
 - **Base16-teman** (tinted-theming/schemes): färgvärden i `scr_data_themes.gml`; varje schema har en upphovsperson i källrepot (kreditering och licenskontroll återstår).
 
+
+## Titelmusik (2026-10-13)
+- `gms/Bratwurst.gmx/sound/audio/snd_title_music.ogg` är användarens fil `RollingBreakbeat_loop_150bpm.ogg`. Källa och licens är inte dokumenterade; användaren ansvarar för att den får användas och distribueras. Ska kompletteras med upphovsperson/licens före distribution.

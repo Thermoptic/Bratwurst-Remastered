@@ -82,6 +82,8 @@ with (obj_shot)
     draw_rectangle(qx - 1, qy - 1, qx + 1, qy + 1, false);
 }
 
+scr_spark_draw();
+
 // Allt som hamnat utanfor spelytan tacks over av bakgrunden, sedan ram och paneler
 draw_set_color(g_c[0]);
 draw_rectangle(-4000, -4000, g_OX - 1, 4000, false);

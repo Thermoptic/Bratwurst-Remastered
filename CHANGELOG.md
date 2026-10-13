@@ -140,3 +140,13 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-13 — Originalets ljudeffekter
 - Spårade ljudmotorn i originalkoden (docs/15) och lade in alla sju effekter på rätt händelser (D-021): kanonskott, missil, guidad missil, explosion, väggkrasch, skepp mot skepp, kanonträff. `tools/extract_sfx.py`, `scr_sfx_play`, Options → SOUND EFFECTS. Fynd: originalet har skepp-mot-skepp-kollision med hastighetsbyte. Ej körd.
+
+## 2026-10-13 — Bugfix: skott och missiler flög igenom väggar
+- Kollisionen testade bara skottets slutposition per tick med en tolerans på en skärmpixel, så snabba skott (~20 px/tick) kunde hoppa över tunna väggar. Nu sveps hela rörelsen från förra tickens position mot väggarna (`scr_seg_hits_wall`, i `scr_shot_step` och `scr_missile_step`). Ej körd.
+
+## 2026-10-13 — Gnistor vid träff och krasch
+- Nytt partikelsystem (`scr_spark_burst/step/draw/clear`, pool om 400 partiklar): 2–3 enheter stora pixlar som flyger ut åt slumpade håll, bromsas och försvinner en och en efter slumpad tid (14–62 ticks). Vid kanonträff 6–9 gnistor i det träffade skeppets färg, vid missilträff 12–17, vid väggkrasch 2–40 beroende på hastigheten (fart/120) och med högre utgångsfart ju fortare man krockar. Ny visuell effekt, inte i originalet. Ej körd.
+
+## 2026-10-13 — Ny titelmusik och equalizer som följer musiken
+- Titelmusiken är nu användarens `RollingBreakbeat_loop_150bpm.ogg` (6,4 s loop, 150 bpm) i stället för renderingen av originalets modul (`snd_title_music`). Originalmodulens rendering ligger kvar i `analysis/audio/`.
+- Equalizern på titelskärmen (värmebalken) och i menyn (SIGNAL) rör sig nu efter musiken: `tools/gen_music_viz.py` analyserar loopen i förväg (12 band, 50 rutor/s, `scr_data_musicviz`) och `scr_musicviz_update` läser upp raden vid musikens spelposition (`audio_sound_get_track_position`). Utan musik (avstängd/pågående match) används den gamla sinusrörelsen. Ej körd.

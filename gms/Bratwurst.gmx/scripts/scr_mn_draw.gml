@@ -105,7 +105,8 @@ scr_ui_text(ix, py + 314, "SIGNAL", g_c[4]);
 bs = iw / 12;
 for (k = 0; k < 12; k += 1)
 {
-    bh = 6 + 38 * (0.5 + 0.5 * sin(g_menu_tick * 0.07 * (1 + (k mod 3) * 0.4) + k * 0.8));
+    if (g_mv_on) { bh = 6 + 38 * g_mv[k]; }   // equalizer efter musiken
+    else { bh = 6 + 38 * (0.5 + 0.5 * sin(g_menu_tick * 0.07 * (1 + (k mod 3) * 0.4) + k * 0.8)); }
     bx = ix + floor(k * bs);
     draw_set_color(g_acc);
     draw_rectangle(bx, py + 398 - bh, bx + floor(bs) - 5, py + 398, false);

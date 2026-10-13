@@ -35,8 +35,8 @@ scr_ui_text_c(cx, oy + 252, "- R E H E A T E D -", g_c[9]);
 // varmebalk under loggan (rod/orange/gul, pulserar)
 for (i = 0; i < 40; i += 1)
 {
-    heat = 0.5 + 0.5 * sin(t * 0.07 - i * 0.35);
-    bh = 4 + 22 * heat;
+    if (g_mv_on) { heat = g_mv[floor(i * 12 / 40)]; bh = 4 + 36 * heat; }   // equalizer: de 12 banden fran musiken
+    else { heat = 0.5 + 0.5 * sin(t * 0.07 - i * 0.35); bh = 4 + 22 * heat; }
     if (heat < 0.34) { cc = g_c[8]; }
     else if (heat < 0.67) { cc = g_c[9]; }
     else { cc = g_c[10]; }

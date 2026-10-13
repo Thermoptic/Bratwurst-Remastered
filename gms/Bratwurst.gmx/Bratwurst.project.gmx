@@ -137,6 +137,13 @@
     <script>scripts\scr_round_reset.gml</script>
     <script>scripts\scr_music_update.gml</script>
     <script>scripts\scr_sfx_play.gml</script>
+    <script>scripts\scr_seg_hits_wall.gml</script>
+    <script>scripts\scr_spark_burst.gml</script>
+    <script>scripts\scr_spark_clear.gml</script>
+    <script>scripts\scr_spark_draw.gml</script>
+    <script>scripts\scr_spark_step.gml</script>
+    <script>scripts\scr_data_musicviz.gml</script>
+    <script>scripts\scr_musicviz_update.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_lg_k10</font>

@@ -10,6 +10,7 @@ with (obj_player)
     rear_fire = false;   // D-015
     scr_player_respawn();
 }
+scr_spark_clear();
 g_state = 1;
 g_winner = -1;
 g_tick = 0;
