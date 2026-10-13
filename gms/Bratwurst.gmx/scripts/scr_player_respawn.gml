@@ -10,8 +10,17 @@ turn_w = turn_init;
 energy = energy_max;
 cannon_ammo = ammo_max;
 reload = 0;
+boost_timer = 0;
 sp_cool = 0;
 sp_ammo = scr_special_ammo();
+var wt, wsave;
+wsave = sp_wtype;
+for (wt = 0; wt < 6; wt += 1)
+{
+    sp_wtype = wt;
+    sp_pool[wt] = scr_special_ammo();
+}
+sp_wtype = wsave;
 prev_px = px;
 prev_py = py;
 prev_ang = ang;

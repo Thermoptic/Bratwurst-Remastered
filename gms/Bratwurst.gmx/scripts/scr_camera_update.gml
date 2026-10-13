@@ -28,7 +28,7 @@ with (obj_player)
 if (g_tmp_n == 0) { exit; }
 dx = g_tmp_maxx - g_tmp_minx;
 dy = g_tmp_maxy - g_tmp_miny;
-zx = min(65535, floor(9830400 / (dx + g_ZOOM_MARGIN)));   // 150*65536
+zx = min(65535, floor((g_PLAY_W / 2 - 10) * 65536 / (dx + g_ZOOM_MARGIN)));   // 150*65536 vid originalets 320 enheters bredd
 zy = min(65535, floor(7077888 / (dy + g_ZOOM_MARGIN)));   // 108*65536
 g_zoom = min(zx, zy);
 cx = floor((g_tmp_maxx + g_tmp_minx) / 2);

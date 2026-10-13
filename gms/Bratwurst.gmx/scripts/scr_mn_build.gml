@@ -18,6 +18,13 @@ scr_mn_link(modes, n);
 n = scr_mn_add(3, "PLAYERS", "NUMBER OF PLAYERS, 1 TO 4. MORE CAN ALSO JOIN ON THE SHIP SELECT SCREEN");
 scr_mn_setting(n, g_SV_PLAYERS, 1, 4, "gameplay.players");
 scr_mn_link(modes, n);
+n = scr_mn_add(4, "MAP", "THE ARENA FOR THE MATCH. MAKE YOUR OWN WITH THE MAP EDITOR");
+scr_mn_setting(n, g_SV_MAP, 0, max(0, g_lv_count - 1), "gameplay.map");
+g_mn_map_node = n;
+scr_mn_link(modes, n);
+n = scr_mn_add(1, "MAP EDITOR", "DRAW SOLID WALLS AND BOXES WITH THE MOUSE, PLACE START POSITIONS AND SAVE YOUR OWN MAPS");
+g_mn_act[n] = 4;
+scr_mn_link(modes, n);
 
 // OPTIONS
 n = scr_mn_add(4, "THEME", "BASE16 COLOUR THEME FOR THE WHOLE GAME. THE COLOURS ARE READ FROM THEMES.INI");
@@ -28,6 +35,9 @@ scr_mn_setting(n, g_SV_ACCENT, 0, 6, "theme.accent");
 scr_mn_link(opts, n);
 n = scr_mn_add(4, "WINDOW", "SIZE OF THE GAME WINDOW");
 scr_mn_setting(n, g_SV_SCALE, 0, 3, "display.scale");
+scr_mn_link(opts, n);
+n = scr_mn_add(2, "WIDE PLAYFIELD", "USE THE FULL WIDTH FOR THE PLAYFIELD. OFF = THE ORIGINAL 320 PIXEL WIDE VIEW");
+scr_mn_setting(n, g_SV_WIDE, 0, 1, "display.widescreen");
 scr_mn_link(opts, n);
 n = scr_mn_add(2, "VSYNC", "SYNC WITH THE MONITOR TO AVOID TEARING");
 scr_mn_setting(n, g_SV_VSYNC, 0, 1, "display.vsync");

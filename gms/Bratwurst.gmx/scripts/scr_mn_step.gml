@@ -40,6 +40,7 @@ if (g_nv_ok)
     {
         if (g_mn_act[item] == 1) { scr_menu_enter(); }
         if (g_mn_act[item] == 2) { game_end(); }
+        if (g_mn_act[item] == 4) { scr_ed_enter(g_sv[g_SV_MAP]); }
         if (g_mn_act[item] == 3)
         {
             scr_set_defaults();

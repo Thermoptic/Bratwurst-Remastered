@@ -6,8 +6,10 @@ var a, p, fired_all, sh, shx, shy;
 if (!alive) { exit; }
 scr_player_input();
 if (in_shipcyc) { scr_player_change_ship(1); }   // test: byt skepp under matchen
-if (in_podcyc && sp_nsel > 0) { sp_pod_i = (sp_pod_i + 1) mod sp_nsel; }   // byt specialpod under matchen
+if ((in_podcyc || in_psel) && sp_nsel > 0) { sp_pod_i = (sp_pod_i + 1) mod sp_nsel; }   // byt specialpod (position pa skeppet) under matchen
+if (in_wsel) { scr_special_switch(); }   // byt specialvapen under matchen
 
+if (boost_timer > 0) { boost_timer -= 1; }
 prev_px = px; prev_py = py; prev_ang = ang;
 
 // 1) Svang: vinkel -/+= w; w += TURN_ACC; utan svang w = TURN_INIT; w <= TURN_MAX (VERIFIERAD, kod 0x16a4-0x1718)

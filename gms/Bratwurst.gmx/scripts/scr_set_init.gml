@@ -21,8 +21,16 @@ for (k = 0; k < 4; k += 1)
 g_sv[g_SV_VSYNC] = clamp(ini_read_real("display", "vsync", g_sv[g_SV_VSYNC]), 0, 1);
 g_sv[g_SV_SCAN] = clamp(ini_read_real("display", "scanlines", g_sv[g_SV_SCAN]), 0, 1);
 g_sv[g_SV_GLOW] = clamp(ini_read_real("display", "glow", g_sv[g_SV_GLOW]), 0, 1);
+g_sv[g_SV_WIDE] = clamp(ini_read_real("display", "widescreen", g_sv[g_SV_WIDE]), 0, 1);
 g_sv[g_SV_PLAYERS] = clamp(round(ini_read_real("gameplay", "players", g_sv[g_SV_PLAYERS])), 1, 4);
 ini_close();
+ini_open("settings.ini");
+s = ini_read_string("gameplay", "map", "");
+ini_close();
+for (t = 0; t < g_lv_count; t += 1)
+{
+    if (g_lv_id[t] == s) { g_sv[g_SV_MAP] = t; }
+}
 g_n_players = g_sv[g_SV_PLAYERS];
 scr_theme_ini_write();
 scr_theme_apply();

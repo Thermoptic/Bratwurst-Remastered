@@ -12,3 +12,5 @@ g_sv[g_SV_VSYNC] = 1;
 g_sv[g_SV_SCAN] = 1;
 g_sv[g_SV_GLOW] = 1;
 g_sv[g_SV_PLAYERS] = 2;
+g_sv[g_SV_WIDE] = 1;
+g_sv[g_SV_MAP] = 0;

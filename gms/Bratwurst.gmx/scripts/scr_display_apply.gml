@@ -53,3 +53,4 @@ view_yport[0] = 0;
 view_wport[0] = w;
 view_hport[0] = h;
 surface_resize(application_surface, w, h);
+scr_layout_update();

@@ -1,4 +1,5 @@
 /// scr_ui_ship(ship, cx, cy, k, angle256, colour, highlight_pod, show_pods)
+// show_pods = true: alla pods markeras (skeppsvalet). show_pods = false och highlight_pod >= 0: bara den podden som en liten prick (spelarpanelen).
 // Ritar ett skepps vektorform roterad (samma matematik som skeppsvalet/spelet). highlight_pod = podindex eller -1. Kors i obj_game.
 var sh, cx, cy, k, a, sn, cs, j, xs, ys, x1, y1, x2, y2, rx, ry;
 sh = argument0; cx = argument1; cy = argument2; k = argument3;
@@ -22,6 +23,12 @@ for (j = 0; j < g_ship_nl[sh]; j += 1)
     x2 = sp_vx[g_ship_lines[sh, 2 * j + 1]];
     y2 = sp_vy[g_ship_lines[sh, 2 * j + 1]];
     draw_line(x1, y1, x2, y2);
+}
+if (!argument7 && argument6 >= 0)
+{
+    xs = g_ship_pods[sh, 2 * argument6] * k;
+    ys = g_ship_pods[sh, 2 * argument6 + 1] * k;
+    draw_circle(cx + (xs * cs + ys * sn) / 256, cy + (xs * sn - ys * cs) / 256, 2.5, false);
 }
 if (argument7)
 {

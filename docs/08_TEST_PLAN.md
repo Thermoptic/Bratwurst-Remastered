@@ -113,4 +113,21 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | UI-09 | Match | Spelytan i mitten; P1-panel vänster, P2 höger, P3/P4 under; energi/ammo/liv/special uppdateras |
 | UI-10 | Esc i match/skeppsval | Huvudmenyn; START igen fungerar |
 | REG-02 | Fysik, kamera, vapen som tidigare | Oförändrat beteende (endast ritning flyttad/omfärgad) |
+| UI-11 | Fullscreen 16:9 | Titel, menyer, skeppsval och match fyller hela skärmen utan tomma sidor; spelytan lika bred som panelraden |
+| UI-12 | Options → WIDE PLAYFIELD av/på | Av: originalets 320-breda vy centrerad; på: full bredd. Zoom och skott fungerar i båda |
+| MENU-09 | Tryck X (thrust) på gamepad i skeppsvalet, på varje steg | Ett steg tillbaka (READY → IS THIS OK? → POD → WEAPON → SHIP); på SHIP händer inget; tidigare val behålls |
+| COL-02 | Kör in i ett stillastående skepp i full fart | Det stilla skeppet puttas iväg med ungefär din fart, du bromsas; skeppen glider inte in i varandra |
+| COL-03 | Använd TURBO BOOST och krocka | Det träffade skeppet flyger iväg märkbart hårdare än utan boost |
+| COL-04 | Två skepp rör sig isär men överlappar | Inga upprepade studsar eller fastklistring |
+
+### Banor och banredigerare (ej körda)
+| ID | Test | Förväntat |
+|---|---|---|
+| MAP-01 | Starta spelet första gången | `levels.ini` skapas; Game Modes → MAP visar tre banor (Sirius Bratwurst, Kepler Chorizo, Proxima Merguez) |
+| MAP-02 | Välj varje bana och starta en match | Rätt bana och startplatser; väggar solida, olika färger per objekt |
+| MAP-03 | Sirius Bratwurst jämfört med den gamla banan | Samma väggar och startplatser som förut |
+| MAP-04 | MAP EDITOR: rita rektangel (B), polygon (P), radera (X), flytta startplats (T, 1–4, Q/E) | Former syns direkt; radering tar den vägg man klickar på |
+| MAP-05 | Spara (S), avsluta, välj banan och spela | Den egna banan laddas med nya väggar och startplatser |
+| MAP-06 | N skapar ny bana med slumpat namn (två ord: stjärna + korv); Del två gånger tar bort | Banlistan i menyn uppdateras; sista banan kan inte tas bort |
+| MAP-07 | Esc med osparade ändringar | Kräver ett andra Esc för att slänga ändringarna |
 

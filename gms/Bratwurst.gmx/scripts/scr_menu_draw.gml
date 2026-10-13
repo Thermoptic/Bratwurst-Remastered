@@ -2,13 +2,13 @@
 // Skeppsval i terminalstil: en ruta per spelarplats (2x2). Texterna SHIP, SPECIAL WEAPON, IS THIS OK? och "PLAYER n IS READY TO ..." finns i
 // originalets exe (docs/13); layout och farger ar PLACEHOLDERS. Ledig plats visar "PRESS FIRE TO JOIN" (spelare laggs till har).
 var i, px, py, pw, ph, c, st, ssh, pn, rdy, n, r, ry, rx, rw, rc, lbl, vtxt, t, wl, pod_i, a, hp, active, yy;
-pw = 490;
-ph = 272;
+pw = floor((g_vw - 32 - 12) / 2);
+ph = floor((g_vh - 44 - 32 - 12) / 2);
 scr_ui_header("BRATWURST // SHIP SELECT", scr_pad2(g_n_players) + " OF 04 PLAYERS");
 for (i = 0; i < 4; i += 1)
 {
-    px = 16 + (i mod 2) * 502;
-    py = 44 + (i div 2) * 284;
+    px = g_vx + 16 + (i mod 2) * (pw + 12);
+    py = g_vy + 44 + (i div 2) * (ph + 12);
     c = scr_slot_colour(i);
     if (i == 0) { pn = "ONE"; rdy = "EAT"; }
     if (i == 1) { pn = "TWO"; rdy = "ROCK"; }
@@ -44,7 +44,7 @@ for (i = 0; i < 4; i += 1)
     // rader: SHIP / WEAPON / POD / CONFIRM
     n = scr_sel_pod_count(ssh);
     rx = px + 12;
-    rw = 280;
+    rw = pw - 210;
     for (r = 0; r < 4; r += 1)
     {
         ry = py + 28 + r * 40;
@@ -109,8 +109,8 @@ for (i = 0; i < 4; i += 1)
     pod_i = scr_sel_pod(ssh, g_sel_pod[i]);
     hp = -1;
     if (st >= 2) { if (st != 2 || (g_menu_tick mod 20) < 14) { hp = pod_i; } }
-    scr_ui_ship(ssh, px + pw - 100, py + 140, 0.55, a, c, hp, true);
+    scr_ui_ship(ssh, px + pw - 100, py + ph / 2 + 4, 0.55, a, c, hp, true);
 }
 g_fs = g_f_sm;
-scr_ui_text(20, 608, "LEFT/RIGHT BROWSE    FIRE CONFIRM    OPEN SLOT: FIRE = JOIN    F5/BACK = PLAYERS    ESC = MAIN MENU", g_c[4]);
-if (g_ready_tick > 0) { scr_ui_text_r(room_width - 20, 608, "ALL READY - LAUNCHING", g_acc); }
+scr_ui_text(g_vx + 20, g_vy + g_vh - 32, "LEFT/RIGHT BROWSE   FIRE CONFIRM   X/THRUST BACK   OPEN SLOT: FIRE JOIN   F5/BACK PLAYERS   ESC MENU", g_c[4]);
+if (g_ready_tick > 0) { scr_ui_text_r(g_vx + g_vw - 20, g_vy + g_vh - 32, "ALL READY - LAUNCHING", g_acc); }

@@ -14,6 +14,7 @@ if (g_state == 10)
     exit;
 }
 if (g_state == 11) { scr_mn_step(); exit; }
+if (g_state == 20) { scr_ed_step(); exit; }   // banredigeraren
 
 // Skeppsval och match: Esc = huvudmenyn
 if (keyboard_check_pressed(vk_escape)) { scr_goto_main(); exit; }
@@ -36,6 +37,7 @@ if (g_state != 1) { exit; }
 
 g_tick += 1;
 with (obj_player) { scr_player_step(); }
+scr_ship_collisions();   // skepp mot skepp (D-018)
 with (obj_missile) { scr_missile_step(); }
 with (obj_shot) { scr_shot_step(); }
 with (obj_fx) { ftimer += 1; if (ftimer > fmax) { instance_destroy(); } }

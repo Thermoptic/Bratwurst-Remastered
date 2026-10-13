@@ -10,6 +10,15 @@ for (i = 0; i < g_n_players; i += 1)
     d = 0;
     if (g_mi_l) { d = -1; }
     if (g_mi_r) { d = 1; }
+    if (g_mi_back && st > 0)
+    {
+        // Ett steg tillbaka (thrust-knappen: X pa gamepad). Fran READY gar man tillbaka till IS THIS OK?
+        g_sel_stage[i] = st - 1;
+        g_sel_yes[i] = 1;
+        st = st - 1;
+        d = 0;
+        g_mi_ok = false;
+    }
     if (st == 0)
     {
         // Skepp: vanster/hoger bladdrar, fire bekraftar

@@ -9,6 +9,8 @@ g_n_players = argument0;
 g_state = 1;
 g_winner = -1;
 g_tick = 0;
+scr_level_read(g_sv[g_SV_MAP]);   // vald bana (levels.ini)
+scr_level_apply();
 scr_arena_prepare();
 for (i = 0; i < g_n_players; i += 1)
 {

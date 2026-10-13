@@ -91,6 +91,37 @@
     <script>scripts\scr_ui_dt.gml</script>
     <script>scripts\scr_ui_tw.gml</script>
     <script>scripts\scr_ui_wrap.gml</script>
+    <script>scripts\scr_layout_update.gml</script>
+    <script>scripts\scr_colour_dist.gml</script>
+    <script>scripts\scr_theme_players.gml</script>
+    <script>scripts\scr_ship_bounce.gml</script>
+    <script>scripts\scr_ship_collisions.gml</script>
+    <script>scripts\scr_ships_overlap.gml</script>
+    <script>scripts\scr_special_switch.gml</script>
+    <script>scripts\scr_data_levels.gml</script>
+    <script>scripts\scr_ed_add_shape.gml</script>
+    <script>scripts\scr_ed_cursor.gml</script>
+    <script>scripts\scr_ed_delete_shape.gml</script>
+    <script>scripts\scr_ed_dist.gml</script>
+    <script>scripts\scr_ed_draw.gml</script>
+    <script>scripts\scr_ed_enter.gml</script>
+    <script>scripts\scr_ed_layout.gml</script>
+    <script>scripts\scr_ed_msg.gml</script>
+    <script>scripts\scr_ed_pick.gml</script>
+    <script>scripts\scr_ed_step.gml</script>
+    <script>scripts\scr_level_apply.gml</script>
+    <script>scripts\scr_level_delete.gml</script>
+    <script>scripts\scr_level_name_random.gml</script>
+    <script>scripts\scr_level_new.gml</script>
+    <script>scripts\scr_level_parse_shape.gml</script>
+    <script>scripts\scr_level_parse_spawn.gml</script>
+    <script>scripts\scr_level_read.gml</script>
+    <script>scripts\scr_level_save.gml</script>
+    <script>scripts\scr_level_write.gml</script>
+    <script>scripts\scr_levels_init.gml</script>
+    <script>scripts\scr_levels_reload.gml</script>
+    <script>scripts\scr_levels_write_defaults.gml</script>
+    <script>scripts\scr_safe_real.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_lg_k10</font>

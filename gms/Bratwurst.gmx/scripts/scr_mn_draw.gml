@@ -1,6 +1,6 @@
 /// scr_mn_draw()
 // Huvudmenyn i "command deck"-stil: trad till vanster, lista i mitten, datapanel till hoger (konceptet godkant av anvandaren).
-var node, sel, cnt, item, i, k, kid, yy, rx, ry, rw, t, v, bh, bx, by, cw, col, ti, branch, kid2, pre;
+var node, sel, cnt, item, i, k, kid, yy, rx, ry, rw, t, v, bh, bx, by, cw, col, ti, branch, kid2, pre, avail, tx, tw0, lx, lw0, dx, dw0, py, ph, ix, iw, bs;
 node = g_mn_stk_node[g_mn_depth];
 sel = g_mn_stk_sel[g_mn_depth];
 cnt = g_mn_n[node];
@@ -8,12 +8,22 @@ item = g_mn_kid[node, sel];
 t = g_mn_type[item];
 ti = g_sv[g_SV_THEME];
 scr_ui_header("BRATWURST // TERMINAL v0.2", "LINK STABLE");
+// layout: tre / lista / data fyller vyns bredd och hojd (design 236 / 432 / 284 px vid 1024 bred vy)
+avail = g_vw - 40 - 32;
+tw0 = floor(avail * 236 / 952);
+lw0 = floor(avail * 432 / 952);
+dw0 = avail - tw0 - lw0;
+tx = g_vx + 20;
+lx = tx + tw0 + 16;
+dx = lx + lw0 + 16;
+py = g_vy + 52;
+ph = g_vh - 52 - 48;
 
 // ---- TREE ----
-scr_ui_pane(20, 52, 236, 540, "TREE", g_c[4]);
+scr_ui_pane(tx, py, tw0, ph, "TREE", g_c[4]);
 g_fs = g_f_md;
-yy = 76;
-scr_ui_text(36, yy, "v bratwurst", g_c[6]);
+yy = py + 24;
+scr_ui_text(tx + 16, yy, "v bratwurst", g_c[6]);
 yy += 28;
 branch = -1;
 if (g_mn_depth >= 1) { branch = g_mn_stk_node[1]; }
@@ -21,9 +31,9 @@ for (i = 0; i < g_mn_n[0]; i += 1)
 {
     kid = g_mn_kid[0, i];
     if (i == g_mn_n[0] - 1) { pre = "`- "; } else { pre = "|- "; }
-    if (kid == branch) { scr_ui_text(36, yy, pre + string_lower(g_mn_label[kid]) + " <", g_acc); }
-    else if (g_mn_depth == 0 && i == g_mn_stk_sel[0]) { scr_ui_text(36, yy, pre + string_lower(g_mn_label[kid]) + " <", g_c[6]); }
-    else { scr_ui_text(36, yy, pre + string_lower(g_mn_label[kid]), g_c[4]); }
+    if (kid == branch) { scr_ui_text(tx + 16, yy, pre + string_lower(g_mn_label[kid]) + " <", g_acc); }
+    else if (g_mn_depth == 0 && i == g_mn_stk_sel[0]) { scr_ui_text(tx + 16, yy, pre + string_lower(g_mn_label[kid]) + " <", g_c[6]); }
+    else { scr_ui_text(tx + 16, yy, pre + string_lower(g_mn_label[kid]), g_c[4]); }
     yy += 28;
     if (kid == branch && g_mn_type[kid] == 0)
     {
@@ -35,21 +45,21 @@ for (i = 0; i < g_mn_n[0]; i += 1)
             if (g_mn_depth >= 2 && kid2 == g_mn_stk_node[2]) { col = g_acc; }
             else if (g_mn_depth == 1 && k == g_mn_stk_sel[1]) { col = g_c[6]; }
             else { col = g_c[3]; }
-            scr_ui_text(36, yy, pre + string_lower(g_mn_label[kid2]), col);
+            scr_ui_text(tx + 16, yy, pre + string_lower(g_mn_label[kid2]), col);
             yy += 28;
         }
     }
 }
 
 // ---- LIST ----
-scr_ui_pane(272, 52, 432, 540, g_mn_label[node] + " " + scr_pad2(sel + 1) + "/" + scr_pad2(cnt), g_acc);
+scr_ui_pane(lx, py, lw0, ph, g_mn_label[node] + " " + scr_pad2(sel + 1) + "/" + scr_pad2(cnt), g_acc);
 g_fs = g_f_md;
 for (i = 0; i < cnt; i += 1)
 {
     kid = g_mn_kid[node, i];
-    rx = 284;
-    ry = 80 + i * 40;
-    rw = 408;
+    rx = lx + 12;
+    ry = py + 28 + i * 40;
+    rw = lw0 - 24;
     if (i == sel)
     {
         draw_set_color(g_c[1]);
@@ -73,37 +83,39 @@ for (i = 0; i < cnt; i += 1)
 }
 
 // ---- DATA ----
-scr_ui_pane(720, 52, 284, 540, "DATA", g_acc);
+scr_ui_pane(dx, py, dw0, ph, "DATA", g_acc);
 g_fs = g_f_sm;
-scr_ui_text(736, 76, "INFO", g_c[4]);
-yy = scr_ui_wrap(736, 100, g_mn_desc[item], 252, 19, g_c[5]);
-if (t == 5) { yy = scr_ui_wrap(736, yy + 10, g_mn_text[item], 252, 19, g_acc); }
-scr_ui_text(736, 270, "PALETTE // " + string_upper(g_th_name[ti]), g_c[4]);
-cw = 26;
+ix = dx + 16;
+iw = dw0 - 32;
+scr_ui_text(ix, py + 24, "INFO", g_c[4]);
+yy = scr_ui_wrap(ix, py + 48, g_mn_desc[item], iw, 19, g_c[5]);
+if (t == 5) { yy = scr_ui_wrap(ix, yy + 10, g_mn_text[item], iw, 19, g_acc); }
+scr_ui_text(ix, py + 218, "PALETTE // " + string_upper(g_th_name[ti]), g_c[4]);
+cw = floor((iw - 7 * 6) / 8);
 for (k = 0; k < 16; k += 1)
 {
-    bx = 736 + (k mod 8) * (cw + 6);
-    by = 294 + (k div 8) * 28;
+    bx = ix + (k mod 8) * (cw + 6);
+    by = py + 242 + (k div 8) * 28;
     draw_set_color(g_c[k]);
     draw_rectangle(bx, by, bx + cw, by + 22, false);
     draw_set_color(g_c[3]);
     draw_rectangle(bx, by, bx + cw, by + 22, true);
 }
-scr_ui_text(736, 366, "SIGNAL", g_c[4]);
+scr_ui_text(ix, py + 314, "SIGNAL", g_c[4]);
+bs = iw / 12;
 for (k = 0; k < 12; k += 1)
 {
     bh = 6 + 38 * (0.5 + 0.5 * sin(g_menu_tick * 0.07 * (1 + (k mod 3) * 0.4) + k * 0.8));
-    bx = 736 + k * 21;
+    bx = ix + floor(k * bs);
     draw_set_color(g_acc);
-    draw_rectangle(bx, 450 - bh, bx + 16, 450, false);
+    draw_rectangle(bx, py + 398 - bh, bx + floor(bs) - 5, py + 398, false);
 }
-scr_ui_text(736, 468, "INI KEY", g_c[4]);
-if (g_mn_ini[item] != "") { scr_ui_text(736, 490, g_mn_ini[item], g_c[10]); }
-else { scr_ui_text(736, 490, "-", g_c[3]); }
-scr_ui_text(736, 520, "FILES", g_c[4]);
-scr_ui_text(736, 542, "settings.ini  themes.ini", g_c[3]);
-
+scr_ui_text(ix, py + 416, "INI KEY", g_c[4]);
+if (g_mn_ini[item] != "") { scr_ui_text(ix, py + 438, g_mn_ini[item], g_c[10]); }
+else { scr_ui_text(ix, py + 438, "-", g_c[3]); }
+scr_ui_text(ix, py + 468, "FILES", g_c[4]);
+scr_ui_text(ix, py + 490, "settings.ini  themes.ini", g_c[3]);
 // ---- hjalprad ----
 g_fs = g_f_sm;
-scr_ui_text(20, 608, "UP/DOWN ROW    LEFT/RIGHT VALUE    ENTER OK    ESC BACK", g_c[4]);
-scr_ui_text_r(room_width - 20, 608, scr_pad2(g_th_count) + " THEMES  //  " + string_upper(g_th_name[ti]), g_c[3]);
+scr_ui_text(g_vx + 20, g_vy + g_vh - 32, "UP/DOWN ROW    LEFT/RIGHT VALUE    ENTER OK    ESC BACK", g_c[4]);
+scr_ui_text_r(g_vx + g_vw - 20, g_vy + g_vh - 32, scr_pad2(g_th_count) + " THEMES  //  " + string_upper(g_th_name[ti]), g_c[3]);

@@ -19,7 +19,7 @@ g_wname[3] = "TURBO BOOST"; g_wmult[3] = 1; g_wdiv[3] = 8; g_wcool[3] = 20;
 g_wname[4] = "TRACTOR BEAM"; g_wmult[4] = 5; g_wdiv[4] = 1; g_wcool[4] = 0;
 g_wname[5] = "CANNON TURRET"; g_wmult[5] = 2; g_wdiv[5] = 1; g_wcool[5] = 3;
 
-globalvar g_sel_stage, g_sel_ship, g_sel_weapon, g_sel_pod, g_sel_yes, g_mi_l, g_mi_r, g_mi_ok, g_mi_prevx, g_pweapon, g_ppod, g_menu_tick, g_ready_tick;
+globalvar g_sel_stage, g_sel_ship, g_sel_weapon, g_sel_pod, g_sel_yes, g_mi_l, g_mi_r, g_mi_ok, g_mi_back, g_mi_prevx, g_pweapon, g_ppod, g_menu_tick, g_ready_tick;
 globalvar g_wshort;
 g_wshort[0] = "NONE"; g_wshort[1] = "MSL"; g_wshort[2] = "GUIDED"; g_wshort[3] = "TURBO"; g_wshort[4] = "TRACT"; g_wshort[5] = "TURRET";   // kompakta namn for 3-4 spelares HUD/meny (placeholder)
 g_SCALE = 2;
@@ -59,7 +59,10 @@ g_tick = 0;
 
 // ---- Terminal-UI (Fas 3): layout, tema, installningar, meny ----
 // Rum 1024x640. Spelytan (320x236 i skala 2 = 640x472) ligger i mitten; spelare 1-2 har sidopaneler, spelare 3-4 paneler under spelytan.
-globalvar g_OX, g_OY, g_c, g_acc, g_sv, g_SV_THEME, g_SV_ACCENT, g_SV_SCALE, g_SV_VSYNC, g_SV_SCAN, g_SV_GLOW, g_SV_PLAYERS;
+globalvar g_dl_count, g_dl_id, g_dl_name, g_dl_n, g_dl_shape, g_dl_spawn, g_lv_count, g_lv_id, g_lv_name, g_SV_MAP, g_mn_map_node;
+globalvar g_ed_n, g_ed_pn, g_ed_px, g_ed_py, g_ed_sx, g_ed_sy, g_ed_sa, g_ed_name, g_ed_idx, g_ed_tool, g_ed_cn, g_ed_cx, g_ed_cy, g_ed_bset, g_ed_bx, g_ed_by;
+globalvar g_ed_spawn, g_ed_dirty, g_ed_cdel, g_ed_cesc, g_ed_snap, g_ed_msg, g_ed_msgt, g_ed_x0, g_ed_y0, g_ed_w, g_ed_h, g_ed_es, g_ed_cxs, g_ed_cys, g_ed_wx, g_ed_wy, g_ed_mx, g_ed_my, g_ed_inside;
+globalvar g_COL_REST, g_COL_BOOST, g_COL_TICKS, g_COL_VMAX, g_col_id, g_wall_grp, g_wall_gn, g_wall_tmp, g_wcol, g_pc, g_vx, g_vy, g_vw, g_vh, g_SV_WIDE, g_OX, g_OY, g_c, g_acc, g_sv, g_SV_THEME, g_SV_ACCENT, g_SV_SCALE, g_SV_VSYNC, g_SV_SCAN, g_SV_GLOW, g_SV_PLAYERS;
 globalvar g_th_count, g_th_id, g_th_name, g_th_hex, g_th_col, g_acc_name, g_scale_name;
 globalvar g_f_sm, g_f_md, g_f_lg, g_f_xl, g_fs, g_fnt, g_fk, g_k;
 globalvar g_nv_up, g_nv_down, g_nv_left, g_nv_right, g_nv_ok, g_nv_back, g_nv_any, g_nv_px, g_nv_py, g_nv_btn;
@@ -68,7 +71,11 @@ globalvar g_mn_depth, g_mn_stk_node, g_mn_stk_sel, g_hud_slot, g_hud_id, g_keyhi
 g_OX = 192;          // spelytans ovre vanstra horn pa skarmen (rumskoordinater)
 g_OY = 36;
 // Installningsindex i g_sv[] (sparas i settings.ini)
-g_SV_THEME = 0; g_SV_ACCENT = 1; g_SV_SCALE = 2; g_SV_VSYNC = 3; g_SV_SCAN = 4; g_SV_GLOW = 5; g_SV_PLAYERS = 6;
+g_SV_THEME = 0; g_SV_ACCENT = 1; g_SV_SCALE = 2; g_SV_VSYNC = 3; g_SV_SCAN = 4; g_SV_GLOW = 5; g_SV_PLAYERS = 6; g_SV_WIDE = 7; g_SV_MAP = 8;
+g_sv[g_SV_MAP] = 0;
+g_lv_count = 0; g_mn_map_node = -1; g_ed_n = 0; g_ed_cn = 0; g_ed_bset = false; g_ed_dirty = false; g_ed_snap = 50;
+g_ed_sx[0] = 0; g_ed_sy[0] = 0; g_ed_sa[0] = 0; g_ed_name = ""; g_ed_msg = ""; g_ed_msgt = 0; g_ed_cdel = 0; g_ed_cesc = 0;
+g_vx = 0; g_vy = 0; g_vw = 1024; g_vh = 640;
 g_acc_name[0] = "RED"; g_acc_name[1] = "ORANGE"; g_acc_name[2] = "YELLOW"; g_acc_name[3] = "GREEN"; g_acc_name[4] = "CYAN"; g_acc_name[5] = "BLUE"; g_acc_name[6] = "MAGENTA";
 g_scale_name[0] = "1X"; g_scale_name[1] = "1.5X"; g_scale_name[2] = "2X"; g_scale_name[3] = "FULLSCREEN";
 g_keyhint[0] = "ARROWS + UP OR ENTER";
@@ -90,4 +97,10 @@ g_hud_id = noone;
 g_c[0] = c_black; g_c[1] = c_black; g_c[2] = c_black; g_c[3] = c_gray; g_c[4] = c_ltgray; g_c[5] = c_white; g_c[6] = c_white; g_c[7] = c_white;
 g_c[8] = c_red; g_c[9] = c_orange; g_c[10] = c_yellow; g_c[11] = c_lime; g_c[12] = c_aqua; g_c[13] = c_blue; g_c[14] = c_fuchsia; g_c[15] = c_maroon;
 g_acc = c_lime;
+// Skepp mot skepp (D-018, PLACEHOLDER-varden att justera efter spelkansla): studs 0..1, knuffmultiplikator for boostande skepp, hur lange (ticks) ett
+// skepp raknas som boostande efter TURBO BOOST, och maxfart (1/256 px per tick) efter en krock.
+g_COL_REST = 0.7; g_COL_BOOST = 1.6; g_COL_TICKS = 30; g_COL_VMAX = 16000; g_col_id[0] = noone;
+g_wall_gn = 1; g_wall_grp[0] = 0; g_wall_tmp[0] = 0;
+for (g_tmp_n = 0; g_tmp_n < 11; g_tmp_n += 1) { g_wcol[g_tmp_n] = c_white; }
+g_pc[0] = c_aqua; g_pc[1] = c_yellow; g_pc[2] = c_lime; g_pc[3] = c_fuchsia;
 g_f_sm = 0; g_f_md = 1; g_f_lg = 2; g_f_xl = 3; g_fs = 1; g_fk = 0; g_k = 1;   // g_fnt[] fylls i scr_font_init

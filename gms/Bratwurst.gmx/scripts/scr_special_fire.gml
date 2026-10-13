@@ -33,6 +33,7 @@ if (t == 1 || t == 2)
 if (t == 3)
 {
     // TURBO BOOST: ogonblicklig impuls mot ruckets riktning, v += (sin, -cos) << 6 (kod 0x6c76)
+    boost_timer = g_COL_TICKS;   // raknas som boostande en stund (krockknuff, D-018)
     vx += g_psin[a] * 64;
     vy -= g_pcos[a] * 64;
 }

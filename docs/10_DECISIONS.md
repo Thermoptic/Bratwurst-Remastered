@@ -82,3 +82,22 @@
 - **Lagring:** `settings.ini` och `themes.ini` via GMS 1.4 `ini_open` i spelets sparmapp (sökvägen visas i Options → DATA FOLDER). Att lägga mappen bredvid exe-filen (portable) är **ej provat** (OKÄND).
 - **Layout:** rum 1024×640; spelytan 640×472 (originalets 320×236 ×2) på (192, 36). Text: Cascadia Mono (SIL OFL 1.1) som typsnittsresurser i fyra storlekar × fyra UI-skalor (`fnt_<storlek>_k<skala>`, genererade av `tools/gen_gms_fonts.ps1`). UI-skalan k ∈ {1, 1.5, 2, 3} väljs efter fönster/skärm (`scr_display_apply`: störst k där 1024·k ≤ bredd och 640·k ≤ höjd), vyn blir bredd/k × höjd/k med designytan centrerad, och texten ritas 1:1 mot skärmpixlarna med pixelsnappad position, så den är skarp utan skalning. Koordinaterna är fortfarande rummets 1024×640.
 - **Öppet:** spritar/grafik måste senare ritas i en gemensam palett för att följa temat; Base16-licens/kreditering (docs/09); omknytning av tangenter (Controls visas bara).
+
+## D-017 — Spelytan och menyer fyller hela fönstret (widescreen-spelyta)
+- **Status:** beslutat av användaren (2026-10-13). **Avvikelse från originalet och från CLAUDE.md-regeln om widescreen:** godkänd uttryckligen av användaren.
+- **Beslut:** all UI (titel, menyer, skeppsval, match) lägger ut sig relativt vyn som fyller hela fönstret/skärmen (`scr_layout_update`), så inga tomma sidor återstår. Spelytan är lika bred som panelraden: höjden är originalets 236 enheter (skala = tillgänglig höjd/236, inte längre exakt 2) och bredden visar så mycket mer av banan som ryms (`g_PLAY_W`). Kamerans x-zoom använder `(g_PLAY_W/2 − 10)` i stället för 150 (samma värde vid 320). Skotten tas bort vid `g_PLAY_W`.
+- **Reservväg:** Options → WIDE PLAYFIELD = OFF ger originalets 320 enheters bredd (centrerad, skalad så att höjden/bredden ryms). Originalbeteendet för zoom/synfält är därmed bevarat som alternativ.
+- **Att verifiera:** att den bredare vyn inte ändrar spelkänslan på ett sätt som spelaren upplever som fusk (längre skottsikt åt sidan).
+
+## D-018 — Skepp mot skepp: kollision och knuff
+- **Status:** beslutat av användaren (2026-10-13). **Ny funktion:** om originalet har skepp-mot-skepp-kollision är OKÄNT och ej verifierat (prototypen hade ingen).
+- **Beslut:** efter varje tick testas alla levande skepp mot varandra (linjeskärning, som väggkollisionen). Vid kontakt återställs båda till föregående ticks position och byter impuls längs linjen mellan dem (lika massor): `j = (1 + g_COL_REST) · v_närmande / 2`. Ett skepp som står stilla puttas alltså iväg med ungefär motpartens fart. Ett skepp som nyligen använt TURBO BOOST (`boost_timer`, `g_COL_TICKS` = 30 ticks) ger den träffade en kraftigare knuff (`g_COL_BOOST` = 1,6). Maxfart efter krock `g_COL_VMAX` = 16 000 (1/256 px per tick).
+- **Ingen skada** vid skeppskrock än så länge (lätt att lägga till). Värdena är PLACEHOLDERS att justera efter spelkänsla (`scr_config_init`).
+
+## D-019 — Banfiler (levels.ini) och banredigerare
+- **Status:** beslutat av användaren (2026-10-13). **Ny funktion** (originalet har en fast bana).
+- **Format:** `levels.ini` i spelets sparmapp. `[index]` (count, next, id0..) listar banorna; varje bana är en sektion `[<id>]` med `name`, `shapes`, `s0..` (slutna polygoner, `x,y;x,y;...` i världspixlar) och `p0..p3` (startplatser `x,y,vinkel` i 1/256 px och 256-stegs vinkel). Alla former är solida hinder: varje polygon blir vägglinjer (`scr_level_apply`), avgränsningsrutor räknas ut vid inläsning.
+- **Inbyggda banor** (skrivs till filen vid första start, `tools/gen_gms_levels.py`): *Sirius Bratwurst* (originalbanan, uppdelad i 11 polygoner), *Kepler Chorizo* och *Proxima Merguez* (egna remixer). Namn följer mönstret stjärna/planet + korv; nya banor får slumpat namn (`scr_level_name_random`).
+- **Meny:** Game Modes → MAP (välj bana) och MAP EDITOR. Vald bana sparas i `settings.ini` (`gameplay.map`).
+- **Redigerare:** mus + tangentbord (B rektangel, P polygon, X radera, T startplats, G rutnät, U ångra, S spara, N ny bana, [ ] byt bana, Del ta bort bana, Esc ut). Enkel och avsiktligt begränsad (inget zoom/panorering, max 64 former à 32 punkter, ingen gamepad).
+- **Rättigheter:** originalbanans geometri är härledd data (docs/09); den skrivs till användarens sparmapp men distribueras inte med repot som egen fil förutom via `scr_data_levels.gml`/`scr_data_arena.gml` (privat).

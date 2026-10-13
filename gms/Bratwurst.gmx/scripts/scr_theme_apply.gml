@@ -12,3 +12,4 @@ for (k = 0; k < 16; k += 1)
 }
 ini_close();
 g_acc = g_c[8 + g_sv[g_SV_ACCENT]];
+scr_theme_players();

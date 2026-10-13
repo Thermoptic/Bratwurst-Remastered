@@ -5,11 +5,14 @@ scr_data_trig();
 scr_data_arena();
 scr_data_ships();
 scr_data_themes();
+scr_data_levels();
+randomize();
 scr_phys_tables();
+scr_levels_init();    // levels.ini (inbyggda banor skrivs vid forsta start)
 scr_set_init();       // laser settings.ini / themes.ini och applicerar temat
 scr_font_init();
 texture_set_interpolation(true);    // mjuk nedskalning av typsnitten (2x-resurser ritas med skala 0.5)
-scr_display_apply();
+scr_display_apply();   // satter ocksa layouten (scr_layout_update)
 scr_mn_build();
 scr_menu_init();      // skeppsvalets tillstand (g_state = 0)
 g_state = 10;         // spelet startar pa titelskarmen

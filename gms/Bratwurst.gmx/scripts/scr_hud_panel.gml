@@ -1,7 +1,7 @@
 /// scr_hud_panel(slot, x, y, w, h)
 // Spelarpanel i matchen (terminalstil), alltid langs nederkanten. Bredden kommer fran scr_hud_draw (panelerna delar raden lika).
 // Innehall: energi, kanonammo, liv, specialvapen + nedrakning, bakat-skjutning och skeppets kontur till hoger.
-var sl, px, py, pw, ph, c, p, y0, i, fr, bw, cdx;
+var sl, px, py, pw, ph, c, p, y0, i, fr, bw, cdx, hp;
 sl = argument0; px = argument1; py = argument2; pw = argument3; ph = argument4;
 c = scr_slot_colour(sl);
 g_hud_slot = sl;
@@ -44,5 +44,7 @@ scr_ui_text(px + 12, y0 + 72, "RF", g_c[4]);
 if (p.rear_fire) { scr_ui_text(px + 42, y0 + 72, "ON", g_c[11]); }
 else { scr_ui_text(px + 42, y0 + 72, "LOCKED", g_c[3]); }
 
-if (p.alive) { scr_ui_ship(p.ship, px + pw - 62, py + ph / 2 + 4, 0.34, p.ang, c, -1, false); }
+hp = -1;
+if (p.sp_nsel > 0) { hp = p.sp_sel[p.sp_pod_i]; }   // vald specialpod: visas som en prick pa skeppsbilden
+if (p.alive) { scr_ui_ship(p.ship, px + pw - 62, py + ph / 2 + 4, 0.34, p.ang, c, hp, false); }
 else { g_fs = g_f_md; scr_ui_text_c(px + pw - 62, py + ph / 2 - 8, "OUT", g_c[8]); }

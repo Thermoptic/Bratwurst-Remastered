@@ -92,3 +92,27 @@ Alla betydande projektändringar dokumenteras här.
 ## 2026-10-13 — Pixelperfekt text
 - Ojämna bokstäver berodde på att 2×-atlaser ritades med skala 0,5 (och på fraktionella positioner). Nu finns 16 typsnittsresurser (4 storlekar × UI-skala 1/1,5/2/3); UI-skalan väljs av fönster/skärm, vyn = skärm/k och texten ritas 1:1 med pixelsnappad position (`scr_font_init`, `scr_ui_dt`, `scr_display_apply`). Scanlines är nu 1 skärmpixel tjocka. Ej körd.
 
+## 2026-10-13 — Layouten fyller hela vyn, bred spelyta
+- `scr_layout_update`: titel, menyer, skeppsval och match lägger ut sig mot hela vyn; spelytan är lika bred som panelraden (widescreen, D-017) med alternativet Options → WIDE PLAYFIELD. Kamerans x-zoom och skottgräns följer `g_PLAY_W`. Ej körd.
+
+## 2026-10-13 — Unika spelarfärger och borttagen rubriklinje
+- `scr_theme_players` väljer fyra tydligt olika accentfärger ur varje tema (störst minsta färgavstånd mellan spelarna och mot bakgrunden); `scr_slot_colour` ger dem till skepp och spelarpanel (P1–P4). Linjen under rubrikraden är borttagen (`scr_ui_header`). Ej körd.
+
+## 2026-10-13 — Ett steg tillbaka i skeppsvalet
+- Thrust-knappen (gamepad X; tangentbord: P1 mellanslag/höger Ctrl, P2 vänster Shift, P3 O) backar ett steg i skeppsvalet (READY → IS THIS OK? → pod → vapen → skepp). `scr_menu_input` (`g_mi_back`), `scr_menu_step`. Ej körd.
+
+## 2026-10-13 — Färgade väggobjekt
+- Banans 68 vägglinjer grupperas till 11 objekt (sammanhängande linjer; `scr_arena_prepare`, `g_wall_grp`) och ritas i olika temafärger (`g_wcol`, satt i `scr_theme_players`; 80 % färg mot bakgrunden så att spelarskeppen syns tydligt). Följer temabyte. Ej körd.
+
+## 2026-10-13 — Skepp mot skepp
+- Kollision och knuff mellan spelare (`scr_ship_collisions`, `scr_ships_overlap`, `scr_ship_bounce`; D-018). Stillastående skepp puttas iväg, boostande skepp ger kraftigare knuff. Ej körd.
+
+## 2026-10-13 — Byt specialvapen och pod under matchen
+- Gamepad: LT växlar specialvapen (nästa tillgängliga, inkl. NOTHING; varje vapen har egen ammo, `scr_special_switch`, `sp_pool`), LB växlar pod (position på skeppet). Tangentbord: P1 Z/X, P2 E/R, P3 U/Y. Ej körd.
+
+## 2026-10-13 — Specialpod som prick i panelen
+- Vald specialpod markeras inte längre med en ring på skeppet i arenan; den visas som en liten prick på skeppsbilden i spelarens panel (`scr_ui_ship`, `scr_hud_panel`). Ej körd.
+
+## 2026-10-13 — Banfiler och banredigerare
+- Banor lagras i `levels.ini` (D-019). Tre inbyggda banor (Sirius Bratwurst = original, Kepler Chorizo, Proxima Merguez), MAP-val och MAP EDITOR under Game Modes, ny banredigerare (`scr_ed_*`, `scr_level_*`), `tools/gen_gms_levels.py`. Ej körd.
+

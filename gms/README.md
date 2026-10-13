@@ -21,6 +21,9 @@
 ## Terminal-UI (Fas 3, ej körd)
 Flöde: titelskärm → huvudmeny (Game modes / Options / Controls / Quit) → skeppsval → match. Esc = ett steg tillbaka (match/skeppsval → huvudmenyn, huvudmeny → titel, titel → avsluta). Menyn styrs med pilar/WASD, Enter/Space/Z = OK, Esc/Backspace/X = tillbaka eller gamepad (D-pad/vänster spak, A/Start = OK, B = tillbaka). Inställningar sparas i `settings.ini`, temafärger i `themes.ini` (GMS 1.4:s sparmapp; sökvägen visas i Options → DATA FOLDER). Se `docs/10_DECISIONS.md` D-016. Rummet är 1024×640; Text ritas med typsnittsresurserna `fnt_*_k*` (Cascadia Mono, OFL; `tools/gen_gms_fonts.ps1`) via `scr_ui_dt`, 1:1 mot skärmpixlarna för UI-skala 1/1,5/2/3 (`scr_display_apply`), så allt är skarpt.
 
+## Banor och banredigerare (ej körd)
+Banor ligger i `levels.ini` i spelets sparmapp (D-019). Tre inbyggda banor skrivs vid första start. Game Modes → MAP väljer bana, MAP EDITOR öppnar redigeraren: B rektangel (klicka två hörn), P polygon (klicka punkter, Enter eller första punkten sluter), X radera (klicka på en vägg), T startplats (1–4 väljer, klicka placerar, Q/E vrider), G rutnät 25/50/100, U ångra, S spara, N ny bana, [ ] eller PageUp/PageDown byter bana, Del (två gånger) tar bort bana, Esc ut. Alla former är solida väggar. Banformat: se D-019 eller öppna `levels.ini`.
+
 ## Kontroller (PLACEHOLDER — originalets mappning är okänd)
 | | Spelare 1 | Spelare 2 |
 |---|---|---|
@@ -37,7 +40,8 @@ Flöde: titelskärm → huvudmeny (Game modes / Options / Controls / Quit) → s
 | Specialvapen | B |
 | Thrust | X eller höger trigger (RT) |
 | **Under matchen:** nästa skepp (test) | RB (höger axelknapp) |
-| **Under matchen:** nästa specialpod (t.ex. fram/bak) | LB (vänster axelknapp) |
+| **Under matchen:** nästa specialvapen | LT (vänster trigger) |
+| **Under matchen:** nästa specialpod (position på skeppet, t.ex. fram/bak) | LB (vänster axelknapp) |
 | Tillbaka till skeppsvalet / cykla antal spelare 1–4 | Start / Back |
 | Skeppsvalet: bläddra / bekräfta | Vänster spak eller D-pad ←/→ / A |
 
