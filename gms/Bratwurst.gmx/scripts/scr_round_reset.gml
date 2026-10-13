@@ -15,4 +15,5 @@ g_state = 1;
 g_winner = -1;
 g_tick = 0;
 g_round_timer = 0;
+g_end_timer = -1;
 scr_camera_update();

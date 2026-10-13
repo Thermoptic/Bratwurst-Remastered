@@ -35,6 +35,14 @@ for (t = 0; t < g_lv_count; t += 1)
 {
     if (g_lv_id[t] == s) { g_sv[g_SV_MAP] = t; }
 }
+ini_open("settings.ini");
+s = ini_read_string("gameplay", "map_astro", "");
+ini_close();
+for (t = 0; t < g_lv_count; t += 1)
+{
+    if (g_lv_id[t] == s) { g_sv[g_SV_MAP2] = t; }
+}
+scr_levels_fix_selection();
 g_n_players = g_sv[g_SV_PLAYERS];
 scr_theme_ini_write();
 scr_theme_apply();

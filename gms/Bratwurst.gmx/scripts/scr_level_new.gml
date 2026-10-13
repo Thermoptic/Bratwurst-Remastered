@@ -2,6 +2,7 @@
 // Skapar en ny bana med standardram (tva rektanglar), originalets startplatser och ett slumpat namn. Sparar den och returnerar dess index.
 var nx, cnt, sec;
 g_ed_name = scr_level_name_random();
+g_ed_modes = 15;
 g_ed_n = 2;
 g_ed_pn[0] = 4;
 g_ed_px[0, 0] = -3000; g_ed_py[0, 0] = -2273; g_ed_px[0, 1] = 2961; g_ed_py[0, 1] = -2273;

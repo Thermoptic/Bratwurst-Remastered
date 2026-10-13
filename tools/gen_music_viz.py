@@ -2,6 +2,7 @@
 """Analyserar titelmusiken och skriver gms/Bratwurst.gmx/scripts/scr_data_musicviz.gml: 12 frekvensband per 20 ms (50 bildrutor/s) som
 equalizern pa titelskarmen och i menyn laser vid musikens spelposition. GameMaker 1.4 kan inte lasa spektrum ur ljud i realtid, sa analysen
 gors har i forvag. Kors om nar musikfilen byts: python tools/gen_music_viz.py [ogg]  (kraver ffmpeg, ingen numpy)."""
+import io
 import math
 import os
 import struct
@@ -14,6 +15,7 @@ DST = os.path.join(HERE, "..", "gms", "Bratwurst.gmx", "scripts", "scr_data_musi
 RATE = 44100
 N = 1024
 BANDS = 12
+WIDE = 32
 FPS = 50
 F0, F1 = 50.0, 14000.0
 DIG = "0123456789abcdefghijklmnopqrstuvwxyz"
@@ -52,46 +54,57 @@ def fft(re, im):
         ln <<= 1
 
 
-def main():
-    s = decode()
+def analyse(s, frames, bands, n):
+    """Returnerar levels[frame][band] (0..35) for 'bands' logaritmiska band mellan F0 och F1, FFT-fonster n."""
     total = len(s)
-    frames = int(round(total / float(RATE) * FPS))
-    edges = [F0 * (F1 / F0) ** (i / float(BANDS)) for i in range(BANDS + 1)]
-    win = [0.5 - 0.5 * math.cos(2 * math.pi * i / (N - 1)) for i in range(N)]
-    bin_hz = RATE / float(N)
+    edges = [F0 * (F1 / F0) ** (i / float(bands)) for i in range(bands + 1)]
+    win = [0.5 - 0.5 * math.cos(2 * math.pi * i / (n - 1)) for i in range(n)]
+    bin_hz = RATE / float(n)
     ranges = []
-    for b in range(BANDS):
+    for b in range(bands):
         lo = max(1, int(edges[b] / bin_hz))
-        hi = max(lo + 1, int(edges[b + 1] / bin_hz))
+        hi = max(lo + 1, int(round(edges[b + 1] / bin_hz)))
         ranges.append((lo, hi))
     energy = []
     for f in range(frames):
         centre = int(f / float(FPS) * RATE)
-        re = [s[(centre - N // 2 + i) % total] * win[i] for i in range(N)]
-        im = [0.0] * N
+        re = [s[(centre - n // 2 + i) % total] * win[i] for i in range(n)]
+        im = [0.0] * n
         fft(re, im)
         row = []
         for lo, hi in ranges:
             p = sum(re[k] * re[k] + im[k] * im[k] for k in range(lo, hi)) / (hi - lo)
             row.append(10 * math.log10(p + 1e-9))
         energy.append(row)
-    levels = [[0] * BANDS for _ in range(frames)]
-    for b in range(BANDS):
+    levels = [[0] * bands for _ in range(frames)]
+    for b in range(bands):
         col = sorted(r[b] for r in energy)
         lo = col[int(len(col) * 0.08)]
         hi = col[int(len(col) * 0.985)]
         for f in range(frames):
             v = (energy[f][b] - lo) / max(1e-6, hi - lo)
             levels[f][b] = int(round(max(0.0, min(1.0, v)) * 35))
+    return levels
+
+
+def main():
+    s = decode()
+    total = len(s)
+    frames = int(round(total / float(RATE) * FPS))
+    lv12 = analyse(s, frames, BANDS, N)
+    lv32 = analyse(s, frames, WIDE, 2048)
     L = ["/// scr_data_musicviz()",
-         "// GENERERAD av tools/gen_music_viz.py - redigera inte for hand. Equalizerdata for titelmusiken: %d rutor a 20 ms, %d band." % (frames, BANDS),
-         "// g_mv_frame[i] = %d tecken (0-9, a-z = niva 0..35) for varje band, lagt till hogt. g_mv_n = antal rutor, g_mv_dur = loopens langd i sekunder." % BANDS,
+         "// GENERERAD av tools/gen_music_viz.py - redigera inte for hand. Equalizerdata for titelmusiken: %d rutor a 20 ms." % frames,
+         "// g_mv_frame[i] = %d tecken (0-9, a-z = niva 0..35), ett per band (titelskarmen). g_mw_frame[i] = %d tecken (menyns breda spektrum)." % (BANDS, WIDE),
+         "// g_mv_n = antal rutor, g_mv_dur = loopens langd i sekunder.",
          "g_mv_n = %d;" % frames,
          "g_mv_dur = %.4f;" % (total / float(RATE))]
     for f in range(frames):
-        L.append('g_mv_frame[%d] = "%s";' % (f, "".join(DIG[v] for v in levels[f])))
-    with open(DST, "w", newline="\n") as fh:
-        fh.write("\n".join(L) + "\n")
+        L.append('g_mv_frame[%d] = "%s";' % (f, "".join(DIG[v] for v in lv12[f])))
+    for f in range(frames):
+        L.append('g_mw_frame[%d] = "%s";' % (f, "".join(DIG[v] for v in lv32[f])))
+    with io.open(DST, "w", newline=chr(10), encoding="ascii") as fh:
+        fh.write(chr(10).join(L) + chr(10))
     print("skrev", DST, frames, "rutor,", "%.2f s" % (total / float(RATE)))
 
 

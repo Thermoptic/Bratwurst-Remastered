@@ -4,6 +4,7 @@
 // g_state: 10 = titel, 11 = huvudmeny, 0 = skeppsval, 1 = match, 2 = matchen slut.
 var gi;
 scr_nav_input();
+g_bg_t += 1;   // fortlopande klocka for menybakgrunden
 scr_music_update();
 scr_musicviz_update();
 
@@ -50,13 +51,21 @@ with (obj_fx) { ftimer += 1; if (ftimer > fmax) { instance_destroy(); } }
 scr_camera_update();
 
 // Slutkontroll (bara om fler an en spelare): den sista overlevande vinner (originalet: kod 0x498).
+// Nar bara en (eller ingen) ar kvar startar en nedrakning pa g_END_DELAY ticks (4 s); spelet fortsatt som vanligt under tiden (explosionen spelas
+// klart, man kan flyga runt). Nar den ar slut visas rundresultatet; vinnaren ar den som da ar kvar (ingen om ingen ar kvar).
 if (g_n_players > 1)
 {
-    if (scr_count_alive() <= 1)
+    if (g_end_timer < 0 && scr_count_alive() <= 1) { g_end_timer = g_END_DELAY; }
+    if (g_end_timer >= 0)
     {
-        g_state = 2;
-        g_winner = scr_last_alive();
-        g_round_timer = 0;
-        if (g_winner >= 0) { g_wins[g_winner] += 1; }
+        g_end_timer -= 1;
+        if (g_end_timer < 0)
+        {
+            g_state = 2;
+            g_winner = scr_last_alive();
+            g_round_timer = 0;
+            g_end_timer = -1;
+            if (g_winner >= 0) { g_wins[g_winner] += 1; }
+        }
     }
 }

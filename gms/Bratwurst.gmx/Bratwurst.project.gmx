@@ -7,7 +7,7 @@
     <datafile>
       <name>updates.txt</name>
       <exists>-1</exists>
-      <size>3529</size>
+      <size>4345</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -175,6 +175,16 @@
     <script>scripts\scr_logo_glyph.gml</script>
     <script>scripts\scr_logo_init.gml</script>
     <script>scripts\scr_logo_word.gml</script>
+    <script>scripts\scr_bg_draw.gml</script>
+    <script>scripts\scr_viz_draw.gml</script>
+    <script>scripts\scr_theme_ramp.gml</script>
+    <script>scripts\scr_cur_map.gml</script>
+    <script>scripts\scr_ed_dlg_draw.gml</script>
+    <script>scripts\scr_ed_dlg_layout.gml</script>
+    <script>scripts\scr_ed_dlg_open.gml</script>
+    <script>scripts\scr_ed_dlg_step.gml</script>
+    <script>scripts\scr_level_allowed.gml</script>
+    <script>scripts\scr_levels_fix_selection.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_lg_k10</font>

@@ -1,6 +1,7 @@
 /// scr_mn_draw()
 // Huvudmenyn i "command deck"-stil: trad till vanster, lista i mitten, datapanel till hoger (konceptet godkant av anvandaren).
 var node, sel, cnt, item, i, k, kid, yy, rx, ry, rw, t, v, bh, bx, by, cw, col, ti, branch, kid2, pre, avail, tx, tw0, lx, lw0, dx, dw0, py, ph, ix, iw, bs;
+scr_bg_draw();   // samma bakgrund som titelskarmen
 node = g_mn_stk_node[g_mn_depth];
 sel = g_mn_stk_sel[g_mn_depth];
 cnt = g_mn_n[node];
@@ -101,21 +102,13 @@ for (k = 0; k < 16; k += 1)
     draw_set_color(g_c[3]);
     draw_rectangle(bx, by, bx + cw, by + 22, true);
 }
-scr_ui_text(ix, py + 314, "SIGNAL", g_c[4]);
-bs = iw / 12;
-for (k = 0; k < 12; k += 1)
-{
-    if (g_mv_on) { bh = 6 + 38 * g_mv[k]; }   // equalizer efter musiken
-    else { bh = 6 + 38 * (0.5 + 0.5 * sin(g_menu_tick * 0.07 * (1 + (k mod 3) * 0.4) + k * 0.8)); }
-    bx = ix + floor(k * bs);
-    draw_set_color(g_acc);
-    draw_rectangle(bx, py + 398 - bh, bx + floor(bs) - 5, py + 398, false);
-}
-scr_ui_text(ix, py + 416, "INI KEY", g_c[4]);
-if (g_mn_ini[item] != "") { scr_ui_text(ix, py + 438, g_mn_ini[item], g_c[10]); }
-else { scr_ui_text(ix, py + 438, "-", g_c[3]); }
-scr_ui_text(ix, py + 468, "FILES", g_c[4]);
-scr_ui_text(ix, py + 490, "settings.ini  themes.ini", g_c[3]);
+scr_ui_text(ix, py + 298, "SPECTRUM", g_c[4]);
+scr_viz_draw(ix, py + 320, iw, 110);
+scr_ui_text(ix, py + 446, "INI KEY", g_c[4]);
+if (g_mn_ini[item] != "") { scr_ui_text(ix, py + 466, g_mn_ini[item], g_c[10]); }
+else { scr_ui_text(ix, py + 466, "-", g_c[3]); }
+scr_ui_text(ix, py + 494, "FILES", g_c[4]);
+scr_ui_text(ix, py + 514, "settings.ini  themes.ini", g_c[3]);
 // ---- hjalprad ----
 g_fs = g_f_sm;
 scr_ui_text(g_vx + 20, g_vy + g_vh - 32, "UP/DOWN ROW    LEFT/RIGHT VALUE    ENTER OK    ESC BACK", g_c[4]);

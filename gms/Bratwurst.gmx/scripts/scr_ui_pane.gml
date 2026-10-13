@@ -2,13 +2,16 @@
 // Ruta med ram, rubrik pa ramen och accenthorn nere (command-deck-stilen).
 var px, py, pw, ph, tw;
 px = argument0; py = argument1; pw = argument2; ph = argument3;
+draw_set_alpha(0.8);
+draw_set_color(g_c[0]);
+draw_rectangle(px, py, px + pw, py + ph, false);
+draw_set_alpha(1);
 draw_set_color(g_c[3]);
 draw_rectangle(px, py, px + pw, py + ph, true);
 draw_set_color(argument5);
-draw_rectangle(px + pw - 12, py + ph - 1, px + pw + 1, py + ph, false);
-draw_rectangle(px + pw - 1, py + ph - 12, px + pw, py + ph, false);
-draw_rectangle(px - 1, py + ph - 1, px + 12, py + ph, false);
-draw_rectangle(px - 1, py + ph - 12, px, py + ph, false);
+// en enda accentlinje i varje nedre horn, exakt pa ramens kant (tidigare ett L av tva linjer)
+draw_rectangle(px + pw - 12, py + ph, px + pw, py + ph, false);
+draw_rectangle(px, py + ph, px + 12, py + ph, false);
 if (argument4 != "")
 {
     g_fs = g_f_sm;

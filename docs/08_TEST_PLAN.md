@@ -172,3 +172,10 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | UI-13 | Starta spelet | Titelskärmen visar linjeloggan centrerad med ring av staplar som rör sig i takt med musiken, planeter som svullnar med basen och skeppen i bakgrunden; PRESS START TO HEAT blinkar |
 | UI-14 | Options → MUSIC av | Staplarna går över till lugn animation; loggan fungerar som förut |
 | UI-15 | Byt tema | Logotyp, planeter och stapelfärger följer temat |
+| UI-16 | Gå från titelskärmen till huvudmenyn | Samma bakgrund fortsätter utan hopp: rutnät, stjärnor och roterande skepp syns bakom och mellan menyrutorna; texten är läsbar |
+| UI-17 | Huvudmenyn med musik | SPECTRUM-rutan visar 32 staplar i takt med musiken med toppar, spegling, oscilloskoplinje och spektrogramremsa; utan musik en lugn grundrörelse |
+| UI-18 | Byt tema (Options → Theme) och titta på SPECTRUM | Staplar, spektrogram, toppar och oscilloskoplinje byter färg med temat; ingen färg är hårdkodad |
+| MAP-08 | Banredigeraren: tryck S | Fönster med namnfält, GENERATE NAME och fyra lägesrutor; Enter sparar, Esc avbryter |
+| MAP-09 | Spara en bana bara för Astro Duel | Banan syns i Astro Duels MAP-val men inte i Classics (och tvärtom) |
+| MAP-10 | Avmarkera Classic på den enda Classic-banan, och försök ta bort den | Fönstret/raderingen vägras med ett meddelande |
+| RND-06 | Döda sista motståndaren | Skeppet exploderar, spelet fortsätter i 4 s (man kan flyga/skjuta), sedan visas rundresultatet; ingen paus däremellan |

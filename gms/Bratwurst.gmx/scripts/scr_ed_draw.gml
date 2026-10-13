@@ -95,12 +95,12 @@ scr_ui_text(tx + 16, line_y + 40, "   ENTER OR FIRST POINT", g_c[4]);
 scr_ui_text(tx + 16, line_y + 60, "   CLOSES)", g_c[4]);
 scr_ui_text(tx + 16, line_y + 80, "X  ERASE (CLICK A WALL)", g_c[4]);
 scr_ui_text(tx + 16, line_y + 100, "T  SPAWN (1-4 PICK, CLICK", g_c[4]);
-scr_ui_text(tx + 16, line_y + 120, "   PLACE, Q/E ROTATE)", g_c[4]);
+scr_ui_text(tx + 16, line_y + 120, "   PLACE, WHEEL OR Q/E TURN)", g_c[4]);
 scr_ui_text(tx + 16, line_y + 140, "G  GRID 25 / 50 / 100", g_c[4]);
 scr_ui_text(tx + 16, line_y + 160, "U  UNDO LAST SHAPE", g_c[4]);
 scr_ui_text(tx + 16, line_y + 180, "RIGHT CLICK  CANCEL", g_c[4]);
 line_y += 214;
-scr_ui_text(tx + 16, line_y, "S  SAVE", g_c[11]);
+scr_ui_text(tx + 16, line_y, "S  SAVE (NAME + MODES)", g_c[11]);
 scr_ui_text(tx + 16, line_y + 20, "N  NEW MAP", g_c[4]);
 scr_ui_text(tx + 16, line_y + 40, "[ ]  PREVIOUS / NEXT MAP", g_c[4]);
 scr_ui_text(tx + 16, line_y + 60, "DEL  DELETE MAP (TWICE)", g_c[4]);
@@ -109,3 +109,4 @@ scr_ui_text(tx + 16, line_y + 80, "ESC  BACK TO MENU", g_c[4]);
 draw_set_color(g_c[0]);
 if (g_ed_msgt > 0) { scr_ui_text(g_ed_x0, g_vy + g_vh - 32, g_ed_msg, g_c[10]); }
 else { scr_ui_text(g_ed_x0, g_vy + g_vh - 32, "ALL SHAPES ARE SOLID WALLS. SAVE WITH S, THEN PICK THE MAP UNDER GAME MODES", g_c[4]); }
+if (g_ed_dlg == 1) { scr_ed_dlg_draw(); }

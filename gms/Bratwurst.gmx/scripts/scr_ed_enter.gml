@@ -12,6 +12,7 @@ g_ed_cesc = 0;
 g_ed_snap = 50;
 g_ed_msg = "";
 g_ed_msgt = 0;
+g_ed_dlg = 0;
 g_state = 20;
 g_menu_tick = 0;
 scr_ed_cursor();   // satter markorens variabler innan forsta ritningen

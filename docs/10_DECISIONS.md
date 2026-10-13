@@ -131,3 +131,8 @@
 ## D-025 — Ny titelskärm: "Radial Ring"
 - **Status:** beslutat av användaren (2026-10-13), vald bland sex förslag (artefakten "Bratwurst Radial Ring").
 - **Beslut:** titelskärmen har en centrerad logotyp i tunna linjer (B R A T W U R S T, A med öga, REHEATED under med linjer på sidorna), en cirkulär equalizer med 72 staplar runt loggan som följer musiken (`g_mv`, D-022; faller tillbaka på en lugn animation utan musik), två dithrade planeter som svullnar med basen, fasta blinkande stjärnor samt oförändrad bakgrund med rutnät och roterande skepp. Loggans glöd pulserar med basen. Gamla texten och värmebalken är borttagna; PRESS START TO HEAT finns kvar. Färgerna kommer från temat (logotyp och planeter = accent; staplar grön → gul → röd).
+
+## D-026 — Banor per spelläge och sparfönster i banredigeraren
+- **Status:** beslutat av användaren (2026-10-13).
+- **Beslut:** varje bana har en bitmask `modes` i `levels.ini` (bit 0 Classic, 1 Astro Duel, 2 Race, 3 Capture the Bratwurst; saknas nyckeln gäller alla lägen). Banvalet i menyn visar bara banor som finns i läget; Classic och Astro Duel har var sitt banval (`gameplay.map`, `gameplay.map_astro` i `settings.ini`).
+- **Sparfönster:** S i banredigeraren öppnar ett fönster med namnfält (skrivs med tangentbordet), knappen GENERATE NAME (slumpat "stjärna + korv"-namn) och en ruta per spelläge. SAVE (Enter) sparar, CANCEL (Esc) avbryter. Minst ett läge måste vara valt, och varje spelbart läge (Classic, Astro Duel) måste ha minst en bana kvar; samma regel hindrar att man tar bort den sista banan i ett läge. Race och Capture the Bratwurst finns i listan så att banor kan förberedas, men lägena är inte byggda än.

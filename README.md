@@ -8,6 +8,15 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 10 - 2026-10-14 - Maps per game mode, menu spectrum
+
+- Map editor save window: type a name (or press Generate name for a random star-and-sausage name) and tick the game modes where the map should be available.
+- The map list in each game mode only shows the maps made for that mode. Classic and Astro Duel now have their own map choice.
+- Rotate a start position in the map editor with the mouse wheel.
+- The main menu has the same background as the title screen: grid, twinkling stars and drifting ships.
+- New spectrum visualizer in the menu: 32 bars, falling peaks, a mirror image, an oscilloscope line and a short history strip. It follows the music and uses the colours of the selected theme.
+- After the last opponent is destroyed there are 4 more seconds of play before the round result appears.
+
 ### UPDATE 9 - 2026-10-13 - New title screen, no gravity
 
 - New title screen: a centred line logo, a circular equalizer ring around it that dances to the music, pulsing planets, twinkling stars and the drifting ships in the background.

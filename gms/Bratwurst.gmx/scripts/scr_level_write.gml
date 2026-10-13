@@ -4,6 +4,7 @@ var s, i, k, str;
 ini_open("levels.ini");
 ini_section_delete(argument0);
 ini_write_string(argument0, "name", g_ed_name);
+ini_write_real(argument0, "modes", g_ed_modes);
 ini_write_real(argument0, "shapes", g_ed_n);
 for (s = 0; s < g_ed_n; s += 1)
 {

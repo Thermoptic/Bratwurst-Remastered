@@ -9,6 +9,7 @@ g_ed_sx[2] = -300000; g_ed_sy[2] = 270000; g_ed_sa[2] = 64;
 g_ed_sx[3] = 300000; g_ed_sy[3] = 270000; g_ed_sa[3] = 192;
 ini_open("levels.ini");
 g_ed_name = ini_read_string(sec, "name", sec);
+g_ed_modes = round(ini_read_real(sec, "modes", 15));
 n = clamp(round(ini_read_real(sec, "shapes", 0)), 0, 64);
 g_ed_n = 0;
 for (s = 0; s < n; s += 1)

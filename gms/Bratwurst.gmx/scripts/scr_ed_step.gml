@@ -7,6 +7,7 @@ if (g_ed_msgt > 0) { g_ed_msgt -= 1; }
 if (g_ed_cdel > 0) { g_ed_cdel -= 1; }
 if (g_ed_cesc > 0) { g_ed_cesc -= 1; }
 scr_ed_cursor();
+if (g_ed_dlg == 1) { scr_ed_dlg_step(); exit; }   // sparfonstret ar modalt
 
 if (keyboard_check_pressed(ord("B"))) { g_ed_tool = 0; g_ed_cn = 0; g_ed_bset = false; }
 if (keyboard_check_pressed(ord("P"))) { g_ed_tool = 1; g_ed_cn = 0; g_ed_bset = false; }
@@ -18,6 +19,12 @@ for (k = 0; k < 4; k += 1)
 }
 if (keyboard_check_pressed(ord("Q"))) { g_ed_sa[g_ed_spawn] = (g_ed_sa[g_ed_spawn] + 256 - 16) mod 256; g_ed_dirty = true; }
 if (keyboard_check_pressed(ord("E"))) { g_ed_sa[g_ed_spawn] = (g_ed_sa[g_ed_spawn] + 16) mod 256; g_ed_dirty = true; }
+// mushjulet vrider den valda startplatsens skepp (8/256 varv = 11,25 grader per klick; upp = moturs, ned = medurs)
+if (g_ed_tool == 3)
+{
+    if (mouse_wheel_up()) { g_ed_sa[g_ed_spawn] = (g_ed_sa[g_ed_spawn] + 256 - 8) mod 256; g_ed_dirty = true; }
+    if (mouse_wheel_down()) { g_ed_sa[g_ed_spawn] = (g_ed_sa[g_ed_spawn] + 8) mod 256; g_ed_dirty = true; }
+}
 if (keyboard_check_pressed(ord("G")))
 {
     if (g_ed_snap == 25) { g_ed_snap = 50; }
@@ -34,9 +41,8 @@ if (mouse_check_button_pressed(mb_right)) { g_ed_cn = 0; g_ed_bset = false; }
 // spara / ny bana / byta bana / ta bort bana
 if (keyboard_check_pressed(ord("S")))
 {
-    scr_level_save(g_ed_idx);
-    g_ed_dirty = false;
-    scr_ed_msg("SAVED " + string_upper(g_ed_name));
+    scr_ed_dlg_open();   // namn + spellagen (D-026)
+    exit;
 }
 if (keyboard_check_pressed(ord("N")))
 {
@@ -45,8 +51,6 @@ if (keyboard_check_pressed(ord("N")))
     {
         ns = scr_level_new();
         scr_ed_enter(ns);
-        g_sv[g_SV_MAP] = ns;
-        scr_set_save();
         scr_ed_msg("NEW MAP " + string_upper(g_ed_name));
     }
 }
@@ -59,8 +63,6 @@ if (keyboard_check_pressed(vk_pageup) || keyboard_check_pressed(vk_pagedown) || 
         if (keyboard_check_pressed(vk_pageup) || keyboard_check_pressed(219)) { ns = g_ed_idx - 1; }
         ns = (ns + g_lv_count) mod g_lv_count;
         scr_ed_enter(ns);
-        g_sv[g_SV_MAP] = ns;
-        scr_set_save();
     }
 }
 if (keyboard_check_pressed(vk_delete))
@@ -68,10 +70,16 @@ if (keyboard_check_pressed(vk_delete))
     if (g_lv_count <= 1) { scr_ed_msg("THE LAST MAP CANNOT BE DELETED"); }
     else if (g_ed_cdel > 0)
     {
+        // varje spelbart spellage maste ha minst en bana kvar
+        for (k = 0; k < 2; k += 1)
+        {
+            ns = 0;
+            for (s = 0; s < g_lv_count; s += 1) { if (s != g_ed_idx && scr_level_allowed(k, s)) { ns += 1; } }
+            if (ns == 0 && scr_level_allowed(k, g_ed_idx)) { scr_ed_msg(g_mode_name[k] + " NEEDS AT LEAST ONE MAP"); g_ed_cdel = 0; exit; }
+        }
         scr_level_delete(g_ed_idx);
         ns = clamp(g_ed_idx, 0, g_lv_count - 1);
         scr_ed_enter(ns);
-        g_sv[g_SV_MAP] = ns;
         scr_set_save();
         scr_ed_msg("MAP DELETED");
     }

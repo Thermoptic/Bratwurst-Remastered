@@ -38,7 +38,8 @@ n = scr_mn_add(3, "PLAYERS", "NUMBER OF PLAYERS, 1 TO 4. MORE CAN ALSO JOIN ON T
 scr_mn_setting(n, g_SV_PLAYERS, 1, 4, "gameplay.players");
 scr_mn_link(p, n);
 n = scr_mn_add(4, "MAP", "THE ARENA FOR THE MATCH. MAKE YOUR OWN WITH THE MAP EDITOR");
-scr_mn_setting(n, g_SV_MAP, 0, max(0, g_lv_count - 1), "gameplay.map");
+scr_mn_setting(n, g_SV_MAP2, 0, max(0, g_lv_count - 1), "gameplay.map_astro");
+g_mn_mode[n] = 1;
 g_mn_map_node2 = n;
 scr_mn_link(p, n);
 n = scr_mn_add(3, "ROUNDS", "HOW MANY ROUNDS A MATCH HAS. THE LAST SHIP FLYING WINS A ROUND, THE MOST ROUND WINS TAKES THE MATCH");

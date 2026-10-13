@@ -165,3 +165,30 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-13 — updates.txt och README
 - `gms/Bratwurst.gmx/datafiles/updates.txt` (Included Files) listar de stora uppdateringarna och nya funktionerna; `tools/sync_updates.py` synkar projektfilens filstorlek och README-blocket "What's new" på GitHub-sidan. README.md är omskriven som publik förstasida.
+
+## 2026-10-13 — Titelbakgrunden i huvudmenyn
+- Bakgrunden (rutnät, blinkande stjärnor och de fyra roterande skeppen) är utbruten till `scr_bg_draw` och används nu även i huvudmenyn; den följer en fortlöpande klocka (`g_bg_t`) så den inte hoppar mellan skärmarna. Rutorna (`scr_ui_pane`) har en 80 % täckande bakgrund så att texten förblir läsbar. Ej körd.
+
+## 2026-10-13 — Spektrum i menyn
+- Visualizern i menyns datapanel (SPECTRUM) är ombyggd (`scr_viz_draw`): 32 LED-staplar med segment grön → gul → röd, fallande toppmarkörer, spegling under baslinjen, oscilloskoplinje, en baslinje som glöder med basen och en spektrogramhistorik. Datan har analyserats i 32 band (`g_mw_frame`, FFT 2048; `tools/gen_music_viz.py`) vid sidan av de 12 banden för titelskärmen; `scr_musicviz_update` sköter attack/fall, toppar och historik. Ej körd.
+
+## 2026-10-13 — Bugfix: kompileringsfel i scr_viz_draw
+- Variabeln `frac` krockade med den inbyggda funktionen; bytt namn (`fq`). Alla skript genomsökta efter liknande namnkrockar.
+
+## 2026-10-13 — Spektrumets färger följer temat
+- SPECTRUM i menyn använder nu temats färger (`scr_theme_ramp`): staplarna går blå (base0D) → cyan (0C) → grön (0B) → gul (0A) → orange (09) → röd (08) efter höjd, spektrogramremsan färgas efter frekvens (samma skala plus magenta 0E) med ljusstyrka efter nivå, toppmarkörerna är base07, oscilloskoplinjen magenta (0E), baslinjen accenten och panelbakgrunden base01. Färgerna byts direkt med temat. Ej körd.
+
+## 2026-10-13 — Enklare hörnmarkeringar på rutorna
+- Rutornas nedre hörn har nu en enda accentlinje på ramens kant i stället för ett L av två linjer (`scr_ui_pane`). Ej körd.
+
+## 2026-10-13 — Banredigeraren: vrid startplats med mushjulet
+- Med startplatsverktyget (T, eller 1–4) vrider mushjulet det valda skeppet 11,25° per klick (upp = moturs, ned = medurs), vid sidan av Q/E (22,5°). Hjälptexten uppdaterad. Ej körd.
+
+## 2026-10-13 — Banor per spelläge, sparfönster
+- Banredigerarens S öppnar ett sparfönster (`scr_ed_dlg_*`): namn, GENERATE NAME och en kryssruta per spelläge. Banor får en `modes`-bitmask i `levels.ini` (`scr_level_allowed`); banvalet i Classic och Astro Duel visar bara banor som finns i läget och har egna val (`g_SV_MAP2`). D-026. Ej körd.
+
+## 2026-10-13 — Bugfix: skriptfel i scr_ed_dlg_step
+- Variabeln `other` är ett nyckelord i GML; bytt namn (`hasother`). Alla skript genomsökta efter variabelnamn som är nyckelord.
+
+## 2026-10-14 — Fördröjning före rundresultatet
+- När sista motståndaren är död startar en nedräkning på 4 s (`g_END_DELAY` = 200 ticks, `g_end_timer`) innan rundresultatet visas; spelet fortsätter som vanligt under tiden (explosionen spelas klart, man kan flyga och skjuta). Vinnaren avgörs när tiden är ute (ingen vinnare om ingen är kvar). Gäller alla spellägen. Ej körd.
