@@ -298,3 +298,6 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-14 — Skott och missiler avfyras i nosens riktning
 - Kanonskott och missiler får inte längre skeppets egen hastighet; de avfyras alltid exakt åt det håll skeppet pekar, även vid drift eller glidning i sidled (`g_SHOT_INHERIT` = 0, D-031; 1 ger originalets beteende). `scr_player_step`, `scr_special_fire`, `scr_config_init`. Ej körd.
+
+## 2026-10-14 — Musikfilerna i repot
+- Mappen `Music/` (mp3-källfilerna, ca 25 MB) ligger nu i git, med `Music/README.md` (hur man lägger till låtar, rättighetsstatus). Spelet innehåller redan musiken: oggfilerna är ljudresurser i projektet (`sound/audio/snd_music_N.ogg`, byggs in i spelet) och equalizerdatan ligger i Included Files (`datafiles/viz_N.txt`). Rättighetsanteckning: titellåten är 3Elks (tredje part), Thermoptic-låtarna är SANNOLIKT egna.
