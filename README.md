@@ -12,6 +12,12 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 22 - 2026-10-14 - New icon, Dracula theme
+
+- The game has a new icon: the BW logo with the equalizer ring.
+- Dracula is now the default theme. A theme you pick is still saved and used next time.
+- The debug text in the top left of the play area is hidden by default. Press F1 to show it.
+
 ### UPDATE 21 - 2026-10-14 - Options in the pause menu, drift settings
 
 - The pause menu has a new OPTIONS entry. It opens the normal options menu on top of the match, so you can change theme, volume and so on while you play. Esc goes back to the pause menu.

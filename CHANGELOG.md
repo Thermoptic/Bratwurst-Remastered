@@ -367,3 +367,12 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-14 — DRIFT i Powerup Editor och Options i pausmenyn
 - Ny sida DRIFT i den hemliga Powerup Editor (Options, tryck P) med alla drift- och reverseinställningar: MIN SPEED, TURN BOOST, SLIDE ANGLE, DRIFT THRUST, REVERSE THRUST, TRAIL LENGTH, ENGINE SOUND och TRAIL WIDTH (standardvärdena är de nuvarande). De sparas i settings.ini och slår igenom direkt (`scr_drift_apply`). Spårets längd kan sänkas medan ett spår är längre. Pausmenyn har fått raden OPTIONS som öppnar Options inne i matchen; Esc/B går tillbaka till pausmenyn; Map Editor är spärrad där. D-038. Ej körd.
+
+## 2026-10-14 — Debugtexten dold som standard
+- Debugtexten uppe till vänster i spelytan (ESC MENU, F2 SHIP SELECT, TICK, Z, shots) är dold vid start; F1 visar och döljer den som förut. `g_debug` är `false` som standard (`scr_config_init`). Ej körd.
+
+## 2026-10-14 — Dracula som standardtema
+- Standardtemat är nu Dracula (var Nord). Ett tema man väljer sparas som förut i settings.ini och används vid nästa start; standardvärdet gäller bara när ingen sparad inställning finns (första start eller efter "återställ inställningar"). `scr_set_defaults`. Ej körd.
+
+## 2026-10-14 — Ny exe-ikon
+- Spelets exe-ikon är den nya BW-loggan (neonlogga med equalizerring): `Configs/Default/windows/runner_icon.ico` (GameMakers `option_windows_game_icon`) är ersatt med en ikon i sju storlekar (16–256 px, genomskinlig bakgrund), liksom `Runner_Icon_256.ico`; källbilden ligger som `assets/icon/icon.png` och ikonerna byggs med `tools/make_icon.py <bild>`. Ikonen syns först efter en ny export/build av exe-filen (Windows kan visa den gamla ikonen i cache en stund). Ej verifierat i GMS.

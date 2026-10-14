@@ -51,7 +51,7 @@ g_pship[3] = 1;
 g_n_players = 2;
 g_state = 0;         // 0 = skeppsval, 1 = match, 2 = matchen slut, 10 = titelskarm, 11 = huvudmeny
 g_winner = -1;
-g_debug = true;
+g_debug = false;
 g_zoom = 17694;      // 108*65536/400 = zoom for en ensam spelare vid start
 g_cam_x = 0;
 g_cam_y = 0;
