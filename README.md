@@ -12,6 +12,12 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 24 - 2026-10-14 - Navigation dots, safer shots
+
+- Navigation dots: a fixed grid of coloured pixels, 100 pixels apart, covers the whole arena so you can tell where you are and how fast you move when nothing else is in view. They only show when the camera is zoomed in and fade out completely when it zooms out.
+- Shots and missiles now get the forward speed of your ship on top of their own speed (in the direction you fire), so a fast ship at full speed can no longer fly into its own shots. They still go exactly where the nose points.
+- Solid colors: the fill now covers the whole hull, with no thin edge next to the outline.
+
 ### UPDATE 23 - 2026-10-14 - Solid colors, side thruster, B to go back
 
 - New option SOLID COLORS (Options, OFF by default): fills all solid walls and the ships with their colour.

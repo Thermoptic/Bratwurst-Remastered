@@ -68,8 +68,9 @@ if (g_game_mode == 1)
             sh = instance_create(0, 0, obj_shot);
             sh.px = pod_wx[p];
             sh.py = pod_wy[p];
-            sh.vx = vx * g_SHOT_INHERIT - g_psin[a] * power(2, shot_shift);   // D-031: skottet far (som standard) ingen av skeppets egen fart
-            sh.vy = vy * g_SHOT_INHERIT + g_pcos[a] * power(2, shot_shift);
+            scr_boost_vel(-g_psin[a] * power(2, shot_shift), g_pcos[a] * power(2, shot_shift));   // D-042: + skeppets fart framat, sa att man inte kor in i sina skott
+            sh.vx = vx * g_SHOT_INHERIT + g_bv_x;   // D-031: skeppets sidofart ar inte med, riktningen ar exakt skeppets
+            sh.vy = vy * g_SHOT_INHERIT + g_bv_y;
             sh.owner = slot;
         }
         ad_charges -= 1;
@@ -88,8 +89,9 @@ else if (in_fire && reload <= 0 && instance_number(obj_shot) < g_MAX_SHOTS)
         sh = instance_create(0, 0, obj_shot);
         sh.px = pod_wx[p];
         sh.py = pod_wy[p];
-        sh.vx = vx * g_SHOT_INHERIT - g_psin[a] * power(2, shot_shift);   // D-031: skottet far (som standard) ingen av skeppets egen fart
-        sh.vy = vy * g_SHOT_INHERIT + g_pcos[a] * power(2, shot_shift);
+        scr_boost_vel(-g_psin[a] * power(2, shot_shift), g_pcos[a] * power(2, shot_shift));   // D-042: + skeppets fart framat, sa att man inte kor in i sina skott
+        sh.vx = vx * g_SHOT_INHERIT + g_bv_x;   // D-031: skeppets sidofart ar inte med, riktningen ar exakt skeppets
+        sh.vy = vy * g_SHOT_INHERIT + g_bv_y;
         sh.owner = slot;
         cannon_ammo -= 1;
     }

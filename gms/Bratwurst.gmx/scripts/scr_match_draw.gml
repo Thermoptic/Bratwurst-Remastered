@@ -22,6 +22,7 @@ draw_set_color(g_c[1]);
 for (gx = 0; gx <= pwx; gx += 20 * g_SCALE) { draw_line(g_OX + gx, g_OY, g_OX + gx, g_OY + phx); }
 for (gy = 0; gy <= phx; gy += 20 * g_SCALE) { draw_line(g_OX, g_OY + gy, g_OX + pwx, g_OY + gy); }
 
+scr_dots_draw();         // orienteringspunkter: syns bara nar kameran ar inzoomad
 scr_solid_walls_draw();   // Solid colors: fyll foremalen forst, konturerna ritas ovanpa
 // Vaggar: varje objekt i sin egen temafarg (g_wall_grp, scr_theme_players)
 for (k = 0; k < g_wall_n; k += 1)

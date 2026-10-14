@@ -24,8 +24,9 @@ if (t == 0)
     m.owner = slot;
     m.px = sx;
     m.py = sy;
-    m.vx = vx * g_SHOT_INHERIT - g_psin[a] * g_sv[b + 1];
-    m.vy = vy * g_SHOT_INHERIT + g_pcos[a] * g_sv[b + 1];
+    scr_boost_vel(-g_psin[a] * g_sv[b + 1], g_pcos[a] * g_sv[b + 1]);   // + skeppets fart framat (D-042)
+    m.vx = vx * g_SHOT_INHERIT + g_bv_x;
+    m.vy = vy * g_SHOT_INHERIT + g_bv_y;
     m.mtimer = 150;
     m.msize = g_sv[b];
     scr_sfx_play(snd_sfx_missile, 1, 1);

@@ -388,3 +388,12 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-14 — Solid colors
 - Ny inställning Options → SOLID COLORS (OFF som standard). ON fyller banans solida väggar med sin färg och skeppens skrov med spelarfärgen; konturerna ritas ovanpå. Polygonerna (även konkava) triangulerar med ear clipping en gång (`scr_poly_tris`, `scr_solid_build`, `scr_ship_fill_init`) och ritas som trianglar (`scr_solid_walls_draw`, `scr_ship_fill`). Banans ytterram fylls inte; skeppet Kaese (öppet skrov) fylls inte. D-041. Ej körd i GMS (triangulerigen verifierad mot alla skepp och banor i Python).
+
+## 2026-10-14 — Solid colors: fyllningen täcker hela skrovet
+- Fyllningen av skepp och väggar låg 1–2 pixlar snett mot konturen (en tunn kant på höger/nedre sidor, troligen grafikkortets fyllregel). Nu ritas fyllningen förskjuten 0–`g_FILL_EXPAND` pixlar åt höger/ned (standard 1) och trianglarnas kanter ritas även som linjer i samma färg, så att fyllningen täcker hela formen under konturen. `scr_ship_fill`, `scr_solid_walls_draw`, `scr_config_init`. Ej körd; höj `g_FILL_EXPAND` till 2 om en kant syns kvar.
+
+## 2026-10-14 — Skott går aldrig sakta nog att köra in i
+- Skott och missiler får nu skeppets fart framåt i skjutriktningen utöver sin grundhastighet (`scr_boost_vel`, `g_SHOT_BOOST` = 1): extra = max(0, skeppets fart längs skjutriktningen), så projektilen är relativt skeppet alltid minst lika snabb som grundhastigheten och ett snabbt skepp kan inte köra in i sina egna skott. Riktningen förblir exakt skeppets (sidofart räknas inte). Gäller kanonskott, missiler och Mini Nuke. `scr_player_step`, `scr_special_fire`, `scr_powerup_fire`, `scr_config_init`. D-042. Ej körd.
+
+## 2026-10-14 — Orienteringspunkter
+- Ett fast gitter av färgade pixlar (accentfärg, 100 pixlars mellanrum i banans koordinater) över hela arenan hjälper spelaren att se var man är och hur fort man rör sig när inga andra föremål syns. De syns bara vid mycket inzoomad kamera (full styrka vid zoom ≥ 13000) och tonar ut mot zoom 7000, där de är helt borta. Punkter ritas bara innanför ramen och utanför föremål. `scr_dots_prepare`, `scr_dots_draw`, `scr_match_draw`, `scr_game_start`, `scr_config_init`. D-043. Ej körd.

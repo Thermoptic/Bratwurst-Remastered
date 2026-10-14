@@ -22,6 +22,7 @@ scr_level_apply();
 scr_solid_build();   // fyllningstrianglar for vaggarna (Solid colors)
 g_match_map = g_ed_name;   // matchens banamn (visas i spelytans horn)
 scr_arena_prepare();
+scr_dots_prepare();   // orienteringspunkter (D-043), efter att vaggarna ar klara
 scr_spark_clear();
 for (i = 0; i < g_n_players; i += 1)
 {

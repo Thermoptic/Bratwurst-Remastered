@@ -7,7 +7,7 @@
     <datafile>
       <name>updates.txt</name>
       <exists>-1</exists>
-      <size>13126</size>
+      <size>13767</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -325,6 +325,9 @@
     <script>scripts\scr_ship_fill_init.gml</script>
     <script>scripts\scr_solid_build.gml</script>
     <script>scripts\scr_solid_walls_draw.gml</script>
+    <script>scripts\scr_boost_vel.gml</script>
+    <script>scripts\scr_dots_draw.gml</script>
+    <script>scripts\scr_dots_prepare.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_lg_k10</font>
