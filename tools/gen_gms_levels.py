@@ -44,8 +44,9 @@ def original_polygons():
 
 def build():
     orig = original_polygons()
-    frame = orig[:2]
-    nooks = orig[2:6]
+    frame = orig[1:2]   # bara den inre ramen (den yttre linjen togs bort pa alla banor, D-033)
+    orig = orig[1:]
+    nooks = orig[1:5]
     kepler = frame + nooks + [
         [(-120, -800), (120, -800), (120, -120), (800, -120), (800, 120), (120, 120), (120, 800), (-120, 800), (-120, 120), (-800, 120), (-800, -120), (-120, -120)],
         box(-2100, -350, -1950, 350), box(1950, -350, 2100, 350),

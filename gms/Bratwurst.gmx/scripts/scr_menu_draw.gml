@@ -51,9 +51,9 @@ for (i = 0; i < 4; i += 1)
         draw_rectangle(pcx - 90, pcy + 50, pcx - 90, pcy + 62, false);
         draw_rectangle(pcx + 78, pcy + 62, pcx + 90, pcy + 62, false);
         draw_rectangle(pcx + 90, pcy + 50, pcx + 90, pcy + 62, false);
-        // uppmaningen (alla lediga platser): mindre text, centrerad i ramen; bara nasta plats blinkar
+        // uppmaningen (alla lediga platser): mindre text, centrerad i ramen; blinkar pa alla lediga platser
         g_fs = g_f_md;
-        if (i != g_n_players || (g_menu_tick mod 60) < 40)
+        if ((g_menu_tick mod 60) < 40)
         {
             scr_ui_text_c(pcx, pcy - 30, "PRESS FIRE", c);
             scr_ui_text_c(pcx, pcy - 8, "TO JOIN", c);

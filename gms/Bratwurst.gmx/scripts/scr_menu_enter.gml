@@ -2,7 +2,7 @@
 g_paused = false;
 // Gar tillbaka till skeppsvalet (behaller tidigare skeppsval) och tar bort matchens objekt.
 var i;
-with (obj_player) { instance_destroy(); }
+with (obj_player) { if (dr_snd >= 0) { audio_stop_sound(dr_snd); } instance_destroy(); }   // driftljudet stoppas
 with (obj_shot) { instance_destroy(); }
 with (obj_missile) { instance_destroy(); }
 with (obj_fx) { instance_destroy(); }

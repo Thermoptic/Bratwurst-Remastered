@@ -1,9 +1,9 @@
 /// scr_levels_write_defaults()
-// Skriver de inbyggda banorna (scr_data_levels) till levels.ini. Anropas bara om filen saknas (meta.version).
+// Skriver de inbyggda banorna (scr_data_levels) till levels.ini. Anropas bara om filen saknas (meta.version saknas); aldre v1-filer migreras av scr_levels_strip_outer.
 // Format: [index] count, next, id0..; [<id>] name, shapes, s0.. (polygoner "x,y;x,y;..." i varldspixlar), p0..p3 (startplatser "x,y,vinkel" i 1/256 px).
 var m, j, k, sec;
 ini_open("levels.ini");
-ini_write_string("meta", "version", "v1");
+ini_write_string("meta", "version", "v2");
 ini_write_string("meta", "info", "Maps for Bratwurst. Each shape is a closed polygon of world pixel points. Edit in the in-game map editor.");
 ini_write_real("index", "count", g_dl_count);
 ini_write_real("index", "next", g_dl_count);

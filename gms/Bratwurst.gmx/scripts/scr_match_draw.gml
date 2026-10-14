@@ -131,13 +131,31 @@ if (g_debug)
 }
 if (g_state == 2)
 {
-    scr_ui_pane(g_OX + pwx / 2 - 190, g_OY + phx / 2 - 56, 380, 112, "ROUND " + string(g_round) + " OF " + string(g_rounds_total), g_acc);
+    // rundresultat: vinnaren far stor rubrik "WELL HOT DOG, WE HAVE A WEINER!" och spelarens namn under; ingen vinnare ger bara NO WINNER
+    var rw, rh, rtx, rcx, rcy;
+    rtx = "WELL HOT DOG, WE HAVE A WEINER!";
     g_fs = g_f_lg;
-    if (g_winner >= 0) { scr_ui_text_c(g_OX + pwx / 2, g_OY + phx / 2 - 38, "PLAYER " + string(g_winner + 1) + " WINS", scr_slot_colour(g_winner)); }
-    else { scr_ui_text_c(g_OX + pwx / 2, g_OY + phx / 2 - 38, "NO WINNER", g_c[10]); }
+    rw = scr_ui_tw(rtx) + 48;
+    if (rw > pwx - 24) { g_fs = g_f_md; rw = scr_ui_tw(rtx) + 48; }   // ryms inte i spelytan: mindre typsnitt
+    rw = max(rw, 380);
+    rh = 140;
+    rcx = g_OX + pwx / 2;
+    rcy = g_OY + phx / 2;
+    scr_ui_pane(rcx - rw / 2, rcy - rh / 2, rw, rh, "ROUND " + string(g_round) + " OF " + string(g_rounds_total), g_acc);
+    if (g_winner >= 0)
+    {
+        scr_ui_text_c(rcx, rcy - 48, rtx, g_acc);
+        g_fs = g_f_lg;
+        scr_ui_text_c(rcx, rcy - 14, "PLAYER " + string(g_winner + 1) + " WINS", scr_slot_colour(g_winner));
+    }
+    else
+    {
+        g_fs = g_f_lg;
+        scr_ui_text_c(rcx, rcy - 30, "NO WINNER", g_c[10]);
+    }
     g_fs = g_f_sm;
-    if (g_round >= g_rounds_total) { scr_ui_text_c(g_OX + pwx / 2, g_OY + phx / 2 + 14, "FINAL RESULT NEXT", g_c[4]); }
-    else { scr_ui_text_c(g_OX + pwx / 2, g_OY + phx / 2 + 14, "NEXT ROUND STARTING", g_c[4]); }
-    scr_ui_text_c(g_OX + pwx / 2, g_OY + phx / 2 + 34, "F2 SHIP SELECT   ESC MAIN MENU", g_c[3]);
+    if (g_round >= g_rounds_total) { scr_ui_text_c(rcx, rcy + 28, "FINAL RESULT NEXT", g_c[4]); }
+    else { scr_ui_text_c(rcx, rcy + 28, "NEXT ROUND STARTING", g_c[4]); }
+    scr_ui_text_c(rcx, rcy + 48, "F2 SHIP SELECT   ESC MAIN MENU", g_c[3]);
 }
 if (g_paused) { scr_pause_draw(); }

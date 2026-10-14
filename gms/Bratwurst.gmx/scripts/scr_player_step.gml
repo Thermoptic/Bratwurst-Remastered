@@ -6,6 +6,7 @@ var a, p, fired_all, sh, shx, shy, tw, ta, tm;
 if (!alive)
 {
     scr_trail_update();   // driftsparet tonar ut aven nar skeppet ar borta
+    scr_drift_sound();
     // nedrakning till aterskapning (D: 3 sekunder efter att ett liv forlorats)
     if (respawn_t > 0)
     {
@@ -160,3 +161,4 @@ if (energy <= 0)
     scr_player_lose_life();   // exploderar, tar ett liv och startar nedrakningen
 }
 scr_trail_update();   // driftspar (D-030)
+scr_drift_sound();   // driftljud (loop)

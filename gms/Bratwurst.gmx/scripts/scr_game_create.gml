@@ -4,6 +4,7 @@ scr_config_init();
 scr_data_trig();
 scr_data_arena();
 scr_data_ships();
+scr_data_sausage();   // korvmodellen (pseudoskepp utanfor skeppsvalet)
 scr_trail_init();   // driftspar per skepp
 scr_data_themes();
 scr_data_levels();

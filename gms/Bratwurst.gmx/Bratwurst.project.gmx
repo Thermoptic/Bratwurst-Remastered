@@ -7,7 +7,7 @@
     <datafile>
       <name>updates.txt</name>
       <exists>-1</exists>
-      <size>8755</size>
+      <size>9507</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -116,6 +116,7 @@
     <sound>sound\snd_music_2</sound>
     <sound>sound\snd_music_1</sound>
     <sound>sound\snd_sfx_shot</sound>
+    <sound>sound\snd_sfx_drift</sound>
     <sound>sound\snd_sfx_explosion</sound>
     <sound>sound\snd_sfx_missile</sound>
     <sound>sound\snd_sfx_guided</sound>
@@ -295,6 +296,9 @@
     <script>scripts\scr_trail_init.gml</script>
     <script>scripts\scr_trail_update.gml</script>
     <script>scripts\scr_spark_one.gml</script>
+    <script>scripts\scr_drift_sound.gml</script>
+    <script>scripts\scr_levels_strip_outer.gml</script>
+    <script>scripts\scr_data_sausage.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_lg_k10</font>

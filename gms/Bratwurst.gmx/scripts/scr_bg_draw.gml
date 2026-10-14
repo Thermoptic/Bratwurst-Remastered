@@ -15,6 +15,10 @@ for (i = 0; i < 4; i += 1)
     ay = g_vy + g_vh * (0.19 + 0.31 * (i mod 2)) + 40 * sin(g_bg_t * 0.012 + i * 2);
     scr_ui_ship(sh, ax, ay, 0.9, g_bg_t * (1 + i), g_c[2], -1, false);
 }
+// korven (Capture the Bratwurst) driver och roterar langsamt tillsammans med skeppen
+ax = g_vx + ((g_bg_t * 0.4 + 760) mod (g_vw + 360)) - 180;
+ay = g_vy + g_vh * 0.62 + 50 * sin(g_bg_t * 0.01 + 5);
+scr_ui_ship(g_SAUSAGE, ax, ay, 0.9, floor(g_bg_t * 0.8), g_c[2], -1, false);
 
 // stjarnor
 for (k = 0; k < 46; k += 1)

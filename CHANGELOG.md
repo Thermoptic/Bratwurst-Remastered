@@ -309,3 +309,28 @@ Alla betydande projektändringar dokumenteras här.
 ## 2026-10-14 — Ny pausmeny med stats och kontroller
 - Pausmenyn är nu tre rutor i en rad med liten text som resten av gränssnittet: till vänster MATCH STATS (läge, runda, bana, låt, tid, antal spelare, ledare efter flest rundvinster, och per spelare skepp, vinster, liv som rutor samt energi/respawn/OUT), i mitten en kompakt PAUSED-ruta (RESUME GAME / QUIT TO MENU) och till höger CONTROLS som listar vad alla gamepad- och tangentbordsknappar gör, på engelska. `scr_pause_draw`. Ej körd; kontrollera att allt ryms i 1024x640 och i större vyer.
 - Loggan (assets/logo.png) ligger överst i README.md på GitHub.
+
+## 2026-10-14 — Driftljud
+- Nytt loopbart rymdskeppsmotorljud (`snd_sfx_drift`, genererat med `tools/gen_drift_sound.py`) som spelas så länge drift-knappen hålls med gas och fart. Varje spelare har egen kanal, ljudet tonas in/ut, tystnar vid paus, när skeppet förstörs och när matchen lämnas, och följer SOUND EFFECTS i Options. `scr_drift_sound`, `scr_player_step`, `scr_game_step`. Ej körd.
+
+## 2026-10-14 — Plats 4 blinkar som plats 3
+- "PRESS FIRE TO JOIN" blinkar nu på alla lediga platser i skeppsvalet (även plats 4 innan plats 3 anslutit), inte bara på nästa plats. `scr_menu_draw`. Ej körd.
+
+## 2026-10-14 — Rundvinst: "Well hot dog, we have a weiner!"
+- När någon vinner en runda visar resultatrutan den stora rubriken "WELL HOT DOG, WE HAVE A WEINER!" (stort typsnitt, rutan anpassas efter textbredden) och under den "PLAYER n WINS" i vinnarens färg. Utan vinnare står bara NO WINNER. `scr_match_draw`. Ej körd.
+
+## 2026-10-14 — Classic: LIFE
+- Ny rad LIFE under ROUNDS i Game modes → Classic: antal liv per runda. Standard och högsta värde är originalets 6 (`g_START_LIVES`); det går att sänka ner till 1 men inte höja. Sparas som `[gameplay] lives` i settings.ini (`g_SV_LIVES`) och används av `scr_game_start` i Classic (Astro Duel har sin egen LIFE, 1–9). `scr_mn_build`, `scr_set_*`, `scr_config_init`. Ej körd.
+
+## 2026-10-14 — Yttre ramlinjen borttagen på alla banor
+- Den yttre av de två ramlinjerna runt banan är borttagen på alla banor (D-033). De inbyggda banorna genereras utan den, nya banor i redigeraren får bara en ram, och befintlig `levels.ini` migreras automatiskt från v1 till v2 (yttre fyrkanten tas bort ur alla banor, säkerhetskopia `levels_v1_backup.ini`). `tools/gen_gms_levels.py`, `scr_data_levels`, `scr_level_new`, `scr_levels_init`, `scr_levels_strip_outer`, `scr_levels_write_defaults`. Ej körd.
+
+## 2026-10-14 — Korvmodell i bakgrunden
+- Ny trådramsmodell av en korv (`scr_data_sausage`, D-034, första version efter användarens bild) i skeppens dataformat som pseudoskepp `g_SAUSAGE`. Den driver och roterar i bakgrunden på titelskärmen och i huvudmenyn tillsammans med skeppen (`scr_bg_draw`); den är inte valbar i skeppsvalet. Avsedd för det framtida spelläget Capture the Bratwurst. Ej körd.
+- Korvmodellen ritades om (andra versionen): tjockare, nästan jämn tjocklek och trubbiga rundade ändar i stället för spetsiga (första versionen såg ut som en banan), fem längsgående kurvor, lätt böjda tvärringar, slutna ändkappor och en liten vriden knut på den inre kanten i varje ände. `scr_data_sausage`. Ej körd.
+
+## 2026-10-14 — Korven som redigerbar SVG
+- `assets/models/sausage.svg` (korvmodellen som ritbar SVG), `tools/svg_to_model.py` (SVG → `scr_data_sausage.gml`, stöd för linjer, polylinjer, polygoner, rektanglar, path med raka linjer och kurvor samt transformer; punkter inom 1 enhet slås ihop) och `tools/make_sausage_svg.py` (skapar SVG:n från den inbyggda formen), samt `assets/models/README.md` med hur man ritar om och läser in den. Den nuvarande `scr_data_sausage.gml` är fortfarande den beräknade versionen tills SVG:n har ritats om och verktyget körts.
+
+## 2026-10-14 — Användarens ritade korv används
+- `assets/models/sausage2.svg` (användarens omritning av korven) är inläst med `tools/svg_to_model.py` till `scr_data_sausage.gml` (180 punkter, 251 linjer). Verktyget normaliserar nu viewBox (mitten blir 0,0 och bredden 400 enheter) så att SVG:er som sparats i annan skala (här 0 0 1200 660) hamnar rätt. Ej körd i GMS.

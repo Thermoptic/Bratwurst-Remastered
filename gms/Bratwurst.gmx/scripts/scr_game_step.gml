@@ -23,7 +23,12 @@ if (g_state == 30) { scr_results_step(); exit; }   // slutresultat
 // Match: Esc eller Start oppnar pausmenyn (RESUME GAME / QUIT TO MENU); medan den ar oppen star spelet stilla
 if (g_state == 1)
 {
-    if (g_paused) { scr_pause_step(); exit; }
+    if (g_paused)
+    {
+        with (obj_player) { drifting = false; scr_drift_sound(); }   // driftljudet tonas ut under paus
+        scr_pause_step();
+        exit;
+    }
     if (keyboard_check_pressed(vk_escape))
     {
         g_paused = true; g_pause_sel = 0; exit;

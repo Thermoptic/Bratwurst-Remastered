@@ -2,12 +2,12 @@
 g_paused = false;
 // Startar om matchen. Skapar spelare med skeppsval fran g_pship[].
 var i, p;
-with (obj_player) { instance_destroy(); }
+with (obj_player) { if (dr_snd >= 0) { audio_stop_sound(dr_snd); } instance_destroy(); }   // driftljudet stoppas
 with (obj_shot) { instance_destroy(); }
 with (obj_missile) { instance_destroy(); }
 with (obj_fx) { instance_destroy(); }
 g_n_players = argument0;
-if (g_game_mode == 1) { g_lives_max = g_sv[g_SV_ADLIVES]; } else { g_lives_max = g_START_LIVES; }
+if (g_game_mode == 1) { g_lives_max = g_sv[g_SV_ADLIVES]; } else { g_lives_max = g_sv[g_SV_LIVES]; }   // Classic: valt antal liv (hogst g_START_LIVES)
 g_state = 1;
 g_winner = -1;
 g_tick = 0;

@@ -12,6 +12,15 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 17 - 2026-10-14 - Sausage, drift sound, round win text
+
+- A wireframe sausage (for the future Capture the Bratwurst mode) now drifts and rotates in the background of the title screen and menu together with the ships. The model is drawn as an SVG that you can edit yourself (assets/models).
+- Drift has its own sound: a looping spaceship engine that plays as long as you drift.
+- When a round is won the screen says WELL HOT DOG, WE HAVE A WEINER! with the winning player underneath.
+- New LIFE setting for Classic (1 to 6 lives, 6 is the default and the maximum).
+- The outer line of the arena frame is gone on all maps (your own maps are updated automatically, with a backup).
+- Ship select: PRESS FIRE TO JOIN blinks on every open slot.
+
 ### UPDATE 16 - 2026-10-14 - New pause menu, new gamepad layout
 
 - New pause menu: a compact PAUSED box in the middle, a MATCH STATS box on the left (mode, round, map, song, time, players, leader, and for every player the ship, wins, lives and energy) and a CONTROLS box on the right that lists what every button does.

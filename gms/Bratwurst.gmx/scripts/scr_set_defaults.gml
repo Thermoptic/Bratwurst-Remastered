@@ -19,4 +19,5 @@ g_sv[g_SV_ROUNDS] = 3;
 g_sv[g_SV_MUSIC] = 1;
 g_sv[g_SV_VOL] = 7;   // musikvolym i steg om 10 % (1..10), standard 70 %
 g_sv[g_SV_ADLIVES] = 1;
+g_sv[g_SV_LIVES] = g_START_LIVES;   // Classic: liv per runda, hogst originalets 6
 g_sv[g_SV_SFX] = 1;
