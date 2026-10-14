@@ -1,6 +1,9 @@
 BRATWURST REHEATED - UPDATES
 Newest first. Only the big changes and new features are listed.
 
+== UPDATE 26 - 2026-10-14 - Smaller music files ==
+* The five songs are re-encoded at a slightly lower quality, so the game is about 4 MB smaller (the music is about 15 MB instead of 19 MB). Length and the equalizer are unchanged.
+
 == UPDATE 25 - 2026-10-14 - Music player in the main menu ==
 * The right side of the main menu is now two boxes: DATA on top and a MUSIC player below it. The player has the spectrum, the song name and number, a timeline with elapsed and remaining time, previous / play-pause / next buttons, shuffle, repeat, volume (minus, LED bar, plus), a MUTE button and the next track at the bottom.
 * Everything in the player can be clicked with the mouse; click the timeline to seek. LB / RB change song, Y (or M on the keyboard) plays and pauses.

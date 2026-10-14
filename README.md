@@ -12,6 +12,10 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 26 - 2026-10-14 - Smaller music files
+
+- The five songs are re-encoded at a slightly lower quality, so the game is about 4 MB smaller (the music is about 15 MB instead of 19 MB). Length and the equalizer are unchanged.
+
 ### UPDATE 25 - 2026-10-14 - Music player in the main menu
 
 - The right side of the main menu is now two boxes: DATA on top and a MUSIC player below it. The player has the spectrum, the song name and number, a timeline with elapsed and remaining time, previous / play-pause / next buttons, shuffle, repeat, volume (minus, LED bar, plus), a MUTE button and the next track at the bottom.

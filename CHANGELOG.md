@@ -404,3 +404,6 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-14 — Musikspelaren: justering efter bild
 - Tidslinjen har 30 segment med mer luft emellan, volymraden har en MUTE-knapp (tystar utan att ändra volymen; klickbar) i stället för procenten, och längst ned visas NEXT TRACK med nästa låt (RANDOM TRACK vid shuffle, samma vid repeat) med nummer. Knappraden följer skissen. Fix: kommentar som slukade en klammer i `scr_music_update` (hittad av klammerkontrollen). `scr_music_panel`, `scr_mp_mouse`, `scr_music_update`, `scr_mn_draw`. Ej körd.
+
+## 2026-10-14 — Mindre ogg-filer
+- Musikfilerna (`snd_music_1..5.ogg`) är omkodade med Vorbis-kvalitet 3 i stället för 5 (`tools/gen_tracks.py`): från ca 19 MB till ca 15 MB tillsammans, med oförändrade längder och samma equalizerdata. Ej verifierat i GMS; lyssna efter skillnad vid hög volym.

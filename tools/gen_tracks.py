@@ -159,7 +159,7 @@ def main():
         src = os.path.join(MUSIC, fn)
         print("lat %d: %s" % (i, fn))
         ogg = os.path.join(GMX, "sound", "audio", "snd_music_%d.ogg" % i)
-        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", src, "-vn", "-c:a", "libvorbis", "-q:a", "5", "-ar", "44100", ogg], check=True)
+        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", src, "-vn", "-c:a", "libvorbis", "-q:a", "3", "-ar", "44100", ogg], check=True)
         io.open(os.path.join(GMX, "sound", "snd_music_%d.sound.gmx" % i), "wb").write(snd_xml(i, tmpl).encode("utf8"))
         viz = os.path.join(GMX, "datafiles", "viz_%d.txt" % i)
         if os.path.exists(viz) and "--redo" not in sys.argv:
