@@ -397,3 +397,10 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-14 — Orienteringspunkter
 - Ett fast gitter av färgade pixlar (accentfärg, 100 pixlars mellanrum i banans koordinater) över hela arenan hjälper spelaren att se var man är och hur fort man rör sig när inga andra föremål syns. De syns bara vid mycket inzoomad kamera (full styrka vid zoom ≥ 13000) och tonar ut mot zoom 7000, där de är helt borta. Punkter ritas bara innanför ramen och utanför föremål. `scr_dots_prepare`, `scr_dots_draw`, `scr_match_draw`, `scr_game_start`, `scr_config_init`. D-043. Ej körd.
+
+## 2026-10-14 — Musikspelare i huvudmenyn
+- Huvudmenyns högra kolumn är delad i DATA (överst) och MUSIC (nederst) enligt användarens skiss: spektrum, NOW PLAYING med låtnummer och titel, segmenterad tidslinje med tid och kvarvarande tid, transportknappar (föregående, spela/pausa, nästa), shuffle och repeat samt volym (−, LED-stapel, +, procent). PALETTE och FILES är borttagna. Y/M spelar och pausar; allt går att klicka på med musen (tidslinjen söker). Låtar loopar inte längre för evigt utan går vidare till nästa (shuffle: slumpad, repeat: samma); titellåten loopar på titelskärmen. D-044. Ej körd.
+- Fix: kompileringsfel i `scr_music_panel` (variabeln `frac` krockar med GameMakers funktion `frac`); bytt till `fq`. En kontroll av alla variabler i alla skript mot kända inbyggda namn gav inga fler träffar (utom de avsiktliga `view_*`). Ej körd.
+
+## 2026-10-14 — Musikspelaren: justering efter bild
+- Tidslinjen har 30 segment med mer luft emellan, volymraden har en MUTE-knapp (tystar utan att ändra volymen; klickbar) i stället för procenten, och längst ned visas NEXT TRACK med nästa låt (RANDOM TRACK vid shuffle, samma vid repeat) med nummer. Knappraden följer skissen. Fix: kommentar som slukade en klammer i `scr_music_update` (hittad av klammerkontrollen). `scr_music_panel`, `scr_mp_mouse`, `scr_music_update`, `scr_mn_draw`. Ej körd.

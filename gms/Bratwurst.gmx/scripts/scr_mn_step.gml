@@ -2,6 +2,7 @@
 // En tick i huvudmenyn. Upp/ner = rad, vanster/hoger = andra varde (eller tillbaka/in), Enter = OK, Esc = tillbaka.
 var node, sel, cnt, item, t, ok_adj, i;
 g_menu_tick += 1;
+scr_mp_mouse();   // musen i musikspelarpanelen (D-044)
 node = g_mn_stk_node[g_mn_depth];
 sel = g_mn_stk_sel[g_mn_depth];
 cnt = g_mn_n[node];

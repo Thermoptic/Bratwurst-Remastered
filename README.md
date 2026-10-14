@@ -12,6 +12,13 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 25 - 2026-10-14 - Music player in the main menu
+
+- The right side of the main menu is now two boxes: DATA on top and a MUSIC player below it. The player has the spectrum, the song name and number, a timeline with elapsed and remaining time, previous / play-pause / next buttons, shuffle, repeat, volume (minus, LED bar, plus), a MUTE button and the next track at the bottom.
+- Everything in the player can be clicked with the mouse; click the timeline to seek. LB / RB change song, Y (or M on the keyboard) plays and pauses.
+- Songs no longer loop forever: when a song ends the next one starts (shuffle picks a random one, repeat plays the same). The title song still loops on the title screen.
+- The Palette and Files boxes are gone to make room.
+
 ### UPDATE 24 - 2026-10-14 - Navigation dots, safer shots
 
 - Navigation dots: a fixed grid of coloured pixels, 100 pixels apart, covers the whole arena so you can tell where you are and how fast you move when nothing else is in view. They only show when the camera is zoomed in and fade out completely when it zooms out.

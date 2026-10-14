@@ -1,6 +1,6 @@
 /// scr_mn_draw()
 // Huvudmenyn i "command deck"-stil: trad till vanster, lista i mitten, datapanel till hoger (konceptet godkant av anvandaren).
-var node, sel, cnt, item, i, k, kid, yy, rx, ry, rw, t, v, bh, bx, by, cw, col, ti, branch, kid2, pre, avail, tx, tw0, lx, lw0, dx, dw0, py, ph, ix, iw, bs, mqs, mqn;
+var node, sel, cnt, item, i, k, kid, yy, rx, ry, rw, t, v, bh, bx, by, cw, col, ti, branch, kid2, pre, avail, tx, tw0, lx, lw0, dx, dw0, py, ph, ix, iw, bs, mqs, mqn, hm, dh;
 scr_bg_draw();   // samma bakgrund som titelskarmen
 node = g_mn_stk_node[g_mn_depth];
 sel = g_mn_stk_sel[g_mn_depth];
@@ -83,15 +83,18 @@ for (i = 0; i < cnt; i += 1)
     scr_ui_text_r(rx + rw - 12, ry + 8, v, col);
 }
 
-// ---- DATA ----
-scr_ui_pane(dx, py, dw0, ph, "DATA", g_acc);
+// ---- DATA (overst) och MUSIC (nederst) i hogra kolumnen (D-044) ----
+hm = 300 + clamp(ph - 300 - 164, 48, 110);   // musikrutans hojd: 300 + spektrumets hojd (se scr_music_panel)
+dh = ph - hm - 14;
+if (dh < 150) { dh = 150; hm = ph - dh - 14; }
+scr_ui_pane(dx, py, dw0, dh, "DATA", g_acc);
 g_fs = g_f_sm;
 ix = dx + 16;
 iw = dw0 - 32;
 if (t == 4 && (g_mn_set[item] == g_SV_MAP || g_mn_set[item] == g_SV_MAP2))
 {
     // pa raden MAP visas en bild pa vald bana i stallet for informationstexten
-    scr_map_preview(ix, py + 20, iw, 190, g_sv[g_mn_set[item]]);
+    scr_map_preview(ix, py + 20, iw, dh - 36, g_sv[g_mn_set[item]]);
 }
 else
 {
@@ -99,36 +102,7 @@ else
     yy = scr_ui_wrap(ix, py + 48, g_mn_desc[item], iw, 19, g_c[5]);
     if (t == 5) { yy = scr_ui_wrap(ix, yy + 10, g_mn_text[item], iw, 19, g_acc); }
 }
-scr_ui_text(ix, py + 218, "PALETTE // " + string_upper(g_th_name[ti]), g_c[4]);
-cw = floor((iw - 7 * 6) / 8);
-for (k = 0; k < 16; k += 1)
-{
-    bx = ix + (k mod 8) * (cw + 6);
-    by = py + 242 + (k div 8) * 28;
-    draw_set_color(g_c[k]);
-    draw_rectangle(bx, by, bx + cw, by + 22, false);
-    draw_set_color(g_c[3]);
-    draw_rectangle(bx, by, bx + cw, by + 22, true);
-}
-scr_ui_text(ix, py + 298, "SPECTRUM", g_c[4]);
-scr_viz_draw(ix, py + 320, iw, 110);
-scr_ui_text(ix, py + 446, "NOW PLAYING", g_c[4]);
-scr_ui_text_r(ix + iw, py + 446, scr_pad2(max(1, g_trk_idx)) + "/" + scr_pad2(max(1, g_trk_n - 1)) + "  LB/RB CHANGE", g_c[3]);
-if (g_sv[g_SV_MUSIC])
-{
-    // lang titel rullar i sidled (typsnittet ar monospace: teckenbredd = bredd / antal tecken)
-    mqs = g_trk_name[g_trk_idx];
-    if (scr_ui_tw(mqs) > iw)
-    {
-        mqn = max(1, floor(iw / (scr_ui_tw(mqs) / string_length(mqs))));
-        mqs = mqs + "   //   ";
-        mqs = string_copy(mqs + mqs, 1 + (floor(g_bg_t / 8) mod string_length(mqs)), mqn);
-    }
-    scr_ui_text(ix, py + 466, mqs, g_c[10]);
-}
-else { scr_ui_text(ix, py + 466, "MUSIC OFF", g_c[3]); }
-scr_ui_text(ix, py + 494, "FILES", g_c[4]);
-scr_ui_text(ix, py + 514, "settings.ini  themes.ini", g_c[3]);
+scr_music_panel(dx, py + dh + 14, dw0, hm);
 // ---- hjalprad ----
 g_fs = g_f_sm;
 scr_ui_text(g_vx + 20, g_vy + g_vh - 32, "UP/DOWN ROW    LEFT/RIGHT VALUE    ENTER OK    ESC BACK", g_c[4]);

@@ -7,7 +7,7 @@
     <datafile>
       <name>updates.txt</name>
       <exists>-1</exists>
-      <size>13767</size>
+      <size>14528</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -328,6 +328,11 @@
     <script>scripts\scr_boost_vel.gml</script>
     <script>scripts\scr_dots_draw.gml</script>
     <script>scripts\scr_dots_prepare.gml</script>
+    <script>scripts\scr_mp_mouse.gml</script>
+    <script>scripts\scr_mp_seek.gml</script>
+    <script>scripts\scr_mp_toggle.gml</script>
+    <script>scripts\scr_music_advance.gml</script>
+    <script>scripts\scr_music_panel.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_lg_k10</font>

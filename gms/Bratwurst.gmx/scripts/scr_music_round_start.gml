@@ -15,3 +15,4 @@ if (g_trk_n > 2)
 else if (g_trk_n == 2) { g_trk_idx = 1; }
 if (g_music_id >= 0) { audio_stop_sound(g_music_id); }
 g_music_id = -1;
+g_mp_pause = false;
