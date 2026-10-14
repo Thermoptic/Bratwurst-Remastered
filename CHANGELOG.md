@@ -361,3 +361,6 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-14 — Railgun: laddljud och automatisk avfyring
 - Under laddningen loopar ett vibrerande, vobblande ljud som går från försiktigt till starkt (volym och tonhöjd följer laddningen); när Railgun är fulladdad tystnar det och ett "laddad"-ljud spelas. Släpps knappen avfyras skottet och väntar man 3 sekunder efter fulladdning avfyras det av sig självt (`g_RG_AUTO`). Ljuden är egenproducerade (`tools/gen_railgun_charge_sounds.py`) och tystnar vid paus, död och rundslut. `scr_railgun_update`, ny `scr_railgun_fire`, `scr_player_lose_life`, `scr_game_step`. Ej körd.
+
+## 2026-10-14 — Mjuk kamerazoom vid död
+- När en spelare dör eller kommer tillbaka efter respawn glider kameran (zoom och centrum) mjukt mot de spelare som är kvar (ca 1–2 s, `g_CAM_TRANS` / `g_CAM_K`) i stället för att hoppa direkt. Vanlig rörelse följer fortfarande utan fördröjning, och en ny runda börjar direkt i rätt vy. `scr_camera_update`, `scr_game_start`, `scr_round_reset`, `scr_config_init`. D-037. Ej körd.

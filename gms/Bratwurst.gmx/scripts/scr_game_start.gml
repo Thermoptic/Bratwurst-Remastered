@@ -28,4 +28,6 @@ for (i = 0; i < g_n_players; i += 1)
 }
 scr_powerup_reset();
 scr_music_round_start();
+g_cam_n_prev = -1;   // ny match: kameran hoppar direkt till ratt vy
+g_cam_tr = 0;
 scr_camera_update();

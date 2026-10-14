@@ -12,6 +12,10 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 20 - 2026-10-14 - Smooth camera zoom
+
+- When a player dies (or comes back after respawning) the camera no longer jumps straight to the players that are left. It zooms and moves smoothly, in about a second.
+
 ### UPDATE 19 - 2026-10-14 - Railgun
 
 - New powerup: RAILGUN. Pick it up and hold the powerup button (B) for 4 seconds. A glowing ball grows in front of the ship and turns white when it is charged. Let go to fire: a beam in your colour shoots through the whole map, over every wall and object, reaches the other side in half a second, stays for 2 seconds and fades out in 1. It kills a ship in one hit.
