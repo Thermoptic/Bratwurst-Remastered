@@ -244,3 +244,33 @@ Alla betydande projektändringar dokumenteras här.
 ## 2026-10-14 — Ny låt i spellistan
 - THERMOPTIC - WE WERE NEVER ORGANIC (DISCO EDIT) tillagd (lat 4 av 4) med `tools/gen_tracks.py`: ogg `snd_music_3`, equalizerdata `viz_3.txt`, projektposter och `scr_data_tracks` uppdaterade. Ej körd i GMS.
 - Långa låttitlar rullar i sidled på NOW PLAYING-raden (`scr_mn_draw`) om de inte ryms.
+
+## 2026-10-14 — Musik under matcher, ny låt varje runda, volym
+- Musiken spelas nu även under matcher. När en ny runda startar (matchstart och varje ny runda) väljs en slumpad låt ur spellistan (alltid en annan än den som spelade) av `scr_music_round_start`; låtens namn visas i matchens rubrikrad till höger ("MUSIC: ..."; kortas av om den inte ryms, "OFF" om musiken är avstängd). Tangenthjälpen (ESC MENU, F2 SHIP SELECT, TICK) flyttades till F1-raden för att få plats. Ny inställning Options -> VOLUME (10 %–100 % i steg om 10, standard 70 %; `g_SV_VOL` = steg 1–10, sparas som `[audio] volume` i procent i settings.ini) styr musikens volym via `audio_sound_gain`; ljudeffekter påverkas inte. `scr_music_update`, `scr_mn_build`, `scr_mn_value`, `scr_set_*`, `scr_match_draw`. Ej körd.
+
+## 2026-10-14 — Två nya låtar och fast låtordning
+- Lagt till Nothing Good Beyond Neptune (lat 4) och The Final Frankfurter (lat 5; filnamnets stavfel "Thermoptoc" rättas i visningsnamnet). `tools/gen_tracks.py` håller nu låtnumren fasta via `tools/tracks.txt` (nya mp3 läggs sist), så att `viz_N.txt` alltid hör ihop med rätt ogg. Ej körd i GMS.
+
+## 2026-10-14 — Pausmeny under matchen
+- Esc (tangentbord) eller Start (gamepad) under en pågående match öppnar en pausmeny med RESUME GAME och QUIT TO MENU (`scr_pause_step`, `scr_pause_draw`, `g_paused`). Spelet står stilla medan menyn visas; musiken fortsätter. Upp/ner byter rad, Enter/Space/A/Start väljer, Esc/Backspace/B återupptar, QUIT TO MENU går till huvudmenyn. Tidigare gick Esc direkt till huvudmenyn och Start till skeppsvalet under match; i skeppsval och rundresultat är Esc/Start oförändrade. Ej körd.
+
+## 2026-10-14 — Större explosion när missilen träffar
+- Missil och guidad missil som träffar en vägg eller ett skepp får 30 % större ring (`g_FX_IMPACT` = 1.3; både den ritade ringen och skaderadien) och 30 % snabbare partiklar. Missiler som självdetonerar i luften behåller den tidigare storleken (62 resp. 42 px max; nu 81 resp. 55 px vid träff). `scr_fx_spawn` fick ett fjärde argument (storlek); `scr_missile_step`, `scr_fx_damage`, `scr_match_draw`. Ej körd.
+
+## 2026-10-14 — Lediga platser i skeppsvalet
+- "PRESS FIRE TO JOIN" ritas i mindre typsnitt (medium), centrerat i en bredare ram, med "PLAYER <nummer>" under. Alla lediga platser (även plats 4 innan plats 3 anslutit) visar samma uppmaning; bara nästa plats blinkar och visar tangenterna, övriga visar "JOIN SLOT n FIRST" längst ned. `scr_menu_draw`. Ej körd.
+
+## 2026-10-14 — Drift (test)
+- Ny drift-knapp på vänster trigger (alla gamepads; tangentbord C / Q / H för spelare 1–3). Fungerar bara när man gasar och håller knappen och har fart: snabbare vridning, gasen riktas utåt från svängen så att skeppet glider i sidled, något svagare gas och gnistor bakom skeppet. Konstanterna `g_DRIFT_*` i `scr_config_init` är startvärden som ska justeras efter test. Nästa specialvapen flyttades från LT till Y. `scr_player_input`, `scr_player_step`, D-030. Ej körd.
+
+## 2026-10-14 — Drift: 30 % mer sidoglid
+- `g_DRIFT_ANG` höjd från 20 till 26 vinkelsteg (≈28° → ≈37°), 30 % mer utåtriktad gas under drift, så skeppet glider mer i sidled. Ej körd; fortsätt justera efter test.
+
+## 2026-10-14 — Drift: starkare gas
+- `g_DRIFT_THRUST` höjd från 0.9 till 1.17 (+30 %): gasen under drift är nu 17 % starkare än vanlig gas i stället för 10 % svagare. Ej körd.
+
+## 2026-10-14 — Drift: ännu 30 % mer sidoglid
+- `g_DRIFT_ANG` höjd från 26 till 34 vinkelsteg (≈37° → ≈48°). Ej körd.
+
+## 2026-10-14 — Reverse på drift-knappen
+- Vänster trigger (C / Q / H på tangentbordet) utan gas backar skeppet mycket långsamt (`g_REVERSE_THRUST` = 0.25 av vanlig gas), även från stillastående, för att ta sig ur en vägg. Med gas samtidigt blir det drift som förut. `scr_player_step`. Ej körd.

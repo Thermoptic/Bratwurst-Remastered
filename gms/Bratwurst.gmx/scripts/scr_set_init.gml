@@ -24,6 +24,7 @@ g_sv[g_SV_GLOW] = clamp(ini_read_real("display", "glow", g_sv[g_SV_GLOW]), 0, 1)
 g_sv[g_SV_WIDE] = clamp(ini_read_real("display", "widescreen", g_sv[g_SV_WIDE]), 0, 1);
 g_sv[g_SV_MUSIC] = clamp(ini_read_real("audio", "music", g_sv[g_SV_MUSIC]), 0, 1);
 g_sv[g_SV_ADLIVES] = clamp(round(ini_read_real("astro", "lives", g_sv[g_SV_ADLIVES])), 1, 9);
+g_sv[g_SV_VOL] = clamp(round(ini_read_real("audio", "volume", g_sv[g_SV_VOL] * 10) / 10), 1, 10);
 g_sv[g_SV_SFX] = clamp(ini_read_real("audio", "sfx", g_sv[g_SV_SFX]), 0, 1);
 g_sv[g_SV_PLAYERS] = clamp(round(ini_read_real("gameplay", "players", g_sv[g_SV_PLAYERS])), 1, 4);
 g_sv[g_SV_ROUNDS] = clamp(round(ini_read_real("gameplay", "rounds", g_sv[g_SV_ROUNDS])), 1, 15);

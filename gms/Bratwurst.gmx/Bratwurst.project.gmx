@@ -3,11 +3,11 @@
   <Configs name="configs">
     <Config>Configs\Default</Config>
   </Configs>
-  <datafiles number="4" name="datafiles">
+  <datafiles number="6" name="datafiles">
     <datafile>
       <name>updates.txt</name>
       <exists>-1</exists>
-      <size>6041</size>
+      <size>7199</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -72,10 +72,46 @@
       </ConfigOptions>
       <filename>viz_3.txt</filename>
     </datafile>
+    <datafile>
+      <name>viz_4.txt</name>
+      <exists>-1</exists>
+      <size>263565</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>viz_4.txt</filename>
+    </datafile>
+    <datafile>
+      <name>viz_5.txt</name>
+      <exists>-1</exists>
+      <size>250605</size>
+      <exportAction>2</exportAction>
+      <exportDir></exportDir>
+      <overwrite>0</overwrite>
+      <freeData>-1</freeData>
+      <removeEnd>0</removeEnd>
+      <store>0</store>
+      <ConfigOptions>
+        <Config name="Default">
+          <CopyToMask>9223372036854775807</CopyToMask>
+        </Config>
+      </ConfigOptions>
+      <filename>viz_5.txt</filename>
+    </datafile>
   </datafiles>
   <NewExtensions/>
   <sounds name="sound">
     <sound>sound\snd_title_music</sound>
+    <sound>sound\snd_music_5</sound>
+    <sound>sound\snd_music_4</sound>
     <sound>sound\snd_music_3</sound>
     <sound>sound\snd_music_2</sound>
     <sound>sound\snd_music_1</sound>
@@ -251,6 +287,9 @@
     <script>scripts\scr_music_switch.gml</script>
     <script>scripts\scr_data_tracks.gml</script>
     <script>scripts\scr_tracks_load.gml</script>
+    <script>scripts\scr_music_round_start.gml</script>
+    <script>scripts\scr_pause_draw.gml</script>
+    <script>scripts\scr_pause_step.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_lg_k10</font>

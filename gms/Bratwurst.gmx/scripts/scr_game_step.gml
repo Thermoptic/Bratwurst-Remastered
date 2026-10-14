@@ -20,7 +20,20 @@ if (g_state == 11) { scr_mn_step(); exit; }
 if (g_state == 20) { scr_ed_step(); exit; }   // banredigeraren
 if (g_state == 30) { scr_results_step(); exit; }   // slutresultat
 
-// Skeppsval och match: Esc = huvudmenyn
+// Match: Esc eller Start oppnar pausmenyn (RESUME GAME / QUIT TO MENU); medan den ar oppen star spelet stilla
+if (g_state == 1)
+{
+    if (g_paused) { scr_pause_step(); exit; }
+    if (keyboard_check_pressed(vk_escape))
+    {
+        g_paused = true; g_pause_sel = 0; exit;
+    }
+    for (gi = 0; gi < 4; gi += 1)
+    {
+        if (gamepad_is_connected(gi) && gamepad_button_check_pressed(gi, gp_start)) { g_paused = true; g_pause_sel = 0; exit; }
+    }
+}
+// Skeppsval och rundresultat: Esc = huvudmenyn
 if (keyboard_check_pressed(vk_escape)) { scr_goto_main(); exit; }
 if (keyboard_check_pressed(vk_f1)) { g_debug = !g_debug; }
 if (keyboard_check_pressed(vk_f2)) { scr_menu_enter(); exit; }
@@ -31,7 +44,7 @@ for (gi = 0; gi < 4; gi += 1)
 {
     if (gamepad_is_connected(gi))
     {
-        if (g_state != 0 && gamepad_button_check_pressed(gi, gp_start)) { scr_menu_enter(); exit; }
+        if (g_state != 0 && g_state != 1 && gamepad_button_check_pressed(gi, gp_start)) { scr_menu_enter(); exit; }
         if (gamepad_button_check_pressed(gi, gp_select)) { scr_players_set((g_n_players mod 4) + 1); scr_menu_enter(); exit; }
     }
 }

@@ -1,4 +1,5 @@
 /// scr_menu_enter()
+g_paused = false;
 // Gar tillbaka till skeppsvalet (behaller tidigare skeppsval) och tar bort matchens objekt.
 var i;
 with (obj_player) { instance_destroy(); }

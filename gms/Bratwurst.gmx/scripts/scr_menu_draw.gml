@@ -41,30 +41,27 @@ for (i = 0; i < 4; i += 1)
         // tom skeppsram med hornmarkeringar
         if (i == g_n_players) { rc = c; } else { rc = g_c[3]; }
         draw_set_color(g_c[2]);
-        draw_rectangle(pcx - 70, pcy - 62, pcx + 70, pcy + 62, true);
+        draw_rectangle(pcx - 90, pcy - 62, pcx + 90, pcy + 62, true);
         draw_set_color(rc);
-        draw_rectangle(pcx - 70, pcy - 62, pcx - 58, pcy - 62, false);
-        draw_rectangle(pcx - 70, pcy - 62, pcx - 70, pcy - 50, false);
-        draw_rectangle(pcx + 58, pcy - 62, pcx + 70, pcy - 62, false);
-        draw_rectangle(pcx + 70, pcy - 62, pcx + 70, pcy - 50, false);
-        draw_rectangle(pcx - 70, pcy + 62, pcx - 58, pcy + 62, false);
-        draw_rectangle(pcx - 70, pcy + 50, pcx - 70, pcy + 62, false);
-        draw_rectangle(pcx + 58, pcy + 62, pcx + 70, pcy + 62, false);
-        draw_rectangle(pcx + 70, pcy + 50, pcx + 70, pcy + 62, false);
-        g_fs = g_f_lg;
-        if (i == g_n_players)
+        draw_rectangle(pcx - 90, pcy - 62, pcx - 78, pcy - 62, false);
+        draw_rectangle(pcx - 90, pcy - 62, pcx - 90, pcy - 50, false);
+        draw_rectangle(pcx + 78, pcy - 62, pcx + 90, pcy - 62, false);
+        draw_rectangle(pcx + 90, pcy - 62, pcx + 90, pcy - 50, false);
+        draw_rectangle(pcx - 90, pcy + 62, pcx - 78, pcy + 62, false);
+        draw_rectangle(pcx - 90, pcy + 50, pcx - 90, pcy + 62, false);
+        draw_rectangle(pcx + 78, pcy + 62, pcx + 90, pcy + 62, false);
+        draw_rectangle(pcx + 90, pcy + 50, pcx + 90, pcy + 62, false);
+        // uppmaningen (alla lediga platser): mindre text, centrerad i ramen; bara nasta plats blinkar
+        g_fs = g_f_md;
+        if (i != g_n_players || (g_menu_tick mod 60) < 40)
         {
-            if ((g_menu_tick mod 60) < 40) { scr_ui_text_c(pcx, pcy - 22, "PRESS FIRE", c); scr_ui_text_c(pcx, pcy + 2, "TO JOIN", c); }
-            g_fs = g_f_sm;
-            scr_ui_text_c(pcx, pcy + 34, "PLAYER " + pn, g_c[4]);
-            scr_ui_text_c(pcx, py + ph - 24, g_keyhint[i], g_c[3]);
+            scr_ui_text_c(pcx, pcy - 30, "PRESS FIRE", c);
+            scr_ui_text_c(pcx, pcy - 8, "TO JOIN", c);
         }
-        else
-        {
-            scr_ui_text_c(pcx, pcy - 10, "- - -", g_c[3]);
-            g_fs = g_f_sm;
-            scr_ui_text_c(pcx, pcy + 34, "JOIN SLOT " + string(g_n_players + 1) + " FIRST", g_c[3]);
-        }
+        g_fs = g_f_sm;
+        scr_ui_text_c(pcx, pcy + 26, "PLAYER " + pn, g_c[4]);
+        if (i == g_n_players) { scr_ui_text_c(pcx, py + ph - 24, g_keyhint[i], g_c[3]); }
+        else { scr_ui_text_c(pcx, py + ph - 24, "JOIN SLOT " + string(g_n_players + 1) + " FIRST", g_c[3]); }
         continue;
     }
 

@@ -40,7 +40,8 @@ Banor ligger i `levels.ini` i spelets sparmapp (D-019). Tre inbyggda banor skriv
 | Specialvapen | B |
 | Thrust | X eller höger trigger (RT) |
 | **Under matchen:** nästa skepp (test) | RB (höger axelknapp) |
-| **Under matchen:** nästa specialvapen | LT (vänster trigger) |
+| **Under matchen:** nästa specialvapen | Y |
+| **Under matchen:** DRIFT (håll inne medan du gasar; tangentbord: spelare 1 C, spelare 2 Q, spelare 3 H) | LT (vänster trigger) |
 | **Under matchen:** nästa specialpod (position på skeppet, t.ex. fram/bak) | LB (vänster axelknapp) |
 | Tillbaka till skeppsvalet / cykla antal spelare 1–4 | Start / Back |
 | Skeppsvalet: bläddra / bekräfta | Vänster spak eller D-pad ←/→ / A |

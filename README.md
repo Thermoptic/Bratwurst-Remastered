@@ -8,10 +8,20 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 13 - 2026-10-14 - Pause menu, drift and reverse
+
+- Pause menu: press Esc or Start during a match for Resume Game and Quit to Menu. The game stands still while it is open.
+- Drifting (new, experimental): hold the left trigger while you thrust to slide sideways. Faster turning, thrust pushed outwards from the turn, sparks behind the ship. It only works while you thrust and move. Special weapon switch moved from the left trigger to Y.
+- Reverse: press only the left trigger (no thrust) to back the ship up very slowly, for example out of a wall.
+- Missile explosions are 30 percent bigger when the missile hits a wall or a player.
+- Ship select: every open slot shows a smaller, centred PRESS FIRE TO JOIN, also slot 4.
+- Music: five Thermoptic tracks added to the playlist, music plays during matches (a new random song every round, shown in the top bar), and a Volume setting in Options (10 to 100 percent, default 70).
+
 ### UPDATE 12 - 2026-10-14 - Music playlist, camera lock
 
 - The main menu shows NOW PLAYING with the name of the current song under the spectrum. Press LB / RB on a gamepad (or PageUp / PageDown) on the title screen, in the menu or on ship select to switch song.
-- Four songs in the playlist: 3Elks - Das Bratwurst (DnB edit) and three Thermoptic tracks (No Safe Orbit, Sectorwurst, We Were Never Organic - Disco Edit). The spectrum follows each song, and long titles scroll.
+- Six songs in the playlist: 3Elks - Das Bratwurst (DnB edit) and five Thermoptic tracks (No Safe Orbit, Sectorwurst, We Were Never Organic - Disco Edit, Nothing Good Beyond Neptune, The Final Frankfurter). The spectrum follows each song, and long titles scroll.
+- Music now plays during matches too: a random song starts every round and its name is shown in the top bar. New Volume setting in Options (10 to 100 percent, default 70).
 - When only one player is left the camera stays where it is instead of zooming in on the winner.
 - The map name is part of the header line during a match.
 

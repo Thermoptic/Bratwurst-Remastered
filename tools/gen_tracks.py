@@ -109,7 +109,7 @@ def analyse(s):
 def pretty(fn):
     base = os.path.splitext(fn)[0]
     base = base.encode("ascii", "ignore").decode("ascii")
-    return base.upper()
+    return base.upper().replace("THERMOPTOC", "THERMOPTIC")   # stavfel i en filnamn rattas i visningsnamnet
 
 
 def snd_xml(idx, template):
@@ -142,7 +142,16 @@ def update_project(n):
 
 
 def main():
-    files = sorted(f for f in os.listdir(MUSIC) if f.lower().endswith(".mp3"))
+    # fast ordning: tracks.txt listar filerna i latnummerordning (nummer ar knutna till viz_N.txt); nya mp3 laggs sist i filnamnsordning
+    manifest = os.path.join(HERE, "tracks.txt")
+    files = []
+    if os.path.exists(manifest):
+        files = [l.strip() for l in io.open(manifest, encoding="utf8").read().splitlines() if l.strip()]
+    files = [f for f in files if os.path.exists(os.path.join(MUSIC, f))]
+    for f in sorted(x for x in os.listdir(MUSIC) if x.lower().endswith(".mp3")):
+        if f not in files:
+            files.append(f)
+    io.open(manifest, "w", encoding="utf8", newline=chr(10)).write(chr(10).join(files) + chr(10))
     tmpl = io.open(os.path.join(GMX, "sound", "snd_title_music.sound.gmx"), "rb").read().decode("utf8")
     names = []
     fps = []

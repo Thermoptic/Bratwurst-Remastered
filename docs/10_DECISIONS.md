@@ -147,3 +147,9 @@
 
 ## D-029 — Missilexplosionens ring skadar
 - **Beslut (användaren):** när en missil exploderar och den expanderande ringen når ett skepp tar skeppet 3 energi (en gång per skepp och explosion). Ringens radie är exakt den som ritas (6 + 4 px per tick, 14 resp. 9 ticks för missil resp. guidad missil). Gäller missil och guidad missil i Classic; ingen splash i Astro Duel (där tar bara direktträffar liv) och inte skeppskrockens ring. En direkträff på ett skepp ger dessutom den vanliga träffskadan (12/5). Nytt beteende, inte i originalet.
+
+## D-030 — Drift (test) och Y för specialvapenbyte
+- **Beslut (användaren, test):** en drift-knapp på vänster trigger (LT, `gp_shoulderlb`) på alla gamepads. Drift fungerar bara medan man gasar och håller knappen, och bara i fart (`g_DRIFT_MINSPEED` = 500 enheter/tick); stillastående eller utan gas ger ingen drift.
+- **Effekt (PLACEHOLDER, ska justeras efter test):** snabbare vridning (`g_DRIFT_TURN` = 1.5), gasen riktas `g_DRIFT_ANG` = 34 vinkelsteg (≈48°; först 20, sedan 26, 34 efter två test med +30 %) utåt från svängen så att skeppet glider i sidled, gasen är 117 % (`g_DRIFT_THRUST` = 1.17; först 0.9, +30 % efter test), samt gnistor bakom skeppet. Nytt beteende, inte i originalet.
+- **Konsekvens:** LT var tidigare nästa specialvapen; det flyttades till Y (`gp_face4`, tidigare oanvänd). Tangentbord för test: spelare 1 C, spelare 2 Q, spelare 3 H.
+- **Reverse (tillägg):** samma knapp utan gas = backa. Bara drift-knappen, ingen gas: svag gas åt motsatt håll mot nosen (`g_REVERSE_THRUST` = 0.25 av vanlig gas), så man kan backa ur en vägg; fungerar även från stillastående. Värdet är en PLACEHOLDER.

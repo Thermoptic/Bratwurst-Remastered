@@ -2,7 +2,7 @@
 // Kors i obj_player, en tick. Foljer originalets spelarrutin (hunk0 0x16a4-0x18d8, docs/15 steg 3):
 //   1) svang med accelererande vinkelhastighet  2) pod-positioner  3) kanon  4) thrust  5) gravitation+motstand+integration
 //   6) vaggkrasch  7) dod/respawn.  Specialvapen (bit3) ar INTE implementerat i Fas 1.
-var a, p, fired_all, sh, shx, shy;
+var a, p, fired_all, sh, shx, shy, tw, ta, tm;
 if (!alive)
 {
     // nedrakning till aterskapning (D: 3 sekunder efter att ett liv forlorats)
@@ -20,12 +20,18 @@ if (in_wsel) { scr_special_switch(); }   // byt specialvapen under matchen
 
 if (boost_timer > 0) { boost_timer -= 1; }
 prev_px = px; prev_py = py; prev_ang = ang;
+// DRIFT (D-030, test): bara medan man gasar och halller in drift-knappen och ror sig (inte stillastaende)
+reversing = (in_drift && !in_thrust);   // REVERSE (D-030): bara drift-knappen utan gas = backa langsamt
+drifting = (in_drift && in_thrust && (vx * vx + vy * vy) >= g_DRIFT_MINSPEED * g_DRIFT_MINSPEED);
+if (drifting && (g_tick mod 2) == 0) { scr_spark_burst(floor(px / 256), floor(py / 256), 1, 0.8, scr_slot_colour(slot)); }
 
 // 1) Svang: vinkel -/+= w; w += TURN_ACC; utan svang w = TURN_INIT; w <= TURN_MAX (VERIFIERAD, kod 0x16a4-0x1718)
 var turned;
 turned = false;
-if (in_left)  { turned = true; ang -= turn_w; turn_w += turn_acc; }
-if (in_right) { turned = true; ang += turn_w; turn_w += turn_acc; }
+tw = turn_w;
+if (drifting) { tw = floor(turn_w * g_DRIFT_TURN); }   // drift: snabbare vridning
+if (in_left)  { turned = true; ang -= tw; turn_w += turn_acc; }
+if (in_right) { turned = true; ang += tw; turn_w += turn_acc; }
 if (spin_v != 0)
 {
     // vridning efter skeppskrock (D-028): vinkelhastigheten dar ut
@@ -98,22 +104,37 @@ scr_special_fire();
 // 4) Thrust: vx -= sin*THRUST>>3,  vy += cos*THRUST>>3 (VERIFIERAD, kod 0x184a-0x186e)
 if (in_thrust)
 {
-    vx -= floor(g_psin[ang] * thrust / 8);
-    vy += floor(g_pcos[ang] * thrust / 8);
+    ta = ang;
+    tm = thrust;
+    if (drifting)
+    {
+        // drift: gasen riktas utat fran svangen (skeppet glider i sidled) och ar starkare (g_DRIFT_THRUST)
+        if (in_left) { ta = (ang + g_DRIFT_ANG) mod 256; }
+        if (in_right) { ta = ((ang - g_DRIFT_ANG) mod 256 + 256) mod 256; }
+        tm = thrust * g_DRIFT_THRUST;
+    }
+    vx -= floor(g_psin[ta] * tm / 8);
+    vy += floor(g_pcos[ta] * tm / 8);
+}
+else if (reversing)
+{
+    // backa: svag gas at motsatt hall mot nosen (g_REVERSE_THRUST av vanlig gas)
+    vx += floor(g_psin[ang] * thrust * g_REVERSE_THRUST / 8);
+    vy -= floor(g_pcos[ang] * thrust * g_REVERSE_THRUST / 8);
 }
 
 // 5) Gravitation, hastighetsproportionellt motstand (drag/256), integration (VERIFIERAD, kod 0x187c-0x18b0)
 // PLACEHOLDER (Fas 2): ett skepp som star stilla (v = 0) paverkas inte av gravitation tills det far thrust eller blir traffat,
 // sa att det star helt stilla vid spawn. Originalet tillampar gravitation direkt (OKAND om skeppen faller vid start).
 var ax, ay;
-if (vx != 0 || vy != 0 || in_thrust)
+if (vx != 0 || vy != 0 || in_thrust || reversing)
 {
     ax = vx;
     ay = vy + g_SHIP_GRAV;   // D-024: ingen gravitation pa skeppen (g_SHIP_GRAV = 0)
     // luftmotstand, avrundat mot noll (annars driver ett positivt langsamt skepp for evigt), och full stillestand nar farten ar liten
     vx = ax - sign(ax) * floor(abs(ax) * drag / 256);
     vy = ay - sign(ay) * floor(abs(ay) * drag / 256);
-    if (!in_thrust && abs(vx) < 24 && abs(vy) < 24) { vx = 0; vy = 0; }
+    if (!in_thrust && !reversing && abs(vx) < 24 && abs(vy) < 24) { vx = 0; vy = 0; }
     px += vx;
     py += vy;
 }

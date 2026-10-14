@@ -55,7 +55,7 @@ if (vn > 0)
     ib.spin_v += clamp((rbx * jy * kb - rby * jx * kb) / 12000, -3, 3);
     ia.spin_v += clamp((-rax * jy * ka + ray * jx * ka) / 12000, -3, 3);
     scr_sfx_play(snd_sfx_collide, 2, 1);   // original: samma ljudeffekt vid skepp mot skepp (0x5e14)
-    scr_fx_spawn((ia.px + ib.px) / 2, (ia.py + ib.py) / 2, 3);
+    scr_fx_spawn((ia.px + ib.px) / 2, (ia.py + ib.py) / 2, 3, 1);
     // gnistor fran kontaktpunkten i bada skeppens farger; antal och fart okar med stotens styrka
     sp = 1.4 + min(2.4, vn / 2500);
     jv = 8 + clamp(floor(vn / 120), 0, 22);

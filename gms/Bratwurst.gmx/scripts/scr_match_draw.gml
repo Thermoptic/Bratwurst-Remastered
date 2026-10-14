@@ -1,7 +1,7 @@
 /// scr_match_draw()
 // Ritar matchen: spelytan i originalets 320x256-koordinater skalad med g_SCALE (vektorlinjer, ingen bitmapp), placerad pa (g_OX, g_OY),
 // sedan ramen, spelarpanelerna och eventuell resultatruta. Farger kommer fran temat.
-var k, a, b, x1, y1, x2, y2, gx, gy, pwx, phx;
+var k, a, b, x1, y1, x2, y2, gx, gy, pwx, phx, mqs, mqn, mqm;
 g_proj_hs = 1;
 if (g_game_mode == 1) { g_proj_hs = 1.3; }   // Astro Duel: projektiler 30 % storre
 pwx = g_PLAY_W * g_SCALE;
@@ -72,8 +72,8 @@ draw_set_color(g_c[8]);
 with (obj_fx)
 {
     // explosionsring med dubbel radie mot tidigare (6 + 4 per tick) och en inre ring
-    draw_circle(g_OX + scr_w2s_x(floor(px / 256)) * g_SCALE, g_OY + scr_w2s_y(floor(py / 256)) * g_SCALE, 6 + ftimer * 4, true);
-    draw_circle(g_OX + scr_w2s_x(floor(px / 256)) * g_SCALE, g_OY + scr_w2s_y(floor(py / 256)) * g_SCALE, 3 + ftimer * 2, true);
+    draw_circle(g_OX + scr_w2s_x(floor(px / 256)) * g_SCALE, g_OY + scr_w2s_y(floor(py / 256)) * g_SCALE, (6 + ftimer * 4) * fsize, true);
+    draw_circle(g_OX + scr_w2s_x(floor(px / 256)) * g_SCALE, g_OY + scr_w2s_y(floor(py / 256)) * g_SCALE, (3 + ftimer * 2) * fsize, true);
 }
 
 // Skott
@@ -103,13 +103,20 @@ draw_rectangle(g_OX - 2, g_OY - 2, g_OX - 1, g_OY + 10, false);
 draw_rectangle(g_OX + pwx - 10, g_OY + phx, g_OX + pwx + 2, g_OY + phx + 1, false);
 draw_rectangle(g_OX + pwx + 1, g_OY + phx - 10, g_OX + pwx + 2, g_OY + phx + 1, false);
 
-scr_ui_header("BRATWURST // " + scr_mode_name() + " // ROUND " + string(g_round) + " OF " + string(g_rounds_total) + " // MAP: " + string_upper(g_match_map), "ESC MENU   F2 SHIP SELECT   F1 DEBUG   TICK " + string(g_tick));
+// rubrikrad: bana till vanster, aktuell lat till hoger (kortas av om den inte ryms); tangenthjalpen visas i F1-raden
+mqs = "BRATWURST // " + scr_mode_name() + " // ROUND " + string(g_round) + " OF " + string(g_rounds_total) + " // MAP: " + string_upper(g_match_map);
+g_fs = g_f_sm;
+mqn = floor((g_vw - 40 - scr_ui_tw("[] " + mqs) - scr_ui_tw("MUSIC:   00:00:00") - 40) / scr_ui_tw("W"));
+mqm = g_trk_name[g_trk_idx];
+if (!g_sv[g_SV_MUSIC]) { mqm = "OFF"; }
+if (string_length(mqm) > mqn) { mqm = string_copy(mqm, 1, max(0, mqn - 2)) + ".."; }
+scr_ui_header(mqs, "MUSIC: " + mqm);
 scr_hud_draw();
 
 g_fs = g_f_sm;
 if (g_debug)
 {
-    scr_ui_text(g_OX + 10, g_OY + 28, "Z=" + string(g_zoom) + "  shots=" + string(instance_number(obj_shot)) + "  F1 debug", g_c[3]);
+    scr_ui_text(g_OX + 10, g_OY + 28, "ESC MENU  F2 SHIP SELECT  TICK " + string(g_tick) + "  Z=" + string(g_zoom) + "  shots=" + string(instance_number(obj_shot)) + "  F1 debug", g_c[3]);
 }
 if (g_state == 2)
 {
@@ -122,3 +129,4 @@ if (g_state == 2)
     else { scr_ui_text_c(g_OX + pwx / 2, g_OY + phx / 2 + 14, "NEXT ROUND STARTING", g_c[4]); }
     scr_ui_text_c(g_OX + pwx / 2, g_OY + phx / 2 + 34, "F2 SHIP SELECT   ESC MAIN MENU", g_c[3]);
 }
+if (g_paused) { scr_pause_draw(); }

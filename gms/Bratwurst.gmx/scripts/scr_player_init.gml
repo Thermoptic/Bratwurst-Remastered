@@ -10,6 +10,8 @@ ad_charges = g_AD_SHOTS;
 ad_cool = 0;
 alive = true;
 respawn_t = 0;
+drifting = false;
+reversing = false;
 spin_v = 0;
 spin_f = 0;
 scr_player_respawn();

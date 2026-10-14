@@ -1,4 +1,5 @@
 /// scr_goto_main()
+g_paused = false;
 // Tillbaka till huvudmenyn fran skeppsval eller match. Tar bort matchens objekt.
 with (obj_player) { instance_destroy(); }
 with (obj_shot) { instance_destroy(); }

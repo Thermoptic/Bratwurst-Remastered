@@ -1,6 +1,6 @@
 /// scr_music_update()
-// Titelmusiken (originalets inbaddade ProTracker-modul, snd_title_music) spelas i loop pa titelskarm, menyer, skeppsval, redigerare och resultat,
-// och stoppas under matchen (g_state 1 och 2). Kan stangas av i Options -> MUSIC.
+// Spellistans lat g_trk_idx spelas i loop overallt (titel, menyer, skeppsval, redigerare, match) med volymen g_SV_VOL (10-100 %). Under matchen byter
+// scr_music_round_start lat varje ny runda. LB/RB eller PageUp/PageDown byter lat i menyerna. Kan stangas av i Options -> MUSIC.
 var want, gi;
 if (g_state == 10 || g_state == 11 || g_state == 0)
 {
@@ -16,10 +16,11 @@ if (g_state == 10 || g_state == 11 || g_state == 0)
         }
     }
 }
-want = (g_sv[g_SV_MUSIC] && g_state != 1 && g_state != 2);
+want = g_sv[g_SV_MUSIC];   // musiken spelas ocksa under matcher (en ny lat per runda, scr_music_round_start)
 if (want)
 {
     if (!audio_is_playing(g_music_id)) { g_music_id = audio_play_sound(g_trk_snd[g_trk_idx], 1, true); }
+    if (g_music_id >= 0) { audio_sound_gain(g_music_id, g_sv[g_SV_VOL] / 10, 0); }
 }
 else
 {

@@ -5,7 +5,7 @@
 var rw, p, j, dxw, dyw, hitp;
 if (fkind != 1 && fkind != 2) { exit; }
 if (g_game_mode == 1) { exit; }
-rw = ((6 + ftimer * 4) / g_SCALE) * 32768 / g_zoom;   // radie i varldspixlar
+rw = ((6 + ftimer * 4) * fsize / g_SCALE) * 32768 / g_zoom;   // radie i varldspixlar
 rw = rw * rw;
 with (obj_player)
 {
