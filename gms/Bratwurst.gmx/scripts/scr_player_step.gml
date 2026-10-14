@@ -5,6 +5,7 @@
 var a, p, fired_all, sh, shx, shy, tw, ta, tm;
 if (!alive)
 {
+    scr_trail_update();   // driftsparet tonar ut aven nar skeppet ar borta
     // nedrakning till aterskapning (D: 3 sekunder efter att ett liv forlorats)
     if (respawn_t > 0)
     {
@@ -23,7 +24,6 @@ prev_px = px; prev_py = py; prev_ang = ang;
 // DRIFT (D-030, test): bara medan man gasar och halller in drift-knappen och ror sig (inte stillastaende)
 reversing = (in_drift && !in_thrust);   // REVERSE (D-030): bara drift-knappen utan gas = backa langsamt
 drifting = (in_drift && in_thrust && (vx * vx + vy * vy) >= g_DRIFT_MINSPEED * g_DRIFT_MINSPEED);
-if (drifting && (g_tick mod 2) == 0) { scr_spark_burst(floor(px / 256), floor(py / 256), 1, 0.8, scr_slot_colour(slot)); }
 
 // 1) Svang: vinkel -/+= w; w += TURN_ACC; utan svang w = TURN_INIT; w <= TURN_MAX (VERIFIERAD, kod 0x16a4-0x1718)
 var turned;
@@ -159,3 +159,4 @@ if (energy <= 0)
 {
     scr_player_lose_life();   // exploderar, tar ett liv och startar nedrakningen
 }
+scr_trail_update();   // driftspar (D-030)

@@ -7,7 +7,7 @@
     <datafile>
       <name>updates.txt</name>
       <exists>-1</exists>
-      <size>7199</size>
+      <size>7728</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -290,6 +290,10 @@
     <script>scripts\scr_music_round_start.gml</script>
     <script>scripts\scr_pause_draw.gml</script>
     <script>scripts\scr_pause_step.gml</script>
+    <script>scripts\scr_trail_clear.gml</script>
+    <script>scripts\scr_trail_draw.gml</script>
+    <script>scripts\scr_trail_init.gml</script>
+    <script>scripts\scr_trail_update.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_lg_k10</font>

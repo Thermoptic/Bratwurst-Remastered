@@ -274,3 +274,9 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-14 — Reverse på drift-knappen
 - Vänster trigger (C / Q / H på tangentbordet) utan gas backar skeppet mycket långsamt (`g_REVERSE_THRUST` = 0.25 av vanlig gas), även från stillastående, för att ta sig ur en vägg. Med gas samtidigt blir det drift som förut. `scr_player_step`. Ej körd.
+
+## 2026-10-14 — Driftspår i stället för gnistor
+- Driftgnistorna ersattes av ljusspår efter skeppet i skeppets färg (additiv blandning): två spår för breda skepp, ett för smala (BatWing, JAS, Kaese, TieFighter). Spåret växer fram när man börjar drifta, följer rörelsebanan (upp till 80 punkter, en per tick) och tonar ut mot svansen; när driften slutar tonar hela spåret ut på ca 0,8 s. Nya `scr_trail_init`, `scr_trail_clear`, `scr_trail_update`, `scr_trail_draw`; `scr_player_step`, `scr_match_draw`. Ej körd; utseende och längd ska justeras efter test.
+
+## 2026-10-14 — Motorglöd vid driftspåret
+- Där varje driftspår startar ritas nu en glödande boll medan man driftar: en solid kärna i skeppets färg och utanför den fem mjuka ringar (additiv blandning) som tonar ut, pulserar och flimrar snabbt (slumpad radie och styrka per bildruta; kärnan flimrar inte). Bollen försvinner när driften slutar. `scr_trail_draw`. Ej körd.

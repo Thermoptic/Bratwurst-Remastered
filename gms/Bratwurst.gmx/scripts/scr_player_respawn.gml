@@ -4,6 +4,7 @@
 px = g_start_x[slot];
 py = g_start_y[slot];
 drifting = false;
+scr_trail_clear();
 reversing = false;
 spin_v = 0;
 spin_f = 0;

@@ -1,6 +1,11 @@
 BRATWURST REHEATED - UPDATES
 Newest first. Only the big changes and new features are listed.
 
+== UPDATE 14 - 2026-10-14 - Drift light trails ==
+* Drifting now leaves light trails behind the ship in the colour of the ship: two trails for wide ships, one for narrow ones. The trails grow out as you start to drift, follow the path you move along and fade out towards the tail. When you stop drifting the whole trail fades away.
+* A glowing ball sits where each trail starts, to show that the engine is working: a solid core with a soft glow that pulses and flickers.
+* Drift slides more to the side and has stronger thrust.
+
 == UPDATE 13 - 2026-10-14 - Pause menu, drift and reverse ==
 * Pause menu: press Esc or Start during a match for Resume Game and Quit to Menu. The game stands still while it is open.
 * Drifting (new, experimental): hold the left trigger while you thrust to slide sideways. Faster turning, thrust pushed outwards from the turn, sparks behind the ship. It only works while you thrust and move. Special weapon switch moved from the left trigger to Y.

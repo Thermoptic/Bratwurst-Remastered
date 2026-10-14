@@ -11,6 +11,7 @@ ad_cool = 0;
 alive = true;
 respawn_t = 0;
 drifting = false;
+scr_trail_clear();
 reversing = false;
 spin_v = 0;
 spin_f = 0;

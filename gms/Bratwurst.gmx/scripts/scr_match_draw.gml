@@ -25,6 +25,7 @@ for (k = 0; k < g_wall_n; k += 1)
     draw_line(g_OX + x1 * g_SCALE, g_OY + y1 * g_SCALE, g_OX + x2 * g_SCALE, g_OY + y2 * g_SCALE);
 }
 
+scr_trail_draw();   // driftspar bakom skeppen
 // Skepp (vertexar skalas med Z>>16 och roteras med sin/cos-tabellerna, som hunk0 0x18da)
 with (obj_player)
 {
