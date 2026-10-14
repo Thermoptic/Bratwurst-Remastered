@@ -10,7 +10,7 @@ if (t == 2)
 }
 else if (t == 3)
 {
-    g_sv[s] = clamp(g_sv[s] + argument1, g_mn_min[n], g_mn_max[n]);
+    g_sv[s] = clamp(g_sv[s] + argument1 * g_mn_step[n], g_mn_min[n], g_mn_max[n]);
 }
 else if (t == 4 && (s == g_SV_MAP || s == g_SV_MAP2))
 {

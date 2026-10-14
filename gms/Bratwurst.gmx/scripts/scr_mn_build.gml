@@ -1,7 +1,7 @@
 /// scr_mn_build()
 // Bygger huvudmenyn som data (noder + barn). Att lagga till en rad = en rad har. Noderna: root = 0.
 // Typer: 0 undermeny, 1 handling (g_mn_act: 1 start, 2 avsluta, 3 aterstall val), 2 av/pa, 3 tal, 4 val ur lista, 5 text.
-var root, modes, opts, ctrls, quit, n, p, c, classic;
+var root, modes, opts, ctrls, quit, n, p, c, classic, pe, pt, pk;
 g_mn_cnt = 0;
 root = scr_mn_add(0, "MAIN", "BRATWURST - REHEATED");
 modes = scr_mn_add(0, "GAME MODES", "CHOOSE A GAME MODE");
@@ -32,6 +32,9 @@ scr_mn_link(classic, n);
 n = scr_mn_add(3, "LIFE", "LIVES PER ROUND. THE ORIGINAL HAS 6 LIVES, WHICH IS THE MAXIMUM. YOU CAN LOWER IT BUT NOT RAISE IT");
 scr_mn_setting(n, g_SV_LIVES, 1, g_START_LIVES, "gameplay.lives");
 scr_mn_link(classic, n);
+n = scr_mn_add(2, "POWERUPS", "POWERUP ORBS APPEAR ON THE MAP: THE FIRST ONE 5 SECONDS AFTER THE ROUND STARTS, THEN A NEW ONE 10 SECONDS AFTER ONE IS PICKED UP. FIRE IT WITH THE B BUTTON");
+scr_mn_setting(n, g_SV_PUCL, 0, 1, "gameplay.powerups_classic");
+scr_mn_link(classic, n);
 p = scr_mn_add(0, "ASTRO DUEL", "ONE HIT KILLS. THREE SHOTS THEN A 4 SECOND RELOAD. BIGGER SHOTS, FAST MISSILES AND TURBO ONLY");
 scr_mn_link(modes, p);
 n = scr_mn_add(1, "START", "OPEN THE SHIP SELECT SCREEN FOR ASTRO DUEL. SET PLAYERS, MAP AND LIFE BELOW");
@@ -50,6 +53,9 @@ scr_mn_setting(n, g_SV_ROUNDS, 1, 15, "gameplay.rounds");
 scr_mn_link(p, n);
 n = scr_mn_add(3, "LIFE", "LIVES PER ROUND. EVERY HIT TAKES ONE LIFE, SO WITH 1 LIFE YOU DIE ON A SINGLE HIT");
 scr_mn_setting(n, g_SV_ADLIVES, 1, 9, "astro.lives");
+scr_mn_link(p, n);
+n = scr_mn_add(2, "POWERUPS", "POWERUP ORBS APPEAR ON THE MAP: THE FIRST ONE 5 SECONDS AFTER THE ROUND STARTS, THEN A NEW ONE 10 SECONDS AFTER ONE IS PICKED UP. FIRE IT WITH THE B BUTTON");
+scr_mn_setting(n, g_SV_PUAD, 0, 1, "astro.powerups");
 scr_mn_link(p, n);
 p = scr_mn_add(0, "RACE", "NOT BUILT YET");
 scr_mn_link(modes, p);
@@ -123,11 +129,30 @@ c = scr_mn_add(5, "TURN", "LEFT STICK OR D-PAD"); g_mn_text[c] = "STICK / D-PAD"
 c = scr_mn_add(5, "CANNON", "FIRE THE CANNON"); g_mn_text[c] = "A"; scr_mn_link(p, c);
 c = scr_mn_add(5, "SPECIAL", "FIRE THE SPECIAL WEAPON"); g_mn_text[c] = "Y"; scr_mn_link(p, c);
 c = scr_mn_add(5, "THRUST", "ENGINE THRUST"); g_mn_text[c] = "X / RT"; scr_mn_link(p, c);
+c = scr_mn_add(5, "POWERUP", "FIRE THE POWERUP YOU HAVE PICKED UP"); g_mn_text[c] = "B"; scr_mn_link(p, c);
 c = scr_mn_add(5, "NEXT SPECIAL", "SWITCH TO THE NEXT SPECIAL WEAPON DURING A MATCH"); g_mn_text[c] = "BACK"; scr_mn_link(p, c);
 c = scr_mn_add(5, "WEAPON POD", "SWITCH THE POD THE SPECIAL WEAPON FIRES FROM"); g_mn_text[c] = "LB"; scr_mn_link(p, c);
 c = scr_mn_add(5, "DRIFT", "HOLD WHILE YOU THRUST TO SLIDE SIDEWAYS"); g_mn_text[c] = "LT + THRUST"; scr_mn_link(p, c);
 c = scr_mn_add(5, "REVERSE", "HOLD ALONE (NO THRUST) TO BACK UP SLOWLY"); g_mn_text[c] = "LT"; scr_mn_link(p, c);
 c = scr_mn_add(5, "PAUSE", "PAUSE MENU DURING A MATCH"); g_mn_text[c] = "START"; scr_mn_link(p, c);
+
+// POWERUP EDITOR (hemlig: visas i Options nar man trycker P dar, se scr_mn_step). En undermeny per powerup med dess parametrar ur scr_data_powerups.
+g_mn_opts_node = opts;
+g_mn_pu_linked = false;
+pe = scr_mn_add(0, "POWERUP EDITOR", "SECRET MENU. SET UP EVERY POWERUP: SIZE, SPEED, SHOCKWAVE, PARTICLES AND DAMAGE");
+g_mn_pu_node = pe;
+for (pt = 0; pt < g_PU_COUNT; pt += 1)
+{
+    p = scr_mn_add(0, g_pu_name[pt], "PARAMETERS FOR THIS POWERUP. LEFT / RIGHT CHANGES THE VALUE");
+    scr_mn_link(pe, p);
+    for (pk = 0; pk < g_pu_np[pt]; pk += 1)
+    {
+        n = scr_mn_add(3, g_pu_pname[pt, pk], g_pu_pdesc[pt, pk]);
+        scr_mn_setting(n, g_SV_PU + pt * 8 + pk, g_pu_pmin[pt, pk], g_pu_pmax[pt, pk], "powerup_" + g_pu_key[pt] + "." + g_pu_pkey[pt, pk]);
+        g_mn_step[n] = g_pu_pstep[pt, pk];
+        scr_mn_link(p, n);
+    }
+}
 
 g_mn_depth = 0;
 g_mn_stk_node[0] = root;

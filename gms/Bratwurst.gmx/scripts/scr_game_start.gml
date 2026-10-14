@@ -26,5 +26,6 @@ for (i = 0; i < g_n_players; i += 1)
     p = instance_create(0, 0, obj_player);
     with (p) { scr_player_init(i, g_pship[i]); }
 }
+scr_powerup_reset();
 scr_music_round_start();
 scr_camera_update();

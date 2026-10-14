@@ -63,6 +63,9 @@ scr_spark_step();
 scr_debris_step();   // skepp mot skepp (D-018)
 with (obj_missile) { scr_missile_step(); }
 with (obj_shot) { scr_shot_step(); }
+scr_powerup_step();   // powerup-orben: spawn, upplockning, nedrakning (D-035)
+g_shake_amp *= 0.9;   // kameraskakningen klingar av (ca 0,4 s)
+if (g_shake_amp < 0.3) { g_shake_amp = 0; }
 with (obj_fx) { scr_fx_damage(); ftimer += 1; if (ftimer > fmax) { instance_destroy(); } }
 scr_camera_update();
 

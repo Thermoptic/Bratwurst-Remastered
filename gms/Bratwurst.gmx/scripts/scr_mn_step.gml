@@ -11,6 +11,13 @@ g_mn_stk_sel[g_mn_depth] = sel;
 item = g_mn_kid[node, sel];
 t = g_mn_type[item];
 ok_adj = (t >= 2 && t <= 4);
+// hemlig meny: tryck P i Options for att visa POWERUP EDITOR (syns sedan till spelet startas om)
+if (node == g_mn_opts_node && !g_mn_pu_linked && keyboard_check_pressed(ord("P")))
+{
+    scr_mn_link(g_mn_opts_node, g_mn_pu_node);
+    g_mn_pu_linked = true;
+    g_mn_stk_sel[g_mn_depth] = g_mn_n[node] - 1;
+}
 
 if (g_nv_left)
 {

@@ -105,6 +105,7 @@ scr_ui_text(x2 + 12, yy, "STICK / D-PAD", g_c[4]);   scr_ui_text_r(x2 + cw - 12,
 scr_ui_text(x2 + 12, yy, "A", g_c[4]);               scr_ui_text_r(x2 + cw - 12, yy, "CANNON", g_c[6]); yy += 15;
 scr_ui_text(x2 + 12, yy, "X / RT", g_c[4]);          scr_ui_text_r(x2 + cw - 12, yy, "THRUST", g_c[6]); yy += 15;
 scr_ui_text(x2 + 12, yy, "Y", g_c[4]);               scr_ui_text_r(x2 + cw - 12, yy, "SPECIAL WEAPON", g_c[6]); yy += 15;
+scr_ui_text(x2 + 12, yy, "B", g_c[4]);               scr_ui_text_r(x2 + cw - 12, yy, "POWERUP", g_c[6]); yy += 15;
 scr_ui_text(x2 + 12, yy, "BACK", g_c[4]);            scr_ui_text_r(x2 + cw - 12, yy, "NEXT SPECIAL", g_c[6]); yy += 15;
 scr_ui_text(x2 + 12, yy, "LB", g_c[4]);              scr_ui_text_r(x2 + cw - 12, yy, "WEAPON POD", g_c[6]); yy += 15;
 scr_ui_text(x2 + 12, yy, "RB", g_c[4]);              scr_ui_text_r(x2 + cw - 12, yy, "NEXT SHIP (TEST)", g_c[6]); yy += 15;
@@ -117,4 +118,5 @@ scr_ui_text(x2 + 12, yy, "   SPECIAL / NEXT / POD", g_c[3]);   scr_ui_text_r(x2 
 scr_ui_text(x2 + 12, yy, "P2", g_c[4]);              scr_ui_text_r(x2 + cw - 12, yy, "WASD  L-SHIFT", g_c[6]); yy += 15;
 scr_ui_text(x2 + 12, yy, "P3", g_c[4]);              scr_ui_text_r(x2 + cw - 12, yy, "IJKL  O", g_c[6]); yy += 15;
 scr_ui_text(x2 + 12, yy, "DRIFT P1 / P2 / P3", g_c[4]);   scr_ui_text_r(x2 + cw - 12, yy, "C / Q / H", g_c[6]); yy += 15;
+scr_ui_text(x2 + 12, yy, "POWERUP P1 / P2 / P3", g_c[4]);   scr_ui_text_r(x2 + cw - 12, yy, "V / F / M", g_c[6]); yy += 15;
 scr_ui_text(x2 + 12, yy, "ESC", g_c[4]);             scr_ui_text_r(x2 + cw - 12, yy, "PAUSE", g_c[6]);

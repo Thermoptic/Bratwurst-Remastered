@@ -7,5 +7,5 @@ Source mp3 files for the in-game playlist. `tools/gen_tracks.py` converts them t
 To add a song: put the mp3 here and run `python tools/gen_tracks.py`.
 
 Rights status: the Thermoptic tracks are the project owner's own music (SANNOLIK, to be confirmed by the owner).
-The title song (`snd_title_music`, 3Elks - Das Bratwurst, DnB edit) is a third-party track; check its licence
+The title song (`snd_title_music`, 3LE - Das Bratwurst, DnB edit; originally credited 3Elks) is a third-party track; check its licence
 before making this repository public or distributing a build.

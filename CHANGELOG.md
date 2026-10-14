@@ -334,3 +334,21 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-14 — Användarens ritade korv används
 - `assets/models/sausage2.svg` (användarens omritning av korven) är inläst med `tools/svg_to_model.py` till `scr_data_sausage.gml` (180 punkter, 251 linjer). Verktyget normaliserar nu viewBox (mitten blir 0,0 och bredden 400 enheter) så att SVG:er som sparats i annan skala (här 0 0 1200 660) hamnar rätt. Ej körd i GMS.
+
+## 2026-10-14 — Powerup-system: Mini Nuke och hemlig Powerup Editor
+- Rad POWERUPS ON/OFF (standard ON) i Game modes → Classic och Astro Duel. 5 s efter rundstart spawnar en orb med pixelikon (snabbt färgbytande i 5 färger) på en slumpad plats på kartan (innanför ramen, inte på föremål, minst 20 px från vägg); ny powerup 10 s efter upplockning. Den som tar upp Mini Nuke avfyrar den med special-knappen: en missilliknande projektil med inställbar storlek och fart, chockvåg (världspixlar, skadar alla den når), partiklar och direkt-/chockvågsskada. Hemlig Powerup Editor i Options (tryck P) med alla powerups och deras parametrar, sparas i settings.ini. D-035. Ej körd.
+
+## 2026-10-14 — Powerup-orben dubbel storlek och centrerad ikon
+- Orbens radie är dubbel (`g_PU_RADIUS` 18 → 36 världspixlar; också upplockningsradien). Väggavståndet räknas nu från orbens kant (minst 20 px, centrum minst radie + 20 = 56) så att den inte ligger an mot en vägg. Ikonen heltalsplaceras nu (11×11 pixlar, `ox/oy` avrundade från orbens mitt) så att den ligger exakt i mitten av bollen i stället för att hamna en halv pixel snett. `scr_powerup_draw`, `scr_powerup_pos_ok`, `scr_config_init`. Ej körd.
+
+## 2026-10-14 — 3LE och titellåten bara på titelskärmen
+- Artistnamnet på låten Das Bratwurst visas nu som "3LE - DAS BRATWURST (DNB EDIT)" (var 3ELKS). Titellåten (lat 0) spelas bara på titelskärmen: lämnar man titeln byter musiken till en slumpad annan låt ur spellistan, och i matcher, menyer och skeppsval spelas aldrig titellåten. LB/RB hoppar över den (och är avstängda på titelskärmen), NOW PLAYING räknar bara de övriga låtarna (t.ex. 02/05), och tillbaka på titelskärmen startar titellåten igen. `scr_music_update`, `scr_music_switch`, `scr_music_round_start`, `scr_mn_draw`, `scr_config_init`. Ej körd.
+
+## 2026-10-14 — B aktiverar powerupen
+- Hållen powerup (t.ex. Mini Nuke) avfyras nu med B på gamepaden (tangentbord för test: V / F / M för spelare 1–3) i stället för special-knappen, som åter bara styr specialvapnet. B var tidigare oanvänd. Controls-menyn och pausmenyns kontrollruta uppdaterade. `scr_player_input`, `scr_player_step`, `scr_special_fire`, `scr_powerup_fire`, `scr_pause_draw`, `scr_mn_build`. Ej körd.
+
+## 2026-10-14 — Roterande powerup
+- Ikonen i powerup-orben roterar nu runt orbens mitt (ett varv på ca 2 s; pixlarna roteras runt mittpixeln så den förblir exakt centrerad) och en ring av åtta streck snurrar runt orben åt andra hållet, så att den syns ännu tydligare. `scr_powerup_draw`. Ej körd.
+
+## 2026-10-14 — Mini Nuke: kameraskakning
+- Ny parameter CAMERA SHAKE (0–60 pixlar, standard 12) i Powerup Editor → Mini Nuke. När en Mini Nuke exploderar skakar spelytans bild (slumpmässig förskjutning av kameran i ritningen, `g_shake_amp`, som klingar av med 0,9 per tick, ca 0,4 s); ram, paneler och spelfysik påverkas inte, och skakningen pausas i pausmenyn. 0 stänger av den. `scr_data_powerups`, `scr_fx_spawn`, `scr_match_draw`, `scr_game_step`, `scr_powerup_reset`. Ej körd.

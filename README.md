@@ -12,6 +12,16 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 18 - 2026-10-14 - Powerups: Mini Nuke
+
+- New powerup system. A rotating, colour-cycling orb with an icon appears on the map 5 seconds after a round starts, on a random spot away from walls and objects. Fly into it to pick up the powerup. A new one appears 10 seconds after one is picked up.
+- First powerup: MINI NUKE. Press B on the gamepad to fire it: a big glowing projectile that explodes with a growing shockwave, a cloud of pixel particles and a camera shake.
+- Game modes: new POWERUPS ON/OFF setting for Classic and Astro Duel (default ON).
+- Secret Powerup Editor: open Options and press P. Set projectile size, speed, shockwave radius, particles, damage and camera shake for every powerup.
+- Music: the title song (3LE - Das Bratwurst, DnB edit) now plays on the title screen only. Menus and matches play the other songs.
+- Gamepad: Y fires the special weapon, B fires the powerup, Back switches special weapon. The button that cycled the number of players is gone.
+- New pause menu with match stats and a list of all controls.
+
 ### UPDATE 17 - 2026-10-14 - Sausage, drift sound, round win text
 
 - A wireframe sausage (for the future Capture the Bratwurst mode) now drifts and rotates in the background of the title screen and menu together with the ships. The model is drawn as an SVG that you can edit yourself (assets/models).
@@ -49,7 +59,7 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 ### UPDATE 12 - 2026-10-14 - Music playlist, camera lock
 
 - The main menu shows NOW PLAYING with the name of the current song under the spectrum. Press LB / RB on a gamepad (or PageUp / PageDown) on the title screen, in the menu or on ship select to switch song.
-- Six songs in the playlist: 3Elks - Das Bratwurst (DnB edit) and five Thermoptic tracks (No Safe Orbit, Sectorwurst, We Were Never Organic - Disco Edit, Nothing Good Beyond Neptune, The Final Frankfurter). The spectrum follows each song, and long titles scroll.
+- Six songs in the playlist: 3LE - Das Bratwurst (DnB edit, played on the title screen only) and five Thermoptic tracks (No Safe Orbit, Sectorwurst, We Were Never Organic - Disco Edit, Nothing Good Beyond Neptune, The Final Frankfurter). The spectrum follows each song, and long titles scroll.
 - Music now plays during matches too: a random song starts every round and its name is shown in the top bar. New Volume setting in Options (10 to 100 percent, default 70).
 - When only one player is left the camera stays where it is instead of zooming in on the winner.
 - The map name is part of the header line during a match.

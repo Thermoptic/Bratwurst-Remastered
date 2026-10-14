@@ -2,7 +2,7 @@
 // Kors i obj_player. Tangentbords- och Xbox-mappning ar PLACEHOLDERS (originalets mappning ar OKAND, docs/15):
 //   bit0 vanster, bit1 hoger, bit2 skjut kanon, bit3 special, bit4 thrust.
 // Dokumentationen: "tryck framat = kanon, drag bakat = specialvapen" (joystick); thrust-knappen = OKAND.
-in_wsel = false; in_psel = false; in_shipcyc = false; in_podcyc = false; in_drift = false;
+in_wsel = false; in_psel = false; in_shipcyc = false; in_podcyc = false; in_drift = false; in_powerup = false;
 in_left = false; in_right = false; in_fire = false; in_special = false; in_thrust = false;
 if (slot == 0)
 {
@@ -14,6 +14,7 @@ if (slot == 0)
     in_wsel    = keyboard_check_pressed(ord("Z"));
     in_psel    = keyboard_check_pressed(ord("X"));
     in_drift   = keyboard_check(ord("C"));
+    in_powerup = keyboard_check_pressed(ord("V"));
 }
 if (slot == 1)
 {
@@ -25,6 +26,7 @@ if (slot == 1)
     in_wsel    = keyboard_check_pressed(ord("E"));
     in_psel    = keyboard_check_pressed(ord("R"));
     in_drift   = keyboard_check(ord("Q"));
+    in_powerup = keyboard_check_pressed(ord("F"));
 }
 
 if (slot == 2)
@@ -37,11 +39,12 @@ if (slot == 2)
     in_wsel    = keyboard_check_pressed(ord("U"));
     in_psel    = keyboard_check_pressed(ord("Y"));
     in_drift   = keyboard_check(ord("H"));
+    in_powerup = keyboard_check_pressed(ord("M"));
 }
 // Spelare 4 har ingen tangentbordsstyrning (kontroll kravs; originalet: fyrspelaradapter).
 
 // Xbox-kontroll (gamepad-index = spelarplats; kombineras med tangentbordet). PLACEHOLDER-mappning:
-//   svang: vanster spak (x) eller D-pad vanster/hoger       kanon: A          special: Y
+//   svang: vanster spak (x) eller D-pad vanster/hoger       kanon: A          special: Y     powerup: B
 //   thrust: X eller hoger trigger (RT)                      byt specialvapen: Back     byt pod (position): LB     DRIFT: vanster trigger (LT)
 if (gamepad_is_connected(slot))
 {
@@ -51,6 +54,7 @@ if (gamepad_is_connected(slot))
     if (gamepad_button_check(slot, gp_padl) || glx < -0.5) { in_left = true; }
     if (gamepad_button_check(slot, gp_padr) || glx > 0.5)  { in_right = true; }
     if (gamepad_button_check(slot, gp_face1)) { in_fire = true; }
+    if (gamepad_button_check_pressed(slot, gp_face2)) { in_powerup = true; }   // B: aktivera/avfyra hallen powerup (D-035)
     if (gamepad_button_check(slot, gp_face4)) { in_special = true; }   // Y: specialvapen (flyttad fran B, D-032)
     if (gamepad_button_check(slot, gp_face3) || gamepad_button_check(slot, gp_shoulderrb)) { in_thrust = true; }
     if (gamepad_button_check_pressed(slot, gp_select)) { in_wsel = true; }   // Back: nasta specialvapen (D-032)

@@ -1,9 +1,19 @@
 /// scr_match_draw()
 // Ritar matchen: spelytan i originalets 320x256-koordinater skalad med g_SCALE (vektorlinjer, ingen bitmapp), placerad pa (g_OX, g_OY),
 // sedan ramen, spelarpanelerna och eventuell resultatruta. Farger kommer fran temat.
-var k, a, b, x1, y1, x2, y2, gx, gy, pwx, phx, mqs, mqn, mqm;
+var k, a, b, x1, y1, x2, y2, gx, gy, pwx, phx, mqs, mqn, mqm, shx, shy;
 g_proj_hs = 1;
 if (g_game_mode == 1) { g_proj_hs = 1.3; }   // Astro Duel: projektiler 30 % storre
+// kameraskakning (Mini Nuke): spelytans bild forskjuts slumpmassigt med g_shake_amp pixlar, ram och paneler ligger stilla; kameran aterstalls fore ramen
+shx = 0;
+shy = 0;
+if (g_shake_amp > 0 && !g_paused)
+{
+    shx = round((random(2) - 1) * g_shake_amp / g_SCALE);
+    shy = round((random(2) - 1) * g_shake_amp / g_SCALE);
+    g_cam_x += shx;
+    g_cam_y += shy;
+}
 pwx = g_PLAY_W * g_SCALE;
 phx = g_PLAY_H * g_SCALE;
 
@@ -25,6 +35,7 @@ for (k = 0; k < g_wall_n; k += 1)
     draw_line(g_OX + x1 * g_SCALE, g_OY + y1 * g_SCALE, g_OX + x2 * g_SCALE, g_OY + y2 * g_SCALE);
 }
 
+scr_powerup_draw();   // powerup-orben pa kartan
 scr_trail_draw();   // driftspar bakom skeppen
 // Skepp (vertexar skalas med Z>>16 och roteras med sin/cos-tabellerna, som hunk0 0x18da)
 with (obj_player)
@@ -66,15 +77,18 @@ with (obj_missile)
     qx1 = g_OX + (px / 256 * g_zoom / 32768 - g_cam_x + g_CX) * g_SCALE;
     qy1 = g_OY + (py / 256 * g_zoom / 32768 - g_cam_y + g_CY) * g_SCALE;
     mrc = 2.4 * g_SCALE;
+    if (mtype == 3) { mrc = (1.4 + msize * 0.5) * g_SCALE; }   // Mini Nuke: storleken ur Powerup Editor
     mpl = 1 + 0.15 * sin(g_tick * 0.8 + id);
     for (mj = 5; mj >= 1; mj -= 1)
     {
         if (mj >= 4) { draw_set_color(g_c[9]); } else { draw_set_color(g_c[10]); }
+        if (mtype == 3) { if (mj >= 4) { draw_set_color(g_c[14]); } else { draw_set_color(g_c[12]); } }
         draw_set_alpha(0.32 * (0.7 + random(0.6)) / mj);
         draw_circle(qx1, qy1, mrc * (1 + mj * 0.7) * mpl * (0.88 + random(0.24)), false);
     }
     draw_set_alpha(1);
     draw_set_color(g_c[10]);
+    if (mtype == 3) { draw_set_color(g_c[6]); }
     draw_circle(qx1, qy1, mrc, false);
 }
 draw_set_alpha(1);
@@ -82,9 +96,32 @@ draw_set_blend_mode(bm_normal);
 draw_set_color(g_c[8]);
 with (obj_fx)
 {
-    // explosionsring med dubbel radie mot tidigare (6 + 4 per tick) och en inre ring
-    draw_circle(g_OX + scr_w2s_x(floor(px / 256)) * g_SCALE, g_OY + scr_w2s_y(floor(py / 256)) * g_SCALE, (6 + ftimer * 4) * fsize, true);
-    draw_circle(g_OX + scr_w2s_x(floor(px / 256)) * g_SCALE, g_OY + scr_w2s_y(floor(py / 256)) * g_SCALE, (3 + ftimer * 2) * fsize, true);
+    if (fkind == 4)
+    {
+        // Mini Nuke: tre chockvagsringar i varldspixlar (zoom-oberoende), tonar ut mot slutet
+        var rwk, rsk, tk, fx4, fy4;
+        tk = ftimer / fmax;
+        rwk = rmax * (1 - power(1 - tk, 2));
+        rsk = rwk * g_zoom / 32768 * g_SCALE;
+        fx4 = g_OX + (px / 256 * g_zoom / 32768 - g_cam_x + g_CX) * g_SCALE;
+        fy4 = g_OY + (py / 256 * g_zoom / 32768 - g_cam_y + g_CY) * g_SCALE;
+        draw_set_alpha(1 - tk * 0.7);
+        draw_set_color(g_c[14]);
+        draw_circle(fx4, fy4, rsk, true);
+        draw_circle(fx4, fy4, max(1, rsk - 1), true);
+        draw_set_color(g_c[10]);
+        draw_circle(fx4, fy4, rsk * 0.8, true);
+        draw_set_color(g_c[6]);
+        draw_circle(fx4, fy4, rsk * 0.55, true);
+        draw_set_alpha(1);
+    }
+    else
+    {
+        // explosionsring med dubbel radie mot tidigare (6 + 4 per tick) och en inre ring
+        draw_set_color(g_c[8]);
+        draw_circle(g_OX + scr_w2s_x(floor(px / 256)) * g_SCALE, g_OY + scr_w2s_y(floor(py / 256)) * g_SCALE, (6 + ftimer * 4) * fsize, true);
+        draw_circle(g_OX + scr_w2s_x(floor(px / 256)) * g_SCALE, g_OY + scr_w2s_y(floor(py / 256)) * g_SCALE, (3 + ftimer * 2) * fsize, true);
+    }
 }
 
 // Skott
@@ -100,6 +137,8 @@ with (obj_shot)
 scr_spark_draw();
 scr_debris_draw();
 
+g_cam_x -= shx;   // aterstall kameran efter skakningen
+g_cam_y -= shy;
 // Allt som hamnat utanfor spelytan tacks over av bakgrunden, sedan ram och paneler
 draw_set_color(g_c[0]);
 draw_rectangle(-4000, -4000, g_OX - 1, 4000, false);

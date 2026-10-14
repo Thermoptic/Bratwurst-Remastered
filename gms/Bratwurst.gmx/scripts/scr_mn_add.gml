@@ -13,5 +13,6 @@ g_mn_act[n] = 0;
 g_mn_text[n] = "";
 g_mn_ini[n] = "";
 g_mn_mode[n] = 0;
+g_mn_step[n] = 1;   // stegstorlek for talrader (vanster/hoger)
 g_mn_cnt += 1;
 return n;

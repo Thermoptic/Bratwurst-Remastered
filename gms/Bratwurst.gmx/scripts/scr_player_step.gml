@@ -101,6 +101,7 @@ fire_prev = in_fire;
 // 3b) Specialvapen (val under de forsta 5 s, sedan avfyrning)
 scr_special_select();
 scr_special_fire();
+if (in_powerup && pu_have > 0) { scr_powerup_fire(); }   // B (gamepad): avfyra hallen powerup (D-035)
 
 // 4) Thrust: vx -= sin*THRUST>>3,  vy += cos*THRUST>>3 (VERIFIERAD, kod 0x184a-0x186e)
 if (in_thrust)

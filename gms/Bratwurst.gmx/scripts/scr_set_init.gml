@@ -1,6 +1,6 @@
 /// scr_set_init()
 // Laser settings.ini over standardvardena (okanda/ogiltiga varden ger standard), skapar themes.ini vid forsta start och applicerar temat.
-var t, k, s;
+var t, k, s, pt, pk;
 scr_set_defaults();
 ini_open("settings.ini");
 s = ini_read_string("theme", "name", "");
@@ -25,6 +25,15 @@ g_sv[g_SV_WIDE] = clamp(ini_read_real("display", "widescreen", g_sv[g_SV_WIDE]),
 g_sv[g_SV_MUSIC] = clamp(ini_read_real("audio", "music", g_sv[g_SV_MUSIC]), 0, 1);
 g_sv[g_SV_ADLIVES] = clamp(round(ini_read_real("astro", "lives", g_sv[g_SV_ADLIVES])), 1, 9);
 g_sv[g_SV_VOL] = clamp(round(ini_read_real("audio", "volume", g_sv[g_SV_VOL] * 10) / 10), 1, 10);
+g_sv[g_SV_PUCL] = clamp(round(ini_read_real("gameplay", "powerups_classic", g_sv[g_SV_PUCL])), 0, 1);
+g_sv[g_SV_PUAD] = clamp(round(ini_read_real("astro", "powerups", g_sv[g_SV_PUAD])), 0, 1);
+for (pt = 0; pt < g_PU_COUNT; pt += 1)
+{
+    for (pk = 0; pk < g_pu_np[pt]; pk += 1)
+    {
+        g_sv[g_SV_PU + pt * 8 + pk] = clamp(round(ini_read_real("powerup_" + g_pu_key[pt], g_pu_pkey[pt, pk], g_sv[g_SV_PU + pt * 8 + pk])), g_pu_pmin[pt, pk], g_pu_pmax[pt, pk]);
+    }
+}
 g_sv[g_SV_LIVES] = clamp(round(ini_read_real("gameplay", "lives", g_sv[g_SV_LIVES])), 1, g_START_LIVES);
 g_sv[g_SV_SFX] = clamp(ini_read_real("audio", "sfx", g_sv[g_SV_SFX]), 0, 1);
 g_sv[g_SV_PLAYERS] = clamp(round(ini_read_real("gameplay", "players", g_sv[g_SV_PLAYERS])), 1, 4);

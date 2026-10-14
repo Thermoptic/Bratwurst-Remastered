@@ -18,5 +18,6 @@ g_winner = -1;
 g_tick = 0;
 g_round_timer = 0;
 g_end_timer = -1;
+scr_powerup_reset();
 scr_music_round_start();
 scr_camera_update();

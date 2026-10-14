@@ -38,6 +38,7 @@ Banor ligger i `levels.ini` i spelets sparmapp (D-019). Tre inbyggda banor skriv
 | Sväng | Vänster spak ←/→ eller D-pad ←/→ |
 | Kanon | A |
 | Specialvapen | Y |
+| Aktivera/avfyra hållen powerup (t.ex. Mini Nuke; tangentbord spelare 1 V, spelare 2 F, spelare 3 M) | B |
 | Thrust | X eller höger trigger (RT) |
 | **Under matchen:** nästa skepp (test) | RB (höger axelknapp) |
 | **Under matchen:** nästa specialvapen | Back |
@@ -67,3 +68,5 @@ F1 debugtext (med tangenthjälp) · F2 tillbaka till skeppsvalet · Esc pausmeny
 m_x</room>`; tomt `<constants>`-element ger fel (utelämnas).
 - `global.namn[variabel]` fungerar **inte** (fel "trying to index a variable which is not an array"). Använd `globalvar g_namn;` (deklareras i `scr_config_init`) och `g_namn[i]`.
 - GML-filer ska vara ren ASCII (generatorn translittererar å/ä/ö).
+
+**Powerups (nytt):** Game modes → Classic/Astro Duel → POWERUPS ON/OFF (standard ON). 5 s efter rundstart dyker en färgbytande orb upp på kartan; flyg in i den för att få en powerup (nu Mini Nuke) och avfyra den med B (gamepad). En ny orb kommer 10 s efter upplockning. Hemlig Powerup Editor: öppna Options och tryck P, så visas raden POWERUP EDITOR längst ned, med storlek, fart, chockvåg, partiklar och skada för varje powerup.

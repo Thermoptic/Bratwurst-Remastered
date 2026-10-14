@@ -1,8 +1,27 @@
 /// scr_music_update()
-// Spellistans lat g_trk_idx spelas i loop overallt (titel, menyer, skeppsval, redigerare, match) med volymen g_SV_VOL (10-100 %). Under matchen byter
+// Spellistans lat g_trk_idx spelas i loop overallt (titel, menyer, skeppsval, redigerare, match; titellaten bara pa titelskarmen) med volymen g_SV_VOL (10-100 %). Under matchen byter
 // scr_music_round_start lat varje ny runda. LB/RB eller PageUp/PageDown byter lat i menyerna. Kan stangas av i Options -> MUSIC.
 var want, gi;
-if (g_state == 10 || g_state == 11 || g_state == 0)
+// titellaten (lat 0) spelas bara pa titelskarmen; i alla andra lagen spelas en annan lat ur spellistan
+if (g_trk_n > 1)
+{
+    if (g_state == 10)
+    {
+        if (g_trk_idx != 0)
+        {
+            g_trk_idx = 0;
+            if (g_music_id >= 0) { audio_stop_sound(g_music_id); }
+            g_music_id = -1;
+        }
+    }
+    else if (g_trk_idx == 0)
+    {
+        g_trk_idx = 1 + irandom(g_trk_n - 2);
+        if (g_music_id >= 0) { audio_stop_sound(g_music_id); }
+        g_music_id = -1;
+    }
+}
+if (g_state == 11 || g_state == 0)
 {
     // axelknapparna (LB / RB) eller PageUp / PageDown byter lat
     if (keyboard_check_pressed(vk_pageup)) { scr_music_switch(-1); }

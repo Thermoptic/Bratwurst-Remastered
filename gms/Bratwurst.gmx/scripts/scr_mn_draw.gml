@@ -113,7 +113,7 @@ for (k = 0; k < 16; k += 1)
 scr_ui_text(ix, py + 298, "SPECTRUM", g_c[4]);
 scr_viz_draw(ix, py + 320, iw, 110);
 scr_ui_text(ix, py + 446, "NOW PLAYING", g_c[4]);
-scr_ui_text_r(ix + iw, py + 446, scr_pad2(g_trk_idx + 1) + "/" + scr_pad2(g_trk_n) + "  LB/RB CHANGE", g_c[3]);
+scr_ui_text_r(ix + iw, py + 446, scr_pad2(max(1, g_trk_idx)) + "/" + scr_pad2(max(1, g_trk_n - 1)) + "  LB/RB CHANGE", g_c[3]);
 if (g_sv[g_SV_MUSIC])
 {
     // lang titel rullar i sidled (typsnittet ar monospace: teckenbredd = bredd / antal tecken)
