@@ -75,7 +75,7 @@ globalvar g_mn_depth, g_mn_stk_node, g_mn_stk_sel, g_hud_slot, g_hud_id, g_keyhi
 g_OX = 192;          // spelytans ovre vanstra horn pa skarmen (rumskoordinater)
 g_OY = 36;
 // Installningsindex i g_sv[] (sparas i settings.ini)
-g_SV_THEME = 0; g_SV_ACCENT = 1; g_SV_SCALE = 2; g_SV_VSYNC = 3; g_SV_SCAN = 4; g_SV_GLOW = 5; g_SV_PLAYERS = 6; g_SV_WIDE = 7; g_SV_MAP = 8; g_SV_ROUNDS = 9; g_FX_IMPACT = 1.3; g_TR_MAX = 80; g_ship_tr_x[0] = 0; g_ship_tr_y[0] = 0; g_ship_tr_n[0] = 1; g_REVERSE_THRUST = 0.25; g_DRIFT_MINSPEED = 500; g_DRIFT_TURN = 1.5; g_DRIFT_ANG = 34; g_DRIFT_THRUST = 1.17; g_paused = false; g_pause_sel = 0; g_SV_MUSIC = 10; g_SV_VOL = 14;
+g_SV_THEME = 0; g_SV_ACCENT = 1; g_SV_SCALE = 2; g_SV_VSYNC = 3; g_SV_SCAN = 4; g_SV_GLOW = 5; g_SV_PLAYERS = 6; g_SV_WIDE = 7; g_SV_MAP = 8; g_SV_ROUNDS = 9; g_FX_IMPACT = 1.3; g_TR_MAX = 40; g_ship_tr_x[0] = 0; g_ship_tr_y[0] = 0; g_ship_tr_n[0] = 1; g_REVERSE_THRUST = 0.25; g_DRIFT_MINSPEED = 500; g_DRIFT_TURN = 1.5; g_DRIFT_ANG = 34; g_DRIFT_THRUST = 1.17; g_paused = false; g_pause_sel = 0; g_SV_MUSIC = 10; g_SV_VOL = 14;
 g_SV_ADLIVES = 12;
 g_match_map = ""; // spellista: namn, ljudresurs och om det finns forberedda equalizerdata (scr_data_musicviz) for latan
 g_trk_n = 1; g_trk_idx = 0; g_trk_fps[0] = 50; g_tv_n[0] = 1; g_tv[0, 0] = "";

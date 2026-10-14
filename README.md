@@ -12,7 +12,7 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 - Drifting now leaves light trails behind the ship in the colour of the ship: two trails for wide ships, one for narrow ones. The trails grow out as you start to drift, follow the path you move along and fade out towards the tail. When you stop drifting the whole trail fades away.
 - A glowing ball sits where each trail starts, to show that the engine is working: a solid core with a soft glow that pulses and flickers.
-- Drift slides more to the side and has stronger thrust.
+- Drift slides more to the side and has stronger thrust. The trails are thinner and half as long, and the trail keeps hanging on the ship while it fades out when you let go of the drift button.
 
 ### UPDATE 13 - 2026-10-14 - Pause menu, drift and reverse
 

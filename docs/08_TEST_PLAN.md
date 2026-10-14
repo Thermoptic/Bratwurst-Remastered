@@ -201,3 +201,4 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | CTRL-11 | Stå still intill en vägg och håll bara LT (eller C/Q/H) | Skeppet backar långsamt bort från väggen; med gas samtidigt blir det drift i stället; backandet stannar när knappen släpps |
 | FX-10 | Drifta med ett smalt skepp (JAS/Kaese/TieFighter/BatWing) och ett brett skepp, släpp sedan driften | Smalt skepp: ett spår, brett: två; spåret växer fram och följer banan med svansen tonande; efter att driften slutat tonar hela spåret ut och försvinner; inga driftgnistor längre; spåret försvinner vid respawn |
 | FX-11 | Drifta | En glödande boll sitter där varje spår startar: solid kärna, mjuk glöd som pulserar och flimrar snabbt; den försvinner när driften slutar |
+| CTRL-12 | (utgått) momentum-driften återkallades | – |

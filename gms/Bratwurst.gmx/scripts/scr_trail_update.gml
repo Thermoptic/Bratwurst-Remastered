@@ -1,9 +1,11 @@
 /// scr_trail_update()
 // Kors i obj_player en gang per tick (aven nar spelaren ar utslagen). Medan skeppet driftar laggs en ny punkt till i varje spar (vid skeppets akterdel i
-// varldspixlar, 1 punkt per tick, hogst g_TR_MAX), sa att sparet vaxer fram och foljer rorelsen. Nar driften slutar sparas inga fler punkter; de aldsta
-// tas bort och hela sparet tonar ut (tr_fade) tills det ar borta. En markering (tr_brk) bryter sparet om driften borjar igen efter ett uppehall.
-var j, sn, cs, ry0, tx, lx;
-if (alive && drifting)
+// varldspixlar, 1 punkt per tick, hogst g_TR_MAX), sa att sparet vaxer fram och foljer rorelsen. Nar driften slutar fortsatter sparet att hanga med
+// skeppet (nya punkter laggs till vid akterdelen) medan hela sparet tonar ut (tr_fade) och de aldsta punkterna tas bort, tills det ar borta.
+// Ar spelaren utslagen laggs inga nya punkter till. En markering (tr_brk) bryter sparet om driften borjar igen efter ett uppehall.
+var j, sn, cs, ry0, tx, lx, doadd;
+doadd = (alive && (drifting || tr_n > 0));
+if (doadd)
 {
     sn = g_sin_tab[ang];
     cs = g_cos_tab[ang];
@@ -28,11 +30,13 @@ if (alive && drifting)
     tr_brk[tr_n] = tr_gap;
     tr_gap = false;
     tr_n += 1;
+}
+if (alive && drifting)
+{
     tr_fade = 1;
 }
 else
 {
-    tr_gap = true;
     if (tr_n > 0)
     {
         tr_fade -= 0.025;
@@ -45,4 +49,5 @@ else
         tr_n = max(0, tr_n - 2);
         if (tr_fade <= 0 || tr_n < 2) { tr_n = 0; tr_fade = 0; }
     }
+    if (tr_n == 0) { tr_gap = true; }
 }

@@ -280,3 +280,15 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-14 — Motorglöd vid driftspåret
 - Där varje driftspår startar ritas nu en glödande boll medan man driftar: en solid kärna i skeppets färg och utanför den fem mjuka ringar (additiv blandning) som tonar ut, pulserar och flimrar snabbt (slumpad radie och styrka per bildruta; kärnan flimrar inte). Bollen försvinner när driften slutar. `scr_trail_draw`. Ej körd.
+
+## 2026-10-14 — Drift: farten bevaras
+- Under drift bevaras farten du hade: inget luftmotstand och gasen ökar inte farten, den böjer bara färdriktningen (`g_DRIFT_STEER` = 0.4, ersätter `g_DRIFT_THRUST`). Skeppet glider därför vidare i sidled så länge du driftar. När du släpper återgår luftmotståndet. `scr_player_step`. Ej körd; justera `g_DRIFT_STEER` / `g_DRIFT_ANG` efter test.
+
+## 2026-10-14 — Smalare och kortare driftspår
+- Driftspåret är ca 35 % smalare (bredd 0.5 + 1.7·t i stället för 0.8 + 2.6·t) och hälften så långt (`g_TR_MAX` 80 → 40 punkter). `scr_trail_draw`, `scr_config_init`. Ej körd.
+
+## 2026-10-14 — Driftspåret hänger med skeppet när det tonar ut
+- När drift-knappen släpps fortsätter spåret att hänga med skeppet (nya punkter läggs till vid aktern varje tick) medan hela spåret tonar ut och de äldsta punkterna tas bort, tills det är borta (ca 1 s). Tidigare stod det kvar på banan och tonade ut. Motorbollen försvinner som förut direkt. `scr_trail_update`. Ej körd.
+
+## 2026-10-14 — Drift: tillbaka till tidigare känsla
+- Momentum-läget (farten bevaras under drift) togs bort eftersom det kändes som is. Driften är som innan: vanligt luftmotstånd, gasen riktas 34 steg utåt och är 1.17 av vanlig gas (`g_DRIFT_THRUST` återinförd, `g_DRIFT_STEER` borta). Spåren, motorbollen och reverse är oförändrade. `scr_player_step`, `scr_config_init`. Ej körd.
