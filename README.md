@@ -12,6 +12,13 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 19 - 2026-10-14 - Railgun
+
+- New powerup: RAILGUN. Pick it up and hold the powerup button (B) for 4 seconds. A glowing ball grows in front of the ship and turns white when it is charged. Let go to fire: a beam in your colour shoots through the whole map, over every wall and object, reaches the other side in half a second, stays for 2 seconds and fades out in 1. It kills a ship in one hit.
+- Sounds: a wobbling charge-up sound that grows stronger and higher while you charge, a ready sound when the Railgun is charged, and a powerful sci-fi laser sound when it fires. Hold the button for 3 seconds after it is charged and it fires by itself. Let go too early and nothing is fired.
+- The Powerup Editor has a Railgun page with charge time, beam speed, hold and fade time, beam width, damage, camera shake and ball size.
+- The title song now keeps playing when you go from the title screen to the main menu.
+
 ### UPDATE 18 - 2026-10-14 - Powerups: Mini Nuke
 
 - New powerup system. A rotating, colour-cycling orb with an icon appears on the map 5 seconds after a round starts, on a random spot away from walls and objects. Fly into it to pick up the powerup. A new one appears 10 seconds after one is picked up.

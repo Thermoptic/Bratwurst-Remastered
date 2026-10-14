@@ -2,7 +2,8 @@
 // Spellistans lat g_trk_idx spelas i loop overallt (titel, menyer, skeppsval, redigerare, match; titellaten bara pa titelskarmen) med volymen g_SV_VOL (10-100 %). Under matchen byter
 // scr_music_round_start lat varje ny runda. LB/RB eller PageUp/PageDown byter lat i menyerna. Kan stangas av i Options -> MUSIC.
 var want, gi;
-// titellaten (lat 0) spelas bara pa titelskarmen; i alla andra lagen spelas en annan lat ur spellistan
+// titellaten (lat 0) spelas pa titelskarmen och fortsatter i huvudmenyn nar man kommer dit fran titeln; lamnar man huvudmenyn (skeppsval, match, redigerare,
+// resultat) byter den till en slumpad annan lat och kommer tillbaka forst nar man gar tillbaka till titelskarmen
 if (g_trk_n > 1)
 {
     if (g_state == 10)
@@ -14,7 +15,7 @@ if (g_trk_n > 1)
             g_music_id = -1;
         }
     }
-    else if (g_trk_idx == 0)
+    else if (g_trk_idx == 0 && g_state != 11)   // titellaten far fortsatta spela nar man gar fran titeln till huvudmenyn
     {
         g_trk_idx = 1 + irandom(g_trk_n - 2);
         if (g_music_id >= 0) { audio_stop_sound(g_music_id); }

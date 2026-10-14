@@ -38,7 +38,7 @@ Banor ligger i `levels.ini` i spelets sparmapp (D-019). Tre inbyggda banor skriv
 | Sväng | Vänster spak ←/→ eller D-pad ←/→ |
 | Kanon | A |
 | Specialvapen | Y |
-| Aktivera/avfyra hållen powerup (t.ex. Mini Nuke; tangentbord spelare 1 V, spelare 2 F, spelare 3 M) | B |
+| Aktivera/avfyra hållen powerup (Mini Nuke: tryck; Railgun: håll inne och släpp) (t.ex. Mini Nuke; tangentbord spelare 1 V, spelare 2 F, spelare 3 M) | B |
 | Thrust | X eller höger trigger (RT) |
 | **Under matchen:** nästa skepp (test) | RB (höger axelknapp) |
 | **Under matchen:** nästa specialvapen | Back |

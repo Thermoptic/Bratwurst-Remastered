@@ -7,7 +7,7 @@
     <datafile>
       <name>updates.txt</name>
       <exists>-1</exists>
-      <size>10589</size>
+      <size>11510</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -117,6 +117,9 @@
     <sound>sound\snd_music_1</sound>
     <sound>sound\snd_sfx_shot</sound>
     <sound>sound\snd_sfx_drift</sound>
+    <sound>sound\snd_sfx_railgun</sound>
+    <sound>sound\snd_sfx_rg_ready</sound>
+    <sound>sound\snd_sfx_rg_charge</sound>
     <sound>sound\snd_sfx_explosion</sound>
     <sound>sound\snd_sfx_missile</sound>
     <sound>sound\snd_sfx_guided</sound>
@@ -307,6 +310,13 @@
     <script>scripts\scr_powerup_reset.gml</script>
     <script>scripts\scr_powerup_spawn.gml</script>
     <script>scripts\scr_powerup_step.gml</script>
+    <script>scripts\scr_beam_draw.gml</script>
+    <script>scripts\scr_beam_spawn.gml</script>
+    <script>scripts\scr_beam_step.gml</script>
+    <script>scripts\scr_railgun_draw.gml</script>
+    <script>scripts\scr_railgun_update.gml</script>
+    <script>scripts\scr_seg_dist.gml</script>
+    <script>scripts\scr_railgun_fire.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_lg_k10</font>

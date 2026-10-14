@@ -352,3 +352,12 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-14 — Mini Nuke: kameraskakning
 - Ny parameter CAMERA SHAKE (0–60 pixlar, standard 12) i Powerup Editor → Mini Nuke. När en Mini Nuke exploderar skakar spelytans bild (slumpmässig förskjutning av kameran i ritningen, `g_shake_amp`, som klingar av med 0,9 per tick, ca 0,4 s); ram, paneler och spelfysik påverkas inte, och skakningen pausas i pausmenyn. 0 stänger av den. `scr_data_powerups`, `scr_fx_spawn`, `scr_match_draw`, `scr_game_step`, `scr_powerup_reset`. Ej körd.
+
+## 2026-10-14 — Powerup Railgun
+- Ny powerup RAILGUN (D-036): håll powerup-knappen (B) inne i 4 s så laddas en glödande kula framför skeppet (växer, byter färg till vitt när den är klar); släpp så avfyras en stråle i skeppets färg genom hela banan och över alla väggar och föremål, som når andra sidan på 0,5 s, ligger kvar 2 s och tonar ut på 1 s och dödar ett skepp på en träff. Egen ikon och ett nytt lasersljud (`tools/gen_railgun_sound.py`). Alla värden (laddningstid, strålens fart/hålltid/utfasning/bredd, skada, kameraskakning, kulans storlek) ligger i Powerup Editor. HUD visar RAILGUN n % / READY. Släpps knappen för tidigt avbryts laddningen. Ej körd.
+
+## 2026-10-14 — Titellåten fortsätter i huvudmenyn
+- 3LE - Das Bratwurst fortsätter spela när man går från titelskärmen till huvudmenyn (ingen låtbyte där). Lämnar man huvudmenyn (skeppsval, match, banredigerare, resultat) byter musiken till en slumpad annan låt, och titellåten kommer tillbaka först när man går tillbaka till titelskärmen. LB/RB i huvudmenyn byter som förut (hoppar över titellåten). `scr_music_update`. Ej körd.
+
+## 2026-10-14 — Railgun: laddljud och automatisk avfyring
+- Under laddningen loopar ett vibrerande, vobblande ljud som går från försiktigt till starkt (volym och tonhöjd följer laddningen); när Railgun är fulladdad tystnar det och ett "laddad"-ljud spelas. Släpps knappen avfyras skottet och väntar man 3 sekunder efter fulladdning avfyras det av sig självt (`g_RG_AUTO`). Ljuden är egenproducerade (`tools/gen_railgun_charge_sounds.py`) och tystnar vid paus, död och rundslut. `scr_railgun_update`, ny `scr_railgun_fire`, `scr_player_lose_life`, `scr_game_step`. Ej körd.

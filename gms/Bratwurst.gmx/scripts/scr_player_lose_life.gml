@@ -4,6 +4,10 @@
 // men raknas som kvar i rundan (scr_count_alive). Panelen visar siffran i stallet for skeppsbilden.
 scr_ship_explode();
 p_lives -= 1;
+pu_have = 0;      // en hallen powerup (och en pagaende railgunladdning) forloras
+pu_charge = 0;
+pu_auto = 0;
+if (rg_snd >= 0) { audio_stop_sound(rg_snd); rg_snd = -1; }
 alive = false;
 if (p_lives > 0) { respawn_t = g_RESPAWN_DELAY; }
 else { respawn_t = 0; }

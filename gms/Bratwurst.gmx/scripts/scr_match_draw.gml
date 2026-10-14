@@ -136,6 +136,8 @@ with (obj_shot)
 
 scr_spark_draw();
 scr_debris_draw();
+scr_beam_draw();      // railgunstralar over allt i spelytan
+scr_railgun_draw();   // railgunens laddningskula
 
 g_cam_x -= shx;   // aterstall kameran efter skakningen
 g_cam_y -= shy;

@@ -25,7 +25,12 @@ if (g_state == 1)
 {
     if (g_paused)
     {
-        with (obj_player) { drifting = false; scr_drift_sound(); }   // driftljudet tonas ut under paus
+        with (obj_player)
+        {
+            drifting = false;
+            scr_drift_sound();
+            if (rg_snd >= 0) { audio_stop_sound(rg_snd); rg_snd = -1; }   // railgunens laddljud tystnar under paus
+        }   // driftljudet tonas ut under paus
         scr_pause_step();
         exit;
     }
@@ -53,7 +58,12 @@ for (gi = 0; gi < 4; gi += 1)
 }
 
 if (g_state == 0) { scr_menu_step(); exit; }
-if (g_state == 2) { scr_round_over_step(); exit; }   // rundresultat visas
+if (g_state == 2)
+{
+    with (obj_player) { if (rg_snd >= 0) { audio_stop_sound(rg_snd); rg_snd = -1; } }   // inget laddljud efter rundslutet
+    scr_round_over_step();
+    exit;
+}   // rundresultat visas
 if (g_state != 1) { exit; }
 
 g_tick += 1;
@@ -64,6 +74,7 @@ scr_debris_step();   // skepp mot skepp (D-018)
 with (obj_missile) { scr_missile_step(); }
 with (obj_shot) { scr_shot_step(); }
 scr_powerup_step();   // powerup-orben: spawn, upplockning, nedrakning (D-035)
+scr_beam_step();   // railgunstralar (D-036)
 g_shake_amp *= 0.9;   // kameraskakningen klingar av (ca 0,4 s)
 if (g_shake_amp < 0.3) { g_shake_amp = 0; }
 with (obj_fx) { scr_fx_damage(); ftimer += 1; if (ftimer > fmax) { instance_destroy(); } }

@@ -2,7 +2,7 @@
 g_paused = false;
 // Startar om matchen. Skapar spelare med skeppsval fran g_pship[].
 var i, p;
-with (obj_player) { if (dr_snd >= 0) { audio_stop_sound(dr_snd); } instance_destroy(); }   // driftljudet stoppas
+with (obj_player) { if (dr_snd >= 0) { audio_stop_sound(dr_snd); } if (rg_snd >= 0) { audio_stop_sound(rg_snd); } instance_destroy(); }   // driftljudet stoppas
 with (obj_shot) { instance_destroy(); }
 with (obj_missile) { instance_destroy(); }
 with (obj_fx) { instance_destroy(); }

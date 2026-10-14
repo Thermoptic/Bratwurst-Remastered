@@ -129,7 +129,7 @@ c = scr_mn_add(5, "TURN", "LEFT STICK OR D-PAD"); g_mn_text[c] = "STICK / D-PAD"
 c = scr_mn_add(5, "CANNON", "FIRE THE CANNON"); g_mn_text[c] = "A"; scr_mn_link(p, c);
 c = scr_mn_add(5, "SPECIAL", "FIRE THE SPECIAL WEAPON"); g_mn_text[c] = "Y"; scr_mn_link(p, c);
 c = scr_mn_add(5, "THRUST", "ENGINE THRUST"); g_mn_text[c] = "X / RT"; scr_mn_link(p, c);
-c = scr_mn_add(5, "POWERUP", "FIRE THE POWERUP YOU HAVE PICKED UP"); g_mn_text[c] = "B"; scr_mn_link(p, c);
+c = scr_mn_add(5, "POWERUP", "FIRE THE POWERUP YOU HAVE PICKED UP. RAILGUN: HOLD TO CHARGE, LET GO TO FIRE"); g_mn_text[c] = "B"; scr_mn_link(p, c);
 c = scr_mn_add(5, "NEXT SPECIAL", "SWITCH TO THE NEXT SPECIAL WEAPON DURING A MATCH"); g_mn_text[c] = "BACK"; scr_mn_link(p, c);
 c = scr_mn_add(5, "WEAPON POD", "SWITCH THE POD THE SPECIAL WEAPON FIRES FROM"); g_mn_text[c] = "LB"; scr_mn_link(p, c);
 c = scr_mn_add(5, "DRIFT", "HOLD WHILE YOU THRUST TO SLIDE SIDEWAYS"); g_mn_text[c] = "LT + THRUST"; scr_mn_link(p, c);

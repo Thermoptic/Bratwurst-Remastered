@@ -3,7 +3,7 @@
 // hemliga Powerup Editor (Options, tryck P). g_pu_np[t] = antal parametrar, g_pu_pname/pdesc/pkey[t, k] = namn, beskrivning och ini-nyckel,
 // g_pu_pmin/pmax/pstep/pdef[t, k] = intervall, steg och standardvarde. Installningarna ligger i g_sv[g_SV_PU + t * 8 + k] (settings.ini, [powerup_<namn>]).
 // Nya powerups: lagg till en post har, ett fall i scr_powerup_fire och eventuell effektkod; menyn och sparandet byggs av datan.
-g_PU_COUNT = 1;
+g_PU_COUNT = 2;
 // ---- 0: MINI NUKE (beter sig som en missil med stor chockvag) ----
 g_pu_name[0] = "MINI NUKE";
 g_pu_key[0] = "mininuke";
@@ -33,3 +33,34 @@ g_pu_pname[0, 5] = "SHOCKWAVE DAMAGE"; g_pu_pdesc[0, 5] = "DAMAGE TO EVERY SHIP 
 g_pu_pmin[0, 5] = 0; g_pu_pmax[0, 5] = 100; g_pu_pstep[0, 5] = 1; g_pu_pdef[0, 5] = 15;
 g_pu_pname[0, 6] = "CAMERA SHAKE"; g_pu_pdesc[0, 6] = "HOW HARD THE PICTURE SHAKES WHEN THE MINI NUKE EXPLODES, IN PIXELS. 0 = NO SHAKE"; g_pu_pkey[0, 6] = "camera_shake";
 g_pu_pmin[0, 6] = 0; g_pu_pmax[0, 6] = 60; g_pu_pstep[0, 6] = 1; g_pu_pdef[0, 6] = 12;
+// ---- 1: RAILGUN (halls inne for att ladda, slapp for att avfyra en stral genom hela banan) ----
+g_pu_name[1] = "RAILGUN";
+g_pu_key[1] = "railgun";
+g_pu_icon[1, 0] = ".....#.....";
+g_pu_icon[1, 1] = "....###....";
+g_pu_icon[1, 2] = "....###....";
+g_pu_icon[1, 3] = "#...###...#";
+g_pu_icon[1, 4] = "#...###...#";
+g_pu_icon[1, 5] = "#..#####..#";
+g_pu_icon[1, 6] = "#...###...#";
+g_pu_icon[1, 7] = "#...###...#";
+g_pu_icon[1, 8] = "....###....";
+g_pu_icon[1, 9] = ".....#.....";
+g_pu_icon[1, 10] = ".....#.....";
+g_pu_np[1] = 8;
+g_pu_pname[1, 0] = "CHARGE TIME"; g_pu_pdesc[1, 0] = "SECONDS YOU HAVE TO HOLD THE POWERUP BUTTON TO CHARGE THE RAILGUN. LET GO EARLIER AND IT IS CANCELLED"; g_pu_pkey[1, 0] = "charge_time";
+g_pu_pmin[1, 0] = 1; g_pu_pmax[1, 0] = 10; g_pu_pstep[1, 0] = 1; g_pu_pdef[1, 0] = 4;
+g_pu_pname[1, 1] = "BEAM SPEED"; g_pu_pdesc[1, 1] = "TIME THE BEAM TAKES TO TRAVEL ACROSS THE WHOLE MAP, IN TENTHS OF A SECOND (5 = HALF A SECOND)"; g_pu_pkey[1, 1] = "sweep_time";
+g_pu_pmin[1, 1] = 1; g_pu_pmax[1, 1] = 30; g_pu_pstep[1, 1] = 1; g_pu_pdef[1, 1] = 5;
+g_pu_pname[1, 2] = "BEAM HOLD TIME"; g_pu_pdesc[1, 2] = "HOW LONG THE BEAM STAYS ON SCREEN BEFORE IT FADES, IN TENTHS OF A SECOND (20 = 2 SECONDS)"; g_pu_pkey[1, 2] = "hold_time";
+g_pu_pmin[1, 2] = 0; g_pu_pmax[1, 2] = 100; g_pu_pstep[1, 2] = 5; g_pu_pdef[1, 2] = 20;
+g_pu_pname[1, 3] = "BEAM FADE TIME"; g_pu_pdesc[1, 3] = "HOW LONG THE BEAM TAKES TO FADE AWAY, IN TENTHS OF A SECOND (10 = 1 SECOND)"; g_pu_pkey[1, 3] = "fade_time";
+g_pu_pmin[1, 3] = 1; g_pu_pmax[1, 3] = 50; g_pu_pstep[1, 3] = 1; g_pu_pdef[1, 3] = 10;
+g_pu_pname[1, 4] = "BEAM WIDTH"; g_pu_pdesc[1, 4] = "THICKNESS OF THE BEAM IN MAP PIXELS. A THICKER BEAM IS EASIER TO HIT WITH AND LOOKS BIGGER"; g_pu_pkey[1, 4] = "beam_width";
+g_pu_pmin[1, 4] = 1; g_pu_pmax[1, 4] = 40; g_pu_pstep[1, 4] = 1; g_pu_pdef[1, 4] = 6;
+g_pu_pname[1, 5] = "DAMAGE"; g_pu_pdesc[1, 5] = "DAMAGE TO A SHIP THE BEAM HITS. 100 KILLS ANY SHIP AT ONCE (IN ASTRO DUEL ANY HIT KILLS)"; g_pu_pkey[1, 5] = "damage";
+g_pu_pmin[1, 5] = 0; g_pu_pmax[1, 5] = 100; g_pu_pstep[1, 5] = 1; g_pu_pdef[1, 5] = 100;
+g_pu_pname[1, 6] = "CAMERA SHAKE"; g_pu_pdesc[1, 6] = "HOW HARD THE PICTURE SHAKES WHEN THE RAILGUN FIRES, IN PIXELS. 0 = NO SHAKE"; g_pu_pkey[1, 6] = "camera_shake";
+g_pu_pmin[1, 6] = 0; g_pu_pmax[1, 6] = 60; g_pu_pstep[1, 6] = 1; g_pu_pdef[1, 6] = 8;
+g_pu_pname[1, 7] = "CHARGE BALL SIZE"; g_pu_pdesc[1, 7] = "SIZE OF THE GLOWING BALL IN FRONT OF THE SHIP WHEN FULLY CHARGED, IN MAP PIXELS"; g_pu_pkey[1, 7] = "ball_size";
+g_pu_pmin[1, 7] = 4; g_pu_pmax[1, 7] = 50; g_pu_pstep[1, 7] = 2; g_pu_pdef[1, 7] = 18;

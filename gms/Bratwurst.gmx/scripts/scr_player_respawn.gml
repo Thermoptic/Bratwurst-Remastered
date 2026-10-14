@@ -4,7 +4,8 @@
 px = g_start_x[slot];
 py = g_start_y[slot];
 drifting = false;
-pu_have = 0;   // en hallen powerup gar forlorad nar man dor / ny runda
+pu_have = 0;
+pu_charge = 0;   // en hallen powerup gar forlorad nar man dor / ny runda
 scr_trail_clear();
 reversing = false;
 spin_v = 0;
