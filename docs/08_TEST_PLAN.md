@@ -204,3 +204,5 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | CTRL-12 | (utgått) momentum-driften återkallades | – |
 | FX-12 | Skjut missil och guidad missil | Missilen är en glödande boll (solid kärna, pulserande och flimrande glöd) med en svans av små pixelpartiklar som blir kvar bakom den och försvinner; träff/explosion fungerar som förut |
 | CTRL-13 | Åk i full fart i sidled (drift) och skjut kanon och missil åt olika håll | Skott och missil går alltid exakt dit nosen pekar, oberoende av färdriktning och fart; Astro Duel samma; kanontornet siktar fortfarande mot närmaste fiende |
+| CTRL-14 | Gamepad i match: Y, Back, B; tryck Back/F5 i meny och match | Y avfyrar specialvapnet, Back byter specialvapen, B gör inget; Back och F5 ändrar inte längre antal spelare |
+| PAUSE-02 | Pausa i en match med 2 och 4 spelare, i 1024x640 och större vy | Tre rutor: stats (läge, runda, bana, låt, tid, spelare, ledare, per spelare skepp/vinster/liv/energi), PAUSED i mitten, CONTROLS till höger; inget överlappar eller hamnar utanför; ledare visar NONE YET/TIED/PLAYER n rätt |

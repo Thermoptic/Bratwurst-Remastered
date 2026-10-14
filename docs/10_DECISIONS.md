@@ -159,3 +159,6 @@
 ## D-031 — Skott och missiler ärver inte skeppets fart
 - **Beslut (användaren):** ett kanonskott eller en missil ska alltid avfyras exakt i den riktning skeppet pekar (nosens vinkel plus podens vinkel), även när skeppet glider i sidled med full fart eller driftar. Därför läggs inte längre skeppets egen hastighet till skottets hastighet (`g_SHOT_INHERIT` = 0 i `scr_config_init`; 1 återställer det gamla beteendet).
 - **Avvikelse från originalet:** originalets rutin adderar skeppets hastighet till skottet (docs/15, `vx - sin << shift`; VERIFIERAD i kod). Gäller kanonskott (Classic och Astro Duel) och missiler/guidade missiler. Kanontornet (autosikte mot närmaste fiende) och turbo/tractor är oförändrade.
+
+## D-032 — Ändrad gamepad-mappning: Y = specialvapen, Back = nästa specialvapen, ingen spelarcykling
+- **Beslut (användaren):** Specialvapen flyttas från B till Y (`gp_face4`); Nästa specialvapen flyttas från Y till Back (`gp_select`); "Cykla antal spelare" tas bort helt (Back på gamepad och F5 på tangentbordet). B är nu oanvänd. Antalet spelare väljs genom att gå med i skeppsvalet eller i Game modes → Players.

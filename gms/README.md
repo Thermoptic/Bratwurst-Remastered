@@ -37,18 +37,18 @@ Banor ligger i `levels.ini` i spelets sparmapp (D-019). Tre inbyggda banor skriv
 |---|---|
 | Sväng | Vänster spak ←/→ eller D-pad ←/→ |
 | Kanon | A |
-| Specialvapen | B |
+| Specialvapen | Y |
 | Thrust | X eller höger trigger (RT) |
 | **Under matchen:** nästa skepp (test) | RB (höger axelknapp) |
-| **Under matchen:** nästa specialvapen | Y |
+| **Under matchen:** nästa specialvapen | Back |
 | **Under matchen:** DRIFT (håll inne medan du gasar; tangentbord: spelare 1 C, spelare 2 Q, spelare 3 H) | LT (vänster trigger) |
 | **Under matchen:** nästa specialpod (position på skeppet, t.ex. fram/bak) | LB (vänster axelknapp) |
-| Tillbaka till skeppsvalet / cykla antal spelare 1–4 | Start / Back |
+| Pausmeny under matchen (Resume Game / Quit to Menu) | Start |
 | Skeppsvalet: bläddra / bekräfta | Vänster spak eller D-pad ←/→ / A |
 
-**4 spelare:** F5 (eller Back) växlar 1 → 2 → 3 → 4 spelare och går till skeppsvalet (3–4 spelare visas i ett 2×2-rutnät). Spelare 3 tangentbord (placeholder): J/L sväng, I kanon, K special, O thrust; spelare 3–4 kan också styras med Xbox-kontroll 3 och 4; spelare 4 har ingen tangentbordsstyrning (originalets fyrspelaradapter). Alla fyra startpositioner och kameran över alla levande spelare finns.
+**4 spelare:** spelare går med i skeppsvalet med sin eld-/upp-knapp, eller ställ in antalet i Game modes → Players (3–4 spelare visas i ett 2×2-rutnät). Spelare 3 tangentbord (placeholder): J/L sväng, I kanon, K special, O thrust; spelare 3–4 kan också styras med Xbox-kontroll 3 och 4; spelare 4 har ingen tangentbordsstyrning (originalets fyrspelaradapter). Alla fyra startpositioner och kameran över alla levande spelare finns.
 
-F1 debugtext · F2 tillbaka till skeppsvalet · F5 växla 1→4 spelare (går till skeppsvalet) · Esc tillbaka till huvudmenyn.
+F1 debugtext (med tangenthjälp) · F2 tillbaka till skeppsvalet · Esc pausmeny under match, annars tillbaka till huvudmenyn.
 
 ## Rättigheter
 `scr_data_*.gml` är **härledd data ur originalet** (skeppsgeometri, bana, tabeller). Publicera/distribuera inte projektet förrän rättighetsfrågan är löst (`docs/09`). Själva logikskripten är egen kod.

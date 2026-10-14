@@ -1,6 +1,10 @@
 BRATWURST REHEATED - UPDATES
 Newest first. Only the big changes and new features are listed.
 
+== UPDATE 16 - 2026-10-14 - New pause menu, new gamepad layout ==
+* New pause menu: a compact PAUSED box in the middle, a MATCH STATS box on the left (mode, round, map, song, time, players, leader, and for every player the ship, wins, lives and energy) and a CONTROLS box on the right that lists what every button does.
+* Gamepad: Special weapon is now on Y, Next special weapon on Back. The "cycle number of players" button is gone (join players on the ship select screen or choose Players in the menu).
+
 == UPDATE 15 - 2026-10-14 - Glowing missiles, shots go where you aim ==
 * All missiles are now a glowing ball with a solid core that pulses and flickers, with small pixel particles flying out behind it.
 * Shots and missiles always fire exactly in the direction the ship is pointing, even when you drift or slide sideways at full speed. They no longer inherit the speed of your ship.

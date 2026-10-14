@@ -118,10 +118,13 @@ c = scr_mn_add(5, "INPUT", "NO KEYBOARD KEYS FOR PLAYER 4"); g_mn_text[c] = "GAM
 p = scr_mn_add(0, "GAMEPAD", "XBOX CONTROLLER. CONTROLLER 1 = PLAYER 1 AND SO ON"); scr_mn_link(ctrls, p);
 c = scr_mn_add(5, "TURN", "LEFT STICK OR D-PAD"); g_mn_text[c] = "STICK / D-PAD"; scr_mn_link(p, c);
 c = scr_mn_add(5, "CANNON", "FIRE THE CANNON"); g_mn_text[c] = "A"; scr_mn_link(p, c);
-c = scr_mn_add(5, "SPECIAL", "FIRE THE SPECIAL WEAPON"); g_mn_text[c] = "B"; scr_mn_link(p, c);
+c = scr_mn_add(5, "SPECIAL", "FIRE THE SPECIAL WEAPON"); g_mn_text[c] = "Y"; scr_mn_link(p, c);
 c = scr_mn_add(5, "THRUST", "ENGINE THRUST"); g_mn_text[c] = "X / RT"; scr_mn_link(p, c);
-c = scr_mn_add(5, "SHIP SELECT", "BACK TO SHIP SELECT DURING A MATCH"); g_mn_text[c] = "START"; scr_mn_link(p, c);
-c = scr_mn_add(5, "PLAYERS", "CYCLE 1 TO 4 PLAYERS"); g_mn_text[c] = "BACK"; scr_mn_link(p, c);
+c = scr_mn_add(5, "NEXT SPECIAL", "SWITCH TO THE NEXT SPECIAL WEAPON DURING A MATCH"); g_mn_text[c] = "BACK"; scr_mn_link(p, c);
+c = scr_mn_add(5, "WEAPON POD", "SWITCH THE POD THE SPECIAL WEAPON FIRES FROM"); g_mn_text[c] = "LB"; scr_mn_link(p, c);
+c = scr_mn_add(5, "DRIFT", "HOLD WHILE YOU THRUST TO SLIDE SIDEWAYS"); g_mn_text[c] = "LT + THRUST"; scr_mn_link(p, c);
+c = scr_mn_add(5, "REVERSE", "HOLD ALONE (NO THRUST) TO BACK UP SLOWLY"); g_mn_text[c] = "LT"; scr_mn_link(p, c);
+c = scr_mn_add(5, "PAUSE", "PAUSE MENU DURING A MATCH"); g_mn_text[c] = "START"; scr_mn_link(p, c);
 
 g_mn_depth = 0;
 g_mn_stk_node[0] = root;

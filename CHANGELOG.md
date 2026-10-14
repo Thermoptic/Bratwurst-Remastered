@@ -301,3 +301,11 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-14 — Musikfilerna i repot
 - Mappen `Music/` (mp3-källfilerna, ca 25 MB) ligger nu i git, med `Music/README.md` (hur man lägger till låtar, rättighetsstatus). Spelet innehåller redan musiken: oggfilerna är ljudresurser i projektet (`sound/audio/snd_music_N.ogg`, byggs in i spelet) och equalizerdatan ligger i Included Files (`datafiles/viz_N.txt`). Rättighetsanteckning: titellåten är 3Elks (tredje part), Thermoptic-låtarna är SANNOLIKT egna.
+
+## 2026-10-14 — Kontrollerna: Y = specialvapen, Back = nästa specialvapen, ingen spelarcykling
+- Gamepad: specialvapen (avfyra) på Y (var B), nästa specialvapen på Back (var Y), B är ledig. Cykling av antal spelare (Back på gamepad och F5 på tangentbordet) är borttagen; skeppsvalets hjälprad och README uppdaterade. `scr_player_input`, `scr_game_step`, `scr_menu_draw`, D-032. Ej körd.
+- Controls-menyn i spelet (Gamepad) uppdaterad med Y, Back, LB, LT (drift/reverse) och Start (paus); raden Players är borttagen.
+
+## 2026-10-14 — Ny pausmeny med stats och kontroller
+- Pausmenyn är nu tre rutor i en rad med liten text som resten av gränssnittet: till vänster MATCH STATS (läge, runda, bana, låt, tid, antal spelare, ledare efter flest rundvinster, och per spelare skepp, vinster, liv som rutor samt energi/respawn/OUT), i mitten en kompakt PAUSED-ruta (RESUME GAME / QUIT TO MENU) och till höger CONTROLS som listar vad alla gamepad- och tangentbordsknappar gör, på engelska. `scr_pause_draw`. Ej körd; kontrollera att allt ryms i 1024x640 och i större vyer.
+- Loggan (assets/logo.png) ligger överst i README.md på GitHub.

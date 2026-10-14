@@ -41,8 +41,8 @@ if (slot == 2)
 // Spelare 4 har ingen tangentbordsstyrning (kontroll kravs; originalet: fyrspelaradapter).
 
 // Xbox-kontroll (gamepad-index = spelarplats; kombineras med tangentbordet). PLACEHOLDER-mappning:
-//   svang: vanster spak (x) eller D-pad vanster/hoger       kanon: A          special: B
-//   thrust: X eller hoger trigger (RT)                      byt specialvapen: Y     byt pod (position): LB     DRIFT: vanster trigger (LT)
+//   svang: vanster spak (x) eller D-pad vanster/hoger       kanon: A          special: Y
+//   thrust: X eller hoger trigger (RT)                      byt specialvapen: Back     byt pod (position): LB     DRIFT: vanster trigger (LT)
 if (gamepad_is_connected(slot))
 {
     var glx;
@@ -51,9 +51,9 @@ if (gamepad_is_connected(slot))
     if (gamepad_button_check(slot, gp_padl) || glx < -0.5) { in_left = true; }
     if (gamepad_button_check(slot, gp_padr) || glx > 0.5)  { in_right = true; }
     if (gamepad_button_check(slot, gp_face1)) { in_fire = true; }
-    if (gamepad_button_check(slot, gp_face2)) { in_special = true; }
+    if (gamepad_button_check(slot, gp_face4)) { in_special = true; }   // Y: specialvapen (flyttad fran B, D-032)
     if (gamepad_button_check(slot, gp_face3) || gamepad_button_check(slot, gp_shoulderrb)) { in_thrust = true; }
-    if (gamepad_button_check_pressed(slot, gp_face4)) { in_wsel = true; }   // Y: nasta specialvapen (flyttad fran LT, D-030)
+    if (gamepad_button_check_pressed(slot, gp_select)) { in_wsel = true; }   // Back: nasta specialvapen (D-032)
     if (gamepad_button_check(slot, gp_shoulderlb)) { in_drift = true; }   // LT: drift (D-030)
     if (gamepad_button_check_pressed(slot, gp_shoulderr)) { in_shipcyc = true; }   // RB: nasta skepp (test)
     if (gamepad_button_check_pressed(slot, gp_shoulderl)) { in_podcyc = true; }    // LB: nasta specialpod (fram/bak)

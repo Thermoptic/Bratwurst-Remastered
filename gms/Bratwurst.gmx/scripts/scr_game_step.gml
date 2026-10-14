@@ -37,15 +37,13 @@ if (g_state == 1)
 if (keyboard_check_pressed(vk_escape)) { scr_goto_main(); exit; }
 if (keyboard_check_pressed(vk_f1)) { g_debug = !g_debug; }
 if (keyboard_check_pressed(vk_f2)) { scr_menu_enter(); exit; }
-if (keyboard_check_pressed(vk_f5)) { scr_players_set((g_n_players mod 4) + 1); scr_menu_enter(); exit; }   // cykla 1 -> 2 -> 3 -> 4 spelare
 
-// Xbox: Start = tillbaka till skeppsvalet, Back = cykla antal spelare 1-4
+// Xbox: Start = tillbaka till skeppsvalet (rundresultat; under match oppnar Start pausmenyn)
 for (gi = 0; gi < 4; gi += 1)
 {
     if (gamepad_is_connected(gi))
     {
         if (g_state != 0 && g_state != 1 && gamepad_button_check_pressed(gi, gp_start)) { scr_menu_enter(); exit; }
-        if (gamepad_button_check_pressed(gi, gp_select)) { scr_players_set((g_n_players mod 4) + 1); scr_menu_enter(); exit; }
     }
 }
 

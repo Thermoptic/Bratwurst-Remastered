@@ -1,3 +1,7 @@
+<p align="center">
+  <img src="assets/logo.png" alt="Bratwurst Reheated" width="640">
+</p>
+
 # Bratwurst Reheated
 
 A fan remake of the Amiga shooter **Bratwurst**, built in GameMaker Studio 1.4 as a stand-alone Windows game. Float, shoot, crash and repeat, with one to four players, keyboard and Xbox controllers, and a terminal-style look with 30 colour themes.
@@ -7,6 +11,11 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 ## What's new
 
 <!-- UPDATES:START -->
+
+### UPDATE 16 - 2026-10-14 - New pause menu, new gamepad layout
+
+- New pause menu: a compact PAUSED box in the middle, a MATCH STATS box on the left (mode, round, map, song, time, players, leader, and for every player the ship, wins, lives and energy) and a CONTROLS box on the right that lists what every button does.
+- Gamepad: Special weapon is now on Y, Next special weapon on Back. The "cycle number of players" button is gone (join players on the ship select screen or choose Players in the menu).
 
 ### UPDATE 15 - 2026-10-14 - Glowing missiles, shots go where you aim
 
