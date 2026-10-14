@@ -250,5 +250,5 @@ for (i = 0; i < 4; i += 1)
     }
 }
 g_fs = g_f_sm;
-scr_ui_text(g_vx + 20, g_vy + g_vh - 32, "UP/DOWN ROW   LEFT/RIGHT CHANGE   FIRE NEXT/OK   X/THRUST BACK   ESC MENU", g_c[4]);
+scr_ui_text(g_vx + 20, g_vy + g_vh - 32, "UP/DOWN ROW   LEFT/RIGHT CHANGE   FIRE NEXT/OK   B/X/THRUST BACK   ESC MENU", g_c[4]);
 if (g_ready_tick > 0) { scr_ui_text_r(g_vx + g_vw - 20, g_vy + g_vh - 32, "ALL READY - LAUNCHING", g_acc); }

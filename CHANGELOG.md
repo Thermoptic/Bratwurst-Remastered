@@ -376,3 +376,15 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-14 — Ny exe-ikon
 - Spelets exe-ikon är den nya BW-loggan (neonlogga med equalizerring): `Configs/Default/windows/runner_icon.ico` (GameMakers `option_windows_game_icon`) är ersatt med en ikon i sju storlekar (16–256 px, genomskinlig bakgrund), liksom `Runner_Icon_256.ico`; källbilden ligger som `assets/icon/icon.png` och ikonerna byggs med `tools/make_icon.py <bild>`. Ikonen syns först efter en ny export/build av exe-filen (Windows kan visa den gamla ikonen i cache en stund). Ej verifierat i GMS.
+
+## 2026-10-14 — Drift: SIDE THRUSTER
+- Ny inställning SIDE THRUSTER i Powerup Editor → DRIFT (0–400 %, standard 60): en sidotruster puttar skeppet ut ur kurvan medan man driftar (gas + drift + sväng: sväng höger = putt åt vänster, sväng vänster = putt åt höger), så driften känns som en sladd i en rallykurva. Inställningsplatserna per powerup höjdes till 12 (`g_PU_STRIDE`). `scr_player_step`, `scr_drift_apply`, `scr_data_powerups`, D-039. Ej körd.
+
+## 2026-10-14 — Fix: kamerakrasch (g_CAM_TRANS)
+- Spelet kraschade ("global variable g_CAM_TRANS not set") eftersom en kommentar som lades in mitt på en rad i `scr_config_init` kommenterade bort resten av raden, inklusive startvärdena för kamerans mjuka zoom (`g_CAM_TRANS`, `g_CAM_K`, `g_cam_*`) och pausmenyns variabler (`g_pause_opts`, `g_pm_*`). Kommentaren ligger nu sist på raden. En kontroll av alla deklarerade globaler visar att alla tilldelas. Ej körd.
+
+## 2026-10-14 — B backar i skeppsvalet
+- B på gamepaden (liksom X och thrust-tangenterna) backar ett steg i skeppsvalet, och på första raden (SHIP) tillbaka till huvudmenyn om ingen spelare har kommit längre. Förut gick back från SHIP runt till CONFIRM. Hjälpraden visar "B/X/THRUST BACK". `scr_menu_input`, `scr_menu_step`, `scr_menu_draw`. D-040. Ej körd.
+
+## 2026-10-14 — Solid colors
+- Ny inställning Options → SOLID COLORS (OFF som standard). ON fyller banans solida väggar med sin färg och skeppens skrov med spelarfärgen; konturerna ritas ovanpå. Polygonerna (även konkava) triangulerar med ear clipping en gång (`scr_poly_tris`, `scr_solid_build`, `scr_ship_fill_init`) och ritas som trianglar (`scr_solid_walls_draw`, `scr_ship_fill`). Banans ytterram fylls inte; skeppet Kaese (öppet skrov) fylls inte. D-041. Ej körd i GMS (triangulerigen verifierad mot alla skepp och banor i Python).

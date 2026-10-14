@@ -2,7 +2,7 @@
 // Ritar railgunens laddningskula framfor varje laddande skepp: en glodande boll som vaxer med laddningen (CHARGE BALL SIZE vid full laddning) i spelarens farg
 // med allt ljusare karna, och nar den ar fulladdad byter den farg till vitt och flimrar snabbt. Kors i obj_game.
 var b, need;
-b = g_SV_PU + 8;
+b = g_SV_PU + g_PU_STRIDE;
 need = max(1, g_sv[b] * 50);
 draw_set_blend_mode(bm_add);
 with (obj_player)
@@ -12,7 +12,7 @@ with (obj_player)
         var fr, rw, dist, bx, by, sr, j, pc, ready, cc, fl;
         fr = min(1, pu_charge / need);
         ready = (pu_charge >= need);
-        rw = 3 + (g_sv[g_SV_PU + 15] - 3) * fr;   // varldspixlar (CHARGE BALL SIZE ar parameter 7 i Railgun, index 8 + 7)
+        rw = 3 + (g_sv[g_SV_PU + g_PU_STRIDE + 7] - 3) * fr;   // varldspixlar (CHARGE BALL SIZE ar parameter 7 i Railgun, STRIDE + 7)
         dist = g_ship_nose[ship] + 4 + rw;
         bx = g_OX + ((px / 256 - g_sin_tab[ang] / 256 * dist) * g_zoom / 32768 - g_cam_x + g_CX) * g_SCALE;
         by = g_OY + ((py / 256 + g_cos_tab[ang] / 256 * dist) * g_zoom / 32768 - g_cam_y + g_CY) * g_SCALE;

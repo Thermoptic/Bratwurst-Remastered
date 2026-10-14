@@ -12,6 +12,13 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 23 - 2026-10-14 - Solid colors, side thruster, B to go back
+
+- New option SOLID COLORS (Options, OFF by default): fills all solid walls and the ships with their colour.
+- Drift: new SIDE THRUSTER setting (secret Powerup Editor, DRIFT page). While you drift, thrust and turn, a side thruster pushes the ship out of the curve (turn right = pushed left, turn left = pushed right), like a rally car sliding through a corner.
+- B on the gamepad goes back one step on the ship select screen (and back to the menu from the first row).
+- Fixed a crash when the camera zoomed after a ship was destroyed.
+
 ### UPDATE 22 - 2026-10-14 - New icon, Dracula theme
 
 - The game has a new icon: the BW logo with the equalizer ring.

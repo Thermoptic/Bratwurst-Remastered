@@ -22,6 +22,7 @@ draw_set_color(g_c[1]);
 for (gx = 0; gx <= pwx; gx += 20 * g_SCALE) { draw_line(g_OX + gx, g_OY, g_OX + gx, g_OY + phx); }
 for (gy = 0; gy <= phx; gy += 20 * g_SCALE) { draw_line(g_OX, g_OY + gy, g_OX + pwx, g_OY + gy); }
 
+scr_solid_walls_draw();   // Solid colors: fyll foremalen forst, konturerna ritas ovanpa
 // Vaggar: varje objekt i sin egen temafarg (g_wall_grp, scr_theme_players)
 for (k = 0; k < g_wall_n; k += 1)
 {
@@ -57,6 +58,7 @@ with (obj_player)
             dsx[j] = bx + rx;
             dsy[j] = by + ry;
         }
+        if (g_sv[g_SV_SOLID]) { scr_ship_fill(ship, scr_slot_colour(slot)); }   // Solid colors: fyllt skrov under konturen
         draw_set_color(scr_slot_colour(slot));
         for (j = 0; j < nl; j += 1)
         {

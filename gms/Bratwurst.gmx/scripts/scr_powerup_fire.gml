@@ -3,7 +3,7 @@
 // arva skeppets fart (D-031) och forbrukar den. Mini Nuke (0): en missilliknande projektil (obj_missile, mtype 3) med parametrarna ur Powerup Editor.
 var t, p, a, sx, sy, m, b;
 t = pu_have - 1;
-b = g_SV_PU + t * 8;
+b = g_SV_PU + t * g_PU_STRIDE;
 if (sp_nsel > 0)
 {
     p = sp_sel[sp_pod_i];

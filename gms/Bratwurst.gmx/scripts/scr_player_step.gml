@@ -115,6 +115,9 @@ if (in_thrust)
         if (in_left) { ta = (ang + g_DRIFT_ANG) mod 256; }
         if (in_right) { ta = ((ang - g_DRIFT_ANG) mod 256 + 256) mod 256; }
         tm = thrust * g_DRIFT_THRUST;
+        // SIDE THRUSTER (D-039): en sidotruster puttar skeppet ut ur kurvan, mot skeppets motsatta sida mot svangen (sv hoger = puff at vanster, sv vanster = puff at hoger)
+        if (in_right && !in_left) { vx += floor(g_pcos[ang] * thrust * g_DRIFT_SIDE / 8); vy += floor(g_psin[ang] * thrust * g_DRIFT_SIDE / 8); }
+        if (in_left && !in_right) { vx -= floor(g_pcos[ang] * thrust * g_DRIFT_SIDE / 8); vy -= floor(g_psin[ang] * thrust * g_DRIFT_SIDE / 8); }
     }
     vx -= floor(g_psin[ta] * tm / 8);
     vy += floor(g_pcos[ta] * tm / 8);

@@ -7,7 +7,7 @@
     <datafile>
       <name>updates.txt</name>
       <exists>-1</exists>
-      <size>12518</size>
+      <size>13126</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -320,6 +320,11 @@
     <script>scripts\scr_drift_apply.gml</script>
     <script>scripts\scr_pause_opts_close.gml</script>
     <script>scripts\scr_pause_opts_open.gml</script>
+    <script>scripts\scr_poly_tris.gml</script>
+    <script>scripts\scr_ship_fill.gml</script>
+    <script>scripts\scr_ship_fill_init.gml</script>
+    <script>scripts\scr_solid_build.gml</script>
+    <script>scripts\scr_solid_walls_draw.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_lg_k10</font>

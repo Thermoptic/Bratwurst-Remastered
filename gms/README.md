@@ -70,3 +70,5 @@ m_x</room>`; tomt `<constants>`-element ger fel (utelämnas).
 - GML-filer ska vara ren ASCII (generatorn translittererar å/ä/ö).
 
 **Powerups (nytt):** Game modes → Classic/Astro Duel → POWERUPS ON/OFF (standard ON). 5 s efter rundstart dyker en färgbytande orb upp på kartan; flyg in i den för att få en powerup (nu Mini Nuke) och avfyra den med B (gamepad). En ny orb kommer 10 s efter upplockning. Hemlig Powerup Editor: öppna Options och tryck P, så visas raden POWERUP EDITOR längst ned, med en sida per powerup (storlek, fart, chockvåg, partiklar, skada, kameraskakning, laddning) och en sida DRIFT med alla inställningar för drift och reverse. Options går också att öppna inne i pausmenyn under en match.
+
+**Solid colors:** Options → SOLID COLORS ON fyller banans solida väggar och skeppen med sin färg (OFF som standard = bara konturer).

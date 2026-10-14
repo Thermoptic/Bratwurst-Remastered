@@ -1,7 +1,7 @@
 /// scr_beam_spawn(x, y, dx, dy, slot)
 // Skapar en railgunstral fran (x, y) (varldspixlar) i riktningen (dx, dy) (enhetsvektor), agd av spelare 'slot'. Egenskaperna tas ur Powerup Editor (Railgun).
 var k, b;
-b = g_SV_PU + 8;
+b = g_SV_PU + g_PU_STRIDE;
 for (k = 0; k < g_BM_MAX; k += 1)
 {
     if (!g_bm_on[k])

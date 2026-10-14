@@ -1,8 +1,9 @@
 /// scr_menu_step()
 // En tick i skeppsvalet. Alla aktiva spelare maste vara "READY" (steg 4); sedan startar matchen efter en kort paus.
-var i, st, d, n, all_ready;
+var i, st, d, n, all_ready, leave_req, all0;
 g_menu_tick += 1;
 all_ready = true;
+leave_req = false;
 for (i = 0; i < g_n_players; i += 1)
 {
     scr_menu_input(i);
@@ -18,7 +19,12 @@ for (i = 0; i < g_n_players; i += 1)
     else
     {
         // upp/ner byter rad (SHIP, WEAPON, POD, CONFIRM), vanster/hoger andrar vardet, fire gar till nasta rad / bekraftar
-        if (g_mi_u || g_mi_back) { st = (st + 3) mod 4; }
+        if (g_mi_u) { st = (st + 3) mod 4; }
+        if (g_mi_back)
+        {
+            // tillbaka ett steg (B / X / thrust); pa forsta raden (SHIP) vill spelaren lamna skeppsvalet (hanteras efter slingan)
+            if (st > 0) { st -= 1; } else { leave_req = true; }
+        }
         if (g_mi_d) { st = (st + 1) mod 4; }
         g_sel_stage[i] = st;
         if (d != 0)
@@ -48,6 +54,13 @@ for (i = 0; i < g_n_players; i += 1)
         }
     }
     if (g_sel_stage[i] != 4) { all_ready = false; }
+}
+// B pa forsta raden: tillbaka till huvudmenyn, men bara om ingen spelare har kommit langre an SHIP (sa att ingen forlorar sitt val av misstag)
+if (leave_req)
+{
+    all0 = true;
+    for (i = 0; i < g_n_players; i += 1) { if (g_sel_stage[i] != 0) { all0 = false; } }
+    if (all0) { scr_goto_main(); exit; }
 }
 // Ledig plats: fire pa den platsens indata lagger till en spelare (skeppsval borjar om for den platsen)
 if (g_n_players < 4)

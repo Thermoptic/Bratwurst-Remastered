@@ -1,7 +1,7 @@
 /// scr_data_powerups()
 // Powerup-definitioner (D-035). Varje powerup har namn, en pixelikon (11 tecken per rad, # = pixel) och upp till 8 parametrar som kan stallas in i den
 // hemliga Powerup Editor (Options, tryck P). g_pu_np[t] = antal parametrar, g_pu_pname/pdesc/pkey[t, k] = namn, beskrivning och ini-nyckel,
-// g_pu_pmin/pmax/pstep/pdef[t, k] = intervall, steg och standardvarde. Installningarna ligger i g_sv[g_SV_PU + t * 8 + k] (settings.ini, [powerup_<namn>]).
+// g_pu_pmin/pmax/pstep/pdef[t, k] = intervall, steg och standardvarde. Installningarna ligger i g_sv[g_SV_PU + t * g_PU_STRIDE + k] (g_PU_STRIDE = 12 parametrar per powerup) (settings.ini, [powerup_<namn>]).
 // Nya powerups: lagg till en post har, ett fall i scr_powerup_fire och eventuell effektkod; menyn och sparandet byggs av datan.
 g_PU_COUNT = 3;   // poster i editorn och installningarna
 g_PU_SPAWN = 2;   // bara de forsta (riktiga powerups) kan dyka upp som orbs; post 2 (DRIFT) ar bara en sida i Powerup Editor
@@ -68,7 +68,7 @@ g_pu_pmin[1, 7] = 4; g_pu_pmax[1, 7] = 50; g_pu_pstep[1, 7] = 2; g_pu_pdef[1, 7]
 // ---- 2: DRIFT (ingen powerup: inte spawnbar, bara en sida i Powerup Editor for drift och reverse, D-030) ----
 g_pu_name[2] = "DRIFT";
 g_pu_key[2] = "drift";
-g_pu_np[2] = 8;
+g_pu_np[2] = 9;
 g_pu_pname[2, 0] = "MIN SPEED"; g_pu_pdesc[2, 0] = "SPEED YOU NEED TO START DRIFTING (THRUST + LEFT TRIGGER). BELOW IT NOTHING HAPPENS"; g_pu_pkey[2, 0] = "min_speed";
 g_pu_pmin[2, 0] = 0; g_pu_pmax[2, 0] = 3000; g_pu_pstep[2, 0] = 50; g_pu_pdef[2, 0] = 500;
 g_pu_pname[2, 1] = "TURN BOOST"; g_pu_pdesc[2, 1] = "HOW MUCH FASTER THE SHIP TURNS WHILE DRIFTING, IN PERCENT (150 = 1.5 TIMES)"; g_pu_pkey[2, 1] = "turn_boost";
@@ -85,3 +85,5 @@ g_pu_pname[2, 6] = "ENGINE SOUND"; g_pu_pdesc[2, 6] = "VOLUME OF THE DRIFT ENGIN
 g_pu_pmin[2, 6] = 0; g_pu_pmax[2, 6] = 100; g_pu_pstep[2, 6] = 5; g_pu_pdef[2, 6] = 45;
 g_pu_pname[2, 7] = "TRAIL WIDTH"; g_pu_pdesc[2, 7] = "THICKNESS OF THE LIGHT TRAILS, IN PERCENT OF THE NORMAL WIDTH"; g_pu_pkey[2, 7] = "trail_width";
 g_pu_pmin[2, 7] = 20; g_pu_pmax[2, 7] = 300; g_pu_pstep[2, 7] = 10; g_pu_pdef[2, 7] = 100;
+g_pu_pname[2, 8] = "SIDE THRUSTER"; g_pu_pdesc[2, 8] = "SIDEWAYS PUSH WHILE DRIFTING: A THRUSTER PUSHES THE SHIP OUT OF THE CURVE (TURN RIGHT = PUSH LEFT, TURN LEFT = PUSH RIGHT), IN PERCENT OF NORMAL THRUST. ONLY WHILE THRUSTING AND TURNING"; g_pu_pkey[2, 8] = "side_thruster";
+g_pu_pmin[2, 8] = 0; g_pu_pmax[2, 8] = 400; g_pu_pstep[2, 8] = 5; g_pu_pdef[2, 8] = 60;

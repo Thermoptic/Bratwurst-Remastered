@@ -25,13 +25,14 @@ g_sv[g_SV_WIDE] = clamp(ini_read_real("display", "widescreen", g_sv[g_SV_WIDE]),
 g_sv[g_SV_MUSIC] = clamp(ini_read_real("audio", "music", g_sv[g_SV_MUSIC]), 0, 1);
 g_sv[g_SV_ADLIVES] = clamp(round(ini_read_real("astro", "lives", g_sv[g_SV_ADLIVES])), 1, 9);
 g_sv[g_SV_VOL] = clamp(round(ini_read_real("audio", "volume", g_sv[g_SV_VOL] * 10) / 10), 1, 10);
+g_sv[g_SV_SOLID] = clamp(round(ini_read_real("display", "solid_colors", g_sv[g_SV_SOLID])), 0, 1);
 g_sv[g_SV_PUCL] = clamp(round(ini_read_real("gameplay", "powerups_classic", g_sv[g_SV_PUCL])), 0, 1);
 g_sv[g_SV_PUAD] = clamp(round(ini_read_real("astro", "powerups", g_sv[g_SV_PUAD])), 0, 1);
 for (pt = 0; pt < g_PU_COUNT; pt += 1)
 {
     for (pk = 0; pk < g_pu_np[pt]; pk += 1)
     {
-        g_sv[g_SV_PU + pt * 8 + pk] = clamp(round(ini_read_real("powerup_" + g_pu_key[pt], g_pu_pkey[pt, pk], g_sv[g_SV_PU + pt * 8 + pk])), g_pu_pmin[pt, pk], g_pu_pmax[pt, pk]);
+        g_sv[g_SV_PU + pt * g_PU_STRIDE + pk] = clamp(round(ini_read_real("powerup_" + g_pu_key[pt], g_pu_pkey[pt, pk], g_sv[g_SV_PU + pt * g_PU_STRIDE + pk])), g_pu_pmin[pt, pk], g_pu_pmax[pt, pk]);
     }
 }
 g_sv[g_SV_LIVES] = clamp(round(ini_read_real("gameplay", "lives", g_sv[g_SV_LIVES])), 1, g_START_LIVES);

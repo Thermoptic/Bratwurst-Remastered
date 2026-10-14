@@ -70,8 +70,8 @@ if (p.pu_have > 0)
     if (p.pu_have == 2 && p.pu_charge > 0)
     {
         // Railgun laddas: procent, och READY nar den ar fulladdad
-        if (p.pu_charge >= g_sv[g_SV_PU + 8] * 50) { if ((g_tick mod 8) < 5) { scr_ui_text(px + 110, y0 + 72, "RAILGUN READY", g_c[6]); } }
-        else { scr_ui_text(px + 110, y0 + 72, "RAILGUN " + string(floor(p.pu_charge * 100 / (g_sv[g_SV_PU + 8] * 50))) + "%", c); }
+        if (p.pu_charge >= g_sv[g_SV_PU + g_PU_STRIDE] * 50) { if ((g_tick mod 8) < 5) { scr_ui_text(px + 110, y0 + 72, "RAILGUN READY", g_c[6]); } }
+        else { scr_ui_text(px + 110, y0 + 72, "RAILGUN " + string(floor(p.pu_charge * 100 / (g_sv[g_SV_PU + g_PU_STRIDE] * 50))) + "%", c); }
     }
     else if ((g_tick mod 16) < 11) { scr_ui_text(px + 110, y0 + 72, "PU " + g_pu_name[p.pu_have - 1], c); }
 }

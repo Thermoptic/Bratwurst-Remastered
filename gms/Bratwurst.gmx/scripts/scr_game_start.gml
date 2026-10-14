@@ -19,6 +19,7 @@ g_end_timer = -1;
 for (i = 0; i < 4; i += 1) { g_wins[i] = 0; }
 scr_level_read(scr_cur_map());   // vald bana (levels.ini)
 scr_level_apply();
+scr_solid_build();   // fyllningstrianglar for vaggarna (Solid colors)
 g_match_map = g_ed_name;   // matchens banamn (visas i spelytans horn)
 scr_arena_prepare();
 scr_spark_clear();

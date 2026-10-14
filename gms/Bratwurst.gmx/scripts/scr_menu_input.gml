@@ -2,7 +2,7 @@
 // Skeppsvalets indata (kantriggad), PLACEHOLDER-mappning. Satter g_mi_u, g_mi_d (rad upp/ner), g_mi_l, g_mi_r (andra varde), g_mi_ok (nasta rad / bekrafta),
 // g_mi_back (tillbaka en rad, thrust-knappen).
 //   P1: piltangenter, Enter = OK, mellanslag/hoger Ctrl = tillbaka.   P2: W/A/S/D, E = OK, vanster Shift = tillbaka.
-//   P3: I/J/K/L, U = OK, O = tillbaka.   Xbox (kontroll = platsnummer): D-pad/vanster spak, A = OK, X = tillbaka.
+//   P3: I/J/K/L, U = OK, O = tillbaka.   Xbox (kontroll = platsnummer): D-pad/vanster spak, A = OK, B eller X = tillbaka.
 var s, gx, gy;
 s = argument0;
 g_mi_u = false; g_mi_d = false; g_mi_l = false; g_mi_r = false; g_mi_ok = false; g_mi_back = false;
@@ -42,7 +42,7 @@ if (gamepad_is_connected(s))
     if (gamepad_button_check_pressed(s, gp_padu) || (gy < -0.5 && g_mi_prevy[s] >= -0.5)) { g_mi_u = true; }
     if (gamepad_button_check_pressed(s, gp_padd) || (gy > 0.5 && g_mi_prevy[s] <= 0.5)) { g_mi_d = true; }
     if (gamepad_button_check_pressed(s, gp_face1)) { g_mi_ok = true; }
-    if (gamepad_button_check_pressed(s, gp_face3)) { g_mi_back = true; }   // X = thrust-knappen
+    if (gamepad_button_check_pressed(s, gp_face3) || gamepad_button_check_pressed(s, gp_face2)) { g_mi_back = true; }   // B (D-040) eller X = tillbaka ett steg
     g_mi_prevx[s] = gx;
     g_mi_prevy[s] = gy;
 }

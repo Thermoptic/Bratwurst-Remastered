@@ -78,6 +78,9 @@ scr_mn_link(opts, n);
 n = scr_mn_add(2, "WIDE PLAYFIELD", "USE THE FULL WIDTH FOR THE PLAYFIELD. OFF = THE ORIGINAL 320 PIXEL WIDE VIEW");
 scr_mn_setting(n, g_SV_WIDE, 0, 1, "display.widescreen");
 scr_mn_link(opts, n);
+n = scr_mn_add(2, "SOLID COLORS", "FILL ALL SOLID WALLS AND SHIPS WITH THEIR COLOUR. OFF = OUTLINES ONLY, LIKE THE ORIGINAL");
+scr_mn_setting(n, g_SV_SOLID, 0, 1, "display.solid_colors");
+scr_mn_link(opts, n);
 n = scr_mn_add(2, "MUSIC", "MUSIC PLAYLIST. A RANDOM SONG STARTS EVERY ROUND. IN THE MENUS LB / RB (PAGEUP / PAGEDOWN) CHANGES SONG");
 scr_mn_setting(n, g_SV_MUSIC, 0, 1, "audio.music");
 scr_mn_link(opts, n);
@@ -148,7 +151,7 @@ for (pt = 0; pt < g_PU_COUNT; pt += 1)
     for (pk = 0; pk < g_pu_np[pt]; pk += 1)
     {
         n = scr_mn_add(3, g_pu_pname[pt, pk], g_pu_pdesc[pt, pk]);
-        scr_mn_setting(n, g_SV_PU + pt * 8 + pk, g_pu_pmin[pt, pk], g_pu_pmax[pt, pk], "powerup_" + g_pu_key[pt] + "." + g_pu_pkey[pt, pk]);
+        scr_mn_setting(n, g_SV_PU + pt * g_PU_STRIDE + pk, g_pu_pmin[pt, pk], g_pu_pmax[pt, pk], "powerup_" + g_pu_key[pt] + "." + g_pu_pkey[pt, pk]);
         g_mn_step[n] = g_pu_pstep[pt, pk];
         scr_mn_link(p, n);
     }

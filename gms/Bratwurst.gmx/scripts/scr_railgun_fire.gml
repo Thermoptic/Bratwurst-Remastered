@@ -2,7 +2,7 @@
 // Kors i obj_player. Avfyrar railgunen: kulan forsvinner och en stral (scr_beam_spawn) gar fran skeppets nos at det hall skeppet pekar (arver ingen fart),
 // med lasersljud och kameraskakning. Powerupen forbrukas och laddningen nollas.
 var b, fx, fy, ox, oy;
-b = g_SV_PU + 8;
+b = g_SV_PU + g_PU_STRIDE;
 fx = -g_sin_tab[ang] / 256;
 fy = g_cos_tab[ang] / 256;
 ox = px / 256 + fx * (g_ship_nose[ship] + 4);

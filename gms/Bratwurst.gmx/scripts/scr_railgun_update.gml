@@ -11,7 +11,7 @@ if (pu_have != 2)
     if (rg_snd >= 0) { audio_stop_sound(rg_snd); rg_snd = -1; }
     exit;
 }
-b = g_SV_PU + 8;
+b = g_SV_PU + g_PU_STRIDE;
 need = max(1, g_sv[b] * 50);
 if (in_pu_hold)
 {
