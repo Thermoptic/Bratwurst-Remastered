@@ -4,7 +4,7 @@
   2. equalizerdata per lat:     gms/Bratwurst.gmx/datafiles/viz_N.txt  (en rad per ruta: 12 + 32 tecken, 25 rutor/s)
   3. scripts/scr_data_tracks.gml (namn, ljudresurser, rutor/s) och poster i Bratwurst.project.gmx (sounds + datafiles).
 Latnummer 0 ar den inbyggda titellaten (snd_title_music, data i scr_data_musicviz); mp3-latarna blir 1, 2, ... i filnamnsordning.
-Kraver ffmpeg (ingen numpy). Kor: python tools/gen_tracks.py   (tar nagra minuter per lat: FFT i ren Python)."""
+Kraver ffmpeg (ingen numpy). Kor: python tools/gen_tracks.py   (tar nagra minuter per ny lat: FFT i ren Python). Stodda filtyper: mp3, ogg, wav, flac, m4a."""
 import io
 import math
 import os
@@ -148,7 +148,7 @@ def main():
     if os.path.exists(manifest):
         files = [l.strip() for l in io.open(manifest, encoding="utf8").read().splitlines() if l.strip()]
     files = [f for f in files if os.path.exists(os.path.join(MUSIC, f))]
-    for f in sorted(x for x in os.listdir(MUSIC) if x.lower().endswith(".mp3")):
+    for f in sorted(x for x in os.listdir(MUSIC) if os.path.splitext(x)[1].lower() in (".mp3", ".ogg", ".wav", ".flac", ".m4a")):
         if f not in files:
             files.append(f)
     io.open(manifest, "w", encoding="utf8", newline=chr(10)).write(chr(10).join(files) + chr(10))
@@ -159,7 +159,10 @@ def main():
         src = os.path.join(MUSIC, fn)
         print("lat %d: %s" % (i, fn))
         ogg = os.path.join(GMX, "sound", "audio", "snd_music_%d.ogg" % i)
-        subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", src, "-vn", "-c:a", "libvorbis", "-q:a", "3", "-ar", "44100", ogg], check=True)
+        if os.path.exists(ogg) and os.path.getmtime(ogg) >= os.path.getmtime(src) and "--redo" not in sys.argv:
+            print("  snd_music_%d.ogg ar redan uppdaterad (--redo for att koda om)" % i)
+        else:
+            subprocess.run(["ffmpeg", "-v", "error", "-y", "-i", src, "-vn", "-c:a", "libvorbis", "-q:a", "3", "-ar", "44100", ogg], check=True)
         io.open(os.path.join(GMX, "sound", "snd_music_%d.sound.gmx" % i), "wb").write(snd_xml(i, tmpl).encode("utf8"))
         viz = os.path.join(GMX, "datafiles", "viz_%d.txt" % i)
         if os.path.exists(viz) and "--redo" not in sys.argv:

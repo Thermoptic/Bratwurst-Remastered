@@ -44,7 +44,11 @@ if (want && g_music_id >= 0 && g_trk_idx > 0 && !g_mp_pause && !audio_is_playing
 if (want)
 {
     if (!audio_is_playing(g_music_id)) { g_music_id = audio_play_sound(g_trk_snd[g_trk_idx], 1, (g_trk_idx == 0)); }
-    if (g_music_id >= 0) { audio_sound_gain(g_music_id, (g_sv[g_SV_VOL] / 10) * (1 - g_mp_mute), 0); }   // MUTE tystar utan att andra volyminstallningen
+    if (g_music_id >= 0)
+    {
+        if (g_mu_t < g_MU_FADE) { g_mu_t += 1; }   // intoning: 0 -> normal volym under g_MU_FADE ticks (3 s) fran att forsta lat startar
+        audio_sound_gain(g_music_id, (g_sv[g_SV_VOL] / 10) * (1 - g_mp_mute) * min(1, g_mu_t / g_MU_FADE), 0);   // MUTE tystar utan att andra volyminstallningen
+    }
 }
 else
 {

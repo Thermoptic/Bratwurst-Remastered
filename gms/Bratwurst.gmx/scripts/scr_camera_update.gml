@@ -32,7 +32,7 @@ dx = g_tmp_maxx - g_tmp_minx;
 dy = g_tmp_maxy - g_tmp_miny;
 zx = min(65535, floor((g_PLAY_W / 2 - 10) * 65536 / (dx + g_ZOOM_MARGIN)));   // 150*65536 vid originalets 320 enheters bredd
 zy = min(65535, floor(7077888 / (dy + g_ZOOM_MARGIN)));   // 108*65536
-tz = min(zx, zy);
+tz = min(zx, zy) / (1 + (g_sv[g_SV_ZOOM] - 1) / 9);   // Options -> ZOOM 1-10: 1 = originalets zoom, 10 = dubbelt sa utzoomad (steg om 1/9)
 cx = floor((g_tmp_maxx + g_tmp_minx) / 2);
 cy = floor((g_tmp_maxy + g_tmp_miny) / 2);
 // Mjuk zoom nar antalet spelare i bilden andras (nagon dor eller aterskapas): zoom och centrum glider exponentiellt mot det nya malet under g_CAM_TRANS ticks

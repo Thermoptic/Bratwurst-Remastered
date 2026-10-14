@@ -26,6 +26,9 @@ g_sv[g_SV_MUSIC] = clamp(ini_read_real("audio", "music", g_sv[g_SV_MUSIC]), 0, 1
 g_sv[g_SV_ADLIVES] = clamp(round(ini_read_real("astro", "lives", g_sv[g_SV_ADLIVES])), 1, 9);
 g_sv[g_SV_VOL] = clamp(round(ini_read_real("audio", "volume", g_sv[g_SV_VOL] * 10) / 10), 1, 10);
 g_sv[g_SV_SOLID] = clamp(round(ini_read_real("display", "solid_colors", g_sv[g_SV_SOLID])), 0, 1);
+g_sv[g_SV_ZOOM] = clamp(round(ini_read_real("display", "zoom", g_sv[g_SV_ZOOM])), 1, 10);
+g_sv[g_SV_ASLV] = clamp(round(ini_read_real("asteroids", "level", g_sv[g_SV_ASLV])), 1, 5);
+g_sv[g_SV_PUAS] = clamp(round(ini_read_real("asteroids", "powerups", g_sv[g_SV_PUAS])), 0, 1);
 g_sv[g_SV_PUCL] = clamp(round(ini_read_real("gameplay", "powerups_classic", g_sv[g_SV_PUCL])), 0, 1);
 g_sv[g_SV_PUAD] = clamp(round(ini_read_real("astro", "powerups", g_sv[g_SV_PUAD])), 0, 1);
 for (pt = 0; pt < g_PU_COUNT; pt += 1)

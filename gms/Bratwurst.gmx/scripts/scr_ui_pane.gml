@@ -12,6 +12,9 @@ draw_set_color(argument5);
 // en enda accentlinje i varje nedre horn, exakt pa ramens kant (tidigare ett L av tva linjer)
 draw_rectangle(px + pw - 12, py + ph, px + pw, py + ph, false);
 draw_rectangle(px, py + ph, px + 12, py + ph, false);
+// hornen blir vinkelhakar: en kort lodrat linje upp langs sidokanten, exakt pa ramens linje (ingen dubbel linje)
+draw_rectangle(px + pw, py + ph - 12, px + pw, py + ph, false);
+draw_rectangle(px, py + ph - 12, px, py + ph, false);
 if (argument4 != "")
 {
     g_fs = g_f_sm;

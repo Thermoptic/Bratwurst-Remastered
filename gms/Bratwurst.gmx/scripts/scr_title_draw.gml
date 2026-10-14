@@ -79,9 +79,9 @@ scr_logo_word("REHEATED", cx - wd / 2, cy + 4.5 * ls + 30 - 4.5 * s2, s2, 2.6, 1
 draw_line_width(cx - wd / 2 - 30 - 130 - (g_mv_on * (bass * 40)), cy + 4.5 * ls + 30, cx - wd / 2 - 30, cy + 4.5 * ls + 30, 1.2);
 draw_line_width(cx + wd / 2 + 30, cy + 4.5 * ls + 30, cx + wd / 2 + 30 + 130 + (g_mv_on * (bass * 40)), cy + 4.5 * ls + 30, 1.2);
 
-// PRESS START TO HEAT
-g_fs = g_f_lg;
-if ((t mod 70) < 46) { scr_ui_text_c(cx, cy + R0 + 80, "PRESS START TO HEAT", g_c[6]); }
+// PRESS START TO TURN UP THE HEAT (lite mindre typsnitt an forut: medium i stallet for large)
+g_fs = g_f_md;
+if ((t mod 70) < 46) { scr_ui_text_c(cx, cy + R0 + 84, "PRESS START TO TURN UP THE HEAT", g_c[6]); }
 g_fs = g_f_sm;
 scr_ui_text_c(cx, cy + R0 + 124, "ANY KEY OR GAMEPAD BUTTON", g_c[4]);
 scr_ui_text(g_vx + 20, g_vy + g_vh - 32, "ESC = QUIT", g_c[4]);

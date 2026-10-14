@@ -6,6 +6,7 @@ scr_data_arena();
 scr_data_ships();
 scr_data_powerups();   // powerup-definitioner (D-035)
 scr_data_sausage();
+scr_ast_init();   // Asteroids: stenformer och storlekar (D-046)
 scr_ship_fill_init();   // fyllningstrianglar for Solid colors   // korvmodellen (pseudoskepp utanfor skeppsvalet)
 scr_trail_init();   // driftspar per skepp
 scr_data_themes();

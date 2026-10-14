@@ -7,4 +7,5 @@ if (s == g_SV_SCALE || s == g_SV_VSYNC) { scr_display_apply(); }
 if (s == g_SV_WIDE) { scr_layout_update(); }
 if (s == g_SV_PLAYERS) { g_n_players = g_sv[g_SV_PLAYERS]; }
 if (s >= g_SV_PU + g_PU_STRIDE * 2 && s < g_SV_PU + g_PU_STRIDE * 3) { scr_drift_apply(); }   // drift- och reverseinstallningar
+if (s == g_SV_ZOOM) { g_cam_tr = g_CAM_TRANS; }   // zoomandringen glider in mjukt (D-037)
 scr_set_save();

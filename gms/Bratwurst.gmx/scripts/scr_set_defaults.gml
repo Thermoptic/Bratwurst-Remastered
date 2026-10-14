@@ -20,6 +20,9 @@ g_sv[g_SV_MUSIC] = 1;
 g_sv[g_SV_VOL] = 7;   // musikvolym i steg om 10 % (1..10), standard 70 %
 g_sv[g_SV_ADLIVES] = 1;
 g_sv[g_SV_SOLID] = 0;   // SOLID COLORS av som standard
+g_sv[g_SV_ZOOM] = 1;   // kamerazoom 1 (originalets) till 10 (dubbelt sa utzoomad)
+g_sv[g_SV_ASLV] = 3;   // Asteroids-niva 1-5 (varje niva dubblar allt), standard 3
+g_sv[g_SV_PUAS] = 1;
 g_sv[g_SV_PUCL] = 1;   // powerups ON som standard i alla spellagen
 g_sv[g_SV_PUAD] = 1;
 for (pt = 0; pt < g_PU_COUNT; pt += 1)

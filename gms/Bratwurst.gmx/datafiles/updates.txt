@@ -1,6 +1,15 @@
 BRATWURST REHEATED - UPDATES
 Newest first. Only the big changes and new features are listed.
 
+== UPDATE 27 - 2026-10-15 - Asteroids, zoom and polish ==
+* New game mode: ASTEROIDS. Waves of rocks fly in from the edges; shoot them and they split into smaller, faster ones. Options has a LEVEL setting (1 to 5, default 3) where every level doubles everything.
+* New option ZOOM (1 to 10): 1 is the normal camera, 10 shows twice as much of the arena. It changes smoothly and works in every game mode.
+* A seventh song: Juke to Jupiter. The music fades in when the game starts.
+* The music player buttons are lined up (plus and minus in line with play/pause, MUTE under next). Panels get corner brackets.
+* Title screen says PRESS START TO TURN UP THE HEAT.
+* Alt-tab from fullscreen no longer makes the window disappear.
+* Your own shots no longer hit you when you fire straight ahead at full speed.
+
 == UPDATE 26 - 2026-10-14 - Smaller music files ==
 * The five songs are re-encoded at a slightly lower quality, so the game is about 4 MB smaller (the music is about 15 MB instead of 19 MB). Length and the equalizer are unchanged.
 

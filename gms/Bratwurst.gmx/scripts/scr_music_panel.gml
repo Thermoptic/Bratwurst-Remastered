@@ -4,7 +4,7 @@
 // next RB), vaxlarna shuffle och repeat, volym med - och +, en LED-stapel (10 steg) och en MUTE-knapp, samt nederst NEXT TRACK med nasta lat. Skriver klickytorna
 // till g_mp_x1/y1/x2/y2[0..8] (0 tidslinje, 1 prev, 2 play, 3 next, 4 shuffle, 5 repeat, 6 volym -, 7 volym +, 8 mute) som scr_mp_mouse laser. Kors i obj_game fran scr_mn_draw.
 var px, py, pw, ph, ix, iw, y0, vh1, yy, k, nseg, segw, pos, len, fq, on, bw1, bw2, gap, bx, bw, bh, c, mqs, mqn, hint, sx, sy;
-var mw, ledw, ledx, gx, nx, nxs;
+var tw2, ledw, ledx, nx, nxs;
 px = argument0; py = argument1; pw = argument2; ph = argument3;
 scr_ui_pane(px, py, pw, ph, "MUSIC", g_acc);
 ix = px + 16;
@@ -106,67 +106,68 @@ for (k = 0; k < 3; k += 1)
     g_mp_x1[k + 1] = bx; g_mp_y1[k + 1] = yy; g_mp_x2[k + 1] = bx + bw; g_mp_y2[k + 1] = yy + bh;
 }
 yy += bh + 16;
-// raden: shuffle och repeat (vaxlare, slocknar nar de ar av), volym - LED +, MUTE till hoger
+// raden under transportknapparna, i linje med dem: shuffle och repeat under PREV, volym under play/paus (minus i linje med dess vanstra kant, plus med dess hogra,
+// LED-stapeln emellan) och MUTE under NEXT
+tw2 = floor((bw1 - 6) / 2);
 for (k = 0; k < 2; k += 1)
 {
-    bx = ix + k * 40;
+    bx = ix + k * (tw2 + 6);
     if ((k == 0 && g_mp_shuf) || (k == 1 && g_mp_rep)) { c = g_acc; } else { c = g_c[3]; }
     draw_set_color(g_c[1]);
-    draw_rectangle(bx, yy, bx + 34, yy + 30, false);
+    draw_rectangle(bx, yy, bx + tw2, yy + 30, false);
     draw_set_color(c);
-    draw_rectangle(bx, yy, bx + 34, yy + 30, true);
-    sx = bx + 17;
+    draw_rectangle(bx, yy, bx + tw2, yy + 30, true);
+    sx = bx + floor(tw2 / 2);
     sy = yy + 15;
     if (k == 0)
     {
-        draw_line(sx - 9, sy - 6, sx + 9, sy + 6);
-        draw_line(sx - 9, sy + 6, sx + 9, sy - 6);
-        draw_triangle(sx + 9, sy + 6, sx + 3, sy + 6, sx + 9, sy + 1, false);
-        draw_triangle(sx + 9, sy - 6, sx + 3, sy - 6, sx + 9, sy - 1, false);
+        draw_line(sx - 8, sy - 6, sx + 8, sy + 6);
+        draw_line(sx - 8, sy + 6, sx + 8, sy - 6);
+        draw_triangle(sx + 8, sy + 6, sx + 2, sy + 6, sx + 8, sy + 1, false);
+        draw_triangle(sx + 8, sy - 6, sx + 2, sy - 6, sx + 8, sy - 1, false);
     }
     else
     {
-        draw_rectangle(sx - 9, sy - 6, sx + 9, sy + 6, true);
+        draw_rectangle(sx - 8, sy - 6, sx + 8, sy + 6, true);
         draw_set_color(g_c[1]);
-        draw_rectangle(sx + 2, sy - 7, sx + 9, sy - 5, false);
+        draw_rectangle(sx + 1, sy - 7, sx + 8, sy - 5, false);
         draw_set_color(c);
-        draw_triangle(sx + 2, sy - 10, sx + 2, sy - 2, sx + 8, sy - 6, false);
+        draw_triangle(sx + 1, sy - 10, sx + 1, sy - 2, sx + 7, sy - 6, false);
     }
-    g_mp_x1[4 + k] = bx; g_mp_y1[4 + k] = yy; g_mp_x2[4 + k] = bx + 34; g_mp_y2[4 + k] = yy + 30;
+    g_mp_x1[4 + k] = bx; g_mp_y1[4 + k] = yy; g_mp_x2[4 + k] = bx + tw2; g_mp_y2[4 + k] = yy + 30;
 }
-// MUTE-knapp (hogerkant), sedan plus, LED-stapel och minus (hogerjusterade, med luft som skalar med bredden)
-mw = clamp(floor(iw * 0.21), 44, 66);
-ledw = clamp(floor(iw * 0.20), 50, 90);
-gx = clamp(floor((iw - 74 - 24 - 24 - mw - ledw) / 4), 4, 12);
-bx = ix + iw - mw;
-if (g_mp_mute) { c = g_acc; } else { c = g_c[3]; }
-draw_set_color(g_c[1]);
-draw_rectangle(bx, yy, bx + mw, yy + 30, false);
-draw_set_color(c);
-draw_rectangle(bx, yy, bx + mw, yy + 30, true);
-g_fs = g_f_sm;
-scr_ui_text_c(bx + floor(mw / 2), yy + 7, "MUTE", c);
-g_mp_x1[8] = bx; g_mp_y1[8] = yy; g_mp_x2[8] = bx + mw; g_mp_y2[8] = yy + 30;
-nx = bx - gx - 24;                 // plus-knappens vanstra kant
-ledx = nx - gx - ledw;             // LED-stapelns vanstra kant
+// volym: minus och plus (26 x 26, tecknen 10 pixlar och exakt centrerade) i linje med play/paus-knappens kanter, LED-stapeln emellan
 for (k = 0; k < 2; k += 1)
 {
-    if (k == 0) { bx = ledx - gx - 24; } else { bx = nx; }
+    if (k == 0) { bx = ix + bw1 + gap; } else { bx = ix + bw1 + gap + bw2 - 26; }
     draw_set_color(g_c[1]);
-    draw_rectangle(bx, yy + 3, bx + 24, yy + 27, false);
+    draw_rectangle(bx, yy + 2, bx + 25, yy + 27, false);
     draw_set_color(g_c[3]);
-    draw_rectangle(bx, yy + 3, bx + 24, yy + 27, true);
+    draw_rectangle(bx, yy + 2, bx + 25, yy + 27, true);
     draw_set_color(g_c[6]);
-    draw_rectangle(bx + 6, yy + 14, bx + 18, yy + 15, false);
-    if (k == 1) { draw_rectangle(bx + 11, yy + 9, bx + 12, yy + 20, false); }
-    g_mp_x1[6 + k] = bx; g_mp_y1[6 + k] = yy + 3; g_mp_x2[6 + k] = bx + 24; g_mp_y2[6 + k] = yy + 27;
+    draw_rectangle(bx + 8, yy + 14, bx + 17, yy + 15, false);                       // vagrat streck (10 x 2), centrum mellan pixlarna 12 och 13
+    if (k == 1) { draw_rectangle(bx + 12, yy + 10, bx + 13, yy + 19, false); }      // lodrat streck (2 x 10)
+    g_mp_x1[6 + k] = bx; g_mp_y1[6 + k] = yy + 2; g_mp_x2[6 + k] = bx + 25; g_mp_y2[6 + k] = yy + 27;
 }
+ledx = ix + bw1 + gap + 26 + 8;
+ledw = bw2 - 2 * 26 - 2 * 8;
+if (ledw > 100) { ledx += floor((ledw - 100) / 2); ledw = 100; }
 for (k = 0; k < 10; k += 1)
 {
     if (k < g_sv[g_SV_VOL]) { if (k >= 8) { draw_set_color(g_c[8]); } else { draw_set_color(g_c[12]); } }
     else { draw_set_color(g_c[2]); }
     draw_rectangle(ledx + floor(k * ledw / 10), yy + 28 - (6 + k * 2), ledx + floor((k + 1) * ledw / 10) - 2, yy + 28, false);
 }
+// MUTE under NEXT-knappen (samma kolumn och bredd)
+bx = ix + bw1 + gap + bw2 + gap;
+if (g_mp_mute) { c = g_acc; } else { c = g_c[3]; }
+draw_set_color(g_c[1]);
+draw_rectangle(bx, yy, bx + bw1, yy + 30, false);
+draw_set_color(c);
+draw_rectangle(bx, yy, bx + bw1, yy + 30, true);
+g_fs = g_f_sm;
+scr_ui_text_c(bx + floor(bw1 / 2), yy + 7, "MUTE", c);
+g_mp_x1[8] = bx; g_mp_y1[8] = yy; g_mp_x2[8] = bx + bw1; g_mp_y2[8] = yy + 30;
 yy += 30 + 14;
 // NEXT TRACK: nasta lat enligt SHUFFLE / REPEAT / listans ordning
 g_fs = g_f_sm;

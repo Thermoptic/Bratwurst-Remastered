@@ -6,4 +6,5 @@ g_trk_name[2] = "THERMOPTIC - SECTORWURST"; g_trk_snd[2] = snd_music_2; g_trk_fp
 g_trk_name[3] = "THERMOPTIC - WE WERE NEVER ORGANIC (DISCO EDIT)"; g_trk_snd[3] = snd_music_3; g_trk_fps[3] = 25; g_trk_viz[3] = false;
 g_trk_name[4] = "THERMOPTIC - NOTHING GOOD BEYOND NEPTUNE"; g_trk_snd[4] = snd_music_4; g_trk_fps[4] = 25; g_trk_viz[4] = false;
 g_trk_name[5] = "THERMOPTIC - THE FINAL FRANKFURTER"; g_trk_snd[5] = snd_music_5; g_trk_fps[5] = 25; g_trk_viz[5] = false;
-g_trk_n = 6;
+g_trk_name[6] = "THERMOPTIC - JUKE TO JUPITER"; g_trk_snd[6] = snd_music_6; g_trk_fps[6] = 25; g_trk_viz[6] = false;
+g_trk_n = 7;

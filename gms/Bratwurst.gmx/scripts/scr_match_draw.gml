@@ -24,6 +24,7 @@ for (gy = 0; gy <= phx; gy += 20 * g_SCALE) { draw_line(g_OX, g_OY + gy, g_OX + 
 
 scr_dots_draw();         // orienteringspunkter: syns bara nar kameran ar inzoomad
 scr_solid_walls_draw();   // Solid colors: fyll foremalen forst, konturerna ritas ovanpa
+scr_ast_draw();   // Asteroids: stenarna (bara i spellage 4)
 // Vaggar: varje objekt i sin egen temafarg (g_wall_grp, scr_theme_players)
 for (k = 0; k < g_wall_n; k += 1)
 {
@@ -160,6 +161,7 @@ draw_rectangle(g_OX + pwx + 1, g_OY + phx - 10, g_OX + pwx + 2, g_OY + phx + 1, 
 
 // rubrikrad: bana till vanster, aktuell lat till hoger (kortas av om den inte ryms); tangenthjalpen visas i F1-raden
 mqs = "BRATWURST // " + scr_mode_name() + " // ROUND " + string(g_round) + " OF " + string(g_rounds_total) + " // MAP: " + string_upper(g_match_map);
+if (g_game_mode == 4) { mqs = mqs + " // WAVE " + string(g_as_wave); }
 g_fs = g_f_sm;
 mqn = floor((g_vw - 40 - scr_ui_tw("[] " + mqs) - scr_ui_tw("MUSIC:   00:00:00") - 40) / scr_ui_tw("W"));
 mqm = g_trk_name[g_trk_idx];

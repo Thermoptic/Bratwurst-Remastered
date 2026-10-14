@@ -28,7 +28,7 @@ for (s = 0; s < g_ed_n; s += 1)
             if (inside) { enc = true; }
         }
     }
-    if (!enc && g_ed_pn[s] >= 3)
+    if (!enc && g_ed_pn[s] >= 3 && g_ed_n > 1)   // en bana med bara en polygon (t.ex. helt tom, Asteroids) har bara ramen: ingenting att fylla
     {
         g_tp_n = g_ed_pn[s];
         for (i = 0; i < g_tp_n; i += 1)

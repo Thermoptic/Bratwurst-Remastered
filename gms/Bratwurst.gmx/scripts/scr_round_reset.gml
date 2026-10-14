@@ -19,6 +19,7 @@ g_winner = -1;
 g_tick = 0;
 g_round_timer = 0;
 g_end_timer = -1;
+if (g_game_mode == 4) { scr_ast_reset(); }   // Asteroids: ny runda borjar med tom bana
 scr_powerup_reset();
 scr_music_round_start();
 g_cam_n_prev = -1;   // ny runda: kameran hoppar direkt till ratt vy

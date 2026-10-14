@@ -407,3 +407,30 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-14 — Mindre ogg-filer
 - Musikfilerna (`snd_music_1..5.ogg`) är omkodade med Vorbis-kvalitet 3 i stället för 5 (`tools/gen_tracks.py`): från ca 19 MB till ca 15 MB tillsammans, med oförändrade längder och samma equalizerdata. Ej verifierat i GMS; lyssna efter skillnad vid hög volym.
+
+## 2026-10-14 — Rutornas hörn blir vinkelhakar
+- De små accentlinjerna i rutornas nedre hörn (`scr_ui_pane`) är nu vinkelhakar: den korta vågräta linjen längs nederkanten får en lika lång lodrät linje upp längs sidokanten, båda exakt på ramens egna linjer så att det inte blir dubbla linjer som tidigare. Gäller alla rutor i gränssnittet (meny, skeppsval, spelarpaneler, pausmeny). Ej körd.
+
+## 2026-10-14 — Musikspelaren: knapprad i linje med transportknapparna
+- Raden under transportknapparna följer nu samma kolumner: shuffle och repeat under PREV, volym under play/paus (minus i linje med play/paus-knappens vänstra kant, plus i linje med dess högra, LED-stapeln emellan) och MUTE under NEXT i samma bredd. Plus- och minustecknen är mindre (10 pixlar) och exakt centrerade i sina 26 × 26 pixlar stora knappar. `scr_music_panel`. Ej körd.
+
+## 2026-10-14 — Titelskärmens text
+- Texten på titelskärmen är nu "PRESS START TO TURN UP THE HEAT" (versaler) i ett steg mindre typsnitt (medium i stället för stort) så att den längre texten ryms. `scr_title_draw`. Ej körd.
+
+## 2026-10-14 — Musiken tonas in vid start
+- Musiken som startar på titelskärmen tonas nu in från helt tyst till vald volym under 1,5 sekunder (`g_MU_FADE` = 75 ticks, först 150, räknas från att första låten startar) i stället för att börja direkt. Gäller bara vid start av spelet; senare låtbyten börjar som vanligt. `scr_music_update`, `scr_config_init`. Ej körd.
+- Intoningen halverad till 1,5 sekunder (`g_MU_FADE` = 75 ticks) efter test. Ej körd.
+
+## 2026-10-14 — Fix: helskärm och alt-tab
+- Spelets fönster försvann vid alt-tab i helskärmsläget (musiken fortsatte men fönstret gick inte att få tillbaka). Ett ramlöst fönster med `window_set_showborder` gav kompileringsfel (funktionen är obsolete i GameMaker 1.4) och är borttaget. Nu lämnar spelet helskärmsläget när fönstret saknat fokus i 5 ticks (ett vanligt fönster finns kvar i aktivitetsfältet) och går tillbaka till helskärm när fokus är tillbaka. `scr_focus_update`, `scr_game_step`, `scr_config_init`, D-045. Ej körd.
+
+## 2026-10-15 — Ny låt: Juke to Jupiter
+- THERMOPTIC - JUKE TO JUPITER (3:30) tillagd som låt 6 av 6 (plus titellåten): `Music/Thermoptic - Juke to Jupiter.ogg` omkodad till `snd_music_6.ogg` (Vorbis kvalitet 3, 2,6 MB), equalizerdata `viz_6.txt` (25 rutor/s) och projektposter. `tools/gen_tracks.py` accepterar nu även ogg, wav, flac och m4a och hoppar över omkodning av ogg-filer som redan är uppdaterade (`--redo` tvingar). Ej körd i GMS.
+
+## 2026-10-15 — Spelläget Asteroids
+- Nytt spelläge ASTEROIDS (D-046) med en egen, helt tom bana. Stora stenar flyger in från kanterna, delas i två mellanstora (snabbare) och sedan två små (mycket snabba) när de skjuts, och små försvinner. En sten som träffar ett skepp tar 10 / 5 / 1 energi (stor / mellan / liten) och knuffar skeppet. Vågor som i originalet (4 stora stenar, +2 per våg, högst 12; ny våg 3 s efter att banan är tom); stenarna ignorerar väggarna och varvar kanten. Missiler delar stenar; Mini Nuke och Railgun förintar dem. Menyrader: START, PLAYERS, ROUNDS, LIFE, POWERUPS (ny inställning, standard ON, `[asteroids] powerups`). Nya skript `scr_ast_*`, `scr_level_asteroids`. Fix: Solid colors fyllde hela arenan på banor med bara en ram (t.ex. nya banor och Asteroids). Ej körd.
+- Asteroids, högre tempo och stenar som delas vid kollision: en sten som träffar ett skepp delas eller går sönder som om den blivit skjuten; första vågen kommer efter 1 s med 6 stora stenar (+2 per våg, högst 14), nästa våg 1,5 s efter tom bana, stenarna är 50 % snabbare, och en ny stor sten kommer var 6:e sekund så länge det finns färre än 10. `scr_ast_step`, `scr_ast_spawn_one/wave`, `scr_ast_hit`, `scr_config_init`. Ej körd.
+- Asteroids: ny inställning LEVEL (1–5, standard 3; `[asteroids] level`). Nivå 1 är grundinställningen och varje nivå dubblar allt: antalet stenar per våg, hur snabbt vågorna och strömmen kommer och stenarnas fart (farten högst 8 gånger, stenar per våg högst 64). Poolen ökad till 320 stenar; svept kollisionstest skepp–sten och rutkontroll/beskärning för prestanda. Ny `scr_ast_mult`. Ej körd.
+
+## 2026-10-15 — Kamerazoom 1–10
+- Ny inställning Options → ZOOM (1–10, standard 1 = nuvarande zoom). Varje steg zoomar ut kameran mer; Zoom 10 visar dubbelt så mycket av arenan (målzoomen delas på 1 + (zoom − 1) / 9). Kameran glider mjukt när valet ändras. Gäller alla spellägen, sparas som `[display] zoom`. Bieffekt: skott och missiler flyger längre i världen innan de tas bort vid bildkanten när man zoomar ut. `scr_camera_update`, `scr_config_init`, `scr_set_*`, `scr_mn_build`. D-047. Ej körd.

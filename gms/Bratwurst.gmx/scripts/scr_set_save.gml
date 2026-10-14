@@ -15,6 +15,9 @@ ini_write_real("gameplay", "lives", g_sv[g_SV_LIVES]);
 ini_write_real("display", "solid_colors", g_sv[g_SV_SOLID]);
 ini_write_real("gameplay", "powerups_classic", g_sv[g_SV_PUCL]);
 ini_write_real("astro", "powerups", g_sv[g_SV_PUAD]);
+ini_write_real("asteroids", "powerups", g_sv[g_SV_PUAS]);
+ini_write_real("asteroids", "level", g_sv[g_SV_ASLV]);
+ini_write_real("display", "zoom", g_sv[g_SV_ZOOM]);
 for (pt = 0; pt < g_PU_COUNT; pt += 1)
 {
     for (pk = 0; pk < g_pu_np[pt]; pk += 1) { ini_write_real("powerup_" + g_pu_key[pt], g_pu_pkey[pt, pk], g_sv[g_SV_PU + pt * g_PU_STRIDE + pk]); }

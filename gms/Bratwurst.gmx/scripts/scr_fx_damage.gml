@@ -7,6 +7,7 @@ if (fkind != 1 && fkind != 2 && fkind != 4) { exit; }
 if (g_game_mode == 1 && fkind != 4) { exit; }
 if (fkind == 4) { rw = rmax * (1 - power(1 - ftimer / fmax, 2)); }   // Mini Nuke: chockvagen vaxer i varldspixlar och bromsar in
 else { rw = ((6 + ftimer * 4) * fsize / g_SCALE) * 32768 / g_zoom; }   // radie i varldspixlar
+if (fkind == 4 && g_game_mode == 4) { scr_ast_blast(floor(px / 256), floor(py / 256), rw); }   // Asteroids: chockvagen forintar stenar
 rw = rw * rw;
 with (obj_player)
 {

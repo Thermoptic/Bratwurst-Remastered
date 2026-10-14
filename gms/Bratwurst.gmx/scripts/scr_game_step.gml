@@ -3,6 +3,7 @@
 // OBS: originalet kor "antal forlorade tick" steg per loopvarv; prototypen kor exakt 1 tick per rumssteg (PLACEHOLDER).
 // g_state: 10 = titel, 11 = huvudmeny, 0 = skeppsval, 1 = match, 2 = matchen slut.
 var gi;
+scr_focus_update();   // helskarm + alt-tab (D-045)
 scr_nav_input();
 g_bg_t += 1;   // fortlopande klocka for menybakgrunden
 scr_music_update();
@@ -74,6 +75,7 @@ scr_spark_step();
 scr_debris_step();   // skepp mot skepp (D-018)
 with (obj_missile) { scr_missile_step(); }
 with (obj_shot) { scr_shot_step(); }
+if (g_game_mode == 4) { scr_ast_step(); }   // Asteroids (D-046)
 scr_powerup_step();   // powerup-orben: spawn, upplockning, nedrakning (D-035)
 scr_beam_step();   // railgunstralar (D-036)
 g_shake_amp *= 0.9;   // kameraskakningen klingar av (ca 0,4 s)
