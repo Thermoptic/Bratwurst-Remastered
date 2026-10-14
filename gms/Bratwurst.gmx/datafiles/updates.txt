@@ -1,6 +1,10 @@
 BRATWURST REHEATED - UPDATES
 Newest first. Only the big changes and new features are listed.
 
+== UPDATE 15 - 2026-10-14 - Glowing missiles, shots go where you aim ==
+* All missiles are now a glowing ball with a solid core that pulses and flickers, with small pixel particles flying out behind it.
+* Shots and missiles always fire exactly in the direction the ship is pointing, even when you drift or slide sideways at full speed. They no longer inherit the speed of your ship.
+
 == UPDATE 14 - 2026-10-14 - Drift light trails ==
 * Drifting now leaves light trails behind the ship in the colour of the ship: two trails for wide ships, one for narrow ones. The trails grow out as you start to drift, follow the path you move along and fade out towards the tail. When you stop drifting the whole trail fades away.
 * A glowing ball sits where each trail starts, to show that the engine is working: a solid core with a soft glow that pulses and flickers.

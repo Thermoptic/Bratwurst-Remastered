@@ -67,8 +67,8 @@ if (g_game_mode == 1)
             sh = instance_create(0, 0, obj_shot);
             sh.px = pod_wx[p];
             sh.py = pod_wy[p];
-            sh.vx = vx - g_psin[a] * power(2, shot_shift);
-            sh.vy = vy + g_pcos[a] * power(2, shot_shift);
+            sh.vx = vx * g_SHOT_INHERIT - g_psin[a] * power(2, shot_shift);   // D-031: skottet far (som standard) ingen av skeppets egen fart
+            sh.vy = vy * g_SHOT_INHERIT + g_pcos[a] * power(2, shot_shift);
             sh.owner = slot;
         }
         ad_charges -= 1;
@@ -87,8 +87,8 @@ else if (in_fire && reload <= 0 && instance_number(obj_shot) < g_MAX_SHOTS)
         sh = instance_create(0, 0, obj_shot);
         sh.px = pod_wx[p];
         sh.py = pod_wy[p];
-        sh.vx = vx - g_psin[a] * power(2, shot_shift);
-        sh.vy = vy + g_pcos[a] * power(2, shot_shift);
+        sh.vx = vx * g_SHOT_INHERIT - g_psin[a] * power(2, shot_shift);   // D-031: skottet far (som standard) ingen av skeppets egen fart
+        sh.vy = vy * g_SHOT_INHERIT + g_pcos[a] * power(2, shot_shift);
         sh.owner = slot;
         cannon_ammo -= 1;
     }

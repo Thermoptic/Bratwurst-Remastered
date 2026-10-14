@@ -4,7 +4,7 @@
 //   GUIDED:   timer += 1; timer < 0: rakt; timer >= 225: borta utan att rora sig; annars styr mot narmaste levande spelare
 //             (OBS: inklusive agaren, som i originalet): v -= (d * F) >> 8, F = (108e6 + timer*0x493e0)/(d2 + 60000), |v| <= 0x1400.
 //   Traff i vagg: explosion. Traff i skepp: position -= v, energi -12 (MISSILE) / -5 (GUIDED), impuls (v_obj - v)*16 >> BOUNCE.
-var expired, wxp, wyp, tol, ff;
+var expired, wxp, wyp, tol, ff, sk, sa, ss;
 expired = false;
 if (mtype == 1)
 {
@@ -34,6 +34,13 @@ if (mtype == 2)
         px += vx;
         py += vy;
     }
+}
+// pixelpartikelsvans: tva partiklar per tick utlagda langs senaste tickens rorelse, med liten slumpmassig sidofart och kort livslangd
+for (sk = 0; sk < 2; sk += 1)
+{
+    sa = random(2 * pi);
+    ss = random(0.35) * 32768 / max(1, g_zoom);
+    scr_spark_one((px - vx * sk / 2) / 256, (py - vy * sk / 2) / 256, cos(sa) * ss, sin(sa) * ss, 8 + irandom(16), 1 + irandom(1), choose(g_c[10], g_c[9], g_c[6]));
 }
 if (expired) { scr_fx_spawn(px, py, mtype, 1); instance_destroy(); exit; }
 

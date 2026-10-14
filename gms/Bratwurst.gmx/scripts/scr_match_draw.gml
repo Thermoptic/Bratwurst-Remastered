@@ -58,17 +58,27 @@ with (obj_player)
 // (Vald specialpod markeras inte pa skeppet i arenan, utan som en prick pa skeppsbilden i spelarens panel, scr_hud_panel.)
 
 // Specialvapenobjekt (kort linje = en ticks rorelse) och explosioner
-draw_set_color(g_c[9]);
+// missiler (alla typer): glodande boll som pulserar och flimrar med solid karna, plus en svans av pixelpartiklar (scr_missile_step)
+draw_set_blend_mode(bm_add);
 with (obj_missile)
 {
-    var qx1, qy1, qx2, qy2;
-    qx1 = g_OX + scr_w2s_x(floor(px / 256)) * g_SCALE;
-    qy1 = g_OY + scr_w2s_y(floor(py / 256)) * g_SCALE;
-    qx2 = g_OX + scr_w2s_x(floor((px - vx) / 256)) * g_SCALE;
-    qy2 = g_OY + scr_w2s_y(floor((py - vy) / 256)) * g_SCALE;
-    draw_line(qx1, qy1, qx2, qy2);
-    draw_rectangle(qx1 - g_proj_hs, qy1 - g_proj_hs, qx1 + g_proj_hs, qy1 + g_proj_hs, false);
+    var qx1, qy1, mj, mpl, mrc;
+    qx1 = g_OX + (px / 256 * g_zoom / 32768 - g_cam_x + g_CX) * g_SCALE;
+    qy1 = g_OY + (py / 256 * g_zoom / 32768 - g_cam_y + g_CY) * g_SCALE;
+    mrc = 2.4 * g_SCALE;
+    mpl = 1 + 0.15 * sin(g_tick * 0.8 + id);
+    for (mj = 5; mj >= 1; mj -= 1)
+    {
+        if (mj >= 4) { draw_set_color(g_c[9]); } else { draw_set_color(g_c[10]); }
+        draw_set_alpha(0.32 * (0.7 + random(0.6)) / mj);
+        draw_circle(qx1, qy1, mrc * (1 + mj * 0.7) * mpl * (0.88 + random(0.24)), false);
+    }
+    draw_set_alpha(1);
+    draw_set_color(g_c[10]);
+    draw_circle(qx1, qy1, mrc, false);
 }
+draw_set_alpha(1);
+draw_set_blend_mode(bm_normal);
 draw_set_color(g_c[8]);
 with (obj_fx)
 {

@@ -8,6 +8,11 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 15 - 2026-10-14 - Glowing missiles, shots go where you aim
+
+- All missiles are now a glowing ball with a solid core that pulses and flickers, with small pixel particles flying out behind it.
+- Shots and missiles always fire exactly in the direction the ship is pointing, even when you drift or slide sideways at full speed. They no longer inherit the speed of your ship.
+
 ### UPDATE 14 - 2026-10-14 - Drift light trails
 
 - Drifting now leaves light trails behind the ship in the colour of the ship: two trails for wide ships, one for narrow ones. The trails grow out as you start to drift, follow the path you move along and fade out towards the tail. When you stop drifting the whole trail fades away.

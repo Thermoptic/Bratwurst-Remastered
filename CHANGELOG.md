@@ -292,3 +292,9 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-14 — Drift: tillbaka till tidigare känsla
 - Momentum-läget (farten bevaras under drift) togs bort eftersom det kändes som is. Driften är som innan: vanligt luftmotstånd, gasen riktas 34 steg utåt och är 1.17 av vanlig gas (`g_DRIFT_THRUST` återinförd, `g_DRIFT_STEER` borta). Spåren, motorbollen och reverse är oförändrade. `scr_player_step`, `scr_config_init`. Ej körd.
+
+## 2026-10-14 — Missiler: glödande boll och partikelsvans
+- Alla missiler (missil och guidad missil) ritas nu som en glödande boll med solid gul kärna och fem mjuka ringar (orange yttre, gula inre, additiv blandning) som pulserar och flimrar, i stället för en kort linje och en ruta. Efter missilen flyger små pixelpartiklar (två per tick, gula/orange/vita, kort livslängd 8–23 ticks, liten slumpad sidofart) via nya `scr_spark_one` i gnistpoolen. `scr_match_draw`, `scr_missile_step`. Ej körd.
+
+## 2026-10-14 — Skott och missiler avfyras i nosens riktning
+- Kanonskott och missiler får inte längre skeppets egen hastighet; de avfyras alltid exakt åt det håll skeppet pekar, även vid drift eller glidning i sidled (`g_SHOT_INHERIT` = 0, D-031; 1 ger originalets beteende). `scr_player_step`, `scr_special_fire`, `scr_config_init`. Ej körd.

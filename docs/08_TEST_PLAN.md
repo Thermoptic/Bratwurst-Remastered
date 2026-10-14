@@ -202,3 +202,5 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | FX-10 | Drifta med ett smalt skepp (JAS/Kaese/TieFighter/BatWing) och ett brett skepp, släpp sedan driften | Smalt skepp: ett spår, brett: två; spåret växer fram och följer banan med svansen tonande; efter att driften slutat tonar hela spåret ut och försvinner; inga driftgnistor längre; spåret försvinner vid respawn |
 | FX-11 | Drifta | En glödande boll sitter där varje spår startar: solid kärna, mjuk glöd som pulserar och flimrar snabbt; den försvinner när driften slutar |
 | CTRL-12 | (utgått) momentum-driften återkallades | – |
+| FX-12 | Skjut missil och guidad missil | Missilen är en glödande boll (solid kärna, pulserande och flimrande glöd) med en svans av små pixelpartiklar som blir kvar bakom den och försvinner; träff/explosion fungerar som förut |
+| CTRL-13 | Åk i full fart i sidled (drift) och skjut kanon och missil åt olika håll | Skott och missil går alltid exakt dit nosen pekar, oberoende av färdriktning och fart; Astro Duel samma; kanontornet siktar fortfarande mot närmaste fiende |
