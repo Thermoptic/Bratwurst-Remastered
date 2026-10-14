@@ -12,6 +12,12 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 29 - 2026-10-15 - Pause menu music
+
+- The pause menu now lets you change song with LB / RB.
+- The pause menu only shows gamepad controls (the keyboard list is gone).
+- Options: WINDOW is renamed SCREEN MODE.
+
 ### UPDATE 28 - 2026-10-15 - Cleaner options
 
 - Options: WIDE PLAYFIELD is gone (the playfield is always wide). SCANLINES and PHOSPHOR GLOW are now one switch: SCANLINES AND GLOW.

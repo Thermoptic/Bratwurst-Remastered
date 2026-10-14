@@ -94,9 +94,10 @@ for (r = 0; r < 3; r += 1)
     scr_ui_text(x1 + 24, ry + 5, lbl, c);
 }
 g_fs = g_f_sm;
-scr_ui_text_c(x1 + mw / 2, py + ph - 56, "UP/DOWN  CHOOSE", g_c[3]);
-scr_ui_text_c(x1 + mw / 2, py + ph - 38, "ENTER / START  OK", g_c[3]);
-scr_ui_text_c(x1 + mw / 2, py + ph - 20, "ESC / B  RESUME", g_c[3]);
+scr_ui_text_c(x1 + mw / 2, py + ph - 74, "D-PAD  CHOOSE", g_c[3]);
+scr_ui_text_c(x1 + mw / 2, py + ph - 56, "A / START  OK", g_c[3]);
+scr_ui_text_c(x1 + mw / 2, py + ph - 38, "B  RESUME", g_c[3]);
+scr_ui_text_c(x1 + mw / 2, py + ph - 20, "LB / RB  CHANGE SONG", g_c[3]);
 
 // ---- CONTROLS (hoger) ----
 scr_ui_pane(x2, py, cw, ph, "CONTROLS", g_acc);
@@ -113,12 +114,5 @@ scr_ui_text(x2 + 12, yy, "LB", g_c[4]);              scr_ui_text_r(x2 + cw - 12,
 scr_ui_text(x2 + 12, yy, "RB", g_c[4]);              scr_ui_text_r(x2 + cw - 12, yy, "NEXT SHIP (TEST)", g_c[6]); yy += 15;
 scr_ui_text(x2 + 12, yy, "LT + THRUST", g_c[4]);     scr_ui_text_r(x2 + cw - 12, yy, "DRIFT", g_c[6]); yy += 15;
 scr_ui_text(x2 + 12, yy, "LT ALONE", g_c[4]);        scr_ui_text_r(x2 + cw - 12, yy, "REVERSE", g_c[6]); yy += 15;
-scr_ui_text(x2 + 12, yy, "START", g_c[4]);           scr_ui_text_r(x2 + cw - 12, yy, "PAUSE", g_c[6]); yy += 22;
-scr_ui_text(x2 + 12, yy, "KEYBOARD", g_acc); yy += 17;
-scr_ui_text(x2 + 12, yy, "P1", g_c[4]);              scr_ui_text_r(x2 + cw - 12, yy, "ARROWS  SPACE", g_c[6]); yy += 15;
-scr_ui_text(x2 + 12, yy, "   SPECIAL / NEXT / POD", g_c[3]);   scr_ui_text_r(x2 + cw - 12, yy, "DOWN  Z  X", g_c[6]); yy += 15;
-scr_ui_text(x2 + 12, yy, "P2", g_c[4]);              scr_ui_text_r(x2 + cw - 12, yy, "WASD  L-SHIFT", g_c[6]); yy += 15;
-scr_ui_text(x2 + 12, yy, "P3", g_c[4]);              scr_ui_text_r(x2 + cw - 12, yy, "IJKL  O", g_c[6]); yy += 15;
-scr_ui_text(x2 + 12, yy, "DRIFT P1 / P2 / P3", g_c[4]);   scr_ui_text_r(x2 + cw - 12, yy, "C / Q / H", g_c[6]); yy += 15;
-scr_ui_text(x2 + 12, yy, "POWERUP P1 / P2 / P3", g_c[4]);   scr_ui_text_r(x2 + cw - 12, yy, "V / F / M", g_c[6]); yy += 15;
-scr_ui_text(x2 + 12, yy, "ESC", g_c[4]);             scr_ui_text_r(x2 + cw - 12, yy, "PAUSE", g_c[6]);
+scr_ui_text(x2 + 12, yy, "START", g_c[4]);           scr_ui_text_r(x2 + cw - 12, yy, "PAUSE", g_c[6]); yy += 15;
+scr_ui_text(x2 + 12, yy, "LB / RB IN PAUSE", g_c[4]);   scr_ui_text_r(x2 + cw - 12, yy, "CHANGE SONG", g_c[6]);

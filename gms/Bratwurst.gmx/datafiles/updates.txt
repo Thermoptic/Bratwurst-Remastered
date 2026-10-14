@@ -1,6 +1,11 @@
 BRATWURST REHEATED - UPDATES
 Newest first. Only the big changes and new features are listed.
 
+== UPDATE 29 - 2026-10-15 - Pause menu music ==
+* The pause menu now lets you change song with LB / RB.
+* The pause menu only shows gamepad controls (the keyboard list is gone).
+* Options: WINDOW is renamed SCREEN MODE.
+
 == UPDATE 28 - 2026-10-15 - Cleaner options ==
 * Options: WIDE PLAYFIELD is gone (the playfield is always wide). SCANLINES and PHOSPHOR GLOW are now one switch: SCANLINES AND GLOW.
 * The MUSIC on/off row is gone. VOLUME now goes down to 0%, shown as OFF, which turns the music off.

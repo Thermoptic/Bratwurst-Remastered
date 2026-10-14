@@ -22,9 +22,9 @@ if (g_trk_n > 1)
         g_music_id = -1;
     }
 }
-if (g_state == 11 || g_state == 0)
+if (g_state == 11 || g_state == 0 || (g_state == 1 && g_paused && !g_pause_opts))   // ocksa i pausmenyn under matchen
 {
-    // axelknapparna (LB / RB) eller PageUp / PageDown byter lat
+    // axelknapparna (LB / RB) eller PageUp / PageDown byter lat (menyer och pausmenyn)
     if (keyboard_check_pressed(vk_pageup)) { scr_music_switch(-1); }
     if (keyboard_check_pressed(vk_pagedown)) { scr_music_switch(1); }
     if (g_state == 11 && keyboard_check_pressed(ord("M"))) { scr_mp_toggle(); }   // M: spela / pausa

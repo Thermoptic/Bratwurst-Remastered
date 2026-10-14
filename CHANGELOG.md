@@ -440,3 +440,5 @@ Alla betydande projektändringar dokumenteras här.
 - MUSIC On/Off borttagen; VOLUME kan nu gå till 0 % (visas OFF = musiken av). D-049. Ej körd.
 
 - DATA-rutan: rubriken INFO borttagen, beskrivningstexten flyttad upp dit. Ej körd.
+
+- Options: WINDOW omdöpt till SCREEN MODE. Pausmenyn: LB/RB byter låt, tangentbordsinstruktionerna borttagna (bara gamepad visas). Ej körd.

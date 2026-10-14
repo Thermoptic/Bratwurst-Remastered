@@ -1,5 +1,5 @@
 /// scr_focus_update()
-// Helskarm och alt-tab (D-045): i exklusivt helskarmslage (Options -> WINDOW -> FULLSCREEN) forsvann spelets fonster vid alt-tab och gick inte att fa tillbaka.
+// Helskarm och alt-tab (D-045): i exklusivt helskarmslage (Options -> SCREEN MODE -> FULLSCREEN) forsvann spelets fonster vid alt-tab och gick inte att fa tillbaka.
 // Darfor lamnar spelet helskarmslaget (window_set_fullscreen(false)) nar fonstret har saknat fokus i 5 ticks i foljd, sa att det finns som ett vanligt fonster
 // i aktivitetsfaltet, och gar tillbaka till helskarm (scr_display_apply) nar fokus ar tillbaka i 5 ticks i foljd. Kors varje tick i obj_game.
 if (g_sv[g_SV_SCALE] != 3) { g_fs_lost = false; g_fs_lt = 0; exit; }
