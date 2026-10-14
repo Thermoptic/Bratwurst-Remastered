@@ -434,3 +434,9 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-15 — Kamerazoom 1–10
 - Ny inställning Options → ZOOM (1–10, standard 1 = nuvarande zoom). Varje steg zoomar ut kameran mer; Zoom 10 visar dubbelt så mycket av arenan (målzoomen delas på 1 + (zoom − 1) / 9). Kameran glider mjukt när valet ändras. Gäller alla spellägen, sparas som `[display] zoom`. Bieffekt: skott och missiler flyger längre i världen innan de tas bort vid bildkanten när man zoomar ut. `scr_camera_update`, `scr_config_init`, `scr_set_*`, `scr_mn_build`. D-047. Ej körd.
+
+## 2026-10-15 — Options städas
+- WIDE PLAYFIELD borttagen (alltid bred). SCANLINES och PHOSPHOR GLOW sammanslagna till SCANLINES AND GLOW. D-048. Ej körd.
+- MUSIC On/Off borttagen; VOLUME kan nu gå till 0 % (visas OFF = musiken av). D-049. Ej körd.
+
+- DATA-rutan: rubriken INFO borttagen, beskrivningstexten flyttad upp dit. Ej körd.

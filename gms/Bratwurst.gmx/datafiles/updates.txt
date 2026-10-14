@@ -1,6 +1,11 @@
 BRATWURST REHEATED - UPDATES
 Newest first. Only the big changes and new features are listed.
 
+== UPDATE 28 - 2026-10-15 - Cleaner options ==
+* Options: WIDE PLAYFIELD is gone (the playfield is always wide). SCANLINES and PHOSPHOR GLOW are now one switch: SCANLINES AND GLOW.
+* The MUSIC on/off row is gone. VOLUME now goes down to 0%, shown as OFF, which turns the music off.
+* The DATA box in the main menu shows the description right at the top, without the INFO heading.
+
 == UPDATE 27 - 2026-10-15 - Asteroids, zoom and polish ==
 * New game mode: ASTEROIDS. Waves of rocks fly in from the edges; shoot them and they split into smaller, faster ones. Options has a LEVEL setting (1 to 5, default 3) where every level doubles everything.
 * New option ZOOM (1 to 10): 1 is the normal camera, 10 shows twice as much of the arena. It changes smoothly and works in every game mode.

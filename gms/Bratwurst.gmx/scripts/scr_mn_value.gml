@@ -6,6 +6,7 @@ t = g_mn_type[n];
 s = g_mn_set[n];
 if (t == 0) { return ">>>"; }
 if (t == 2) { if (g_sv[s]) { return "ON"; } return "OFF"; }
+if (t == 3 && s == g_SV_VOL && g_sv[s] == 0) { return "OFF"; }
 if (t == 3 && s == g_SV_VOL) { return string(g_sv[s] * 10) + "%"; }
 if (t == 3) { return string(g_sv[s]); }
 if (t == 4)

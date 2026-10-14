@@ -18,6 +18,6 @@ if (hit == 2) { scr_mp_toggle(); }
 if (hit == 3) { scr_music_switch(1); }
 if (hit == 4) { g_mp_shuf = !g_mp_shuf; }
 if (hit == 5) { g_mp_rep = !g_mp_rep; }
-if (hit == 6) { g_sv[g_SV_VOL] = max(1, g_sv[g_SV_VOL] - 1); scr_set_changed(g_SV_VOL); }
+if (hit == 6) { g_sv[g_SV_VOL] = max(0, g_sv[g_SV_VOL] - 1); scr_set_changed(g_SV_VOL); }
 if (hit == 8) { g_mp_mute = !g_mp_mute; }
 if (hit == 7) { g_sv[g_SV_VOL] = min(10, g_sv[g_SV_VOL] + 1); scr_set_changed(g_SV_VOL); }

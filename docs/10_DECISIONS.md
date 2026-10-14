@@ -232,3 +232,9 @@
 
 ## D-047 — Kamerazoom 1–10
 - **Beslut (användaren):** ny inställning Options → ZOOM, 1–10, standard 1. Zoom 1 är spelets nuvarande zoom (originalets formel, D-037); varje steg zoomar ut mer och Zoom 10 visar dubbelt så mycket av arenan. Implementering: målzoomen delas på `1 + (zoom − 1) / 9` i `scr_camera_update` (steg om 1/9 ≈ 11 %, så att 10 blir exakt dubbelt utzoomad; +10 % per steg hade gett 1,9 gånger). Ändras valet glider kameran dit mjukt (D-037). Gäller alla spellägen och sparas som `[display] zoom`. Bieffekt: skott och missiler tas bort när de lämnar bilden (originalets regel), så vid utzoomad kamera flyger de längre i världen, och väggträffstoleransen (en skärmpixel) blir större i världspixlar.
+
+## D-048 — Alltid bred spelyta, SCANLINES AND GLOW
+- **Beslut (användaren):** valet WIDE PLAYFIELD tas bort ur Options; spelytan är alltid bred (`g_SV_WIDE` tvingas till 1 vid start, gammalt ini-värde ignoreras). SCANLINES och PHOSPHOR GLOW slås ihop till en omkopplare SCANLINES AND GLOW (På/Av); `g_SV_GLOW` följer `g_SV_SCAN`. Sparas som `[display] scanlines`.
+
+## D-049 — Musik av = volym 0
+- **Beslut (användaren):** raden MUSIC (På/Av) tas bort ur Options. VOLUME går nu 0–100 % i steg om 10; 0 visas som OFF och stänger av musiken (`g_SV_MUSIC` härleds som volym > 0). Gäller även volymknapparna i musikspelaren. Gammalt `[audio] music` i ini ignoreras. Standard fortfarande 70 %.

@@ -21,10 +21,12 @@ for (k = 0; k < 4; k += 1)
 g_sv[g_SV_VSYNC] = clamp(ini_read_real("display", "vsync", g_sv[g_SV_VSYNC]), 0, 1);
 g_sv[g_SV_SCAN] = clamp(ini_read_real("display", "scanlines", g_sv[g_SV_SCAN]), 0, 1);
 g_sv[g_SV_GLOW] = clamp(ini_read_real("display", "glow", g_sv[g_SV_GLOW]), 0, 1);
-g_sv[g_SV_WIDE] = clamp(ini_read_real("display", "widescreen", g_sv[g_SV_WIDE]), 0, 1);
+g_sv[g_SV_WIDE] = 1;   // bred spelyta alltid (D-048)
+g_sv[g_SV_GLOW] = g_sv[g_SV_SCAN];   // en gemensam omkopplare: SCANLINES AND GLOW
 g_sv[g_SV_MUSIC] = clamp(ini_read_real("audio", "music", g_sv[g_SV_MUSIC]), 0, 1);
 g_sv[g_SV_ADLIVES] = clamp(round(ini_read_real("astro", "lives", g_sv[g_SV_ADLIVES])), 1, 9);
-g_sv[g_SV_VOL] = clamp(round(ini_read_real("audio", "volume", g_sv[g_SV_VOL] * 10) / 10), 1, 10);
+g_sv[g_SV_VOL] = clamp(round(ini_read_real("audio", "volume", g_sv[g_SV_VOL] * 10) / 10), 0, 10);
+g_sv[g_SV_MUSIC] = (g_sv[g_SV_VOL] > 0);   // musik pa/av styrs av volymen (0 = OFF)
 g_sv[g_SV_SOLID] = clamp(round(ini_read_real("display", "solid_colors", g_sv[g_SV_SOLID])), 0, 1);
 g_sv[g_SV_ZOOM] = clamp(round(ini_read_real("display", "zoom", g_sv[g_SV_ZOOM])), 1, 10);
 g_sv[g_SV_ASLV] = clamp(round(ini_read_real("asteroids", "level", g_sv[g_SV_ASLV])), 1, 5);

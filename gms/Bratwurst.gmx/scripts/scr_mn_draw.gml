@@ -98,8 +98,7 @@ if (t == 4 && (g_mn_set[item] == g_SV_MAP || g_mn_set[item] == g_SV_MAP2))
 }
 else
 {
-    scr_ui_text(ix, py + 24, "INFO", g_c[4]);
-    yy = scr_ui_wrap(ix, py + 48, g_mn_desc[item], iw, 19, g_c[5]);
+    yy = scr_ui_wrap(ix, py + 24, g_mn_desc[item], iw, 19, g_c[5]);
     if (t == 5) { yy = scr_ui_wrap(ix, yy + 10, g_mn_text[item], iw, 19, g_acc); }
 }
 scr_music_panel(dx, py + dh + 14, dw0, hm);
