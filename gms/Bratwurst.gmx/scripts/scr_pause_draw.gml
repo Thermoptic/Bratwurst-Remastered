@@ -75,10 +75,12 @@ for (i = 0; i < g_n_players; i += 1)
 
 // ---- PAUSED (mitten) ----
 scr_ui_pane(x1, py, mw, ph, "PAUSED", g_acc);
-for (r = 0; r < 2; r += 1)
+for (r = 0; r < 3; r += 1)
 {
     ry = py + 26 + r * 34;
-    if (r == 0) { lbl = "RESUME GAME"; } else { lbl = "QUIT TO MENU"; }
+    if (r == 0) { lbl = "RESUME GAME"; }
+    if (r == 1) { lbl = "OPTIONS"; }
+    if (r == 2) { lbl = "QUIT TO MENU"; }
     if (g_pause_sel == r)
     {
         draw_set_color(g_c[1]);

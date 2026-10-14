@@ -48,10 +48,11 @@ if (g_nv_ok)
         if (g_mn_act[item] == 1) { g_game_mode = 0; scr_menu_enter(); }
         if (g_mn_act[item] == 5) { g_game_mode = 1; scr_menu_enter(); }
         if (g_mn_act[item] == 2) { game_end(); }
-        if (g_mn_act[item] == 4) { scr_ed_enter(g_sv[g_SV_MAP]); }
+        if (g_mn_act[item] == 4 && !g_pause_opts) { scr_ed_enter(g_sv[g_SV_MAP]); }   // banredigeraren finns inte under en match
         if (g_mn_act[item] == 3)
         {
             scr_set_defaults();
+            scr_drift_apply();
             scr_theme_apply();
             scr_display_apply();
             g_n_players = g_sv[g_SV_PLAYERS];
@@ -62,5 +63,6 @@ if (g_nv_ok)
 if (g_nv_back)
 {
     if (g_mn_depth > 0) { g_mn_depth -= 1; }
+    else if (g_pause_opts) { scr_pause_opts_close(); }   // tillbaka till pausmenyn
     else { g_state = 10; g_menu_tick = 0; }
 }

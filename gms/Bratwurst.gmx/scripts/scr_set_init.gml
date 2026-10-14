@@ -39,6 +39,7 @@ g_sv[g_SV_SFX] = clamp(ini_read_real("audio", "sfx", g_sv[g_SV_SFX]), 0, 1);
 g_sv[g_SV_PLAYERS] = clamp(round(ini_read_real("gameplay", "players", g_sv[g_SV_PLAYERS])), 1, 4);
 g_sv[g_SV_ROUNDS] = clamp(round(ini_read_real("gameplay", "rounds", g_sv[g_SV_ROUNDS])), 1, 15);
 ini_close();
+scr_drift_apply();   // drift/reverse-installningarna till spelkodens variabler
 ini_open("settings.ini");
 s = ini_read_string("gameplay", "map", "");
 ini_close();

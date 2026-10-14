@@ -1,5 +1,6 @@
 /// scr_goto_main()
 g_paused = false;
+g_pause_opts = false;
 // Tillbaka till huvudmenyn fran skeppsval eller match. Tar bort matchens objekt.
 with (obj_player) { if (dr_snd >= 0) { audio_stop_sound(dr_snd); } if (rg_snd >= 0) { audio_stop_sound(rg_snd); } instance_destroy(); }   // driftljudet stoppas
 with (obj_shot) { instance_destroy(); }

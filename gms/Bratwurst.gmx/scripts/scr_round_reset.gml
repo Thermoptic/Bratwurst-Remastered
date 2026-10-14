@@ -1,5 +1,6 @@
 /// scr_round_reset()
 g_paused = false;
+g_pause_opts = false;
 // Ny runda i samma match: alla spelare far full energi, alla liv och ammo och startar pa sina startplatser. Skeppen, vapen och bana behalls.
 with (obj_shot) { instance_destroy(); }
 with (obj_missile) { instance_destroy(); }

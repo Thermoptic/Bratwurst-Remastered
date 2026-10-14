@@ -15,7 +15,7 @@ with (obj_player)
                 if (tr_brk[i]) { continue; }
                 t = i / (tr_n - 1);
                 a = tr_fade * (0.05 + 0.9 * t * t);
-                w = (0.5 + 1.7 * t) * g_SCALE;   // smalare (var 0.8 + 2.6 * t)
+                w = (0.5 + 1.7 * t) * g_SCALE * g_TR_WSCALE;   // smalare (var 0.8 + 2.6 * t)
                 if (k == 0)
                 {
                     x1 = tr_ax[i - 1]; y1 = tr_ay[i - 1]; x2 = tr_ax[i]; y2 = tr_ay[i];

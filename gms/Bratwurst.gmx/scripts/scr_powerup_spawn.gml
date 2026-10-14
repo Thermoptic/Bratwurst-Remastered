@@ -22,4 +22,4 @@ if (!ok) { g_pu_timer = 50; exit; }   // ingen plats hittades: forsok igen om en
 g_pu_on = true;
 g_pu_x = tx;
 g_pu_y = ty;
-g_pu_type = irandom(g_PU_COUNT - 1);
+g_pu_type = irandom(g_PU_SPAWN - 1);

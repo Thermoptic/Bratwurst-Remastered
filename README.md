@@ -12,6 +12,11 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 21 - 2026-10-14 - Options in the pause menu, drift settings
+
+- The pause menu has a new OPTIONS entry. It opens the normal options menu on top of the match, so you can change theme, volume and so on while you play. Esc goes back to the pause menu.
+- The secret Powerup Editor (Options, press P) has a new DRIFT page with every setting for drifting and reversing: start speed, turn boost, slide angle, drift thrust, reverse thrust, trail length, engine sound and trail width.
+
 ### UPDATE 20 - 2026-10-14 - Smooth camera zoom
 
 - When a player dies (or comes back after respawning) the camera no longer jumps straight to the players that are left. It zooms and moves smoothly, in about a second.

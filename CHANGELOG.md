@@ -364,3 +364,6 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-14 — Mjuk kamerazoom vid död
 - När en spelare dör eller kommer tillbaka efter respawn glider kameran (zoom och centrum) mjukt mot de spelare som är kvar (ca 1–2 s, `g_CAM_TRANS` / `g_CAM_K`) i stället för att hoppa direkt. Vanlig rörelse följer fortfarande utan fördröjning, och en ny runda börjar direkt i rätt vy. `scr_camera_update`, `scr_game_start`, `scr_round_reset`, `scr_config_init`. D-037. Ej körd.
+
+## 2026-10-14 — DRIFT i Powerup Editor och Options i pausmenyn
+- Ny sida DRIFT i den hemliga Powerup Editor (Options, tryck P) med alla drift- och reverseinställningar: MIN SPEED, TURN BOOST, SLIDE ANGLE, DRIFT THRUST, REVERSE THRUST, TRAIL LENGTH, ENGINE SOUND och TRAIL WIDTH (standardvärdena är de nuvarande). De sparas i settings.ini och slår igenom direkt (`scr_drift_apply`). Spårets längd kan sänkas medan ett spår är längre. Pausmenyn har fått raden OPTIONS som öppnar Options inne i matchen; Esc/B går tillbaka till pausmenyn; Map Editor är spärrad där. D-038. Ej körd.

@@ -7,7 +7,7 @@
     <datafile>
       <name>updates.txt</name>
       <exists>-1</exists>
-      <size>11729</size>
+      <size>12217</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -317,6 +317,9 @@
     <script>scripts\scr_railgun_update.gml</script>
     <script>scripts\scr_seg_dist.gml</script>
     <script>scripts\scr_railgun_fire.gml</script>
+    <script>scripts\scr_drift_apply.gml</script>
+    <script>scripts\scr_pause_opts_close.gml</script>
+    <script>scripts\scr_pause_opts_open.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_lg_k10</font>

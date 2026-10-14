@@ -199,4 +199,15 @@ if (g_state == 2)
     else { scr_ui_text_c(rcx, rcy + 28, "NEXT ROUND STARTING", g_c[4]); }
     scr_ui_text_c(rcx, rcy + 48, "F2 SHIP SELECT   ESC MAIN MENU", g_c[3]);
 }
-if (g_paused) { scr_pause_draw(); }
+if (g_paused)
+{
+    if (g_pause_opts)
+    {
+        // Options inne i pausmenyn: hela installningsmenyn ritas ovanpa en ogenomskinlig bakgrund
+        draw_set_color(g_c[0]);
+        draw_set_alpha(1);
+        draw_rectangle(g_vx - 4, g_vy - 4, g_vx + g_vw + 4, g_vy + g_vh + 4, false);
+        scr_mn_draw();
+    }
+    else { scr_pause_draw(); }
+}

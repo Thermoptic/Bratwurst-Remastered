@@ -3,7 +3,8 @@
 // hemliga Powerup Editor (Options, tryck P). g_pu_np[t] = antal parametrar, g_pu_pname/pdesc/pkey[t, k] = namn, beskrivning och ini-nyckel,
 // g_pu_pmin/pmax/pstep/pdef[t, k] = intervall, steg och standardvarde. Installningarna ligger i g_sv[g_SV_PU + t * 8 + k] (settings.ini, [powerup_<namn>]).
 // Nya powerups: lagg till en post har, ett fall i scr_powerup_fire och eventuell effektkod; menyn och sparandet byggs av datan.
-g_PU_COUNT = 2;
+g_PU_COUNT = 3;   // poster i editorn och installningarna
+g_PU_SPAWN = 2;   // bara de forsta (riktiga powerups) kan dyka upp som orbs; post 2 (DRIFT) ar bara en sida i Powerup Editor
 // ---- 0: MINI NUKE (beter sig som en missil med stor chockvag) ----
 g_pu_name[0] = "MINI NUKE";
 g_pu_key[0] = "mininuke";
@@ -64,3 +65,23 @@ g_pu_pname[1, 6] = "CAMERA SHAKE"; g_pu_pdesc[1, 6] = "HOW HARD THE PICTURE SHAK
 g_pu_pmin[1, 6] = 0; g_pu_pmax[1, 6] = 60; g_pu_pstep[1, 6] = 1; g_pu_pdef[1, 6] = 8;
 g_pu_pname[1, 7] = "CHARGE BALL SIZE"; g_pu_pdesc[1, 7] = "SIZE OF THE GLOWING BALL IN FRONT OF THE SHIP WHEN FULLY CHARGED, IN MAP PIXELS"; g_pu_pkey[1, 7] = "ball_size";
 g_pu_pmin[1, 7] = 4; g_pu_pmax[1, 7] = 50; g_pu_pstep[1, 7] = 2; g_pu_pdef[1, 7] = 18;
+// ---- 2: DRIFT (ingen powerup: inte spawnbar, bara en sida i Powerup Editor for drift och reverse, D-030) ----
+g_pu_name[2] = "DRIFT";
+g_pu_key[2] = "drift";
+g_pu_np[2] = 8;
+g_pu_pname[2, 0] = "MIN SPEED"; g_pu_pdesc[2, 0] = "SPEED YOU NEED TO START DRIFTING (THRUST + LEFT TRIGGER). BELOW IT NOTHING HAPPENS"; g_pu_pkey[2, 0] = "min_speed";
+g_pu_pmin[2, 0] = 0; g_pu_pmax[2, 0] = 3000; g_pu_pstep[2, 0] = 50; g_pu_pdef[2, 0] = 500;
+g_pu_pname[2, 1] = "TURN BOOST"; g_pu_pdesc[2, 1] = "HOW MUCH FASTER THE SHIP TURNS WHILE DRIFTING, IN PERCENT (150 = 1.5 TIMES)"; g_pu_pkey[2, 1] = "turn_boost";
+g_pu_pmin[2, 1] = 100; g_pu_pmax[2, 1] = 400; g_pu_pstep[2, 1] = 10; g_pu_pdef[2, 1] = 150;
+g_pu_pname[2, 2] = "SLIDE ANGLE"; g_pu_pdesc[2, 2] = "HOW FAR OUT FROM THE TURN THE THRUST IS PUSHED, IN STEPS OF 1/256 TURN (34 = ABOUT 48 DEGREES). MORE = SLIDES MORE SIDEWAYS"; g_pu_pkey[2, 2] = "slide_angle";
+g_pu_pmin[2, 2] = 0; g_pu_pmax[2, 2] = 64; g_pu_pstep[2, 2] = 1; g_pu_pdef[2, 2] = 34;
+g_pu_pname[2, 3] = "DRIFT THRUST"; g_pu_pdesc[2, 3] = "STRENGTH OF THE THRUST WHILE DRIFTING COMPARED WITH NORMAL THRUST, IN PERCENT"; g_pu_pkey[2, 3] = "drift_thrust";
+g_pu_pmin[2, 3] = 25; g_pu_pmax[2, 3] = 300; g_pu_pstep[2, 3] = 5; g_pu_pdef[2, 3] = 117;
+g_pu_pname[2, 4] = "REVERSE THRUST"; g_pu_pdesc[2, 4] = "STRENGTH WHEN BACKING UP (LEFT TRIGGER ALONE, NO THRUST) COMPARED WITH NORMAL THRUST, IN PERCENT"; g_pu_pkey[2, 4] = "reverse_thrust";
+g_pu_pmin[2, 4] = 0; g_pu_pmax[2, 4] = 100; g_pu_pstep[2, 4] = 5; g_pu_pdef[2, 4] = 25;
+g_pu_pname[2, 5] = "TRAIL LENGTH"; g_pu_pdesc[2, 5] = "HOW LONG THE LIGHT TRAILS BEHIND THE SHIP ARE, IN POINTS (ONE PER TICK, SO IT ALSO DEPENDS ON SPEED)"; g_pu_pkey[2, 5] = "trail_length";
+g_pu_pmin[2, 5] = 4; g_pu_pmax[2, 5] = 120; g_pu_pstep[2, 5] = 4; g_pu_pdef[2, 5] = 40;
+g_pu_pname[2, 6] = "ENGINE SOUND"; g_pu_pdesc[2, 6] = "VOLUME OF THE DRIFT ENGINE SOUND, IN PERCENT. 0 = SILENT"; g_pu_pkey[2, 6] = "sound_volume";
+g_pu_pmin[2, 6] = 0; g_pu_pmax[2, 6] = 100; g_pu_pstep[2, 6] = 5; g_pu_pdef[2, 6] = 45;
+g_pu_pname[2, 7] = "TRAIL WIDTH"; g_pu_pdesc[2, 7] = "THICKNESS OF THE LIGHT TRAILS, IN PERCENT OF THE NORMAL WIDTH"; g_pu_pkey[2, 7] = "trail_width";
+g_pu_pmin[2, 7] = 20; g_pu_pmax[2, 7] = 300; g_pu_pstep[2, 7] = 10; g_pu_pdef[2, 7] = 100;

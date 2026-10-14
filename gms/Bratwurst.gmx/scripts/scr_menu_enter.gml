@@ -1,5 +1,6 @@
 /// scr_menu_enter()
 g_paused = false;
+g_pause_opts = false;
 // Gar tillbaka till skeppsvalet (behaller tidigare skeppsval) och tar bort matchens objekt.
 var i;
 with (obj_player) { if (dr_snd >= 0) { audio_stop_sound(dr_snd); } if (rg_snd >= 0) { audio_stop_sound(rg_snd); } instance_destroy(); }   // driftljudet stoppas

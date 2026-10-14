@@ -31,6 +31,7 @@ if (g_state == 1)
             scr_drift_sound();
             if (rg_snd >= 0) { audio_stop_sound(rg_snd); rg_snd = -1; }   // railgunens laddljud tystnar under paus
         }   // driftljudet tonas ut under paus
+        if (g_pause_opts) { scr_mn_step(); exit; }   // Options inne i pausmenyn (D-038)
         scr_pause_step();
         exit;
     }

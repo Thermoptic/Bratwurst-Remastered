@@ -1,5 +1,6 @@
 /// scr_game_start(n_players)
 g_paused = false;
+g_pause_opts = false;
 // Startar om matchen. Skapar spelare med skeppsval fran g_pship[].
 var i, p;
 with (obj_player) { if (dr_snd >= 0) { audio_stop_sound(dr_snd); } if (rg_snd >= 0) { audio_stop_sound(rg_snd); } instance_destroy(); }   // driftljudet stoppas
