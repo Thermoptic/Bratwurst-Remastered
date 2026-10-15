@@ -12,6 +12,10 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 31 - 2026-10-16 - Alt-tab in fullscreen
+
+- Another fix for the window disappearing when you alt-tab out of FULLSCREEN: the game now leaves fullscreen as soon as you press Alt+Tab or the Windows key, and returns when you come back.
+
 ### UPDATE 30 - 2026-10-16 - Title screen credits
 
 - The title screen has a credits line at the bottom: Bratwurst (1995) originally fried by Three Little Elks (3LE) and Reheated (2026) by Thermoptic.

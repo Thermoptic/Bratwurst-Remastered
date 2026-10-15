@@ -13,7 +13,7 @@ scr_mn_link(root, modes); scr_mn_link(root, opts); scr_mn_link(root, ctrls); scr
 
 // GAME MODES
 // Spellagen: Classic ar dagens match (START). De andra ar tomma platshallare tills de byggs.
-p = scr_mn_add(0, "CLASSIC", "THE CLASSIC MATCH. LAST SHIP FLYING WINS");
+p = scr_mn_add(0, "CLASSIC", "THE ORIGNAL, SALT, WHITE PEPPER, NUTMEG OR MACE. JUST THE WAY IT SHOULD BE!");
 scr_mn_link(modes, p);
 classic = p;
 n = scr_mn_add(1, "START", "OPEN THE SHIP SELECT SCREEN. SET PLAYERS AND MAP BELOW");
@@ -35,7 +35,7 @@ scr_mn_link(classic, n);
 n = scr_mn_add(2, "POWERUPS", "POWERUP ORBS APPEAR ON THE MAP: THE FIRST ONE 5 SECONDS AFTER THE ROUND STARTS, THEN A NEW ONE 10 SECONDS AFTER ONE IS PICKED UP. FIRE IT WITH THE B BUTTON");
 scr_mn_setting(n, g_SV_PUCL, 0, 1, "gameplay.powerups_classic");
 scr_mn_link(classic, n);
-p = scr_mn_add(0, "ASTRO DUEL", "ONE HIT KILLS. THREE SHOTS THEN A 4 SECOND RELOAD. BIGGER SHOTS, FAST MISSILES AND TURBO ONLY");
+p = scr_mn_add(0, "GALAXY DUEL", "ONE HIT KILLS. THREE SHOTS THEN A 4 SECOND RELOAD. BIGGER SHOTS, FAST MISSILES AND TURBO ONLY");
 scr_mn_link(modes, p);
 n = scr_mn_add(1, "START", "OPEN THE SHIP SELECT SCREEN FOR ASTRO DUEL. SET PLAYERS, MAP AND LIFE BELOW");
 g_mn_act[n] = 5;
@@ -57,7 +57,7 @@ scr_mn_link(p, n);
 n = scr_mn_add(2, "POWERUPS", "POWERUP ORBS APPEAR ON THE MAP: THE FIRST ONE 5 SECONDS AFTER THE ROUND STARTS, THEN A NEW ONE 10 SECONDS AFTER ONE IS PICKED UP. FIRE IT WITH THE B BUTTON");
 scr_mn_setting(n, g_SV_PUAD, 0, 1, "astro.powerups");
 scr_mn_link(p, n);
-p = scr_mn_add(0, "ASTEROIDS", "AN EMPTY ARENA. ROCKS FLY IN FROM THE SIDES AND SPLIT WHEN SHOT: BIG, MEDIUM, SMALL. A ROCK HIT COSTS 10, 5 OR 1 ENERGY");
+p = scr_mn_add(0, "ASTEROIDZ", "BLAST YOUR WAY THROUGH ENDLESS WAVES OF ASTEROIDS, JUST LIKE IT'S 1979.");
 scr_mn_link(modes, p);
 n = scr_mn_add(1, "START", "OPEN THE SHIP SELECT SCREEN FOR ASTEROIDS. SET PLAYERS, ROUNDS AND LIFE BELOW");
 g_mn_act[n] = 6;

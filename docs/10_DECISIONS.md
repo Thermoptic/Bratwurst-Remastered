@@ -238,3 +238,5 @@
 
 ## D-049 — Musik av = volym 0
 - **Beslut (användaren):** raden MUSIC (På/Av) tas bort ur Options. VOLUME går nu 0–100 % i steg om 10; 0 visas som OFF och stänger av musiken (`g_SV_MUSIC` härleds som volym > 0). Gäller även volymknapparna i musikspelaren. Gammalt `[audio] music` i ini ignoreras. Standard fortfarande 70 %.
+
+**D-045, tillägg (2026-10-16):** användaren rapporterade att fönstret fortfarande försvann vid alt-tab (ej bekräftat vilket SCREEN MODE/build). `scr_focus_update` lämnar nu helskärmsläget redan när Alt+Tab eller Windows-tangenten trycks ned (innan fönsterbytet) och efter 2 ticks utan fokus (förut 5). Ej verifierat i GMS. Om det fortfarande händer: orsaken är exklusiv helskärm i Direct3D 9; nästa steg är att ersätta FULLSCREEN med ett fönster i skärmens storlek.

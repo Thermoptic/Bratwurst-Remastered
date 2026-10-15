@@ -444,3 +444,5 @@ Alla betydande projektändringar dokumenteras här.
 - Options: WINDOW omdöpt till SCREEN MODE. Pausmenyn: LB/RB byter låt, tangentbordsinstruktionerna borttagna (bara gamepad visas). Ej körd.
 
 - Titelskärmen: krediteringsrad centrerad längst ned (ersätter BUILD-texten), "ESC = QUIT" borttagen. Ej körd.
+
+- Alt-tab i helskärm: lämnar helskärmen direkt vid Alt+Tab/Windows-tangenten och efter 2 ticks utan fokus (D-045, tillägg). Ej körd.
