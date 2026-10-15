@@ -240,3 +240,8 @@
 - **Beslut (användaren):** raden MUSIC (På/Av) tas bort ur Options. VOLUME går nu 0–100 % i steg om 10; 0 visas som OFF och stänger av musiken (`g_SV_MUSIC` härleds som volym > 0). Gäller även volymknapparna i musikspelaren. Gammalt `[audio] music` i ini ignoreras. Standard fortfarande 70 %.
 
 **D-045, tillägg (2026-10-16):** användaren rapporterade att fönstret fortfarande försvann vid alt-tab (ej bekräftat vilket SCREEN MODE/build). `scr_focus_update` lämnar nu helskärmsläget redan när Alt+Tab eller Windows-tangenten trycks ned (innan fönsterbytet) och efter 2 ticks utan fokus (förut 5). Ej verifierat i GMS. Om det fortfarande händer: orsaken är exklusiv helskärm i Direct3D 9; nästa steg är att ersätta FULLSCREEN med ett fönster i skärmens storlek.
+
+## D-050 — Portabla sparfiler: avslaget
+- **Fråga (användaren):** kan spelet köras helt portabelt (alla sparfiler i spelets mapp, t.ex. på USB-minne)?
+- **Undersökt:** Global Game Settings → Windows → General har bara `%localappdata%\<GameName>` och `%appdata%\<GameName>`. Ett försök att skriva `settings.ini`, `levels.ini` och `themes.ini` med `working_directory` som sökväg hamnade ändå i `%localappdata%\Bratwurst` (GameMaker 1.4:s sandbox omdirigerar skrivningar), och raden DATA FOLDER visade därför fel mapp. **VERIFIERAD** av användaren.
+- **Beslut (användaren):** behåll standardplatsen (AppData). Försöket återställdes (inga kodändringar kvar). Alternativ som inte valdes: kopiera filerna till/från spelmappen med `execute_shell`, eller en tilläggs-DLL.
