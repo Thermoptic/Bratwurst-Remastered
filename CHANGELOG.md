@@ -442,3 +442,5 @@ Alla betydande projektändringar dokumenteras här.
 - DATA-rutan: rubriken INFO borttagen, beskrivningstexten flyttad upp dit. Ej körd.
 
 - Options: WINDOW omdöpt till SCREEN MODE. Pausmenyn: LB/RB byter låt, tangentbordsinstruktionerna borttagna (bara gamepad visas). Ej körd.
+
+- Titelskärmen: krediteringsrad centrerad längst ned (ersätter BUILD-texten), "ESC = QUIT" borttagen. Ej körd.

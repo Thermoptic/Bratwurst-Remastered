@@ -1,6 +1,10 @@
 BRATWURST REHEATED - UPDATES
 Newest first. Only the big changes and new features are listed.
 
+== UPDATE 30 - 2026-10-16 - Title screen credits ==
+* The title screen has a credits line at the bottom: Bratwurst (1995) originally fried by Three Little Elks (3LE) and Reheated (2026) by Thermoptic.
+* The ESC = QUIT text is gone from the title screen.
+
 == UPDATE 29 - 2026-10-15 - Pause menu music ==
 * The pause menu now lets you change song with LB / RB.
 * The pause menu only shows gamepad controls (the keyboard list is gone).

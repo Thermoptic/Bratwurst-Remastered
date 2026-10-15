@@ -84,5 +84,4 @@ g_fs = g_f_md;
 if ((t mod 70) < 46) { scr_ui_text_c(cx, cy + R0 + 84, "PRESS START TO TURN UP THE HEAT", g_c[6]); }
 g_fs = g_f_sm;
 scr_ui_text_c(cx, cy + R0 + 124, "ANY KEY OR GAMEPAD BUTTON", g_c[4]);
-scr_ui_text(g_vx + 20, g_vy + g_vh - 32, "ESC = QUIT", g_c[4]);
-scr_ui_text_r(g_vx + g_vw - 20, g_vy + g_vh - 32, "BUILD 0.2 // PLACEHOLDER UI", g_c[3]);
+scr_ui_text_c(g_vx + g_vw / 2, g_vy + g_vh - 32, "Bratwurst (1995) originally fried by Three Little Elks (3LE) and Reheated (2026) by Thermoptic", g_c[3]);

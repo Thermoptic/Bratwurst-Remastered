@@ -12,6 +12,11 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 30 - 2026-10-16 - Title screen credits
+
+- The title screen has a credits line at the bottom: Bratwurst (1995) originally fried by Three Little Elks (3LE) and Reheated (2026) by Thermoptic.
+- The ESC = QUIT text is gone from the title screen.
+
 ### UPDATE 29 - 2026-10-15 - Pause menu music
 
 - The pause menu now lets you change song with LB / RB.
