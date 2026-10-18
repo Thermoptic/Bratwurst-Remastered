@@ -17,6 +17,7 @@ if ((sp < 0 && sn >= 0) || (sp >= 0 && sn < 0))
     if (lat <= g_fin_hw)
     {
         if (sn >= 0) { race_x += 1; } else { race_x -= 1; }
+        race_ct = g_race_t;   // placering (D-057): tiden for senaste passagen
     }
 }
 race_laps = clamp(race_x - race_free, 0, g_race_target);

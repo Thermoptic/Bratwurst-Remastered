@@ -298,3 +298,18 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | RACE-048 | Ta flera pickups av samma sort | Ammo blir aldrig mer än 1; drift aldrig mer än fullt |
 | RACE-071 | Redigeraren: O placerar, klick på punkt flyttar, X tar bort, spara och öppna igen | Punkterna finns kvar |
 | RACE-030 | Träffa ett skepp med ett skott/missil som kommit från pickup | Slow 20 % i 3 s (se D-055) |
+| RACE-050 | Två spelare, ledaren tar en pickup upprepade gånger | Får bara Plasma |
+| RACE-051 | Tre spelare, den i mitten tar pickups | Får bara Plasma eller Missile |
+| RACE-052 | Sista spelaren tar pickups | Får bara Guided Missile eller Drift |
+| RACE-053 | Två spelare | Ledare/sist enligt D-057 |
+| RACE-054 | Tre spelare | 1:a, 2:a och 3:e skiljs åt (`POS x / 3`) |
+| RACE-055 | Byt ledare under racet och ta pickups | Nivån avgörs av placeringen vid upplockningen |
+| RACE-056 | Placering mellan passager | Avgörs av varv/passagetid/startordning, inte av avstånd till mål |
+| RACE-060 | Kör i mål | Måltiden sparas och visas i resultatrutan |
+| RACE-061 | Skepp i mål och ett som ännu tävlar: skjut, kollidera, flyg genom varandra | Klara skepp träffas och kolliderar inte, skjuter inte |
+| RACE-062 | Alla utom en kommer i mål | `ELIMINATED IN 4`, 3, 2, 1; den sista exploderar; racet avgörs, ingen hängning |
+| RACE-063 | Resultatrutan | Vinnare, placeringar, skepp och tider eller ELIMINATED visas |
+| RACE-064 | Resultatrutan | Exakt texten `PRESS TO ENTER NEXT RACE` (sista racet: PRESS TO SEE THE FINAL RESULT) |
+| RACE-065 | Tryck A/Enter/Space efter en sekund | Nästa race startar (eller slutresultatet) |
+| RACE-066 | Ställ in 2 varv och 2 rundor | Antalen respekteras; rundvinster räknas |
+| RACE-067 | En ensam spelare i mål; sista spelaren kommer i mål under nedräkningen | Inget hänger sig; nedräkningen avbryts |

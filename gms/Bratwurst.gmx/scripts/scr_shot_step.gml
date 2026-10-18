@@ -35,7 +35,7 @@ else
 {
     with (obj_player)
     {
-        if (alive && g_hit_id == noone)
+        if (alive && !race_fin && g_hit_id == noone)
         {
             if (scr_point_in_ship(other.hx, other.hy)) { g_hit_id = id; }
         }

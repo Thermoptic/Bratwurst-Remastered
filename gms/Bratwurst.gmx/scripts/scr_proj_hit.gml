@@ -34,7 +34,7 @@ for (s = 1; s <= n; s += 1)
 
     {
 
-        if (alive && g_pj_hit == noone)
+        if (alive && !race_fin && g_pj_hit == noone)
 
         {
 

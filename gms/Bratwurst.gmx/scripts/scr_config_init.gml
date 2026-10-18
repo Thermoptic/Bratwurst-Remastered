@@ -161,3 +161,7 @@ globalvar g_PK_MAX, g_PK_RESPAWN, g_ed_pk_n, g_ed_pkx, g_ed_pky, g_ed_pkmv, g_pk
 g_PK_MAX = 16; g_PK_RESPAWN = 250;   // Race (D-056): hogst 16 pickuppunkter per bana; en tagen pickup kommer tillbaka efter 5 s
 g_ed_pk_n = 0; g_ed_pkx[0] = 0; g_ed_pky[0] = 0; g_ed_pkmv = -1;
 g_pk_n = 0; g_pk_x[0] = 0; g_pk_y[0] = 0; g_pk_on[0] = false; g_pk_t[0] = 0; g_pk_who = noone; g_pk_bd = 0; g_pk_cx = 0; g_pk_cy = 0; g_pk_dd = 0;
+globalvar g_rk_a, g_rk_u, g_rk_n, g_rk_ahead;
+g_rk_a = noone; g_rk_u = false; g_rk_n = 0; g_rk_ahead = 0;   // Race (D-057): hjalpvariabler for scr_race_pos
+globalvar g_race_el, g_rr_n, g_rr_id, g_rr_slot, g_rr_ft, g_rr_fin, g_rr_dnf, g_rr_nm;
+g_race_el = -1; g_rr_n = 0; g_rr_id[0] = noone; g_rr_slot[0] = 0; g_rr_ft[0] = 0; g_rr_fin[0] = false; g_rr_dnf[0] = false; g_rr_nm[0] = "";   // Race (D-058): utslagsnedrakning och resultatlista

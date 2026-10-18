@@ -468,3 +468,9 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-18 — Race, steg 4 (pickups)
 - Banredigeraren: verktyg **O** placerar, flyttar och (med X) tar bort runda pickuppunkter (högst 16, sparas som `pickups` i `levels.ini`). I Race ger en pickup exakt ett skott Plasma, en missil, en styrd missil eller fullt drivmedel för drift (slumpat tills steg 5), väljer vapnet automatiskt, försvinner i 5 s och kommer tillbaka på samma plats; meddelande i panelen. `scr_pickup_step`, `scr_pickup_grant`, `scr_pickup_draw`, `scr_level_parse_pickups`, `scr_ed_pk_pick`, `scr_ed_step/draw`, `scr_level_read/write/apply`. D-056. Ej körd.
+
+## 2026-10-18 — Race, steg 5 (placering och nivåer)
+- Race: placering enligt klara, varv, tidigast passage av målrutan och startordning (`POS x / N` i panelen). En pickup ger efter placering: ledare bara Plasma, mitten Plasma eller Missile, sist Guided Missile eller Drift (ensam racer alla fyra). `scr_race_ahead`, `scr_race_pos`, `scr_pickup_grant`, `scr_fin_cross`, `scr_race_reset`, `scr_hud_panel`. D-057. Ej körd.
+
+## 2026-10-18 — Race, steg 6 (mål, utslagning, resultat)
+- Race: skepp som kommit i mål blir spöken (skjuter inte, kolliderar inte, kan inte träffas). Är alla klara slutar racet; är bara en racer kvar får den 4 s och exploderar sedan (nedräkning i panelen). Resultatrutan visar vinnare, placeringar och tider (eller ELIMINATED/DID NOT FINISH) och `PRESS TO ENTER NEXT RACE`; vinnaren får en rundvinst. `scr_race_step`, `scr_race_eliminate`, `scr_race_round_end`, `scr_race_results_draw`, `scr_round_over_step`, `scr_game_step`, träff- och kollisionsskript. D-058. Ej körd.

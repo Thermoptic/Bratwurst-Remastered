@@ -16,6 +16,11 @@ if (!alive)
     exit;
 }
 scr_player_input();
+if (g_game_mode == 2 && race_fin)
+{
+    // Race: ett skepp som kommit i mal skjuter inte och anvander inga vapen (D-058)
+    in_fire = false; in_special = false; in_powerup = false; in_pu_hold = false;
+}
 if (ad_inv > 0) { ad_inv -= 1; }
 if (race_slow > 0) { race_slow -= 1; }
 if (race_msg_t > 0) { race_msg_t -= 1; }   // Race: fartminskning efter vapentraff (D-055)

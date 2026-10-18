@@ -4,7 +4,7 @@ var i, j, n, a, b;
 g_tmp_n = 0;
 with (obj_player)
 {
-    if (alive)
+    if (alive && !race_fin)
     {
         g_col_id[g_tmp_n] = id;
         g_tmp_n += 1;

@@ -11,7 +11,7 @@ g_ref_y = argument1;
 g_ref_slot = argument2;
 with (obj_player)
 {
-    if (alive && slot != g_ref_slot)
+    if (alive && !race_fin && slot != g_ref_slot)
     {
         var ddx, ddy, dd2;
         ddx = floor((g_ref_x - px) / 256);

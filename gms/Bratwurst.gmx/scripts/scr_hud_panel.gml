@@ -64,7 +64,8 @@ if (g_game_mode == 2)
 {
     // Race (D-056): inga liv; raden visar senaste pickup en stund
     scr_ui_text(px + 12, y0 + 36, "IT", g_c[4]);
-    if (p.race_msg_t > 0) { scr_ui_text(px + 42, y0 + 36, p.race_msg, g_c[11]); }
+    if (g_race_el >= 0 && p.alive && !p.race_fin) { scr_ui_text(px + 42, y0 + 36, "ELIMINATED IN " + string(ceil(g_race_el / 50)), g_c[8]); }   // sista racern: nedrakning (D-058)
+    else if (p.race_msg_t > 0) { scr_ui_text(px + 42, y0 + 36, p.race_msg, g_c[11]); }
 }
 else
 {
@@ -99,6 +100,7 @@ if (g_game_mode == 2)
     if (!g_fin_on) { scr_ui_text_r(px + pw - 12, y0 + 72, "NO FINISH LINE", g_c[10]); }
     else if (p.race_fin) { scr_ui_text_r(px + pw - 12, y0 + 72, "FINISHED " + scr_race_time(p.race_ft), g_c[11]); }
     else { scr_ui_text_r(px + pw - 12, y0 + 72, "LAP " + string(min(p.race_laps + 1, g_race_target)) + " / " + string(g_race_target), c); }
+    if (p.alive) { fr = scr_race_pos(p, false); scr_ui_text_r(px + pw - 12, py + 26, "POS " + string(fr) + " / " + string(g_rk_n), c); }   // placering (D-057)
     if (g_debug) { scr_ui_text_r(px + pw - 12, y0 + 88, "X " + string(p.race_x) + " F " + string(p.race_free), g_c[3]); }
 }
 scr_ui_text(px + 12, y0 + 72, "AB", g_c[4]);   // drifting fuel (D-052): bla matare, rod medan den laddas

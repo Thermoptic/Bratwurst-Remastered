@@ -20,7 +20,7 @@ for (k = 0; k < g_BM_MAX; k += 1)
             if (g_game_mode == 4) { scr_ast_beam(g_sd_x1, g_sd_y1, g_sd_x2, g_sd_y2, g_bm_w[k]); }   // Asteroids: stralen forintar stenar
             with (obj_player)
             {
-                if (alive && slot != g_bm_owner[g_bm_cur] && ((g_bm_hit[g_bm_cur] & (1 << slot)) == 0))
+                if (alive && !race_fin && slot != g_bm_owner[g_bm_cur] && ((g_bm_hit[g_bm_cur] & (1 << slot)) == 0))
                 {
                     var jb, hitp;
                     hitp = false;

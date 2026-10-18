@@ -11,7 +11,7 @@ if (fkind == 4 && g_game_mode == 4) { scr_ast_blast(floor(px / 256), floor(py / 
 rw = rw * rw;
 with (obj_player)
 {
-    if (alive && other.fdone[slot] == 0)
+    if (alive && !race_fin && other.fdone[slot] == 0)
     {
         hitp = false;
         for (j = 0; j < np; j += 1)

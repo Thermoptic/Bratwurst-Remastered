@@ -12,6 +12,14 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 37 - 2026-10-18 - Race positions and results
+
+- Race position: the panel shows POS x / N. It depends on finished ships, laps, who crossed the finish box first and the start order.
+- Pickups now depend on your position: the leader only gets a plasma shot, the middle gets plasma or a missile, and last place gets a guided missile or drift fuel.
+- Ships that have finished fly on as ghosts: they cannot shoot, collide or be hit.
+- When only one racer is left, it has 4 seconds to finish (ELIMINATED IN 4, 3, 2, 1) or its ship explodes.
+- Race result screen with the winner, places and times, and PRESS TO ENTER NEXT RACE. The winner gets a round win.
+
 ### UPDATE 36 - 2026-10-18 - Race pickups
 
 - Race pickups: round orange balls on the course. Fly into one to get a single plasma shot, a missile, a guided missile or a full drift fuel meter. The weapon is selected for you. The ball comes back after 5 seconds.
