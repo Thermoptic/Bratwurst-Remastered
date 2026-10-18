@@ -2,4 +2,5 @@
 // Sant om powerups ar pa for aktuellt spellage (Options: Game modes -> POWERUPS ON/OFF, standard ON).
 if (g_game_mode == 1) { return g_sv[g_SV_PUAD] == 1; }
 if (g_game_mode == 4) { return g_sv[g_SV_PUAS] == 1; }
+if (g_game_mode == 2) { return g_sv[g_SV_PURA] == 1; }   // Race: av som standard (D-053)
 return g_sv[g_SV_PUCL] == 1;

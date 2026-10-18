@@ -36,6 +36,20 @@ for (s = 0; s < g_ed_n; s += 1)
     }
 }
 
+// Race: start/malrutan (icke-solid, pilar visar riktningen; mushjulet vrider dem)
+if (g_ed_fon)
+{
+    sx0 = g_ed_cxs + g_ed_fx0 * g_ed_es; sy0 = g_ed_cys + g_ed_fy0 * g_ed_es;
+    sx1 = g_ed_cxs + g_ed_fx1 * g_ed_es; sy1 = g_ed_cys + g_ed_fy1 * g_ed_es;
+    if (g_ed_tool == 2 && g_ed_inside && hs < 0 && scr_ed_in_finish(g_ed_wx, g_ed_wy)) { col = g_c[8]; } else { col = g_c[11]; }
+    draw_set_color(col);
+    draw_set_alpha(0.14);
+    draw_rectangle(sx0, sy0, sx1, sy1, false);
+    draw_set_alpha(1);
+    draw_rectangle(sx0, sy0, sx1, sy1, true);
+    scr_fin_arrows(sx0, sy0, sx1, sy1, g_ed_fdir, col, g_ed_x0, g_ed_y0, g_ed_x0 + g_ed_w, g_ed_y0 + g_ed_h, 4);
+}
+
 // pagaende polygon / rektangel
 draw_set_color(g_acc);
 for (i = 0; i < g_ed_cn; i += 1)
@@ -49,7 +63,7 @@ if (g_ed_tool == 1 && g_ed_cn > 0 && g_ed_inside)
 {
     draw_line(g_ed_cxs + g_ed_cx[g_ed_cn - 1] * g_ed_es, g_ed_cys + g_ed_cy[g_ed_cn - 1] * g_ed_es, g_ed_cxs + g_ed_mx * g_ed_es, g_ed_cys + g_ed_my * g_ed_es);
 }
-if (g_ed_tool == 0 && g_ed_bset && g_ed_inside)
+if ((g_ed_tool == 0 || g_ed_tool == 4) && g_ed_bset && g_ed_inside)
 {
     draw_rectangle(g_ed_cxs + g_ed_bx * g_ed_es, g_ed_cys + g_ed_by * g_ed_es, g_ed_cxs + g_ed_mx * g_ed_es, g_ed_cys + g_ed_my * g_ed_es, true);
 }
@@ -82,6 +96,7 @@ if (g_ed_tool == 0) { tool_name = "BOX"; }
 if (g_ed_tool == 1) { tool_name = "POLYGON"; }
 if (g_ed_tool == 2) { tool_name = "ERASE"; }
 if (g_ed_tool == 3) { tool_name = "SPAWN P" + string(g_ed_spawn + 1); }
+if (g_ed_tool == 4) { tool_name = "FINISH LINE"; }
 line_y = g_ed_y0 + 24;
 scr_ui_text(tx + 16, line_y, "TOOL    " + tool_name, g_acc);
 scr_ui_text(tx + 16, line_y + 20, "SHAPES  " + string(g_ed_n) + " / 64", g_c[5]);
@@ -98,8 +113,10 @@ scr_ui_text(tx + 16, line_y + 100, "T  SPAWN (1-4 PICK, CLICK", g_c[4]);
 scr_ui_text(tx + 16, line_y + 120, "   PLACE, WHEEL OR Q/E TURN)", g_c[4]);
 scr_ui_text(tx + 16, line_y + 140, "G  GRID 25 / 50 / 100", g_c[4]);
 scr_ui_text(tx + 16, line_y + 160, "U  UNDO LAST SHAPE", g_c[4]);
-scr_ui_text(tx + 16, line_y + 180, "RIGHT CLICK  CANCEL", g_c[4]);
-line_y += 214;
+scr_ui_text(tx + 16, line_y + 180, "F  FINISH LINE (RACE, 2 CORNERS,", g_c[4]);
+scr_ui_text(tx + 16, line_y + 200, "   WHEEL TURNS THE ARROWS)", g_c[4]);
+scr_ui_text(tx + 16, line_y + 220, "RIGHT CLICK  CANCEL", g_c[4]);
+line_y += 254;
 scr_ui_text(tx + 16, line_y, "S  SAVE (NAME + MODES)", g_c[11]);
 scr_ui_text(tx + 16, line_y + 20, "N  NEW MAP    L  LOAD MAP", g_c[4]);
 scr_ui_text(tx + 16, line_y + 40, "[ ]  PREVIOUS / NEXT MAP", g_c[4]);

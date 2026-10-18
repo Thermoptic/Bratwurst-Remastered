@@ -38,6 +38,7 @@ for (k = 0; k < g_wall_n; k += 1)
     draw_line(g_OX + x1 * g_SCALE, g_OY + y1 * g_SCALE, g_OX + x2 * g_SCALE, g_OY + y2 * g_SCALE);
 }
 
+if (g_game_mode == 2) { scr_fin_draw(); }   // Race: start/malrutan (D-054)
 scr_powerup_draw();   // powerup-orben pa kartan
 scr_trail_draw();   // driftspar bakom skeppen
 // Skepp (vertexar skalas med Z>>16 och roteras med sin/cos-tabellerna, som hunk0 0x18da)
@@ -162,6 +163,7 @@ draw_rectangle(g_OX + pwx + 1, g_OY + phx - 10, g_OX + pwx + 2, g_OY + phx + 1, 
 // rubrikrad: bana till vanster, aktuell lat till hoger (kortas av om den inte ryms); tangenthjalpen visas i F1-raden
 mqs = "BRATWURST // " + scr_mode_name() + " // ROUND " + string(g_round) + " OF " + string(g_rounds_total) + " // MAP: " + string_upper(g_match_map);
 if (g_game_mode == 4) { mqs = mqs + " // WAVE " + string(g_as_wave); }
+if (g_game_mode == 2) { mqs = mqs + " // TIME " + scr_race_time(g_race_t); }
 g_fs = g_f_sm;
 mqn = floor((g_vw - 40 - scr_ui_tw("[] " + mqs) - scr_ui_tw("MUSIC:   00:00:00") - 40) / scr_ui_tw("W"));
 mqm = g_trk_name[g_trk_idx];

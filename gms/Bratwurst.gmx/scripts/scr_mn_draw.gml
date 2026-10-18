@@ -91,7 +91,7 @@ scr_ui_pane(dx, py, dw0, dh, "DATA", g_acc);
 g_fs = g_f_sm;
 ix = dx + 16;
 iw = dw0 - 32;
-if (t == 4 && (g_mn_set[item] == g_SV_MAP || g_mn_set[item] == g_SV_MAP2))
+if (t == 4 && (g_mn_set[item] == g_SV_MAP || g_mn_set[item] == g_SV_MAP2 || g_mn_set[item] == g_SV_MAP3))
 {
     // pa raden MAP visas en bild pa vald bana i stallet for informationstexten
     scr_map_preview(ix, py + 20, iw, dh - 36, g_sv[g_mn_set[item]]);

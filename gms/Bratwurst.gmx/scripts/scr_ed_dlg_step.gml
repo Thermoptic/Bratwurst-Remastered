@@ -68,5 +68,6 @@ if (ok)
     scr_set_save();
     g_ed_dirty = false;
     g_ed_dlg = 0;
+    if ((g_ed_modes & 4) != 0 && !g_ed_fon) { scr_ed_msg("WARNING: THIS RACE MAP HAS NO FINISH LINE (TOOL F)"); }   // D-054
     scr_ed_msg("SAVED " + string_upper(g_ed_name));
 }

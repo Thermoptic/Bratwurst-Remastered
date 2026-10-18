@@ -31,6 +31,7 @@ for (i = 0; i < g_n_players; i += 1)
     p = instance_create(0, 0, obj_player);
     with (p) { scr_player_init(i, g_pship[i]); }
 }
+if (g_game_mode == 2) { scr_race_reset(); }   // Race (D-053)
 scr_powerup_reset();
 scr_music_round_start();
 g_cam_n_prev = -1;   // ny match: kameran hoppar direkt till ratt vy

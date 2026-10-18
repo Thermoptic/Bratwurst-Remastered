@@ -258,3 +258,20 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | DR-07 | Options → P → Powerup Editor → DRIFT → DRIFTING FUEL | Raden finns; ändrad längd gäller alla och sparas; RESET OPTIONS ger 8 |
 | DR-08 | Dö, ny runda | Mätaren är full igen |
 | DR-09 | Övriga driftparametrar, backning, andra spellägen | Fungerar som förut |
+| RACE-001 | Game modes → RACE finns, START öppnar skeppsval | Race syns och startar; övriga lägen oförändrade |
+| RACE-S1-01 | Race: ändra LAPS, MAP, ROUNDS, POWERUPS, stäng och starta om spelet | Värdena sparas (`settings.ini` [race]); POWERUPS är AV som standard |
+| RACE-S1-02 | Starta ett race med 1 och 2 spelare | Spelarna står på startplatserna; panelen visar `LAP 1 / N`; rubrikraden visar tiden som går; tiden nollas i nästa runda |
+| RACE-S1-03 | Starta Classic, Galaxy Duel och Asteroids efter ett race | Inga Race-element (varv, tid) syns, inställningarna oförändrade |
+| RACE-S1-04 | Race: kör in i en vägg i hög fart | Skeppet studsar men energin minskar inte; ingen väggdöd. Classic tar fortfarande skada |
+| RACE-020 | Race, bana med målruta: kör ett varv och passera rutan i pilens riktning | Panelen går från `LAP 1 / N` till `LAP 2 / N` exakt en gång |
+| RACE-021 | Ligg stilla i rutan, vicka fram och tillbaka över mittlinjen | Varvet räknas inte upp av att vicka (nettoräkning); F1 visar X/F |
+| RACE-022 | Passera rutan åt fel håll | Räknas inte (X minskar) |
+| RACE-023 | Två skepp passerar nära varandra | Varje skepp räknas för sig |
+| RACE-024 | Flyg genom rutan | Ingen kollision, ingen bromsning |
+| RACE-025 | Slutför alla varv | `FINISHED m:ss.t` visas för skeppet, tiden sparas |
+| RACE-026 | Starta bakom/på linjen | Starten räknas inte som ett varv |
+| RACE-070 | Redigeraren: F, två hörnklick; ny ruta ersätter gamla; mushjulet vrider pilarna; X tar bort | Rutan går att placera, byta, vrida och ta bort |
+| RACE-072 | Spara, lämna, öppna banan igen | Rutan och riktningen finns kvar |
+| RACE-073 | Öppna och spela äldre banor | De laddas som förut (nyckeln är valfri) |
+| RACE-074 | Spara en Race-bana utan ruta; starta ett race på den | Varning vid sparning; `NO FINISH LINE` i panelen |
+| RACE-075 | Rutan i matchen | Ingen väggkollision, ingen påverkan på andra lägen |

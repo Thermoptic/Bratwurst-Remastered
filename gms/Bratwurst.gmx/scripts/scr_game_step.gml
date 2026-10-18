@@ -70,6 +70,7 @@ if (g_state != 1) { exit; }
 
 g_tick += 1;
 with (obj_player) { scr_player_step(); }
+if (g_game_mode == 2) { scr_race_step(); }   // Race (D-053)
 scr_ship_collisions();
 scr_spark_step();
 scr_debris_step();   // skepp mot skepp (D-018)

@@ -12,6 +12,13 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 34 - 2026-10-18 - Race (first part)
+
+- New game mode: RACE. Pick laps, map, rounds and powerups (off by default) in the menu. The player panel shows your lap and the top bar shows the race time.
+- Map editor: new tool F draws a start/finish box. The box has arrows for the racing direction (turn them with the mouse wheel), and ships fly straight through it. Cross it in the arrow direction to finish a lap. Race maps without a finish box show a warning.
+- Hitting a wall no longer damages your ship in Race.
+- Race is not finished yet: no pickups or weapon rules and no race results screen.
+
 ### UPDATE 33 - 2026-10-18 - Drifting fuel
 
 - Drifting now uses fuel. A full meter gives 8 seconds of drift. Fuel is only used while you drift, and what is left is kept for later.

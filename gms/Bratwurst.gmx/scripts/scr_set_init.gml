@@ -28,6 +28,8 @@ g_sv[g_SV_ADLIVES] = clamp(round(ini_read_real("astro", "lives", g_sv[g_SV_ADLIV
 g_sv[g_SV_VOL] = clamp(round(ini_read_real("audio", "volume", g_sv[g_SV_VOL] * 10) / 10), 0, 10);
 g_sv[g_SV_MUSIC] = (g_sv[g_SV_VOL] > 0);   // musik pa/av styrs av volymen (0 = OFF)
 g_sv[g_SV_SOLID] = clamp(round(ini_read_real("display", "solid_colors", g_sv[g_SV_SOLID])), 0, 1);
+g_sv[g_SV_LAPS] = clamp(round(ini_read_real("race", "laps", g_sv[g_SV_LAPS])), 1, 10);
+g_sv[g_SV_PURA] = clamp(round(ini_read_real("race", "powerups", g_sv[g_SV_PURA])), 0, 1);
 g_sv[g_SV_ZOOM] = clamp(round(ini_read_real("display", "zoom", g_sv[g_SV_ZOOM])), 1, 10);
 g_sv[g_SV_ASLV] = clamp(round(ini_read_real("asteroids", "level", g_sv[g_SV_ASLV])), 1, 5);
 g_sv[g_SV_PUAS] = clamp(round(ini_read_real("asteroids", "powerups", g_sv[g_SV_PUAS])), 0, 1);
@@ -59,6 +61,13 @@ ini_close();
 for (t = 0; t < g_lv_count; t += 1)
 {
     if (g_lv_id[t] == s) { g_sv[g_SV_MAP2] = t; }
+}
+ini_open("settings.ini");
+s = ini_read_string("gameplay", "map_race", "");
+ini_close();
+for (t = 0; t < g_lv_count; t += 1)
+{
+    if (g_lv_id[t] == s) { g_sv[g_SV_MAP3] = t; }
 }
 scr_levels_fix_selection();
 g_n_players = g_sv[g_SV_PLAYERS];

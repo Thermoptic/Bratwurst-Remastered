@@ -21,4 +21,5 @@ for (k = 0; k < 4; k += 1)
 {
     ini_write_string(argument0, "p" + string(k), string(round(g_ed_sx[k])) + "," + string(round(g_ed_sy[k])) + "," + string(round(g_ed_sa[k])));
 }
+if (g_ed_fon) { ini_write_string(argument0, "finish", string(round(g_ed_fx0)) + "," + string(round(g_ed_fy0)) + "," + string(round(g_ed_fx1)) + "," + string(round(g_ed_fy1)) + "," + string(g_ed_fdir)); }   // Race (D-054)
 ini_close();

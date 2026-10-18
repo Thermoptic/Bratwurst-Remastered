@@ -260,3 +260,33 @@
 - **Per spelare:** variablerna `drift_fuel` (ticks, kan vara bråktal) och `drift_rc` (laddar) ligger i obj_player; ingen koppling mellan spelare.
 - **UI:** raden `RF LOCKED` i spelarpanelen är ersatt med `AB` + en segmenterad mätare (samma stil och höjd som övriga mätare; blå normalt, röd medan den laddas; minskar medan man driftar och fylls på under laddningen). Raden `RF ON/LOCKED` (bakåtskjutning) visas därmed inte längre i panelen; funktionen finns kvar (D-015).
 - **Ej verifierat i GMS** (se testplan DR-01…DR-09).
+
+## D-053 — Spelläget Race (steg 1: skal)
+- **Underlag:** specifikationen i `docs/race/` (RACE_MODE_SPEC, RACE_POWERUPS_AND_BALANCE, RACE_LEVEL_EDITOR, RACE_IMPLEMENTATION_PLAN, RACE_TEST_PLAN). Inspektionsrapporten godkändes av projektägaren; svar på frågorna:
+  1. **Plasma** = huvudkanonen; "exakt ett skott" = `cannon_ammo` blir 1.
+  2. **Väggkrasch** tar fortfarande skada på skeppet i Race.
+  3. **Kameran** följer alla spelare (som nu).
+  4. En race-vinst räknas som **rundvinst** (`g_wins`, befintligt rundsystem).
+  5. **Åkriktning:** målrutan som ritas i banredigeraren har små pilar; riktningen (upp, ner, höger, vänster) ändras med mushjulet (steg 7).
+  6. **Kontrollpunkter behövs inte** (banorna byggs så att man inte kan fuska). Hur placering inom ett varv ska räknas ut återstår att bestämma i steg 5 (förslag senare).
+  7. **Sista racern** exploderar efter 4 sekunder.
+  8. **Drift-pickup:** standardmätaren (DRIFTING FUEL, 8 s) fylls direkt.
+  9. **Vapenval:** en pickup väljer vapnet automatiskt.
+  10. **Powerups:** av som standard i Race men kan slås på i menyn; bakåtskjutning (rear_fire) avstängd.
+  11. `docs/race/` committas; **en spelare kan starta ett race**.
+- **Steg 1 (genomfört, ej körd):** Race är spellage 2 (`g_game_mode == 2`). Menyn Game modes → RACE har START (ship select), PLAYERS, **LAPS** (1–10, standard 3, `[race] laps`), MAP (`g_SV_MAP3`, `[gameplay] map_race`), ROUNDS (gemensam inställning) och POWERUPS (av som standard, `[race] powerups`, `g_SV_PURA`). Nya g_sv-index 60–62. `scr_race_reset` (tid, målvarv och per spelare `race_laps`, `race_fin`, `race_ft` nollas vid matchstart och ny runda), `scr_race_step` (racetimern), `scr_race_time`. HUD: `LAP x / N` i spelarpanelen och `TIME m:ss.t` i rubrikraden. Banorna: finns ingen bana markerad för Race (bit 2) får alla banor användas tills redigeraren kan markera dem (steg 7, `scr_level_allowed`).
+- **Tillfälligt i steg 1:** rundan slutar fortfarande enligt Classic (sista skeppet kvar), och vapen, drift och ammo är oförändrade. Det ersätts i steg 2–6.
+- **Öppna frågor till senare steg:** vad som händer när ett skepp tar slut på energi (väggkrasch) i Race, och hur placering inom ett varv räknas utan kontrollpunkter.
+
+**D-053, tillägg (2026-10-18) — svar på de öppna frågorna:**
+- **Väggkrasch tar ingen skada i Race** (ändrar svar 2 ovan). Skeppet studsar som förut men tappar ingen energi (`scr_player_step`, samma regel som Galaxy Duel). Därmed finns ingen död av väggkrasch i Race.
+- **Kontrollpunkt:** det finns en enda, och det är start- och mållinjen: en ruta som ritas ut i banredigeraren (unik per bana, icke-solid, går att flyga igenom). Nuddar man rutan efter ett varv räknas det som ett varv; rutan har pilar för åkriktning (mushjulet ändrar upp/ner/höger/vänster). Inga fler kontrollpunkter.
+- **Följd för placering (steg 5):** med bara en kontrollpunkt går det inte att mäta framsteg inom ett varv. Förslag att godkänna: placering = fler genomförda varv först, därefter den som passerade rutan tidigast; före första passagen räknas startordningen. Placeringen ändras alltså bara när någon passerar rutan. Detta är en begränsning (jämför RACE_POWERUPS_AND_BALANCE §6) som ska beslutas innan steg 5.
+
+## D-054 — Race, steg 2 + 7: start/målrutan och varvräkning
+- **Beslut (projektägaren):** steg 2 (varv) och 7 (redigeraren) görs tillsammans, eftersom varvräkningen kräver rutan i banformatet.
+- **Rutan:** en enda per bana, ritas i banredigeraren med verktyget **F** (två hörnklick; en ny ruta ersätter den gamla). Den är **icke-solid** (inte med i väggdatan) och har pilar som visar åkriktningen; **mushjulet** vrider dem upp → höger → ner → vänster (när musen är över rutan eller F är valt). X-verktyget tar bort rutan om man klickar i den (en vägg har företräde). Sparas i `levels.ini` som valfri nyckel `finish = x0,y0,x1,y1,riktning` (varldspixlar; riktning 0 upp, 1 höger, 2 ner, 3 vänster); banor utan nyckeln laddas som förut. Vid sparning med spellägesbit Race men utan ruta visas en varning (inget hittas på i tysthet).
+- **Varvräkning (`scr_fin_cross`, varje tick, per spelare):** rutan är en port. Ett skepp passerar när dess mittpunkt går över rutans mittlinje (tvärs pilens riktning) inom rutans bredd; framåt ger `race_x += 1`, bakåt `race_x -= 1` (nettoräkning, så att man inte kan få varv genom att vicka). Genomförda varv = `race_x − race_free`, högst målvarven. `race_free` = 1 om skeppet startade bakom linjen (första passagen är då bara starten) och annars 0, så att en start på linjen eller före den aldrig räknas som ett varv. Är målvarven klara markeras skeppet klart (`race_fin`) och måltiden sparas (`race_ft`); fortsatt beteende för klara skepp kommer i steg 6. Korrekt riktning krävs alltså genom nettoräkningen; "nudda" betyder att passera rutans mitt.
+- **Visning:** rutan ritas i matchen (grön, svag fyllning, pilar) och i redigeraren; panelen visar `LAP x / N`, `FINISHED tid` eller `NO FINISH LINE`; F1 visar `X`/`F` (passager och race_free).
+- **Logiken kontrollerad i Python** (framåt, vicka, utanför bredden, start före/efter linjen); **ej körd i GMS**.
+- **Kvarstår:** placering (steg 5), pickups, vapen, resultat och banor markerade för Race.

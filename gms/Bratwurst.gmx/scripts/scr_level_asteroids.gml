@@ -3,6 +3,7 @@
 // (scr_level_new), men utan att sparas i levels.ini. Fyller redigerarens arrayer (g_ed_*) som scr_level_read gor, sa att scr_level_apply bygger vaggarna.
 g_ed_name = "ASTEROIDS";
 g_ed_modes = 16;
+g_ed_fon = false;
 g_ed_n = 1;
 g_ed_pn[0] = 4;
 g_ed_px[0, 0] = -2904; g_ed_py[0, 0] = -2159; g_ed_px[0, 1] = 2847; g_ed_py[0, 1] = -2159;

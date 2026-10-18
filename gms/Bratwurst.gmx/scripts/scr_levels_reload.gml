@@ -21,5 +21,6 @@ if (g_lv_count > 0)
 {
     if (g_mn_map_node >= 0) { g_mn_max[g_mn_map_node] = g_lv_count - 1; }
     if (g_mn_map_node2 >= 0) { g_mn_max[g_mn_map_node2] = g_lv_count - 1; }
+    if (g_mn_map_node3 >= 0) { g_mn_max[g_mn_map_node3] = g_lv_count - 1; }
     scr_levels_fix_selection();
 }

@@ -186,7 +186,7 @@ if (scr_player_hits_wall())
     // gnistor: antal och fart okar med kraschhastigheten (1/256 px per tick)
     scr_spark_burst(floor(px / 256), floor(py / 256), clamp(floor(sqrt(vx * vx + vy * vy) / 120), 2, 40), 1.1 + min(2.2, sqrt(vx * vx + vy * vy) / 3500), scr_slot_colour(slot));
     if (abs(vx) > 1000 || abs(vy) > 1000) { scr_sfx_play(snd_sfx_crash, 2, 1); }   // original: ljud bara om farten ligger utanfor +-1000 (0x5dc4)
-    if (g_game_mode != 1) { energy -= floor(floor((vx * vx + vy * vy) / 65536) / 64) + 1; }   // Astro Duel: ingen vaggskada
+    if (g_game_mode != 1 && g_game_mode != 2) { energy -= floor(floor((vx * vx + vy * vy) / 65536) / 64) + 1; }   // Galaxy Duel och Race: ingen vaggskada (D-053)
     vx = floor(-vx / 4);
     vy = floor(-vy / 4);
     scr_player_outline();

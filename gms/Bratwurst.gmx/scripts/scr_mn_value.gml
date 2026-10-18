@@ -14,7 +14,7 @@ if (t == 4)
     if (s == g_SV_THEME) { return string_upper(g_th_name[g_sv[s]]); }
     if (s == g_SV_ACCENT) { return g_acc_name[g_sv[s]]; }
     if (s == g_SV_SCALE) { return g_scale_name[g_sv[s]]; }
-    if (s == g_SV_MAP || s == g_SV_MAP2) { return g_lv_name[clamp(g_sv[s], 0, g_lv_count - 1)]; }
+    if (s == g_SV_MAP || s == g_SV_MAP2 || s == g_SV_MAP3) { return g_lv_name[clamp(g_sv[s], 0, g_lv_count - 1)]; }
 }
 if (t == 5) { return g_mn_text[n]; }
 return "";

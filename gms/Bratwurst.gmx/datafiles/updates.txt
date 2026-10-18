@@ -1,6 +1,12 @@
 BRATWURST REHEATED - UPDATES
 Newest first. Only the big changes and new features are listed.
 
+== UPDATE 34 - 2026-10-18 - Race (first part) ==
+* New game mode: RACE. Pick laps, map, rounds and powerups (off by default) in the menu. The player panel shows your lap and the top bar shows the race time.
+* Map editor: new tool F draws a start/finish box. The box has arrows for the racing direction (turn them with the mouse wheel), and ships fly straight through it. Cross it in the arrow direction to finish a lap. Race maps without a finish box show a warning.
+* Hitting a wall no longer damages your ship in Race.
+* Race is not finished yet: no pickups or weapon rules and no race results screen.
+
 == UPDATE 33 - 2026-10-18 - Drifting fuel ==
 * Drifting now uses fuel. A full meter gives 8 seconds of drift. Fuel is only used while you drift, and what is left is kept for later.
 * When the meter is empty it recharges in exactly 6 seconds, and you cannot drift until it is full.

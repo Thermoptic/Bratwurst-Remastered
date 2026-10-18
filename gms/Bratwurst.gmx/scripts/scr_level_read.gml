@@ -7,6 +7,7 @@ g_ed_sx[0] = -300000; g_ed_sy[0] = -270000; g_ed_sa[0] = 96;
 g_ed_sx[1] = 300000; g_ed_sy[1] = -270000; g_ed_sa[1] = 160;
 g_ed_sx[2] = -300000; g_ed_sy[2] = 270000; g_ed_sa[2] = 64;
 g_ed_sx[3] = 300000; g_ed_sy[3] = 270000; g_ed_sa[3] = 192;
+g_ed_fon = false;
 ini_open("levels.ini");
 g_ed_name = ini_read_string(sec, "name", sec);
 g_ed_modes = round(ini_read_real(sec, "modes", 15));
@@ -18,4 +19,5 @@ for (s = 0; s < n; s += 1)
     if (g_ed_pn[g_ed_n] >= 3) { g_ed_n += 1; }
 }
 for (k = 0; k < 4; k += 1) { scr_level_parse_spawn(ini_read_string(sec, "p" + string(k), ""), k); }
+scr_level_parse_finish(ini_read_string(sec, "finish", ""));   // Race: start/malruta (valfri, D-054)
 ini_close();

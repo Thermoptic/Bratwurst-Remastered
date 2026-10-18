@@ -27,6 +27,22 @@ for (s = 0; s < g_ed_n; s += 1)
     }
 }
 g_wall_n = lc;
+// Race (D-054): start/malrutan (normaliserad ruta, riktningsvektor och halv bredd tvars riktningen)
+g_fin_on = g_ed_fon;
+if (g_fin_on)
+{
+    g_fin_x0 = min(g_ed_fx0, g_ed_fx1); g_fin_x1 = max(g_ed_fx0, g_ed_fx1);
+    g_fin_y0 = min(g_ed_fy0, g_ed_fy1); g_fin_y1 = max(g_ed_fy0, g_ed_fy1);
+    g_fin_cx = (g_fin_x0 + g_fin_x1) / 2;
+    g_fin_cy = (g_fin_y0 + g_fin_y1) / 2;
+    g_fin_dir = g_ed_fdir;
+    g_fin_dx = 0; g_fin_dy = 0;
+    if (g_fin_dir == 0) { g_fin_dy = -1; }
+    if (g_fin_dir == 1) { g_fin_dx = 1; }
+    if (g_fin_dir == 2) { g_fin_dy = 1; }
+    if (g_fin_dir == 3) { g_fin_dx = -1; }
+    if (g_fin_dx != 0) { g_fin_hw = (g_fin_y1 - g_fin_y0) / 2; } else { g_fin_hw = (g_fin_x1 - g_fin_x0) / 2; }
+}
 for (k = 0; k < 4; k += 1)
 {
     g_start_x[k] = g_ed_sx[k];

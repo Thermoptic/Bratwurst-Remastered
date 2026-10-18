@@ -1,5 +1,5 @@
 /// scr_ed_step()
-// En tick i banredigeraren (g_state = 20). Mus + tangentbord. Verktyg: B = rektangel, P = polygon, X = radera, T = startplats.
+// En tick i banredigeraren (g_state = 20). Mus + tangentbord. Verktyg: B = rektangel, P = polygon, X = radera, T = startplats, F = start/malruta (Race).
 // Se scr_ed_draw for hjalptexten. Allt ar solida hinder: formerna blir vaggar med kollision.
 var s, k, ns;
 g_menu_tick += 1;
@@ -14,6 +14,7 @@ if (keyboard_check_pressed(ord("B"))) { g_ed_tool = 0; g_ed_cn = 0; g_ed_bset = 
 if (keyboard_check_pressed(ord("P"))) { g_ed_tool = 1; g_ed_cn = 0; g_ed_bset = false; }
 if (keyboard_check_pressed(ord("X"))) { g_ed_tool = 2; g_ed_cn = 0; g_ed_bset = false; }
 if (keyboard_check_pressed(ord("T"))) { g_ed_tool = 3; g_ed_cn = 0; g_ed_bset = false; }
+if (keyboard_check_pressed(ord("F"))) { g_ed_tool = 4; g_ed_cn = 0; g_ed_bset = false; }   // Race: start/malruta (D-054)
 for (k = 0; k < 4; k += 1)
 {
     if (keyboard_check_pressed(ord("1") + k)) { g_ed_tool = 3; g_ed_spawn = k; g_ed_cn = 0; g_ed_bset = false; }
@@ -25,6 +26,12 @@ if (g_ed_tool == 3)
 {
     if (mouse_wheel_up()) { g_ed_sa[g_ed_spawn] = (g_ed_sa[g_ed_spawn] + 256 - 8) mod 256; g_ed_dirty = true; }
     if (mouse_wheel_down()) { g_ed_sa[g_ed_spawn] = (g_ed_sa[g_ed_spawn] + 8) mod 256; g_ed_dirty = true; }
+}
+// mushjulet vrider malrutans pilar (upp, hoger, ner, vanster) nar musen ar over rutan eller verktyget F ar valt
+if (g_ed_tool != 3 && g_ed_fon && g_ed_inside && (g_ed_tool == 4 || scr_ed_in_finish(g_ed_wx, g_ed_wy)))
+{
+    if (mouse_wheel_up()) { g_ed_fdir = (g_ed_fdir + 3) mod 4; g_ed_dirty = true; }
+    if (mouse_wheel_down()) { g_ed_fdir = (g_ed_fdir + 1) mod 4; g_ed_dirty = true; }
 }
 if (keyboard_check_pressed(ord("G")))
 {
@@ -147,6 +154,24 @@ if (g_ed_inside && mouse_check_button_pressed(mb_left))
     {
         s = scr_ed_pick(g_ed_wx, g_ed_wy);
         if (s >= 0) { scr_ed_delete_shape(s); }
+        else if (scr_ed_in_finish(g_ed_wx, g_ed_wy)) { g_ed_fon = false; g_ed_dirty = true; scr_ed_msg("FINISH LINE REMOVED"); }
+    }
+    else if (g_ed_tool == 4)
+    {
+        // start/malrutan: tva hornklick; en ny ruta ersatter den gamla (en per bana)
+        if (!g_ed_bset) { g_ed_bx = g_ed_mx; g_ed_by = g_ed_my; g_ed_bset = true; }
+        else
+        {
+            if (g_ed_mx != g_ed_bx && g_ed_my != g_ed_by)
+            {
+                g_ed_fx0 = g_ed_bx; g_ed_fy0 = g_ed_by;
+                g_ed_fx1 = g_ed_mx; g_ed_fy1 = g_ed_my;
+                if (!g_ed_fon) { g_ed_fdir = 1; }
+                g_ed_fon = true;
+                g_ed_dirty = true;
+            }
+            g_ed_bset = false;
+        }
     }
     else if (g_ed_tool == 3)
     {

@@ -18,6 +18,8 @@ ini_write_real("astro", "powerups", g_sv[g_SV_PUAD]);
 ini_write_real("asteroids", "powerups", g_sv[g_SV_PUAS]);
 ini_write_real("asteroids", "level", g_sv[g_SV_ASLV]);
 ini_write_real("display", "zoom", g_sv[g_SV_ZOOM]);
+ini_write_real("race", "laps", g_sv[g_SV_LAPS]);
+ini_write_real("race", "powerups", g_sv[g_SV_PURA]);
 for (pt = 0; pt < g_PU_COUNT; pt += 1)
 {
     for (pk = 0; pk < g_pu_np[pt]; pk += 1) { ini_write_real("powerup_" + g_pu_key[pt], g_pu_pkey[pt, pk], g_sv[g_SV_PU + pt * g_PU_STRIDE + pk]); }
@@ -30,5 +32,6 @@ if (g_lv_count > 0)
 {
     ini_write_string("gameplay", "map", g_lv_id[clamp(g_sv[g_SV_MAP], 0, g_lv_count - 1)]);
     ini_write_string("gameplay", "map_astro", g_lv_id[clamp(g_sv[g_SV_MAP2], 0, g_lv_count - 1)]);
+    ini_write_string("gameplay", "map_race", g_lv_id[clamp(g_sv[g_SV_MAP3], 0, g_lv_count - 1)]);
 }
 ini_close();

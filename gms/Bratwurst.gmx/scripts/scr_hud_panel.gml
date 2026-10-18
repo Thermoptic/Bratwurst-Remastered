@@ -75,6 +75,14 @@ if (p.pu_have > 0)
     }
     else if ((g_tick mod 16) < 11) { scr_ui_text(px + 110, y0 + 72, "PU " + g_pu_name[p.pu_have - 1], c); }
 }
+if (g_game_mode == 2)
+{
+    // Race (D-053/D-054): varv, klar-tid eller varning om banan saknar malruta; F1 visar passager (race_x/race_free)
+    if (!g_fin_on) { scr_ui_text_r(px + pw - 12, y0 + 72, "NO FINISH LINE", g_c[10]); }
+    else if (p.race_fin) { scr_ui_text_r(px + pw - 12, y0 + 72, "FINISHED " + scr_race_time(p.race_ft), g_c[11]); }
+    else { scr_ui_text_r(px + pw - 12, y0 + 72, "LAP " + string(min(p.race_laps + 1, g_race_target)) + " / " + string(g_race_target), c); }
+    if (g_debug) { scr_ui_text_r(px + pw - 12, y0 + 88, "X " + string(p.race_x) + " F " + string(p.race_free), g_c[3]); }
+}
 scr_ui_text(px + 12, y0 + 72, "AB", g_c[4]);   // drifting fuel (D-052): bla matare, rod medan den laddas
 fr = p.drift_fuel / max(1, g_DRIFT_FUEL);
 if (p.drift_rc) { scr_ui_bar(px + 42, y0 + 76, 64, 10, fr, g_c[8]); }

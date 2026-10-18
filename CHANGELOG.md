@@ -454,3 +454,11 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-18 — Drifting fuel
 - Drift har nu begränsat drivmedel: 8 s drift per full mätare (inställbart i Powerup Editor → DRIFT → DRIFTING FUEL), resten sparas mellan drifter, tom mätare laddas på exakt 6 s och drift är avstängd tills den är full. Spelarpanelens `RF LOCKED` ersatt med `AB` + mätare (blå, röd vid laddning). `scr_player_step`, `scr_player_respawn`, `scr_hud_panel`, `scr_drift_apply`, `scr_data_powerups`, `scr_config_init`. D-052. Ej körd.
+
+## 2026-10-18 — Race, steg 1 (skal)
+- Race är nu valbart under Game modes: START, PLAYERS, LAPS (1–10, standard 3), MAP, ROUNDS, POWERUPS (av som standard). En race-runda startar på vald bana med spelarnas startplatser; HUD visar `LAP x / N` per spelare och racetimern i rubrikraden. Ingen mållinje, inga pickups och inga Race-regler för vapen och drift än (steg 2–7). Specifikationen ligger i `docs/race/`. D-053. Ej körd.
+
+- Race: väggkrasch tar ingen skada (samma som Galaxy Duel). D-053 tillägg: en enda kontrollpunkt = start/mållinjens ruta. Ej körd.
+
+## 2026-10-18 — Race: start/målruta och varvräkning (steg 2 + 7)
+- Banredigeraren: nytt verktyg **F** för en start/målruta (en per bana, icke-solid, pilar; mushjulet vrider riktningen; X tar bort). Sparas som `finish` i `levels.ini` (valfri). I Race räknas varven när skeppet passerar rutan i pilens riktning (nettoräkning, ingen fusk genom att vicka); klara skepp får maltid. Panelen visar varv/klar/`NO FINISH LINE`. `scr_fin_cross`, `scr_fin_draw`, `scr_fin_arrows`, `scr_level_parse_finish`, `scr_ed_in_finish`, `scr_ed_step/draw`, `scr_level_read/write/apply`. D-054. Ej körd.

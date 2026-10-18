@@ -99,7 +99,7 @@ g_mv_on = false; g_mv_n = 1; g_mv_dur = 1; g_mv_frame[0] = "000000000000";
 for (g_tmp_n = 0; g_tmp_n < 12; g_tmp_n += 1) { g_mv[g_tmp_n] = 0; }
 g_SHIP_GRAV = 0;   // skeppens gravitation (originalet 31 efter skalning; D-024: 0 pa begaran)
 g_bg_t = 0; g_SV_MAP2 = 13; g_sv[g_SV_MAP2] = 0; g_lv_modes[0] = 15; g_ed_modes = 15; g_ed_dlg = 0; g_ed_dname = ""; g_ed_dmsg = ""; g_dg_x = 0; g_dg_y = 0; g_dg_w = 520; g_dg_h = 400; g_mn_mode[0] = 0;
-g_mode_name[0] = "CLASSIC"; g_mode_name[1] = "GALAXY DUEL"; g_mode_name[2] = "RACE (SOON)"; g_mode_name[3] = "CAPTURE THE BRATWURST (SOON)"; g_mw_frame[0] = "";
+g_mode_name[0] = "CLASSIC"; g_mode_name[1] = "GALAXY DUEL"; g_mode_name[2] = "RACE"; g_mode_name[3] = "CAPTURE THE BRATWURST (SOON)"; g_mw_frame[0] = "";
 for (g_tmp_n = 0; g_tmp_n < 32; g_tmp_n += 1) { g_mw[g_tmp_n] = 0; g_mw_pk[g_tmp_n] = 0; }
 for (g_tmp_n = 0; g_tmp_n < 192; g_tmp_n += 1) { g_mw_hist[g_tmp_n] = 0; } g_lg_n[0] = 0; g_lg_s[0, 0] = 0; g_tt_sx[0] = 0; g_tt_sy[0] = 0; g_tt_st[0] = 0; g_tt_sp[0] = 0; g_tt_dx[0] = 0; g_tt_dy[0] = 0; g_tt_n = 0;
 g_DB_MAX = 40; g_db_x[0] = 0; g_db_y[0] = 0; g_db_hx[0] = 0; g_db_hy[0] = 0; g_db_vx[0] = 0; g_db_vy[0] = 0; g_db_w[0] = 0; g_db_col[0] = 0; g_db_life[0] = 0;
@@ -147,3 +147,10 @@ g_AD_DMG_TICKS = 300;   // skadan varar 6 s (50 ticks/s) och repareras sedan sja
 globalvar g_DRIFT_FUEL, g_DRIFT_RECHARGE;
 g_DRIFT_FUEL = 400;   // Drifting fuel (D-052): full matare = 8 s (400 ticks), andras av Powerup Editor -> DRIFT -> DRIFTING FUEL (scr_drift_apply)
 g_DRIFT_RECHARGE = 300;   // tom matare laddas pa exakt 6 s (300 ticks) och drift ar avstangd under tiden
+globalvar g_SV_MAP3, g_SV_LAPS, g_SV_PURA, g_mn_map_node3, g_race_t, g_race_target;
+g_SV_MAP3 = 60; g_SV_LAPS = 61; g_SV_PURA = 62;   // Race (D-053): bana, antal varv, powerups pa/av (g_sv-index efter powerup-parametrarna)
+g_mn_map_node3 = -1; g_race_t = 0; g_race_target = 3;
+g_sv[g_SV_MAP3] = 0; g_sv[g_SV_LAPS] = 3; g_sv[g_SV_PURA] = 0;
+globalvar g_ed_fon, g_ed_fx0, g_ed_fy0, g_ed_fx1, g_ed_fy1, g_ed_fdir, g_fin_on, g_fin_x0, g_fin_y0, g_fin_x1, g_fin_y1, g_fin_cx, g_fin_cy, g_fin_dx, g_fin_dy, g_fin_hw, g_fin_dir;
+g_ed_fon = false; g_ed_fx0 = 0; g_ed_fy0 = 0; g_ed_fx1 = 0; g_ed_fy1 = 0; g_ed_fdir = 1;   // Race (D-054): start/malrutan i redigeraren (varldspixlar, riktning 0 upp, 1 hoger, 2 ner, 3 vanster)
+g_fin_on = false; g_fin_x0 = 0; g_fin_y0 = 0; g_fin_x1 = 0; g_fin_y1 = 0; g_fin_cx = 0; g_fin_cy = 0; g_fin_dx = 1; g_fin_dy = 0; g_fin_hw = 0; g_fin_dir = 1;
