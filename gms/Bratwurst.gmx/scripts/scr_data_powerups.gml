@@ -68,7 +68,7 @@ g_pu_pmin[1, 7] = 4; g_pu_pmax[1, 7] = 50; g_pu_pstep[1, 7] = 2; g_pu_pdef[1, 7]
 // ---- 2: DRIFT (ingen powerup: inte spawnbar, bara en sida i Powerup Editor for drift och reverse, D-030) ----
 g_pu_name[2] = "DRIFT";
 g_pu_key[2] = "drift";
-g_pu_np[2] = 9;
+g_pu_np[2] = 10;
 g_pu_pname[2, 0] = "MIN SPEED"; g_pu_pdesc[2, 0] = "SPEED YOU NEED TO START DRIFTING (THRUST + LEFT TRIGGER). BELOW IT NOTHING HAPPENS"; g_pu_pkey[2, 0] = "min_speed";
 g_pu_pmin[2, 0] = 0; g_pu_pmax[2, 0] = 3000; g_pu_pstep[2, 0] = 50; g_pu_pdef[2, 0] = 500;
 g_pu_pname[2, 1] = "TURN BOOST"; g_pu_pdesc[2, 1] = "HOW MUCH FASTER THE SHIP TURNS WHILE DRIFTING, IN PERCENT (150 = 1.5 TIMES)"; g_pu_pkey[2, 1] = "turn_boost";
@@ -87,3 +87,5 @@ g_pu_pname[2, 7] = "TRAIL WIDTH"; g_pu_pdesc[2, 7] = "THICKNESS OF THE LIGHT TRA
 g_pu_pmin[2, 7] = 20; g_pu_pmax[2, 7] = 300; g_pu_pstep[2, 7] = 10; g_pu_pdef[2, 7] = 100;
 g_pu_pname[2, 8] = "SIDE THRUSTER"; g_pu_pdesc[2, 8] = "SIDEWAYS PUSH WHILE DRIFTING: A THRUSTER PUSHES THE SHIP OUT OF THE CURVE (TURN RIGHT = PUSH LEFT, TURN LEFT = PUSH RIGHT), IN PERCENT OF NORMAL THRUST. ONLY WHILE THRUSTING AND TURNING"; g_pu_pkey[2, 8] = "side_thruster";
 g_pu_pmin[2, 8] = 0; g_pu_pmax[2, 8] = 400; g_pu_pstep[2, 8] = 5; g_pu_pdef[2, 8] = 60;
+g_pu_pname[2, 9] = "DRIFTING FUEL"; g_pu_pdesc[2, 9] = "HOW MANY SECONDS OF DRIFTING A FULL FUEL METER GIVES. FUEL IS ONLY USED WHILE DRIFTING AND WHAT IS LEFT IS KEPT. WHEN THE METER IS EMPTY IT RECHARGES IN 6 SECONDS AND DRIFTING IS OFF UNTIL IT IS FULL"; g_pu_pkey[2, 9] = "fuel_seconds";
+g_pu_pmin[2, 9] = 1; g_pu_pmax[2, 9] = 30; g_pu_pstep[2, 9] = 1; g_pu_pdef[2, 9] = 8;

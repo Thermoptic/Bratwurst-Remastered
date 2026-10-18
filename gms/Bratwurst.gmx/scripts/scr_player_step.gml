@@ -33,7 +33,19 @@ if (boost_timer > 0) { boost_timer -= 1; }
 prev_px = px; prev_py = py; prev_ang = ang;
 // DRIFT (D-030, test): bara medan man gasar och halller in drift-knappen och ror sig (inte stillastaende)
 reversing = (in_drift && !in_thrust);   // REVERSE (D-030): bara drift-knappen utan gas = backa langsamt
-drifting = (in_drift && in_thrust && (vx * vx + vy * vy) >= g_DRIFT_MINSPEED * g_DRIFT_MINSPEED);
+drifting = (in_drift && in_thrust && !drift_rc && drift_fuel > 0 && (vx * vx + vy * vy) >= g_DRIFT_MINSPEED * g_DRIFT_MINSPEED);
+// DRIFTING FUEL (D-052): bara medan man driftar gar drivmedel at (1 tick per tick), resten sparas. Tom matare: laddas pa g_DRIFT_RECHARGE ticks (6 s), drift avstangd tills den ar full.
+if (drift_fuel > g_DRIFT_FUEL) { drift_fuel = g_DRIFT_FUEL; }
+if (drifting)
+{
+    drift_fuel -= 1;
+    if (drift_fuel <= 0) { drift_fuel = 0; drift_rc = true; }
+}
+else if (drift_rc)
+{
+    drift_fuel += g_DRIFT_FUEL / g_DRIFT_RECHARGE;
+    if (drift_fuel >= g_DRIFT_FUEL) { drift_fuel = g_DRIFT_FUEL; drift_rc = false; }
+}
 
 // 1) Svang: vinkel -/+= w; w += TURN_ACC; utan svang w = TURN_INIT; w <= TURN_MAX (VERIFIERAD, kod 0x16a4-0x1718)
 var turned;

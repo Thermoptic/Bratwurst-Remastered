@@ -144,3 +144,6 @@ globalvar g_AD_SLOW, g_AD_DMG_TICKS, g_AD_GRACE;
 g_AD_GRACE = 25;   // Galaxy Duel: efter en traff raknas inga fler traffar under 0,5 s (en salva med flera skott ska inte doda direkt)
 g_AD_SLOW = 0.4;   // Galaxy Duel: skadat skepp har 40 % av normal fart och gas (60 % langsammare, D-051)
 g_AD_DMG_TICKS = 300;   // skadan varar 6 s (50 ticks/s) och repareras sedan sjalv
+globalvar g_DRIFT_FUEL, g_DRIFT_RECHARGE;
+g_DRIFT_FUEL = 400;   // Drifting fuel (D-052): full matare = 8 s (400 ticks), andras av Powerup Editor -> DRIFT -> DRIFTING FUEL (scr_drift_apply)
+g_DRIFT_RECHARGE = 300;   // tom matare laddas pa exakt 6 s (300 ticks) och drift ar avstangd under tiden

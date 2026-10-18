@@ -4,6 +4,8 @@
 px = g_start_x[slot];
 py = g_start_y[slot];
 drifting = false;
+drift_fuel = g_DRIFT_FUEL;   // Drifting fuel (D-052): full matare vid start, ny runda och efter ett liv
+drift_rc = false;
 ast_cd = 0;   // skydd mot nya stenskador (Asteroids)
 pu_have = 0;
 pu_charge = 0;   // en hallen powerup gar forlorad nar man dor / ny runda

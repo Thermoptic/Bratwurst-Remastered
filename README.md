@@ -12,6 +12,13 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 33 - 2026-10-18 - Drifting fuel
+
+- Drifting now uses fuel. A full meter gives 8 seconds of drift. Fuel is only used while you drift, and what is left is kept for later.
+- When the meter is empty it recharges in exactly 6 seconds, and you cannot drift until it is full.
+- The player panel shows the meter as AB (blue, red while recharging) instead of RF LOCKED.
+- The length can be changed in the hidden Powerup Editor (P in Options) under DRIFT: DRIFTING FUEL.
+
 ### UPDATE 32 - 2026-10-18 - Galaxy Duel
 
 - Astro Duel is now called GALAXY DUEL.

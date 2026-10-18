@@ -13,3 +13,4 @@ g_TR_MAX = g_sv[b + 5];
 g_DRIFT_SND_GAIN = g_sv[b + 6] / 100;
 g_TR_WSCALE = g_sv[b + 7] / 100;
 g_DRIFT_SIDE = g_sv[b + 8] / 100;
+g_DRIFT_FUEL = g_sv[b + 9] * 50;   // drivmedel i ticks (50 per sekund)

@@ -75,9 +75,10 @@ if (p.pu_have > 0)
     }
     else if ((g_tick mod 16) < 11) { scr_ui_text(px + 110, y0 + 72, "PU " + g_pu_name[p.pu_have - 1], c); }
 }
-scr_ui_text(px + 12, y0 + 72, "RF", g_c[4]);
-if (p.rear_fire) { scr_ui_text(px + 42, y0 + 72, "ON", g_c[11]); }
-else { scr_ui_text(px + 42, y0 + 72, "LOCKED", g_c[3]); }
+scr_ui_text(px + 12, y0 + 72, "AB", g_c[4]);   // drifting fuel (D-052): bla matare, rod medan den laddas
+fr = p.drift_fuel / max(1, g_DRIFT_FUEL);
+if (p.drift_rc) { scr_ui_bar(px + 42, y0 + 76, 64, 10, fr, g_c[8]); }
+else { scr_ui_bar(px + 42, y0 + 76, 64, 10, fr, g_c[13]); }
 
 hp = -1;
 if (p.sp_nsel > 0) { hp = p.sp_sel[p.sp_pod_i]; }   // vald specialpod: visas som en prick pa skeppsbilden

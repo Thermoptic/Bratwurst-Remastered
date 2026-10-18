@@ -249,3 +249,12 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | GD-01 | Galaxy Duel: skjut en motståndare en gång | Skeppet blir 80 % långsammare i 6 s, kan inte skjuta/använda specialvapen/powerup, gnistor och små streck lossnar; efter 6 s normalt igen och effekterna försvinner |
 | GD-02 | Galaxy Duel: träff medan skadad | Skeppet exploderar och tappar ett liv; träff efter reparation skadar bara igen |
 | GD-03 | Galaxy Duel: träff med missil, Mini Nuke-chockvåg och railgun | Alla ger samma skada/död-regel; railgunladdning avbryts vid träff |
+| DR-01 | Starta match, titta på panelens AB-mätare | Full mätare (blå) för varje spelare; RF LOCKED finns inte längre |
+| DR-02 | Drifta 3 s och släpp | Mätaren minskar ungefär 3/8 och står kvar när knappen släpps |
+| DR-03 | Drifta flera korta gånger | Drivmedel går bara åt medan man driftar; resten sparas |
+| DR-04 | Drifta tills mätaren är tom | Driften stängs av direkt, mätaren blir röd och fylls på |
+| DR-05 | Tid för laddning (mät med klocka/ticks) | Tom → full tar 6 s; drift omöjlig under laddningen; åter möjlig när den är full |
+| DR-06 | Två spelare, en driftar | Den andras mätare påverkas inte |
+| DR-07 | Options → P → Powerup Editor → DRIFT → DRIFTING FUEL | Raden finns; ändrad längd gäller alla och sparas; RESET OPTIONS ger 8 |
+| DR-08 | Dö, ny runda | Mätaren är full igen |
+| DR-09 | Övriga driftparametrar, backning, andra spellägen | Fungerar som förut |

@@ -451,3 +451,6 @@ Alla betydande projektändringar dokumenteras här.
 - Astro Duel omdöpt till Galaxy Duel (menyer, banredigerare, pausruta, powerup-beskrivningar). Skadan är nu i två steg: första träffen ger 6 s skada (80 % långsammare, inga vapen, gnistor och lösa streck), en träff medan skadad dödar. `scr_ad_hit`, `scr_ad_fx`, `scr_player_step` m.fl. D-051. Ej körd.
 
 - Galaxy Duel: skadat skepp 60 % långsammare (var 80 %); reparerat skepp är som nytt och skadas igen vid nästa träff; 0,5 s skyddstid efter en träff så att en salva inte dödar direkt. Ej körd.
+
+## 2026-10-18 — Drifting fuel
+- Drift har nu begränsat drivmedel: 8 s drift per full mätare (inställbart i Powerup Editor → DRIFT → DRIFTING FUEL), resten sparas mellan drifter, tom mätare laddas på exakt 6 s och drift är avstängd tills den är full. Spelarpanelens `RF LOCKED` ersatt med `AB` + mätare (blå, röd vid laddning). `scr_player_step`, `scr_player_respawn`, `scr_hud_panel`, `scr_drift_apply`, `scr_data_powerups`, `scr_config_init`. D-052. Ej körd.
