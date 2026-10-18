@@ -338,3 +338,9 @@
 - **Panorering:** håll **mellanslag** och dra med vänster musknapp (eller dra med mittenknappen) för att flytta vyn; mellanslag + klick ritar inget. **Home** återställer vyn. Panoreringen hålls inom världen (`scr_ed_pan_clamp`) och är noll vid 100 %. Vyn återställs när en bana öppnas.
 - **Klippning:** GMS 1.4 saknar klippning, så ritytan ritas först och allt som hamnar utanför täcks av bakgrundsfärgen; ram, rubrik och verktygspanel ritas sedan på nytt (`scr_ed_frame`).
 - **Ej körd i GMS.**
+
+## D-062 — Bara Race-banor i Race; vektor-nedräkning
+- **Banval i Race (användarens önskemål):** under Game modes → RACE visas bara banor som sparats med Race markerat i banredigeraren (spellägesbit 2 i `modes`). Reservregeln från steg 1 (alla banor tillåtna om ingen är markerad) är borttagen (`scr_level_allowed`). Saknas Race-banor visar MAP-raden `NO RACE MAPS` och START är spärrad (`scr_race_maps`, `scr_mn_step`, `scr_mn_value`). Nya banor får förvalt Classic + Galaxy Duel (förut alla lägen); Race kryssas i sparfönstret.
+- **Migrering (`scr_levels_race_migrate`, levels.ini v2 → v3, en gång):** tidigare hade alla banor alla lägen (`modes = 15`, inklusive Race). Race-biten tas bort från alla banor som saknar nyckeln `finish` (en bana utan målruta går inte att köra som race); banor med målruta behåller sina lägen. Därefter kan man själv kryssa Race för en bana i sparfönstret (S).
+- **Nedräkningen:** den förstorade bitmapptexten var suddig. 3, 2, 1 och GO! ritas nu som vektorlinjer med logotypens bokstavssystem (`scr_logo_glyph`; nya tecken `1 2 3 G O !` i `scr_logo_init`), 20 % av spelytans höjd, med skugga, så att de blir skarpa i alla upplösningar (`scr_race_cd_draw`).
+- **Ej körd i GMS.**

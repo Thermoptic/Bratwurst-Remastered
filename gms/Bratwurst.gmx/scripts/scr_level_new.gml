@@ -2,7 +2,7 @@
 // Skapar en ny bana med standardram (en rektangel), originalets startplatser och ett slumpat namn. Sparar den och returnerar dess index.
 var nx, cnt, sec;
 g_ed_name = scr_level_name_random();
-g_ed_modes = 15;
+g_ed_modes = 3;   // nya banor: Classic och Galaxy Duel; Race valjs i sparfonstret (D-062)
 g_ed_fon = false;
 g_ed_pk_n = 0;
 g_ed_n = 1;

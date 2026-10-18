@@ -12,6 +12,13 @@ scr_logo_add(ord("S"), "7,0 1,0 0,1 0,3.5 1,4.5 6,4.5 7,5.5 7,8 6,9 0,9");
 scr_logo_add(ord("E"), "7,0 0,0 0,9 7,9;0,4.5 5,4.5");
 scr_logo_add(ord("H"), "0,0 0,9;7,0 7,9;0,4.5 7,4.5");
 scr_logo_add(ord("D"), "0,0 5,0 7,2 7,7 5,9 0,9 0,0");
+// Race-nedrakningen (D-062): siffrorna 1-3 och ordet GO! som vektorlinjer
+scr_logo_add(ord("1"), "1.5,2.2 3.5,0 3.5,9;1.5,9 5.5,9");
+scr_logo_add(ord("2"), "0,2 1.5,0 5.5,0 7,1.5 7,3.5 0,9 7,9");
+scr_logo_add(ord("3"), "0,1.5 1.5,0 5.5,0 7,1.5 7,3 5.5,4.3 2.5,4.3;5.5,4.3 7,5.7 7,7.5 5.5,9 1.5,9 0,7.5");
+scr_logo_add(ord("G"), "7,1.5 5.5,0 1.5,0 0,1.5 0,7.5 1.5,9 5.5,9 7,7.5 7,5 4,5");
+scr_logo_add(ord("O"), "1.5,0 5.5,0 7,1.5 7,7.5 5.5,9 1.5,9 0,7.5 0,1.5 1.5,0");
+scr_logo_add(ord("!"), "3.5,0 3.5,6;3.5,8.2 3.5,9");
 // fasta stjarnor (position som andel av vyn, typ 0 = plustecken, 1-2 = punkt)
 s = 99;
 for (k = 0; k < 46; k += 1)

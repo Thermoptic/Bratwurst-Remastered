@@ -484,3 +484,6 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-18 — Banredigeraren: ny panel, zoom och panorering
 - Verktygspanelen omgjord: mindre text, kategorierna STATUS, DRAW, PLACE, VIEW och FILE med egna färger, markerat aktivt verktyg och verktygsberoende hjälptext. Mushjulet zoomar (25 % per steg, 1 till 16 gånger, kring muspekaren), mellanslag + drag (eller mittenknappen) panorerar, Home återställer vyn. Över målrutan vrider hjulet fortfarande pilarna. `scr_ed_draw`, `scr_ed_step`, `scr_ed_layout`, `scr_ed_zoom`, `scr_ed_pan_clamp`, `scr_ed_txt/head/row/frame`. D-061. Ej körd.
+
+## 2026-10-18 — Race: bara Race-banor, skarp nedräkning
+- Race visar bara banor som sparats med Race markerat (levels.ini migreras till v3: Race-biten tas bort från banor utan målruta); inga Race-banor ger `NO RACE MAPS` och spärrad START; nya banor får Classic + Galaxy Duel som förval. Startnedräkningen 3, 2, 1, GO! ritas som vektorlinjer (skarp). D-062. Ej körd.

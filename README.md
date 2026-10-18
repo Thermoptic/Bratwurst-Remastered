@@ -12,6 +12,11 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 40 - 2026-10-18 - Race maps and countdown
+
+- Race now only lists maps that were saved with Race ticked in the map editor. If there are none, the map row says NO RACE MAPS and START is locked. New maps start as Classic and Galaxy Duel only. Older maps without a finish box lose their Race mark once.
+- The 3, 2, 1, GO! countdown is drawn with sharp vector lines instead of a stretched font.
+
 ### UPDATE 39 - 2026-10-18 - Map editor tools
 
 - The map editor tool panel is tidier: smaller text and the tools are split into STATUS, DRAW, PLACE, VIEW and FILE, each in its own colour. The active tool is highlighted and the help line at the bottom follows the tool.

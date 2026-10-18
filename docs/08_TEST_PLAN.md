@@ -323,3 +323,7 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | ED-ZOOM-03 | Mushjulet över målrutan och nära vald startplats (T) | Vrider pilarna respektive skeppet i stället för att zooma |
 | ED-ZOOM-04 | Rita, flytta och radera objekt när vyn är inzoomad och förflyttad | Klick träffar rätt värld koordinat; sparade banor oförändrade |
 | ED-ZOOM-05 | Home | Vyn återställs till 100 % |
+| RACE-S8-50 | Game modes → RACE → MAP | Listan visar bara banor sparade med Race markerat; gamla banor utan målruta visas inte |
+| RACE-S8-51 | Spara en bana med Race ikryssat och målruta; öppna Race-menyn | Banan finns i Race-listan |
+| RACE-S8-52 | Inga Race-banor | MAP visar `NO RACE MAPS`, START gör inget |
+| RACE-S8-53 | Startnedräkningen | 3, 2, 1, GO! är skarpa vektorlinjer i mitten, även vid fullskärm och olika fönsterstorlekar |
