@@ -275,3 +275,5 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | RACE-073 | Öppna och spela äldre banor | De laddas som förut (nyckeln är valfri) |
 | RACE-074 | Spara en Race-bana utan ruta; starta ett race på den | Varning vid sparning; `NO FINISH LINE` i panelen |
 | RACE-075 | Rutan i matchen | Ingen väggkollision, ingen påverkan på andra lägen |
+
+**Race steg 1, 2 och 7 — testresultat (rapporterat av projektägaren, 2026-10-18, GMS-IDE, F5):** målrutan går att bygga i redigeraren, pilarna går att vrida med mushjulet, inställt antal varv fungerar och skeppet kan köra i mål. Verifierade av användaren: RACE-020 (ett varv räknas), RACE-025 (mål efter angivna varv), RACE-070 (placera/vrida ruta), delvis RACE-072 (rutan sparas och laddas). Ej rapporterat som testade: RACE-021–024, 026, 073–075, RACE-S1-01–04 (väggkrasch utan skada), RACE-001.
