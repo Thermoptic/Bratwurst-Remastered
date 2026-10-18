@@ -1,7 +1,7 @@
 /// scr_ed_step()
 // En tick i banredigeraren (g_state = 20). Mus + tangentbord. Verktyg: B = rektangel, P = polygon, X = radera, T = startplats, F = start/malruta (Race).
 // Se scr_ed_draw for hjalptexten. Allt ar solida hinder: formerna blir vaggar med kollision.
-var s, k, ns;
+var s, k, ns, wup, wdn, sxp, syp;
 g_menu_tick += 1;
 if (g_ed_msgt > 0) { g_ed_msgt -= 1; }
 if (g_ed_cdel > 0) { g_ed_cdel -= 1; }
@@ -23,16 +23,53 @@ for (k = 0; k < 4; k += 1)
 if (keyboard_check_pressed(ord("Q"))) { g_ed_sa[g_ed_spawn] = (g_ed_sa[g_ed_spawn] + 256 - 16) mod 256; g_ed_dirty = true; }
 if (keyboard_check_pressed(ord("E"))) { g_ed_sa[g_ed_spawn] = (g_ed_sa[g_ed_spawn] + 16) mod 256; g_ed_dirty = true; }
 // mushjulet vrider den valda startplatsens skepp (8/256 varv = 11,25 grader per klick; upp = moturs, ned = medurs)
-if (g_ed_tool == 3)
+// mushjulet (D-061): over malrutan vrider det pilarna, nara den valda startplatsen (verktyg T) vrider det skeppet, annars zoomar det ritytan
+wup = mouse_wheel_up();
+wdn = mouse_wheel_down();
+if ((wup || wdn) && g_ed_inside)
 {
-    if (mouse_wheel_up()) { g_ed_sa[g_ed_spawn] = (g_ed_sa[g_ed_spawn] + 256 - 8) mod 256; g_ed_dirty = true; }
-    if (mouse_wheel_down()) { g_ed_sa[g_ed_spawn] = (g_ed_sa[g_ed_spawn] + 8) mod 256; g_ed_dirty = true; }
+    sxp = g_ed_cxs + (g_ed_sx[g_ed_spawn] / 256) * g_ed_es;
+    syp = g_ed_cys + (g_ed_sy[g_ed_spawn] / 256) * g_ed_es;
+    if (g_ed_tool == 3 && point_distance(mouse_x, mouse_y, sxp, syp) < 40)
+    {
+        // 8/256 varv = 11,25 grader per klick; upp = moturs, ned = medurs
+        if (wup) { g_ed_sa[g_ed_spawn] = (g_ed_sa[g_ed_spawn] + 256 - 8) mod 256; }
+        if (wdn) { g_ed_sa[g_ed_spawn] = (g_ed_sa[g_ed_spawn] + 8) mod 256; }
+        g_ed_dirty = true;
+    }
+    else if (g_ed_fon && scr_ed_in_finish(g_ed_wx, g_ed_wy))
+    {
+        if (wup) { g_ed_fdir = (g_ed_fdir + 3) mod 4; }
+        if (wdn) { g_ed_fdir = (g_ed_fdir + 1) mod 4; }
+        g_ed_dirty = true;
+    }
+    else
+    {
+        if (wup) { scr_ed_zoom(1); }
+        if (wdn) { scr_ed_zoom(-1); }
+    }
 }
-// mushjulet vrider malrutans pilar (upp, hoger, ner, vanster) nar musen ar over rutan eller verktyget F ar valt
-if (g_ed_tool != 3 && g_ed_fon && g_ed_inside && (g_ed_tool == 4 || scr_ed_in_finish(g_ed_wx, g_ed_wy)))
+// panorering (D-061): mellanslag + dra med vanster musknapp (eller mittenknappen); Home aterstaller vyn
+if (keyboard_check_pressed(vk_home)) { g_ed_zoom = 1; g_ed_panx = 0; g_ed_pany = 0; g_ed_pan_on = false; scr_ed_layout(); scr_ed_cursor(); }
+if (g_ed_inside && !g_ed_pan_on && ((keyboard_check(vk_space) && mouse_check_button_pressed(mb_left)) || mouse_check_button_pressed(mb_middle)))
 {
-    if (mouse_wheel_up()) { g_ed_fdir = (g_ed_fdir + 3) mod 4; g_ed_dirty = true; }
-    if (mouse_wheel_down()) { g_ed_fdir = (g_ed_fdir + 1) mod 4; g_ed_dirty = true; }
+    g_ed_pan_on = true;
+    g_ed_pan_sx = mouse_x;
+    g_ed_pan_sy = mouse_y;
+    g_ed_pan_px = g_ed_panx;
+    g_ed_pan_py = g_ed_pany;
+}
+if (g_ed_pan_on)
+{
+    if (mouse_check_button(mb_left) || mouse_check_button(mb_middle))
+    {
+        g_ed_panx = g_ed_pan_px - (mouse_x - g_ed_pan_sx) / g_ed_es;
+        g_ed_pany = g_ed_pan_py - (mouse_y - g_ed_pan_sy) / g_ed_es;
+        scr_ed_pan_clamp();
+        scr_ed_layout();
+        scr_ed_cursor();
+    }
+    else { g_ed_pan_on = false; }
 }
 if (keyboard_check_pressed(ord("G")))
 {
@@ -119,7 +156,7 @@ if (keyboard_check_pressed(vk_escape))
 }
 
 // musklick i ritytan
-if (g_ed_inside && mouse_check_button_pressed(mb_left))
+if (g_ed_inside && mouse_check_button_pressed(mb_left) && !keyboard_check(vk_space) && !g_ed_pan_on)
 {
     if (g_ed_tool == 0)
     {

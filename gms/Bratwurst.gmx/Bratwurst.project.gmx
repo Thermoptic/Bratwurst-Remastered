@@ -7,7 +7,7 @@
     <datafile>
       <name>updates.txt</name>
       <exists>-1</exists>
-      <size>19943</size>
+      <size>20467</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -387,6 +387,12 @@
     <script>scripts\scr_race_results_draw.gml</script>
     <script>scripts\scr_race_round_end.gml</script>
     <script>scripts\scr_race_cd_draw.gml</script>
+    <script>scripts\scr_ed_frame.gml</script>
+    <script>scripts\scr_ed_head.gml</script>
+    <script>scripts\scr_ed_pan_clamp.gml</script>
+    <script>scripts\scr_ed_row.gml</script>
+    <script>scripts\scr_ed_txt.gml</script>
+    <script>scripts\scr_ed_zoom.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_lg_k10</font>

@@ -330,3 +330,11 @@
 - **Ej körd i GMS.**
 
 **D-045, tillägg 2 (2026-10-18):** projektägaren rapporterade flimmer (spelet hoppar ut till Windows och tillbaka) när Windows-tangenten trycks i helskärm. Orsak: tillägg 1 lämnade helskärmen direkt vid Windows-tangenten och efter 2 ticks utan fokus. Nu lämnas den direkt bara vid Alt+Tab (det som gav det försvunna fönstret) och annars först efter 5 ticks utan fokus som innan tillägg 1. Ej verifierat i GMS.
+
+## D-061 — Banredigeraren: ny verktygspanel, zoom och panorering
+- **Beslut (användaren):** snygga till redigerarens UI: mindre text till höger, tydlig indelning i kategorier med färger, samt zoom med mushjulet och panorering med mellanslag + drag.
+- **Verktygspanelen (`scr_ed_draw`, hjälpskript `scr_ed_txt`, `scr_ed_head`, `scr_ed_row`):** texten är 85 % av den lilla storleken. Fem kategorier med egna rubrikfärger och en linje: **STATUS** (verktyg, antal former, pickups, rutnät, zoom, markör), **DRAW** (B, P, X, U), **PLACE** (T, F, O), **VIEW** (hjul, mellanslag + drag, Home, G, högerklick) och **FILE** (S, N, L, [ ], DEL, ESC). Tangenterna har kategorins färg och beskrivningen är grå; det aktiva verktyget har markerad bakgrund med accentlist och ljusare text; radera och ta-bort har röd tangent. Hjälptexten längst ned beror på valt verktyg. Panelen är 300 enheter bred (förut 280).
+- **Zoom:** mushjulet zoomar ritytan i steg om 25 % (1 till 16 gånger; 100 % = hela världen i bild som förut) kring muspekaren (`scr_ed_zoom`). **Undantag:** över målrutan vrider hjulet pilarna (D-054) och nära den valda startplatsen i verktyget T vrider det skeppet; på alla andra platser zoomar det. Inzoomat visas ett finare rutnät (var 100:e pixel).
+- **Panorering:** håll **mellanslag** och dra med vänster musknapp (eller dra med mittenknappen) för att flytta vyn; mellanslag + klick ritar inget. **Home** återställer vyn. Panoreringen hålls inom världen (`scr_ed_pan_clamp`) och är noll vid 100 %. Vyn återställs när en bana öppnas.
+- **Klippning:** GMS 1.4 saknar klippning, så ritytan ritas först och allt som hamnar utanför täcks av bakgrundsfärgen; ram, rubrik och verktygspanel ritas sedan på nytt (`scr_ed_frame`).
+- **Ej körd i GMS.**

@@ -167,3 +167,5 @@ globalvar g_race_el, g_rr_n, g_rr_id, g_rr_slot, g_rr_ft, g_rr_fin, g_rr_dnf, g_
 g_race_el = -1; g_rr_n = 0; g_rr_id[0] = noone; g_rr_slot[0] = 0; g_rr_ft[0] = 0; g_rr_fin[0] = false; g_rr_dnf[0] = false; g_rr_nm[0] = "";   // Race (D-058): utslagsnedrakning och resultatlista
 globalvar g_race_cd, g_race_go;
 g_race_cd = 0; g_race_go = 0;   // Race (D-060): startnedrakning i ticks (150 = 3, 2, 1) och hur lange GO! visas (50)
+globalvar g_ed_zoom, g_ed_panx, g_ed_pany, g_ed_pan_on, g_ed_pan_sx, g_ed_pan_sy, g_ed_pan_px, g_ed_pan_py;
+g_ed_zoom = 1; g_ed_panx = 0; g_ed_pany = 0; g_ed_pan_on = false; g_ed_pan_sx = 0; g_ed_pan_sy = 0; g_ed_pan_px = 0; g_ed_pan_py = 0;   // Banredigerarens vy (D-061): zoom och panorering

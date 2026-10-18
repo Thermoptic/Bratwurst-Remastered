@@ -12,6 +12,12 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 39 - 2026-10-18 - Map editor tools
+
+- The map editor tool panel is tidier: smaller text and the tools are split into STATUS, DRAW, PLACE, VIEW and FILE, each in its own colour. The active tool is highlighted and the help line at the bottom follows the tool.
+- Zoom in and out with the mouse wheel (it zooms around the mouse pointer). Hold SPACE and drag with the mouse (or drag with the middle button) to move around when zoomed in. HOME resets the view.
+- Over the finish box the wheel still turns the arrows.
+
 ### UPDATE 38 - 2026-10-18 - Race countdown
 
 - Race starts with a big countdown in the middle of the screen: 3, 2, 1, GO! You cannot thrust until GO!, and the race time starts then.

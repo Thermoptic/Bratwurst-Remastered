@@ -481,3 +481,6 @@ Alla betydande projektändringar dokumenteras här.
 - Race: stor startnedräkning 3, 2, 1, GO! i mitten av spelytan; gas och backning avstängda tills GO! (racetiden startar då). D-060. Ej körd.
 
 - Helskärm: Windows-tangenten får inte längre spelet att flimra ut och in; endast Alt+Tab lämnar helskärmen direkt, annars efter 5 ticks utan fokus. D-045 tillägg 2. Ej körd.
+
+## 2026-10-18 — Banredigeraren: ny panel, zoom och panorering
+- Verktygspanelen omgjord: mindre text, kategorierna STATUS, DRAW, PLACE, VIEW och FILE med egna färger, markerat aktivt verktyg och verktygsberoende hjälptext. Mushjulet zoomar (25 % per steg, 1 till 16 gånger, kring muspekaren), mellanslag + drag (eller mittenknappen) panorerar, Home återställer vyn. Över målrutan vrider hjulet fortfarande pilarna. `scr_ed_draw`, `scr_ed_step`, `scr_ed_layout`, `scr_ed_zoom`, `scr_ed_pan_clamp`, `scr_ed_txt/head/row/frame`. D-061. Ej körd.

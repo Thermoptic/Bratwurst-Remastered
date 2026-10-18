@@ -316,3 +316,10 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | RACE-S8-40 | Starta ett race och varje ny runda | Stor 3, 2, 1 i mitten, sedan GO!; gas och backning går inte innan GO!, svängning går; racetiden börjar vid GO! |
 | RACE-S8-41 | Pausa under nedräkningen | Nedräkningen står stilla och fortsätter efter paus |
 | RACE-S8-42 | Alla utom en kommer i mål | Den sista racern får `ELIMINATED IN 4…1` och exploderar |
+| ED-UI-01 | Öppna redigeraren | Verktygspanelen visar kategorierna STATUS, DRAW, PLACE, VIEW, FILE i olika färger, texten ryms i panelen, aktivt verktyg är markerat |
+| ED-UI-02 | Byt verktyg (B, P, X, T, F, O) | Markeringen följer verktyget; hjälptexten längst ned byter |
+| ED-ZOOM-01 | Rulla mushjulet över en tom yta | Zoomar in/ut kring pekaren (100 %–1600 %); inget ritas utanför ritytan; ZOOM visas i STATUS |
+| ED-ZOOM-02 | Zooma in, håll mellanslag och dra | Vyn flyttas; mellanslag + klick ritar ingenting; vyn stannar inom världen |
+| ED-ZOOM-03 | Mushjulet över målrutan och nära vald startplats (T) | Vrider pilarna respektive skeppet i stället för att zooma |
+| ED-ZOOM-04 | Rita, flytta och radera objekt när vyn är inzoomad och förflyttad | Klick träffar rätt värld koordinat; sparade banor oförändrade |
+| ED-ZOOM-05 | Home | Vyn återställs till 100 % |
