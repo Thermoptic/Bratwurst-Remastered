@@ -25,6 +25,7 @@ for (gy = 0; gy <= phx; gy += 20 * g_SCALE) { draw_line(g_OX, g_OY + gy, g_OX + 
 scr_dots_draw();         // orienteringspunkter: syns bara nar kameran ar inzoomad
 scr_solid_walls_draw();   // Solid colors: fyll foremalen forst, konturerna ritas ovanpa
 scr_ast_draw();   // Asteroids: stenarna (bara i spellage 4)
+scr_frame_players();   // skeppens lagen for ytterramens tonande (D-066)
 // Vaggar: varje objekt i sin egen temafarg (g_wall_grp, scr_theme_players)
 for (k = 0; k < g_wall_n; k += 1)
 {
@@ -35,7 +36,8 @@ for (k = 0; k < g_wall_n; k += 1)
     y1 = scr_w2s_y(g_wall_py[a]);
     x2 = scr_w2s_x(g_wall_px[b]);
     y2 = scr_w2s_y(g_wall_py[b]);
-    draw_line(g_OX + x1 * g_SCALE, g_OY + y1 * g_SCALE, g_OX + x2 * g_SCALE, g_OY + y2 * g_SCALE);
+    if (g_wfr[g_wall_grp[k]]) { scr_frame_line_draw(k); }   // ytterramen: syns bara nara ett skepp (D-066)
+    else { draw_line(g_OX + x1 * g_SCALE, g_OY + y1 * g_SCALE, g_OX + x2 * g_SCALE, g_OY + y2 * g_SCALE); }
 }
 
 if (g_game_mode == 2) { scr_fin_draw(); scr_pickup_draw(); }   // Race: start/malrutan (D-054)

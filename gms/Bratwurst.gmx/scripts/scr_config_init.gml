@@ -171,3 +171,6 @@ globalvar g_ed_zoom, g_ed_panx, g_ed_pany, g_ed_pan_on, g_ed_pan_sx, g_ed_pan_sy
 g_ed_zoom = 1; g_ed_panx = 0; g_ed_pany = 0; g_ed_pan_on = false; g_ed_pan_sx = 0; g_ed_pan_sy = 0; g_ed_pan_px = 0; g_ed_pan_py = 0;   // Banredigerarens vy (D-061): zoom och panorering
 globalvar g_hw_w, g_hw_cx, g_hw_cy;
 g_hw_w = 0; g_hw_cx = 0; g_hw_cy = 0;   // senaste vaggtraff (D-063): vagg och kontaktpunkt i varldspixlar
+globalvar g_wfr, g_fd_n, g_fd_x, g_fd_y, g_FR_NEAR, g_FR_FAR;
+g_wfr[0] = false; g_fd_n = 0; g_fd_x[0] = 0; g_fd_y[0] = 0;
+g_FR_NEAR = 400; g_FR_FAR = 1400;   // Arenans ytterram (D-066): full synlighet narmare an 400 varldspixlar fran ett skepp, osynlig langre bort an 1400 (dubblat efter test)

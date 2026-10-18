@@ -12,6 +12,12 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 43 - 2026-10-18 - Tidier HUD, fading arena edge, countdown sound
+
+- Player panels: the ship now sits alone in the middle of the right side, smaller, with the numbers in the corners: position (Race) or round at the top left, wins at the top right, and laps or lives with small boxes along the bottom. In Galaxy Duel a damaged ship shows its repair time.
+- The outer edge of the arena fades in when a ship gets close to it and disappears when you are far away.
+- The Race countdown (3, 2, 1, GO!) now has a sound.
+
 ### UPDATE 42 - 2026-10-18 - LCD countdown
 
 - The Race countdown (3, 2, 1, GO!) is now drawn like a digital LCD display with straight segments and no rounded corners.

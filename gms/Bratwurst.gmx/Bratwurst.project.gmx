@@ -7,7 +7,7 @@
     <datafile>
       <name>updates.txt</name>
       <exists>-1</exists>
-      <size>21451</size>
+      <size>21976</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -144,6 +144,7 @@
     <sound>sound\snd_sfx_crash</sound>
     <sound>sound\snd_sfx_collide</sound>
     <sound>sound\snd_sfx_hit</sound>
+    <sound>sound\snd_sfx_countdown</sound>
   </sounds>
   <sprites name="sprites"/>
   <backgrounds name="background"/>
@@ -397,6 +398,10 @@
     <script>scripts\scr_race_maps.gml</script>
     <script>scripts\scr_wall_slide.gml</script>
     <script>scripts\scr_lcd_char.gml</script>
+    <script>scripts\scr_frame_line_draw.gml</script>
+    <script>scripts\scr_frame_players.gml</script>
+    <script>scripts\scr_frame_prepare.gml</script>
+    <script>scripts\scr_poly_has_point.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_lg_k10</font>

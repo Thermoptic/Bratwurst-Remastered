@@ -492,3 +492,16 @@ Alla betydande projektändringar dokumenteras här.
 - Skepp som träffar en vägg fastnar inte längre: de glider längs väggen och saktas ned, mer ju mer nosen pekar mot den, med gnistor medan de slipar. Skada bara av normalfarten. `scr_wall_slide`, `scr_player_hits_wall`, `scr_player_step`. D-063. Ej körd.
 
 - Race-nedräkningen ritas i digital LCD-stil (raka segment, inga rundade kanter). D-064. Ej körd.
+
+## 2026-10-18 — Spelarpanelens högra zon
+- Skeppet ligger ensamt i mitten (mindre) och siffrorna i hörnen: placering (Race) eller runda, vinster, varv eller liv med rutor, reparationstid i Galaxy Duel. Gäller alla spellägen. D-065. Ej körd.
+
+- Spelarpanelen: skeppet skalas efter sin storlek så att det ryms mellan texten uppe och linjen nere i alla vinklar. D-065 tillägg. Ej körd.
+
+## 2026-10-18 — Ytterramen tonar fram
+- Arenans yttre gräns (den röda ramen) syns bara när ett skepp närmar sig och tonar in ju närmare man kommer (200–700 världspixlar); övriga väggar oförändrade, kollisionen oförändrad. `scr_frame_prepare`, `scr_frame_players`, `scr_frame_line_draw`, `scr_poly_has_point`, `scr_match_draw`, `scr_game_start`. D-066. Ej körd.
+
+- Ytterramen börjar synas tidigare: avstånden dubblade (full synlighet inom 400, osynlig bortom 1400 världspixlar). D-066 tillägg. Ej körd.
+
+## 2026-10-18 — Ljud i Race-nedräkningen
+- Race-nedräkningen (3, 2, 1, GO!) spelar ljudet PM_FSSF_DOOR_MID_9 (Sonniss GDC 2019) vid varje steg. Rättigheter dokumenterade, status okänd tills bekräftad. D-067. Ej körd.

@@ -2,12 +2,12 @@
 // Race (D-053, steg 1): kors varje matchtick (bara i Race). Racetimern gar medan rundan pagar; nedrakningen efter rundslutet (g_end_timer) stoppar den.
 // Steg 6 (D-058): avgorande, utslagning av sista racern och resultat. Steg 2 (D-054): varvraknaren, scr_fin_cross (malrutan), for varje levande skepp som inte ar klart.
 var nu, nf;
-// startnedrakning (D-060): ingen racelogik och ingen racetid forran GO!; skeppen far svanga men inte gasa
+// startnedrakning (D-060, D-067: ljudet snd_sfx_countdown vid 3, 2, 1 och GO!): ingen racelogik och ingen racetid forran GO!; skeppen far svanga men inte gasa
 if (g_race_cd > 0)
 {
-    if ((g_race_cd mod 50) == 0) { scr_sfx_play(snd_sfx_hit, 2, 0.5); }
+    if ((g_race_cd mod 50) == 0) { scr_sfx_play(snd_sfx_countdown, 2, 1); }
     g_race_cd -= 1;
-    if (g_race_cd == 0) { g_race_go = 50; scr_sfx_play(snd_sfx_rg_ready, 2, 1); }
+    if (g_race_cd == 0) { g_race_go = 50; scr_sfx_play(snd_sfx_countdown, 2, 1); }
     exit;
 }
 if (g_race_go > 0) { g_race_go -= 1; }

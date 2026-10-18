@@ -334,3 +334,7 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | WALL-05 | Classic: energi vid träff och släp | Hård träff tar energi enligt originalformeln, släp mot vägg tar (nästan) ingen |
 | WALL-06 | Galaxy Duel och Race | Ingen väggskada, men samma glid och gnistor |
 | RACE-S8-54 | Startnedräkningen | 3, 2, 1 och GO! visas som raka LCD-segment, skarpa, centrerade i spelytan |
+| HUD-01 | Spela Race, Classic, Galaxy Duel och Asteroids med 1, 2 och 4 spelare | Skeppet i mitten utan text ovanpå; övre vänster POS (Race) eller R x/N; övre höger W n; nere LAP/LV med rutor; REPAIR i Galaxy Duel när skadad; texten ryms i smala paneler |
+| FRAME-01 | Spela en bana och flyg långt från ytterväggen, sedan närmare | Ramen är osynlig långt bort, tonar in successivt och är tydlig nära; bara delen nära skeppet lyser; innanväggar syns alltid |
+| FRAME-02 | Flyg in i ytterväggen; spela med 2 spelare och alla spellägen (Classic, Galaxy Duel, Asteroids, Race) | Kollisionen som förut; ramen tonar efter närmaste skepp; ingen ram syns i onödan |
+| RACE-S8-55 | Starta ett race | Ljudet spelas vid 3, 2, 1 och GO!; tystnar med SOUND EFFECTS av |

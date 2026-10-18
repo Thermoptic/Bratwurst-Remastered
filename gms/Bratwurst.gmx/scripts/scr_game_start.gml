@@ -23,6 +23,7 @@ scr_level_apply();
 scr_solid_build();   // fyllningstrianglar for vaggarna (Solid colors)
 g_match_map = g_ed_name;   // matchens banamn (visas i spelytans horn)
 scr_arena_prepare();
+scr_frame_prepare();   // arenans ytterram tonar fram nar man narmar sig (D-066)
 if (g_game_mode == 4) { scr_ast_reset(); }   // tom bana, forsta stenvagen efter 1 s
 scr_dots_prepare();   // orienteringspunkter (D-043), efter att vaggarna ar klara
 scr_spark_clear();

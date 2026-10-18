@@ -1,7 +1,8 @@
 /// scr_hud_panel(slot, x, y, w, h)
 // Spelarpanel i matchen (terminalstil), alltid langs nederkanten. Bredden kommer fran scr_hud_draw (panelerna delar raden lika).
-// Innehall: energi, kanonammo, liv, specialvapen + nedrakning, bakat-skjutning och skeppets kontur till hoger.
-var sl, px, py, pw, ph, c, p, y0, i, fr, bw, cdx, hp;
+// Innehall: energi, kanonammo, liv, specialvapen + nedrakning, drivmedel och skeppets kontur till hoger. Hogra zonen (D-065): skeppet i mitten med siffror i
+// hornen: ovre vanster placering (Race) eller runda, ovre hoger vinster, nere text (varv, liv eller reparation) och rutor (varv eller liv).
+var sl, px, py, pw, ph, c, p, y0, i, fr, bw, cdx, hp, zx0, zx1, zc, btx, bcol, npips, nfill, shr;
 sl = argument0; px = argument1; py = argument2; pw = argument3; ph = argument4;
 c = scr_slot_colour(sl);
 g_hud_slot = sl;
@@ -20,7 +21,6 @@ if (p.alive) { scr_ui_pane(px, py, pw, ph, "P" + string(sl + 1) + " // " + strin
 else if (p.respawn_t > 0) { scr_ui_pane(px, py, pw, ph, "P" + string(sl + 1) + " // RESPAWN", c); }
 else { scr_ui_pane(px, py, pw, ph, "P" + string(sl + 1) + " // ELIMINATED", g_c[8]); }
 g_fs = g_f_sm;
-scr_ui_text_r(px + pw - 12, py + 14, "WINS " + string(g_wins[sl]), c);
 bw = min(pw - 150, 320);
 y0 = py + 16;
 
@@ -94,15 +94,6 @@ if (p.pu_have > 0)
     }
     else if ((g_tick mod 16) < 11) { scr_ui_text(px + 110, y0 + 72, "PU " + g_pu_name[p.pu_have - 1], c); }
 }
-if (g_game_mode == 2)
-{
-    // Race (D-053/D-054): varv, klar-tid eller varning om banan saknar malruta; F1 visar passager (race_x/race_free)
-    if (!g_fin_on) { scr_ui_text_r(px + pw - 12, y0 + 72, "NO FINISH LINE", g_c[10]); }
-    else if (p.race_fin) { scr_ui_text_r(px + pw - 12, y0 + 72, "FINISHED " + scr_race_time(p.race_ft), g_c[11]); }
-    else { scr_ui_text_r(px + pw - 12, y0 + 72, "LAP " + string(min(p.race_laps + 1, g_race_target)) + " / " + string(g_race_target), c); }
-    if (p.alive) { fr = scr_race_pos(p, false); scr_ui_text_r(px + pw - 12, py + 26, "POS " + string(fr) + " / " + string(g_rk_n), c); }   // placering (D-057)
-    if (g_debug) { scr_ui_text_r(px + pw - 12, y0 + 88, "X " + string(p.race_x) + " F " + string(p.race_free), g_c[3]); }
-}
 scr_ui_text(px + 12, y0 + 72, "AB", g_c[4]);   // drifting fuel (D-052): bla matare, rod medan den laddas
 fr = p.drift_fuel / max(1, g_DRIFT_FUEL);
 if (p.drift_rc) { scr_ui_bar(px + 42, y0 + 76, 64, 10, fr, g_c[8]); }
@@ -110,10 +101,61 @@ else { scr_ui_bar(px + 42, y0 + 76, 64, 10, fr, g_c[13]); }
 
 hp = -1;
 if (p.sp_nsel > 0) { hp = p.sp_sel[p.sp_pod_i]; }   // vald specialpod: visas som en prick pa skeppsbilden
-if (p.alive) { scr_ui_ship(p.ship, px + pw - 62, py + ph / 2 + 4, 0.34, p.ang, c, hp, false); }
+// ---- hogra zonen (D-065): skepp i mitten, siffror i hornen ----
+zx0 = px + pw - 12 - clamp(pw * 0.42, 92, 112);   // zonens bredd 92 till 112, smalare med fler spelare
+zx1 = px + pw - 12;
+zc = (zx0 + zx1) / 2;
+g_fs = g_f_sm;
+// ovre vanster: Race = placering, ovriga lagen = rundan; ovre hoger: vinster
+if (g_game_mode == 2)
+{
+    if (p.alive) { fr = scr_race_pos(p, false); scr_ui_text(zx0, py + 14, "POS " + string(fr) + "/" + string(g_rk_n), g_acc); }
+}
+else { scr_ui_text(zx0, py + 14, "R " + string(g_round) + "/" + string(g_rounds_total), g_acc); }
+scr_ui_text_r(zx1, py + 14, "W " + string(g_wins[sl]), g_c[4]);
+if (g_debug && g_game_mode == 2) { scr_ui_text_r(zx1, py + 28, "X " + string(p.race_x) + " F " + string(p.race_free), g_c[3]); }
+// skeppet (eller nedrakning / OUT)
+if (p.alive)
+{
+    // skeppet skalas efter sin storsta radie (hornpunkt langst fran mitten) sa att det ryms mellan texten uppe och linjen nere i alla vinklar
+    shr = 1;
+    for (i = 0; i < g_ship_np[p.ship]; i += 1) { shr = max(shr, sqrt(g_ship_pts[p.ship, 2 * i] * g_ship_pts[p.ship, 2 * i] + g_ship_pts[p.ship, 2 * i + 1] * g_ship_pts[p.ship, 2 * i + 1])); }
+    scr_ui_ship(p.ship, zc, py + 54, min(0.28, 21 / shr), p.ang, c, hp, false);
+}
 else if (p.respawn_t > 0)
 {
     g_fs = g_f_lg;
-    scr_ui_text_c(px + pw - 62, py + ph / 2 - 8, string(ceil(p.respawn_t / 50)), c);   // 3, 2, 1
+    scr_ui_text_c(zc, py + ph / 2 - 8, string(ceil(p.respawn_t / 50)), c);   // 3, 2, 1
+    g_fs = g_f_sm;
 }
-else { g_fs = g_f_md; scr_ui_text_c(px + pw - 62, py + ph / 2 - 8, "OUT", g_c[8]); }
+else { g_fs = g_f_md; scr_ui_text_c(zc, py + ph / 2 - 8, "OUT", g_c[8]); g_fs = g_f_sm; }
+// linje, nere text till vanster och rutor till hoger
+draw_set_color(g_c[2]);
+draw_rectangle(zx0, py + ph - 30, zx1, py + ph - 30, false);
+npips = 0;
+nfill = 0;
+bcol = c;
+if (g_game_mode == 2)
+{
+    // Race: varv (rutor om hogst sex varv), klar-tid eller varning om banan saknar malruta
+    if (!g_fin_on) { btx = "NO FINISH"; bcol = g_c[10]; }
+    else if (p.race_fin) { btx = "FIN " + scr_race_time(p.race_ft); bcol = g_c[11]; }
+    else
+    {
+        btx = "LAP " + string(min(p.race_laps + 1, g_race_target)) + "/" + string(g_race_target);
+        if (g_race_target <= 6) { npips = g_race_target; nfill = p.race_laps; }
+    }
+}
+else
+{
+    // ovriga lagen: liv (rutor), eller reparationstid i Galaxy Duel nar skeppet ar skadat
+    btx = "LV " + string(p.p_lives);
+    if (g_lives_max <= 6) { npips = g_lives_max; nfill = p.p_lives; }
+    if (g_game_mode == 1 && p.ad_dmg > 0) { btx = "REPAIR " + string(ceil(p.ad_dmg / 50)) + "S"; bcol = g_c[8]; npips = 0; }
+}
+scr_ui_text(zx0, py + ph - 22, btx, bcol);
+for (i = 0; i < npips; i += 1)
+{
+    if (i < nfill) { draw_set_color(c); draw_rectangle(zx1 - (npips - i) * 12 + 4, py + ph - 20, zx1 - (npips - i) * 12 + 11, py + ph - 14, false); }
+    else { draw_set_color(g_c[3]); draw_rectangle(zx1 - (npips - i) * 12 + 4, py + ph - 20, zx1 - (npips - i) * 12 + 11, py + ph - 14, true); }
+}
