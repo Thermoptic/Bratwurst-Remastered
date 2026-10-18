@@ -1,11 +1,12 @@
 /// scr_fx_damage()
 // Kors i obj_fx, en tick. Missilexplosionens expanderande ring (samma radie som scr_match_draw ritar: 6 + 4 per tick i utpixlar) skadar varje skepp
-// som den nar, en gang per skepp och explosion: 3 energi (D-029). Ett skepp raknas som nadd nar nagon av dess hornpunkter ligger inom radien.
+// som den nar, en gang per skepp och explosion: 3 energi (D-029; sedan D-068 lika mycket som en direktraff: 12 for missil, 5 for guidad missil). Ett skepp raknas som nadd nar nagon av dess hornpunkter ligger inom radien.
 // Bara missil (1) och guidad missil (2), inte krockringen (3); ingen splash i Astro Duel (dar tar bara direktraffar liv).
 var rw, p, j, dxw, dyw, hitp;
 if (fkind != 1 && fkind != 2 && fkind != 4) { exit; }
 if (g_game_mode == 1 && fkind != 4) { exit; }
 if (fkind == 4) { rw = rmax * (1 - power(1 - ftimer / fmax, 2)); }   // Mini Nuke: chockvagen vaxer i varldspixlar och bromsar in
+else if (fkind == 1) { rw = drad * ftimer / fmax; }   // missilen: skadeavstandet vaxer till DAMAGE RADIUS (D-069)
 else { rw = ((6 + ftimer * 4) * fsize / g_SCALE) * 32768 / g_zoom; }   // radie i varldspixlar
 if (fkind == 4 && g_game_mode == 4) { scr_ast_blast(floor(px / 256), floor(py / 256), rw); }   // Asteroids: chockvagen forintar stenar
 rw = rw * rw;
@@ -28,7 +29,8 @@ with (obj_player)
             {
                 if (g_game_mode == 1) { scr_ad_hit(); } else { energy -= g_sv[g_SV_PU + 5]; }   // Mini Nuke: chockvagsskada ur Powerup Editor (Galaxy Duel: skadar / dodar)
             }
-            else { energy -= 3; }
+            else if (other.fkind == 1) { energy -= g_ML_BDMG; }   // BLAST DAMAGE i Powerup Editor (D-069)   // ringen skadar lika mycket som en direktraff (D-068)
+            else { energy -= g_DMG_GUIDED; }
             scr_spark_burst(floor(px / 256), floor(py / 256), 8, 1.8, scr_slot_colour(slot));
             if (energy <= 0) { scr_player_lose_life(); }
         }

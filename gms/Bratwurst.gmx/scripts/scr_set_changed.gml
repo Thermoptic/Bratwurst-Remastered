@@ -7,6 +7,7 @@ if (s == g_SV_SCALE || s == g_SV_VSYNC) { scr_display_apply(); }
 if (s == g_SV_VOL) { g_sv[g_SV_MUSIC] = (g_sv[g_SV_VOL] > 0); }
 if (s == g_SV_SCAN) { g_sv[g_SV_GLOW] = g_sv[g_SV_SCAN]; }
 if (s == g_SV_PLAYERS) { g_n_players = g_sv[g_SV_PLAYERS]; }
+if (s >= g_SV_PU + g_PU_STRIDE * 3 && s < g_SV_PU + g_PU_STRIDE * 5) { scr_weapon_apply(); }   // kanon och missil (D-069)
 if (s >= g_SV_PU + g_PU_STRIDE * 2 && s < g_SV_PU + g_PU_STRIDE * 3) { scr_drift_apply(); }   // drift- och reverseinstallningar
 if (s == g_SV_ZOOM) { g_cam_tr = g_CAM_TRANS; }   // zoomandringen glider in mjukt (D-037)
 scr_set_save();

@@ -3,7 +3,7 @@
 // hemliga Powerup Editor (Options, tryck P). g_pu_np[t] = antal parametrar, g_pu_pname/pdesc/pkey[t, k] = namn, beskrivning och ini-nyckel,
 // g_pu_pmin/pmax/pstep/pdef[t, k] = intervall, steg och standardvarde. Installningarna ligger i g_sv[g_SV_PU + t * g_PU_STRIDE + k] (g_PU_STRIDE = 12 parametrar per powerup) (settings.ini, [powerup_<namn>]).
 // Nya powerups: lagg till en post har, ett fall i scr_powerup_fire och eventuell effektkod; menyn och sparandet byggs av datan.
-g_PU_COUNT = 3;   // poster i editorn och installningarna
+g_PU_COUNT = 5;   // poster i editorn och installningarna
 g_PU_SPAWN = 2;   // bara de forsta (riktiga powerups) kan dyka upp som orbs; post 2 (DRIFT) ar bara en sida i Powerup Editor
 // ---- 0: MINI NUKE (beter sig som en missil med stor chockvag) ----
 g_pu_name[0] = "MINI NUKE";
@@ -89,3 +89,39 @@ g_pu_pname[2, 8] = "SIDE THRUSTER"; g_pu_pdesc[2, 8] = "SIDEWAYS PUSH WHILE DRIF
 g_pu_pmin[2, 8] = 0; g_pu_pmax[2, 8] = 400; g_pu_pstep[2, 8] = 5; g_pu_pdef[2, 8] = 60;
 g_pu_pname[2, 9] = "DRIFTING FUEL"; g_pu_pdesc[2, 9] = "HOW MANY SECONDS OF DRIFTING A FULL FUEL METER GIVES. FUEL IS ONLY USED WHILE DRIFTING AND WHAT IS LEFT IS KEPT. WHEN THE METER IS EMPTY IT RECHARGES IN 6 SECONDS AND DRIFTING IS OFF UNTIL IT IS FULL"; g_pu_pkey[2, 9] = "fuel_seconds";
 g_pu_pmin[2, 9] = 1; g_pu_pmax[2, 9] = 30; g_pu_pstep[2, 9] = 1; g_pu_pdef[2, 9] = 8;
+// ---- 3: CANNON (huvudkanonen; bara en sida i Powerup Editor, inte en upplockbar powerup) ----
+g_pu_name[3] = "CANNON";
+g_pu_key[3] = "cannon";
+g_pu_np[3] = 5;
+g_pu_pname[3, 0] = "DAMAGE"; g_pu_pdesc[3, 0] = "ENERGY A CANNON SHOT TAKES FROM A SHIP IT HITS (CLASSIC AND ASTEROIDS). IN GALAXY DUEL THE FIRST HIT DAMAGES THE SHIP AND IN RACE IT SLOWS IT DOWN"; g_pu_pkey[3, 0] = "damage";
+g_pu_pmin[3, 0] = 0; g_pu_pmax[3, 0] = 20; g_pu_pstep[3, 0] = 1; g_pu_pdef[3, 0] = 1;
+g_pu_pname[3, 1] = "SHOT SPEED"; g_pu_pdesc[3, 1] = "SPEED OF THE CANNON SHOT IN PERCENT OF NORMAL (100 = THE ORIGINAL SPEED)"; g_pu_pkey[3, 1] = "speed";
+g_pu_pmin[3, 1] = 25; g_pu_pmax[3, 1] = 300; g_pu_pstep[3, 1] = 5; g_pu_pdef[3, 1] = 100;
+g_pu_pname[3, 2] = "GRAVITY"; g_pu_pdesc[3, 2] = "HOW HARD GRAVITY PULLS THE SHOT DOWN, IN PERCENT OF NORMAL. 0 = THE SHOT FLIES STRAIGHT"; g_pu_pkey[3, 2] = "gravity";
+g_pu_pmin[3, 2] = 0; g_pu_pmax[3, 2] = 300; g_pu_pstep[3, 2] = 10; g_pu_pdef[3, 2] = 100;
+g_pu_pname[3, 3] = "RELOAD TIME"; g_pu_pdesc[3, 3] = "TIME BETWEEN SHOTS IN PERCENT OF THE SHIP'S OWN RELOAD TIME. MORE = SLOWER FIRING (NOT USED IN GALAXY DUEL)"; g_pu_pkey[3, 3] = "reload";
+g_pu_pmin[3, 3] = 25; g_pu_pmax[3, 3] = 400; g_pu_pstep[3, 3] = 5; g_pu_pdef[3, 3] = 100;
+g_pu_pname[3, 4] = "KNOCKBACK"; g_pu_pdesc[3, 4] = "HOW HARD A SHOT PUSHES THE SHIP IT HITS, IN PERCENT OF NORMAL. 0 = NO PUSH"; g_pu_pkey[3, 4] = "knockback";
+g_pu_pmin[3, 4] = 0; g_pu_pmax[3, 4] = 400; g_pu_pstep[3, 4] = 10; g_pu_pdef[3, 4] = 100;
+// ---- 4: MISSILE (den vanliga missilen; styrda missilen har egna vardena) ----
+g_pu_name[4] = "MISSILE";
+g_pu_key[4] = "missile";
+g_pu_np[4] = 9;
+g_pu_pname[4, 0] = "SPEED"; g_pu_pdesc[4, 0] = "SPEED OF THE MISSILE. THE ORIGINAL IS 32 (IN GALAXY DUEL IT IS DOUBLED)"; g_pu_pkey[4, 0] = "speed";
+g_pu_pmin[4, 0] = 8; g_pu_pmax[4, 0] = 96; g_pu_pstep[4, 0] = 4; g_pu_pdef[4, 0] = 32;
+g_pu_pname[4, 1] = "EXPLOSION TIME"; g_pu_pdesc[4, 1] = "HOW LONG THE MISSILE FLIES BEFORE IT EXPLODES BY ITSELF, IN TENTHS OF A SECOND (10 = 1 SECOND, THE ORIGINAL)"; g_pu_pkey[4, 1] = "fuse";
+g_pu_pmin[4, 1] = 5; g_pu_pmax[4, 1] = 100; g_pu_pstep[4, 1] = 5; g_pu_pdef[4, 1] = 10;
+g_pu_pname[4, 2] = "DIRECT DAMAGE"; g_pu_pdesc[4, 2] = "ENERGY TAKEN FROM A SHIP THE MISSILE HITS DIRECTLY (CLASSIC AND ASTEROIDS). THE ORIGINAL IS 12"; g_pu_pkey[4, 2] = "damage";
+g_pu_pmin[4, 2] = 0; g_pu_pmax[4, 2] = 100; g_pu_pstep[4, 2] = 1; g_pu_pdef[4, 2] = 12;
+g_pu_pname[4, 3] = "BLAST DAMAGE"; g_pu_pdesc[4, 3] = "ENERGY TAKEN FROM EVERY SHIP THE EXPLOSION REACHES. A SHIP HIT DIRECTLY DOES NOT TAKE IT TWICE. DEFAULT IS THE SAME AS A DIRECT HIT"; g_pu_pkey[4, 3] = "blast_damage";
+g_pu_pmin[4, 3] = 0; g_pu_pmax[4, 3] = 100; g_pu_pstep[4, 3] = 1; g_pu_pdef[4, 3] = 12;
+g_pu_pname[4, 4] = "BLAST RADIUS"; g_pu_pdesc[4, 4] = "HOW BIG THE RED EXPLOSION RING GROWS, IN MAP PIXELS (A MISSILE THAT HITS SOMETHING MAKES IT 30 PERCENT BIGGER)"; g_pu_pkey[4, 4] = "blast_radius";
+g_pu_pmin[4, 4] = 10; g_pu_pmax[4, 4] = 400; g_pu_pstep[4, 4] = 10; g_pu_pdef[4, 4] = 60;
+g_pu_pname[4, 5] = "DAMAGE RADIUS"; g_pu_pdesc[4, 5] = "HOW FAR FROM THE EXPLOSION A SHIP TAKES DAMAGE, IN MAP PIXELS. SAME AS BLAST RADIUS = DAMAGE EXACTLY WHERE THE RING GOES"; g_pu_pkey[4, 5] = "damage_radius";
+g_pu_pmin[4, 5] = 10; g_pu_pmax[4, 5] = 400; g_pu_pstep[4, 5] = 10; g_pu_pdef[4, 5] = 60;
+g_pu_pname[4, 6] = "PARTICLES"; g_pu_pdesc[4, 6] = "HOW MANY PIXEL PARTICLES FLY OUT OF THE EXPLOSION (THE ORIGINAL IS ABOUT 100)"; g_pu_pkey[4, 6] = "particles";
+g_pu_pmin[4, 6] = 0; g_pu_pmax[4, 6] = 300; g_pu_pstep[4, 6] = 10; g_pu_pdef[4, 6] = 100;
+g_pu_pname[4, 7] = "KNOCKBACK"; g_pu_pdesc[4, 7] = "HOW HARD A DIRECT HIT PUSHES THE SHIP, IN PERCENT OF NORMAL. 0 = NO PUSH"; g_pu_pkey[4, 7] = "knockback";
+g_pu_pmin[4, 7] = 0; g_pu_pmax[4, 7] = 400; g_pu_pstep[4, 7] = 10; g_pu_pdef[4, 7] = 100;
+g_pu_pname[4, 8] = "COOLDOWN"; g_pu_pdesc[4, 8] = "TIME BETWEEN MISSILES IN PERCENT OF THE ORIGINAL. MORE = SLOWER FIRING"; g_pu_pkey[4, 8] = "cooldown";
+g_pu_pmin[4, 8] = 25; g_pu_pmax[4, 8] = 400; g_pu_pstep[4, 8] = 5; g_pu_pdef[4, 8] = 100;

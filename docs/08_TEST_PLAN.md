@@ -340,3 +340,12 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | RACE-S8-55 | Starta ett race | Ljudet spelas vid 3, 2, 1 och GO!; tystnar med SOUND EFFECTS av |
 
 **Testresultat (rapporterat av projektägaren, 2026-10-18, GMS-IDE, F5):** "allt funkar" efter UPDATE 43: spelarpanelens nya högra zon (HUD-01), den tonande ytterramen (FRAME-01/02) och nedräkningsljudet (RACE-S8-55). Tidigare i samma session rapporterades även Race-stegen 5–6, redigerarens zoom/panorering, väggglidningen, Race-banlistan och LCD-nedräkningen fungera i takt med att de provades; enskilda testfall är inte avbockade ett och ett.
+| MSL-01 | Classic: skjut en missil och låt den sprängas i luften nära en motståndare | Motståndaren inom ringen tappar 12 energi (guidad missil 5), en gång per explosion |
+| MSL-02 | Träffa ett skepp direkt med en missil | Tappar 12, inte 24 (ringen skadar inte det träffade skeppet en gång till); andra skepp i ringen tappar 12 |
+| MSL-03 | Galaxy Duel, Race och Mini Nuke | Oförändrat (Galaxy Duel: ingen ring från missiler; Race: fartminskning; Mini Nuke: direktskada + chockvåg) |
+| PE-CM-01 | Options, P, Powerup Editor | Sidorna CANNON (5 rader) och MISSILE (9 rader) finns med beskrivning per rad; värdena sparas och återställs med RESET OPTIONS |
+| PE-CM-02 | Med standardvärden: skjut kanon och missil | Som förut (förutom att missilringen är lika stor oavsett zoom) |
+| PE-CM-03 | Missile: ändra EXPLOSION TIME, SPEED, BLAST RADIUS, DAMAGE RADIUS | Missilen sprängs efter inställd tid, flyger med inställd fart, ringen och skadeavståndet följer värdena |
+| PE-CM-04 | Missile: DIRECT DAMAGE och BLAST DAMAGE på olika värden | Direktträff tar direktskadan, andra skepp i ringen tar ringens skada, det träffade tar inte båda |
+| PE-CM-05 | Cannon: DAMAGE, SHOT SPEED, GRAVITY, RELOAD TIME, KNOCKBACK | Varje värde syns i spelet; 100 % = originalet |
+| PE-CM-06 | Race och Galaxy Duel | Fungerar som förut (slow respektive tvåstegsskada), kanon- och missilhastighet följer inställningarna |

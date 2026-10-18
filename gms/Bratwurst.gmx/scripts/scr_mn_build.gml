@@ -174,7 +174,7 @@ c = scr_mn_add(5, "PAUSE", "PAUSE MENU DURING A MATCH"); g_mn_text[c] = "START";
 // POWERUP EDITOR (hemlig: visas i Options nar man trycker P dar, se scr_mn_step). En undermeny per powerup med dess parametrar ur scr_data_powerups.
 g_mn_opts_node = opts;
 g_mn_pu_linked = false;
-pe = scr_mn_add(0, "POWERUP EDITOR", "SECRET MENU. SET UP EVERY POWERUP: SIZE, SPEED, SHOCKWAVE, PARTICLES AND DAMAGE");
+pe = scr_mn_add(0, "POWERUP EDITOR", "SECRET MENU. SET UP EVERY POWERUP, DRIFT, THE CANNON AND THE MISSILE: SPEED, SIZE, DAMAGE, EXPLOSION AND MORE");
 g_mn_pu_node = pe;
 for (pt = 0; pt < g_PU_COUNT; pt += 1)
 {

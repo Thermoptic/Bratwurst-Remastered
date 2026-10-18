@@ -505,3 +505,9 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-18 — Ljud i Race-nedräkningen
 - Race-nedräkningen (3, 2, 1, GO!) spelar ljudet PM_FSSF_DOOR_MID_9 (Sonniss GDC 2019) vid varje steg. Rättigheter dokumenterade, status okänd tills bekräftad. D-067. Ej körd.
+
+## 2026-10-18 — Missilens ring skadar som en direktträff
+- Explosionsringen från en missil (när den sprängs av sig själv eller träffar något) skadar nu lika mycket som en direktträff: 12 för missil, 5 för guidad missil (förut 3). Skeppet som träffas direkt får inte skadan två gånger. D-068. Ej körd.
+
+## 2026-10-18 — Powerup Editor: CANNON och MISSILE
+- Två nya sidor i den hemliga Powerup Editor: CANNON (skada, hastighet, gravitation, laddtid, knuff) och MISSILE (hastighet, explosionstid, direktskada, ringens skada, ringens storlek, skadeavstånd, partiklar, knuff, väntetid). Missilens ring har nu fast storlek i världspixlar (som Mini Nuke). Race-inställningarnas g_sv-index flyttade till 100–102. D-069. Ej körd.

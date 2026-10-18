@@ -4,7 +4,7 @@
 //   GUIDED:   timer += 1; timer < 0: rakt; timer >= 225: borta utan att rora sig; annars styr mot narmaste levande spelare
 //             (OBS: inklusive agaren, som i originalet): v -= (d * F) >> 8, F = (108e6 + timer*0x493e0)/(d2 + 60000), |v| <= 0x1400.
 //   Traff i vagg: explosion. Traff i skepp: position -= v, energi -12 (MISSILE) / -5 (GUIDED), impuls (v_obj - v)*16 >> BOUNCE.
-var expired, wxp, wyp, tol, ff, sk, sa, ss, kd, hr;
+var expired, wxp, wyp, tol, ff, sk, sa, ss, kd, hr, ffx, kmul;
 kd = mtype;
 if (mtype == 3) { kd = 4; }   // Mini Nuke (powerup): explosionstyp 4
 expired = false;
@@ -76,16 +76,19 @@ if (g_hit_id != noone)
 {
     px -= vx;
     py -= vy;
+    kmul = 1;
+    if (mtype == 1) { kmul = g_ML_KNOCK; }   // KNOCKBACK i Powerup Editor (D-069)
     with (g_hit_id)
     {
         if (g_game_mode == 1) { scr_ad_hit(); }
         else if (g_game_mode == 2) { scr_race_hit(); }   // Race: icke-dodlig, bara fartminskning (D-055)   // Galaxy Duel: forsta traffen skadar, nasta dodar (D-051)
         else if (other.mtype == 3) { energy -= g_sv[g_SV_PU + 4]; }   // Mini Nuke: direktskada ur Powerup Editor
-        else if (other.mtype == 1) { energy -= 12; } else { energy -= 5; }
-        vx += floor((other.vx - vx) * 16 / power(2, bounce));
-        vy += floor((other.vy - vy) * 16 / power(2, bounce));
+        else if (other.mtype == 1) { energy -= g_DMG_MSL; } else { energy -= g_DMG_GUIDED; }
+        vx += floor((other.vx - vx) * 16 * kmul / power(2, bounce));
+        vy += floor((other.vy - vy) * 16 * kmul / power(2, bounce));
     }
     scr_spark_burst(wxp, wyp, 12 + irandom(5), 2.2, scr_slot_colour(g_hit_id.slot));
-    scr_fx_spawn(px, py, kd, g_FX_IMPACT);
+    ffx = scr_fx_spawn(px, py, kd, g_FX_IMPACT);
+    if (mtype != 3) { ffx.fdone[g_hit_id.slot] = 1; }   // skeppet som traffades direkt far inte ringens skada ocksa (D-068; Mini Nuke oforandrad: direktskada + chockvag)
     instance_destroy();
 }

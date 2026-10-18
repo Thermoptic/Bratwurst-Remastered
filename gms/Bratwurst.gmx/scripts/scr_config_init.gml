@@ -148,7 +148,7 @@ globalvar g_DRIFT_FUEL, g_DRIFT_RECHARGE;
 g_DRIFT_FUEL = 400;   // Drifting fuel (D-052): full matare = 8 s (400 ticks), andras av Powerup Editor -> DRIFT -> DRIFTING FUEL (scr_drift_apply)
 g_DRIFT_RECHARGE = 300;   // tom matare laddas pa exakt 6 s (300 ticks) och drift ar avstangd under tiden
 globalvar g_SV_MAP3, g_SV_LAPS, g_SV_PURA, g_mn_map_node3, g_race_t, g_race_target;
-g_SV_MAP3 = 60; g_SV_LAPS = 61; g_SV_PURA = 62;   // Race (D-053): bana, antal varv, powerups pa/av (g_sv-index efter powerup-parametrarna)
+g_SV_MAP3 = 100; g_SV_LAPS = 101; g_SV_PURA = 102;   // Race (D-053): bana, antal varv, powerups pa/av (g_sv-index efter powerup-parametrarna)
 g_mn_map_node3 = -1; g_race_t = 0; g_race_target = 3;
 g_sv[g_SV_MAP3] = 0; g_sv[g_SV_LAPS] = 3; g_sv[g_SV_PURA] = 0;
 globalvar g_ed_fon, g_ed_fx0, g_ed_fy0, g_ed_fx1, g_ed_fy1, g_ed_fdir, g_fin_on, g_fin_x0, g_fin_y0, g_fin_x1, g_fin_y1, g_fin_cx, g_fin_cy, g_fin_dx, g_fin_dy, g_fin_hw, g_fin_dir;
@@ -174,3 +174,8 @@ g_hw_w = 0; g_hw_cx = 0; g_hw_cy = 0;   // senaste vaggtraff (D-063): vagg och k
 globalvar g_wfr, g_fd_n, g_fd_x, g_fd_y, g_FR_NEAR, g_FR_FAR;
 g_wfr[0] = false; g_fd_n = 0; g_fd_x[0] = 0; g_fd_y[0] = 0;
 g_FR_NEAR = 400; g_FR_FAR = 1400;   // Arenans ytterram (D-066): full synlighet narmare an 400 varldspixlar fran ett skepp, osynlig langre bort an 1400 (dubblat efter test)
+globalvar g_DMG_MSL, g_DMG_GUIDED;
+g_DMG_MSL = 12; g_DMG_GUIDED = 5;   // missilens och den styrda missilens skada (energi): vid direktraff (originalet) och, sedan D-068, lika mycket fran explosionsringen
+globalvar g_CN_DMG, g_CN_SPD, g_CN_GRAV, g_CN_RELOAD, g_CN_KNOCK, g_ML_SPD, g_ML_FUSE, g_ML_BDMG, g_ML_BRAD, g_ML_DRAD, g_ML_PART, g_ML_KNOCK, g_ML_COOL;
+g_CN_DMG = 1; g_CN_SPD = 1; g_CN_GRAV = 1; g_CN_RELOAD = 1; g_CN_KNOCK = 1;   // kanonen (D-069): standardvarden = originalet; satts om fran Powerup Editor i scr_weapon_apply
+g_ML_SPD = 32; g_ML_FUSE = 50; g_ML_BDMG = 12; g_ML_BRAD = 60; g_ML_DRAD = 60; g_ML_PART = 100; g_ML_KNOCK = 1; g_ML_COOL = 1;   // missilen (g_DMG_MSL = direktskada)

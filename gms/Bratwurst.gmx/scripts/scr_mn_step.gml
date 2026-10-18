@@ -56,6 +56,7 @@ if (g_nv_ok)
         {
             scr_set_defaults();
             scr_drift_apply();
+            scr_weapon_apply();
             scr_theme_apply();
             scr_display_apply();
             g_n_players = g_sv[g_SV_PLAYERS];

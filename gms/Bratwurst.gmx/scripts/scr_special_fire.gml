@@ -4,7 +4,7 @@
 //   vapnet utfors fran den valda podden i riktning (vinkel + podvinkel), nedrakning = vapnets varde.
 // Hastigheter anvander de SKALADE fysiktabellerna g_psin/g_pcos (amplitud 160).
 // NOTHING (typ 0) gor ingenting (originalet drar ammo utan effekt; avvikelse).
-var p, a, t, m, ang_f, dxt, dyt, aim, dd, sh;
+var p, a, t, m, ang_f, dxt, dyt, aim, dd, sh, msp;
 if (sp_cool > 0) { sp_cool -= 1; }
 if (!in_special) { exit; }
 if (sp_cool > 0 || sp_ammo <= 0 || sp_wtype == 0 || sp_nsel <= 0) { exit; }
@@ -14,6 +14,7 @@ a = (ang + g_ship_pod_ang[ship, p]) mod 256;
 t = sp_wtype;
 sp_ammo -= 1;
 sp_cool = g_wcool[t];
+if (t == 1) { sp_cool = round(g_wcool[t] * g_ML_COOL); }   // COOLDOWN i Powerup Editor (D-069)
 
 if (t == 1 || t == 2)
 {
@@ -25,10 +26,14 @@ if (t == 1 || t == 2)
         m.owner = slot;
         m.px = pod_wx[p];
         m.py = pod_wy[p];
-        scr_boost_vel(-g_psin[a] * (32 + 32 * (g_game_mode == 1)), g_pcos[a] * (32 + 32 * (g_game_mode == 1)));   // Astro Duel: missilen gar dubbelt sa fort; + skeppets fart framat (D-042)
+        msp = 32;
+        if (t == 1) { msp = g_ML_SPD; }   // SPEED i Powerup Editor (D-069); styrda missilen oforandrad
+        if (g_game_mode == 1) { msp = msp * 2; }
+        scr_boost_vel(-g_psin[a] * msp, g_pcos[a] * msp);   // Astro Duel: missilen gar dubbelt sa fort; + skeppets fart framat (D-042)
         m.vx = vx * g_SHOT_INHERIT + g_bv_x;
         m.vy = vy * g_SHOT_INHERIT + g_bv_y;
-        if (t == 1) { m.mtimer = 50; scr_sfx_play(snd_sfx_missile, 1, 1); } else { m.mtimer = -25; scr_sfx_play(snd_sfx_guided, 1, 1); }
+        if (t == 1) { m.mtimer = g_ML_FUSE;   // EXPLOSION TIME i Powerup Editor (D-069)
+             scr_sfx_play(snd_sfx_missile, 1, 1); } else { m.mtimer = -25; scr_sfx_play(snd_sfx_guided, 1, 1); }
     }
 }
 if (t == 3)

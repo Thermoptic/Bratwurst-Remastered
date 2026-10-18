@@ -48,6 +48,7 @@ g_sv[g_SV_PLAYERS] = clamp(round(ini_read_real("gameplay", "players", g_sv[g_SV_
 g_sv[g_SV_ROUNDS] = clamp(round(ini_read_real("gameplay", "rounds", g_sv[g_SV_ROUNDS])), 1, 15);
 ini_close();
 scr_drift_apply();   // drift/reverse-installningarna till spelkodens variabler
+scr_weapon_apply();   // kanon- och missilinstallningarna (D-069)
 ini_open("settings.ini");
 s = ini_read_string("gameplay", "map", "");
 ini_close();

@@ -8,8 +8,8 @@ if (argument2 == 1 || argument2 == 2)
     // stor explosion: partikelmoln (pixlar) ut at alla hall; guidad missil lite mindre
     if (argument2 == 1)
     {
-        scr_spark_burst(floor(argument0 / 256), floor(argument1 / 256), 70, 4.2 * argument3, g_c[9]);
-        scr_spark_burst(floor(argument0 / 256), floor(argument1 / 256), 30, 2.2 * argument3, g_c[10]);
+        scr_spark_burst(floor(argument0 / 256), floor(argument1 / 256), round(g_ML_PART * 0.7), 4.2 * argument3, g_c[9]);   // PARTICLES i Powerup Editor (D-069): 70 % + 30 %
+        scr_spark_burst(floor(argument0 / 256), floor(argument1 / 256), round(g_ML_PART * 0.3), 2.2 * argument3, g_c[10]);
     }
     else
     {
@@ -33,4 +33,6 @@ f.fkind = argument2;
 f.fsize = argument3;
 f.fdone[0] = 0; f.fdone[1] = 0; f.fdone[2] = 0; f.fdone[3] = 0;   // vilka skepp ringen redan skadat
 if (argument2 == 1) { f.fmax = 14; } else { f.fmax = 9; }
+if (argument2 == 1) { f.rmax = g_ML_BRAD * argument3; f.drad = g_ML_DRAD * argument3; }   // missilens ring och skadeavstand i varldspixlar (D-069)
 if (argument2 == 4) { f.fmax = 32; f.rmax = g_sv[g_SV_PU + 2]; }   // chockvagens slutradie i varldspixlar
+return f;   // ringen (obj_fx), sa att anroparen kan markera skepp som redan skadats (D-068)

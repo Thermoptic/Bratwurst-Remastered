@@ -7,7 +7,7 @@
     <datafile>
       <name>updates.txt</name>
       <exists>-1</exists>
-      <size>21976</size>
+      <size>22579</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -402,6 +402,7 @@
     <script>scripts\scr_frame_players.gml</script>
     <script>scripts\scr_frame_prepare.gml</script>
     <script>scripts\scr_poly_has_point.gml</script>
+    <script>scripts\scr_weapon_apply.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_lg_k10</font>

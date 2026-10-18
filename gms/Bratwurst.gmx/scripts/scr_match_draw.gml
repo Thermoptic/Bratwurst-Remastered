@@ -122,6 +122,18 @@ with (obj_fx)
         draw_circle(fx4, fy4, rsk * 0.55, true);
         draw_set_alpha(1);
     }
+    else if (fkind == 1)
+    {
+        // missilens explosionsring: vaxer till BLAST RADIUS (varldspixlar, zoom-oberoende som Mini Nuke) med en inre ring (D-069)
+        var rwm, rsm, fxm, fym;
+        rwm = rmax * (0.1 + 0.9 * ftimer / fmax);
+        rsm = rwm * g_zoom / 32768 * g_SCALE;
+        fxm = g_OX + (px / 256 * g_zoom / 32768 - g_cam_x + g_CX) * g_SCALE;
+        fym = g_OY + (py / 256 * g_zoom / 32768 - g_cam_y + g_CY) * g_SCALE;
+        draw_set_color(g_c[8]);
+        draw_circle(fxm, fym, rsm, true);
+        draw_circle(fxm, fym, rsm * 0.5, true);
+    }
     else
     {
         // explosionsring med dubbel radie mot tidigare (6 + 4 per tick) och en inre ring
