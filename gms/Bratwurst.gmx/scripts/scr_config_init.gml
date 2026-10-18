@@ -165,3 +165,5 @@ globalvar g_rk_a, g_rk_u, g_rk_n, g_rk_ahead;
 g_rk_a = noone; g_rk_u = false; g_rk_n = 0; g_rk_ahead = 0;   // Race (D-057): hjalpvariabler for scr_race_pos
 globalvar g_race_el, g_rr_n, g_rr_id, g_rr_slot, g_rr_ft, g_rr_fin, g_rr_dnf, g_rr_nm;
 g_race_el = -1; g_rr_n = 0; g_rr_id[0] = noone; g_rr_slot[0] = 0; g_rr_ft[0] = 0; g_rr_fin[0] = false; g_rr_dnf[0] = false; g_rr_nm[0] = "";   // Race (D-058): utslagsnedrakning och resultatlista
+globalvar g_race_cd, g_race_go;
+g_race_cd = 0; g_race_go = 0;   // Race (D-060): startnedrakning i ticks (150 = 3, 2, 1) och hur lange GO! visas (50)

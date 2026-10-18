@@ -313,3 +313,6 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | RACE-065 | Tryck A/Enter/Space efter en sekund | Nästa race startar (eller slutresultatet) |
 | RACE-066 | Ställ in 2 varv och 2 rundor | Antalen respekteras; rundvinster räknas |
 | RACE-067 | En ensam spelare i mål; sista spelaren kommer i mål under nedräkningen | Inget hänger sig; nedräkningen avbryts |
+| RACE-S8-40 | Starta ett race och varje ny runda | Stor 3, 2, 1 i mitten, sedan GO!; gas och backning går inte innan GO!, svängning går; racetiden börjar vid GO! |
+| RACE-S8-41 | Pausa under nedräkningen | Nedräkningen står stilla och fortsätter efter paus |
+| RACE-S8-42 | Alla utom en kommer i mål | Den sista racern får `ELIMINATED IN 4…1` och exploderar |

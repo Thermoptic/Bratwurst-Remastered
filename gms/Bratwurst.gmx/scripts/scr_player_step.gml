@@ -16,6 +16,11 @@ if (!alive)
     exit;
 }
 scr_player_input();
+if (g_game_mode == 2 && g_race_cd > 0)
+{
+    // Race: under startnedrakningen kan man inte gasa (och inte backa) (D-060)
+    in_thrust = false; in_drift = false;
+}
 if (g_game_mode == 2 && race_fin)
 {
     // Race: ett skepp som kommit i mal skjuter inte och anvander inga vapen (D-058)

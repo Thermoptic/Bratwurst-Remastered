@@ -4,6 +4,8 @@
 var k;
 g_race_t = 0;
 g_race_el = -1;
+g_race_cd = 150;   // 3, 2, 1 (3 s) innan man far gasa; sedan GO! (D-060)
+g_race_go = 0;
 g_race_target = g_sv[g_SV_LAPS];
 for (k = 0; k < g_pk_n; k += 1)
 {

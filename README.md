@@ -12,6 +12,11 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 38 - 2026-10-18 - Race countdown
+
+- Race starts with a big countdown in the middle of the screen: 3, 2, 1, GO! You cannot thrust until GO!, and the race time starts then.
+- Fullscreen: the Windows key no longer makes the game flicker out and back in. Alt+Tab still leaves fullscreen right away.
+
 ### UPDATE 37 - 2026-10-18 - Race positions and results
 
 - Race position: the panel shows POS x / N. It depends on finished ships, laps, who crossed the finish box first and the start order.

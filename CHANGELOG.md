@@ -474,3 +474,10 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-18 — Race, steg 6 (mål, utslagning, resultat)
 - Race: skepp som kommit i mål blir spöken (skjuter inte, kolliderar inte, kan inte träffas). Är alla klara slutar racet; är bara en racer kvar får den 4 s och exploderar sedan (nedräkning i panelen). Resultatrutan visar vinnare, placeringar och tider (eller ELIMINATED/DID NOT FINISH) och `PRESS TO ENTER NEXT RACE`; vinnaren får en rundvinst. `scr_race_step`, `scr_race_eliminate`, `scr_race_round_end`, `scr_race_results_draw`, `scr_round_over_step`, `scr_game_step`, träff- och kollisionsskript. D-058. Ej körd.
+
+## 2026-10-18 — Race, steg 8 (granskning)
+- Statisk regressionsgranskning och testlista för Race (`docs/race/RACE_STAGE8_CHECKLIST.md`). Inga kodändringar. Kända begränsningar och öppna beslut listade. D-059. Ej körd.
+
+- Race: stor startnedräkning 3, 2, 1, GO! i mitten av spelytan; gas och backning avstängda tills GO! (racetiden startar då). D-060. Ej körd.
+
+- Helskärm: Windows-tangenten får inte längre spelet att flimra ut och in; endast Alt+Tab lämnar helskärmen direkt, annars efter 5 ticks utan fokus. D-045 tillägg 2. Ej körd.
