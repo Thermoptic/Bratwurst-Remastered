@@ -465,3 +465,6 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-18 — Race, steg 3
 - Race: alla börjar utan ammo (kanon och specialvapen) och med drift avstängd (ingen automatisk laddning). Ett kanonskott kostar 1 ammo. Vapenträffar (skott, missil, Mini Nuke, chockvåg, stråle) skadar och dödar inte utan ger 20 % fart i 3 sekunder (förnyas, staplas inte). Panelen visar fartminskningen som `SL` i stället för energi. `scr_race_hit`, `scr_player_step`, `scr_player_respawn`, `scr_shot_step`, `scr_missile_step`, `scr_fx_damage`, `scr_beam_step`, `scr_hud_panel`. D-055. Ej körd.
+
+## 2026-10-18 — Race, steg 4 (pickups)
+- Banredigeraren: verktyg **O** placerar, flyttar och (med X) tar bort runda pickuppunkter (högst 16, sparas som `pickups` i `levels.ini`). I Race ger en pickup exakt ett skott Plasma, en missil, en styrd missil eller fullt drivmedel för drift (slumpat tills steg 5), väljer vapnet automatiskt, försvinner i 5 s och kommer tillbaka på samma plats; meddelande i panelen. `scr_pickup_step`, `scr_pickup_grant`, `scr_pickup_draw`, `scr_level_parse_pickups`, `scr_ed_pk_pick`, `scr_ed_step/draw`, `scr_level_read/write/apply`. D-056. Ej körd.

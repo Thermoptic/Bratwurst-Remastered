@@ -298,3 +298,11 @@
 - **Väggkrasch:** ingen skada (D-053). Därmed ändras energin aldrig i Race.
 - **HUD:** raden `EN` ersätts i Race av `SL` (röd stapel som töms på 3 s, fartminskningens återstående tid); `AM` visar kanonammot, `AB` drivmedlet.
 - **Ej körd i GMS.**
+
+## D-056 — Race, steg 4: pickups
+- **Pickuppunkter (redigeraren, verktyg O):** upp till 16 per bana (`g_PK_MAX`). Klick placerar en punkt (rutnätssnäppt); klick på en befintlig punkt tar upp den för flytt (klicka igen där den ska ligga; högerklick avbryter); X-verktyget tar bort punkten. Sparas som valfri nyckel `pickups = x,y;x,y;...` i `levels.ini` (banor utan nyckeln laddas som förut). Punkterna är generiska: vad man får avgörs vid upplockningen.
+- **Livscykel (`scr_pickup_step`, per tick):** alla punkter är aktiva vid racets start (`scr_race_reset`). Ett levande skepp som inte är klart tar en punkt när skeppets mittpunkt eller någon konturpunkt ligger inom `g_PU_RADIUS` (36). Punkten försvinner i `g_PK_RESPAWN` = 250 ticks (5 s) och är sedan tillbaka på samma plats. Rör flera skepp punkten samma tick får det närmaste den (aldrig två).
+- **Utdelning (`scr_pickup_grant`):** exakt ett av: **Plasma** (`cannon_ammo` = 1), **Missile** (1 skott, specialvapnet väljs automatiskt), **Guided Missile** (1 skott, väljs automatiskt) eller **Drift** (`drift_fuel` = fullt standardmått, `drift_rc` = false; DRIFTING FUEL, 8 s). Mängden *sätts* (ingen stapling): ett nytt specialvapen ersätter det gamla, en ny drift-pickup fyller bara upp till fullt. Skepp utan markerad specialpod använder första podden. Vapenbyte med Back är avstängt i Race (vapnet väljs av pickupen).
+- **TILLFÄLLIGT i steg 4:** föremålet slumpas bland alla fyra med lika sannolikhet. Steg 5 byter till rangordnade nivåer (ledare bara Plasma, mitten Plasma/Missile, sist Drift/Guided Missile).
+- **Visning:** runda orangea bollar (glöd, mörk kärna, pulserande), tydligt skilda från målrutan och powerup-orben; panelens rad `IT` visar vad man fick i två sekunder (`PLASMA ACQUIRED`, `MISSILE ACQUIRED`, `GUIDED MISSILE ACQUIRED`, `DRIFT UNLOCKED`) i stället för livraden; ljud: träffljudet.
+- **Ej körd i GMS.**

@@ -5,6 +5,7 @@ g_ed_idx = argument0;
 g_ed_tool = 0;
 g_ed_cn = 0;
 g_ed_bset = false;
+g_ed_pkmv = -1;
 g_ed_spawn = 0;
 g_ed_dirty = false;
 g_ed_cdel = 0;

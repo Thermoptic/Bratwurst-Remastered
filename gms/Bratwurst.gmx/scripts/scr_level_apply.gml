@@ -43,6 +43,15 @@ if (g_fin_on)
     if (g_fin_dir == 3) { g_fin_dx = -1; }
     if (g_fin_dx != 0) { g_fin_hw = (g_fin_y1 - g_fin_y0) / 2; } else { g_fin_hw = (g_fin_x1 - g_fin_x0) / 2; }
 }
+// Race (D-056): pickuppunkter (aktiva fran start, scr_race_reset nollstaller dem)
+g_pk_n = g_ed_pk_n;
+for (k = 0; k < g_pk_n; k += 1)
+{
+    g_pk_x[k] = g_ed_pkx[k];
+    g_pk_y[k] = g_ed_pky[k];
+    g_pk_on[k] = true;
+    g_pk_t[k] = 0;
+}
 for (k = 0; k < 4; k += 1)
 {
     g_start_x[k] = g_ed_sx[k];

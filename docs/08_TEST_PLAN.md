@@ -287,3 +287,14 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | RACE-032 | Träffa igen under de 3 s | Tiden startar om; inte långsammare än 20 % |
 | RACE-033 | Träffa med skott, missil, Mini Nuke, chockvåg och railgun | Ingen dör eller förlorar energi; alla ger samma slow |
 | RACE-034 | Classic, Galaxy Duel och Asteroids | Vapenträffar och energi som förut |
+| RACE-040 | Starta ett race på en bana med pickuppunkter | Alla bollar syns från start |
+| RACE-041 | Ta en pickup tills du får Plasma | AM visar 1 skott, ett tryck på A avfyrar, därefter 0 |
+| RACE-042 | Få Missile | SP visar MSL 1 och valt automatiskt; Y avfyrar en missil, därefter 0 |
+| RACE-043 | Få Guided Missile | SP visar GUIDED 1 och valt; Y avfyrar en, därefter 0 |
+| RACE-044 | Få Drift | AB-mätaren blir full; drift går att använda |
+| RACE-045 | Töm drivmedlet | Det laddas inte om; drift är avstängd tills en ny drift-pickup |
+| RACE-046 | Ta en pickup och vänta | Den är tillbaka på samma plats efter 5 s |
+| RACE-047 | Två skepp rör samma boll samma stund | Bara ett får den |
+| RACE-048 | Ta flera pickups av samma sort | Ammo blir aldrig mer än 1; drift aldrig mer än fullt |
+| RACE-071 | Redigeraren: O placerar, klick på punkt flyttar, X tar bort, spara och öppna igen | Punkterna finns kvar |
+| RACE-030 | Träffa ett skepp med ett skott/missil som kommit från pickup | Slow 20 % i 3 s (se D-055) |

@@ -157,3 +157,7 @@ g_fin_on = false; g_fin_x0 = 0; g_fin_y0 = 0; g_fin_x1 = 0; g_fin_y1 = 0; g_fin_
 globalvar g_RACE_SLOW, g_RACE_SLOW_TICKS;
 g_RACE_SLOW = 0.2;   // Race (D-055): ett vapen som traffar ger 20 % av normal fart ...
 g_RACE_SLOW_TICKS = 150;   // ... i 3 s (50 ticks/s); ny traff startar om tiden
+globalvar g_PK_MAX, g_PK_RESPAWN, g_ed_pk_n, g_ed_pkx, g_ed_pky, g_ed_pkmv, g_pk_n, g_pk_x, g_pk_y, g_pk_on, g_pk_t, g_pk_who, g_pk_bd, g_pk_cx, g_pk_cy, g_pk_dd;
+g_PK_MAX = 16; g_PK_RESPAWN = 250;   // Race (D-056): hogst 16 pickuppunkter per bana; en tagen pickup kommer tillbaka efter 5 s
+g_ed_pk_n = 0; g_ed_pkx[0] = 0; g_ed_pky[0] = 0; g_ed_pkmv = -1;
+g_pk_n = 0; g_pk_x[0] = 0; g_pk_y[0] = 0; g_pk_on[0] = false; g_pk_t[0] = 0; g_pk_who = noone; g_pk_bd = 0; g_pk_cx = 0; g_pk_cy = 0; g_pk_dd = 0;

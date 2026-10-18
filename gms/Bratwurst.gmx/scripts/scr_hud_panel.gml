@@ -60,11 +60,20 @@ else
 scr_ui_text(px + 12, y0 + 18, "AM", g_c[4]);
 fr = p.cannon_ammo / max(1, p.ammo_max);
 scr_ui_bar(px + 42, y0 + 22, bw, 10, fr, c);
-scr_ui_text(px + 12, y0 + 36, "LV", g_c[4]);
-for (i = 0; i < g_lives_max; i += 1)
+if (g_game_mode == 2)
 {
-    if (i < p.p_lives) { draw_set_color(c); draw_rectangle(px + 42 + i * 18, y0 + 40, px + 51 + i * 18, y0 + 49, false); }
-    else { draw_set_color(g_c[3]); draw_rectangle(px + 42 + i * 18, y0 + 40, px + 51 + i * 18, y0 + 49, true); }
+    // Race (D-056): inga liv; raden visar senaste pickup en stund
+    scr_ui_text(px + 12, y0 + 36, "IT", g_c[4]);
+    if (p.race_msg_t > 0) { scr_ui_text(px + 42, y0 + 36, p.race_msg, g_c[11]); }
+}
+else
+{
+    scr_ui_text(px + 12, y0 + 36, "LV", g_c[4]);
+    for (i = 0; i < g_lives_max; i += 1)
+    {
+        if (i < p.p_lives) { draw_set_color(c); draw_rectangle(px + 42 + i * 18, y0 + 40, px + 51 + i * 18, y0 + 49, false); }
+        else { draw_set_color(g_c[3]); draw_rectangle(px + 42 + i * 18, y0 + 40, px + 51 + i * 18, y0 + 49, true); }
+    }
 }
 }
 scr_ui_text(px + 12, y0 + 54, "SP", g_c[4]);

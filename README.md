@@ -12,6 +12,12 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 36 - 2026-10-18 - Race pickups
+
+- Race pickups: round orange balls on the course. Fly into one to get a single plasma shot, a missile, a guided missile or a full drift fuel meter. The weapon is selected for you. The ball comes back after 5 seconds.
+- Map editor: new tool O places, moves and (with X) removes pickup points, up to 16 per map.
+- For now the pickup you get is random. Soon it will depend on your race position.
+
 ### UPDATE 35 - 2026-10-18 - Race weapons
 
 - In Race everyone starts with no ammo and no drift. The cannon uses one ammo per shot, and drift fuel does not recharge on its own.

@@ -50,6 +50,18 @@ if (g_ed_fon)
     scr_fin_arrows(sx0, sy0, sx1, sy1, g_ed_fdir, col, g_ed_x0, g_ed_y0, g_ed_x0 + g_ed_w, g_ed_y0 + g_ed_h, 4);
 }
 
+// Race: pickuppunkter (runda markorer; den som flyttas ar vit)
+for (i = 0; i < g_ed_pk_n; i += 1)
+{
+    sx0 = g_ed_cxs + g_ed_pkx[i] * g_ed_es;
+    sy0 = g_ed_cys + g_ed_pky[i] * g_ed_es;
+    if (i == g_ed_pkmv) { draw_set_color(g_c[6]); }
+    else if (g_ed_tool == 2 && g_ed_inside && scr_ed_pk_pick(g_ed_wx, g_ed_wy) == i) { draw_set_color(g_c[8]); }
+    else { draw_set_color(g_c[9]); }
+    draw_circle(sx0, sy0, 7, true);
+    draw_circle(sx0, sy0, 3, false);
+}
+
 // pagaende polygon / rektangel
 draw_set_color(g_acc);
 for (i = 0; i < g_ed_cn; i += 1)
@@ -97,10 +109,11 @@ if (g_ed_tool == 1) { tool_name = "POLYGON"; }
 if (g_ed_tool == 2) { tool_name = "ERASE"; }
 if (g_ed_tool == 3) { tool_name = "SPAWN P" + string(g_ed_spawn + 1); }
 if (g_ed_tool == 4) { tool_name = "FINISH LINE"; }
+if (g_ed_tool == 5) { tool_name = "PICKUP POINT"; }
 line_y = g_ed_y0 + 24;
 scr_ui_text(tx + 16, line_y, "TOOL    " + tool_name, g_acc);
 scr_ui_text(tx + 16, line_y + 20, "SHAPES  " + string(g_ed_n) + " / 64", g_c[5]);
-scr_ui_text(tx + 16, line_y + 40, "GRID    " + string(g_ed_snap) + " PX", g_c[5]);
+scr_ui_text(tx + 16, line_y + 40, "GRID    " + string(g_ed_snap) + " PX   PICKUPS " + string(g_ed_pk_n), g_c[5]);
 if (g_ed_inside) { scr_ui_text(tx + 16, line_y + 60, "CURSOR  " + string(g_ed_mx) + ", " + string(g_ed_my), g_c[5]); }
 else { scr_ui_text(tx + 16, line_y + 60, "CURSOR  -", g_c[3]); }
 line_y += 100;
@@ -115,8 +128,10 @@ scr_ui_text(tx + 16, line_y + 140, "G  GRID 25 / 50 / 100", g_c[4]);
 scr_ui_text(tx + 16, line_y + 160, "U  UNDO LAST SHAPE", g_c[4]);
 scr_ui_text(tx + 16, line_y + 180, "F  FINISH LINE (RACE, 2 CORNERS,", g_c[4]);
 scr_ui_text(tx + 16, line_y + 200, "   WHEEL TURNS THE ARROWS)", g_c[4]);
-scr_ui_text(tx + 16, line_y + 220, "RIGHT CLICK  CANCEL", g_c[4]);
-line_y += 254;
+scr_ui_text(tx + 16, line_y + 220, "O  PICKUP POINT (RACE, CLICK PLACES", g_c[4]);
+scr_ui_text(tx + 16, line_y + 240, "   OR PICKS UP / MOVES, X DELETES)", g_c[4]);
+scr_ui_text(tx + 16, line_y + 260, "RIGHT CLICK  CANCEL", g_c[4]);
+line_y += 294;
 scr_ui_text(tx + 16, line_y, "S  SAVE (NAME + MODES)", g_c[11]);
 scr_ui_text(tx + 16, line_y + 20, "N  NEW MAP    L  LOAD MAP", g_c[4]);
 scr_ui_text(tx + 16, line_y + 40, "[ ]  PREVIOUS / NEXT MAP", g_c[4]);

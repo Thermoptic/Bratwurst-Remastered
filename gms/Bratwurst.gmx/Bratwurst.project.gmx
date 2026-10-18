@@ -7,7 +7,7 @@
     <datafile>
       <name>updates.txt</name>
       <exists>-1</exists>
-      <size>18535</size>
+      <size>18973</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -376,6 +376,11 @@
     <script>scripts\scr_fin_draw.gml</script>
     <script>scripts\scr_level_parse_finish.gml</script>
     <script>scripts\scr_race_hit.gml</script>
+    <script>scripts\scr_ed_pk_pick.gml</script>
+    <script>scripts\scr_level_parse_pickups.gml</script>
+    <script>scripts\scr_pickup_draw.gml</script>
+    <script>scripts\scr_pickup_grant.gml</script>
+    <script>scripts\scr_pickup_step.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_lg_k10</font>

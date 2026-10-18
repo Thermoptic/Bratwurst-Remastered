@@ -17,7 +17,8 @@ if (!alive)
 }
 scr_player_input();
 if (ad_inv > 0) { ad_inv -= 1; }
-if (race_slow > 0) { race_slow -= 1; }   // Race: fartminskning efter vapentraff (D-055)
+if (race_slow > 0) { race_slow -= 1; }
+if (race_msg_t > 0) { race_msg_t -= 1; }   // Race: fartminskning efter vapentraff (D-055)
 if (g_game_mode == 1 && ad_dmg > 0)
 {
     // Galaxy Duel (D-051): skadat skepp, 6 s. Bara gas och svang; inga vapen (kanon, specialvapen, powerup). Skadan repareras sjalv.
@@ -28,7 +29,7 @@ if (g_game_mode == 1 && ad_dmg > 0)
 }
 if (in_shipcyc && g_game_mode != 2) { scr_player_change_ship(1); }   // test: byt skepp under matchen
 if ((in_podcyc || in_psel) && sp_nsel > 0) { sp_pod_i = (sp_pod_i + 1) mod sp_nsel; }   // byt specialpod (position pa skeppet) under matchen
-if (in_wsel) { scr_special_switch(); }   // byt specialvapen under matchen
+if (in_wsel && g_game_mode != 2) { scr_special_switch(); }   // byt specialvapen under matchen
 
 if (boost_timer > 0) { boost_timer -= 1; }
 prev_px = px; prev_py = py; prev_ang = ang;

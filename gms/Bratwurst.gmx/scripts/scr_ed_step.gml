@@ -14,6 +14,7 @@ if (keyboard_check_pressed(ord("B"))) { g_ed_tool = 0; g_ed_cn = 0; g_ed_bset = 
 if (keyboard_check_pressed(ord("P"))) { g_ed_tool = 1; g_ed_cn = 0; g_ed_bset = false; }
 if (keyboard_check_pressed(ord("X"))) { g_ed_tool = 2; g_ed_cn = 0; g_ed_bset = false; }
 if (keyboard_check_pressed(ord("T"))) { g_ed_tool = 3; g_ed_cn = 0; g_ed_bset = false; }
+if (keyboard_check_pressed(ord("O"))) { g_ed_tool = 5; g_ed_cn = 0; g_ed_bset = false; g_ed_pkmv = -1; }   // Race: pickuppunkter (D-056)
 if (keyboard_check_pressed(ord("F"))) { g_ed_tool = 4; g_ed_cn = 0; g_ed_bset = false; }   // Race: start/malruta (D-054)
 for (k = 0; k < 4; k += 1)
 {
@@ -44,7 +45,7 @@ if (keyboard_check_pressed(vk_enter) && g_ed_tool == 1)
 {
     if (!scr_ed_add_shape()) { scr_ed_msg("A POLYGON NEEDS AT LEAST 3 POINTS"); }
 }
-if (mouse_check_button_pressed(mb_right)) { g_ed_cn = 0; g_ed_bset = false; }
+if (mouse_check_button_pressed(mb_right)) { g_ed_cn = 0; g_ed_bset = false; g_ed_pkmv = -1; }
 
 // spara / ny bana / byta bana / ta bort bana
 if (keyboard_check_pressed(ord("S")))
@@ -152,9 +153,42 @@ if (g_ed_inside && mouse_check_button_pressed(mb_left))
     }
     else if (g_ed_tool == 2)
     {
+        k = scr_ed_pk_pick(g_ed_wx, g_ed_wy);
         s = scr_ed_pick(g_ed_wx, g_ed_wy);
-        if (s >= 0) { scr_ed_delete_shape(s); }
+        if (k >= 0)
+        {
+            // pickuppunkt: ta bort och packa ihop listan
+            for (s = k; s < g_ed_pk_n - 1; s += 1) { g_ed_pkx[s] = g_ed_pkx[s + 1]; g_ed_pky[s] = g_ed_pky[s + 1]; }
+            g_ed_pk_n -= 1;
+            g_ed_dirty = true;
+            scr_ed_msg("PICKUP POINT REMOVED");
+        }
+        else if (s >= 0) { scr_ed_delete_shape(s); }
         else if (scr_ed_in_finish(g_ed_wx, g_ed_wy)) { g_ed_fon = false; g_ed_dirty = true; scr_ed_msg("FINISH LINE REMOVED"); }
+    }
+    else if (g_ed_tool == 5)
+    {
+        // pickuppunkter: klicka pa en befintlig punkt for att flytta den (klicka igen dar den ska ligga), annars placeras en ny
+        if (g_ed_pkmv >= 0)
+        {
+            g_ed_pkx[g_ed_pkmv] = g_ed_mx;
+            g_ed_pky[g_ed_pkmv] = g_ed_my;
+            g_ed_pkmv = -1;
+            g_ed_dirty = true;
+        }
+        else
+        {
+            k = scr_ed_pk_pick(g_ed_wx, g_ed_wy);
+            if (k >= 0) { g_ed_pkmv = k; scr_ed_msg("CLICK WHERE THE PICKUP POINT SHOULD BE (RIGHT CLICK CANCELS)"); }
+            else if (g_ed_pk_n < g_PK_MAX)
+            {
+                g_ed_pkx[g_ed_pk_n] = g_ed_mx;
+                g_ed_pky[g_ed_pk_n] = g_ed_my;
+                g_ed_pk_n += 1;
+                g_ed_dirty = true;
+            }
+            else { scr_ed_msg("TOO MANY PICKUP POINTS (MAX 16)"); }
+        }
     }
     else if (g_ed_tool == 4)
     {
