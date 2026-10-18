@@ -1,6 +1,9 @@
 BRATWURST REHEATED - UPDATES
 Newest first. Only the big changes and new features are listed.
 
+== UPDATE 42 - 2026-10-18 - LCD countdown ==
+* The Race countdown (3, 2, 1, GO!) is now drawn like a digital LCD display with straight segments and no rounded corners.
+
 == UPDATE 41 - 2026-10-18 - Sliding along walls ==
 * Ships no longer get stuck on walls. When you hit a wall you now slide along it and slow down. The more the nose points into the wall, the more you slow down, and you can turn away and keep flying.
 * Sparks fly from the ship while it scrapes along a wall.

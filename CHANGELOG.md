@@ -490,3 +490,5 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-18 — Väggkontakt: glid och gnistor
 - Skepp som träffar en vägg fastnar inte längre: de glider längs väggen och saktas ned, mer ju mer nosen pekar mot den, med gnistor medan de slipar. Skada bara av normalfarten. `scr_wall_slide`, `scr_player_hits_wall`, `scr_player_step`. D-063. Ej körd.
+
+- Race-nedräkningen ritas i digital LCD-stil (raka segment, inga rundade kanter). D-064. Ej körd.

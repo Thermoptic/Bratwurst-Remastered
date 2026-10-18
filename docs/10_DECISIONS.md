@@ -353,3 +353,6 @@
   - **Gnistor:** en stor smäll vid ny kontakt (som förut, men vid kontaktpunkten), och 1–4 gula gnistor per tick medan det släpar mot väggen (fler ju snabbare och ju mer nosen pekar mot väggen).
   - **Skada** (Classic och Asteroids; ingen skada i Galaxy Duel och Race): originalets formel `(v² >> 16 >> 6)` på normalfarten, +1 bara vid ny kontakt (`wall_c`), så att slipande mot en vägg inte tömmer energin.
 - **Kontroll (Python, punktskepp mot en lodrät vägg, 300 ticks):** vid 20° mot väggen glider skeppet drygt 1 100 px längs den (gamla metoden: 65 px), vid 45° och 70° ännu längre, vid rak träff står det kvar nära väggen med låg fart. **Ej körd i GMS.**
+
+## D-064 — Nedräkningen i digital LCD-stil
+- **Beslut (användaren):** siffrorna i startnedräkningen (D-060/D-062) såg konstiga ut med rundade former. De ritas nu som en digital sjusegments-LCD av raka, fyllda staplar utan rundade kanter (`scr_lcd_char`, anropas av `scr_race_cd_draw`): 3, 2, 1 och sedan GO!. Segmenten har en liten glugg mellan sig som på en riktig LCD; skuggan är en mörk, förskjuten kopia. Teckenhöjd 20 % av spelytans höjd. De oanvända vektorglyferna för 1, 2, 3, G, O och ! i logotypen togs bort igen. Ej körd i GMS.

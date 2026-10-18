@@ -12,6 +12,10 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 42 - 2026-10-18 - LCD countdown
+
+- The Race countdown (3, 2, 1, GO!) is now drawn like a digital LCD display with straight segments and no rounded corners.
+
 ### UPDATE 41 - 2026-10-18 - Sliding along walls
 
 - Ships no longer get stuck on walls. When you hit a wall you now slide along it and slow down. The more the nose points into the wall, the more you slow down, and you can turn away and keep flying.

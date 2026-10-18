@@ -333,3 +333,4 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | WALL-04 | Flyg in i ett hörn, och puffa ett skepp in i en vägg med ett annat | Skeppet fastnar inte i väggen; trycks ut |
 | WALL-05 | Classic: energi vid träff och släp | Hård träff tar energi enligt originalformeln, släp mot vägg tar (nästan) ingen |
 | WALL-06 | Galaxy Duel och Race | Ingen väggskada, men samma glid och gnistor |
+| RACE-S8-54 | Startnedräkningen | 3, 2, 1 och GO! visas som raka LCD-segment, skarpa, centrerade i spelytan |
