@@ -327,3 +327,9 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | RACE-S8-51 | Spara en bana med Race ikryssat och målruta; öppna Race-menyn | Banan finns i Race-listan |
 | RACE-S8-52 | Inga Race-banor | MAP visar `NO RACE MAPS`, START gör inget |
 | RACE-S8-53 | Startnedräkningen | 3, 2, 1, GO! är skarpa vektorlinjer i mitten, även vid fullskärm och olika fönsterstorlekar |
+| WALL-01 | Flyg rakt in i en vägg och håll gasen | Skeppet studsar lite, saktas ned och går att vrida loss; inga fastnade lägen |
+| WALL-02 | Flyg i grund vinkel (cirka 20°) mot en vägg | Glider längs väggen och fortsätter, gnistor hela vägen |
+| WALL-03 | Flyg i brant vinkel (cirka 70°) | Saktas ned kraftigare ju mer nosen pekar mot väggen |
+| WALL-04 | Flyg in i ett hörn, och puffa ett skepp in i en vägg med ett annat | Skeppet fastnar inte i väggen; trycks ut |
+| WALL-05 | Classic: energi vid träff och släp | Hård träff tar energi enligt originalformeln, släp mot vägg tar (nästan) ingen |
+| WALL-06 | Galaxy Duel och Race | Ingen väggskada, men samma glid och gnistor |

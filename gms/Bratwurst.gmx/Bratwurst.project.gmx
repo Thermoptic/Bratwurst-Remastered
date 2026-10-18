@@ -7,7 +7,7 @@
     <datafile>
       <name>updates.txt</name>
       <exists>-1</exists>
-      <size>20870</size>
+      <size>21282</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -395,6 +395,7 @@
     <script>scripts\scr_ed_zoom.gml</script>
     <script>scripts\scr_levels_race_migrate.gml</script>
     <script>scripts\scr_race_maps.gml</script>
+    <script>scripts\scr_wall_slide.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_lg_k10</font>

@@ -169,3 +169,5 @@ globalvar g_race_cd, g_race_go;
 g_race_cd = 0; g_race_go = 0;   // Race (D-060): startnedrakning i ticks (150 = 3, 2, 1) och hur lange GO! visas (50)
 globalvar g_ed_zoom, g_ed_panx, g_ed_pany, g_ed_pan_on, g_ed_pan_sx, g_ed_pan_sy, g_ed_pan_px, g_ed_pan_py;
 g_ed_zoom = 1; g_ed_panx = 0; g_ed_pany = 0; g_ed_pan_on = false; g_ed_pan_sx = 0; g_ed_pan_sy = 0; g_ed_pan_px = 0; g_ed_pan_py = 0;   // Banredigerarens vy (D-061): zoom och panorering
+globalvar g_hw_w, g_hw_cx, g_hw_cy;
+g_hw_w = 0; g_hw_cx = 0; g_hw_cy = 0;   // senaste vaggtraff (D-063): vagg och kontaktpunkt i varldspixlar

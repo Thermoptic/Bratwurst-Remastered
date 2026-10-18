@@ -12,6 +12,12 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 41 - 2026-10-18 - Sliding along walls
+
+- Ships no longer get stuck on walls. When you hit a wall you now slide along it and slow down. The more the nose points into the wall, the more you slow down, and you can turn away and keep flying.
+- Sparks fly from the ship while it scrapes along a wall.
+- Wall damage now depends on how hard you hit the wall head-on, so scraping along a wall hardly hurts.
+
 ### UPDATE 40 - 2026-10-18 - Race maps and countdown
 
 - Race now only lists maps that were saved with Race ticked in the map editor. If there are none, the map row says NO RACE MAPS and START is locked. New maps start as Classic and Galaxy Duel only. Older maps without a finish box lose their Race mark once.

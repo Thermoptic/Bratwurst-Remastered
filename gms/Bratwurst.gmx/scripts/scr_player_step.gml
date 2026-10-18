@@ -26,6 +26,7 @@ if (g_game_mode == 2 && race_fin)
     // Race: ett skepp som kommit i mal skjuter inte och anvander inga vapen (D-058)
     in_fire = false; in_special = false; in_powerup = false; in_pu_hold = false;
 }
+if (wall_c > 0) { wall_c -= 1; }   // vaggkontakt (D-063)
 if (ad_inv > 0) { ad_inv -= 1; }
 if (race_slow > 0) { race_slow -= 1; }
 if (race_msg_t > 0) { race_msg_t -= 1; }   // Race: fartminskning efter vapentraff (D-055)
@@ -194,18 +195,12 @@ if (vx != 0 || vy != 0 || in_thrust || reversing)
 }
 scr_player_outline();
 
-// 6) Vaggkrasch (VERIFIERAD formel, kod ~0x2730): tillbaka till forra positionen, skada = (vx^2+vy^2)>>16 >>6 + ticks,
-//    hastighet = -v/4. Kollisionsmetoden (segmentskarning i varldsrymd) ar en PLACEHOLDER; originalet testar bitmappar i skarmrymd.
+// 6) Vaggkontakt (D-063): skeppet glider och saktas ned i stallet for att fastna. Originalets reaktion (VERIFIERAD formel, kod ~0x2730: tillbaka till forra
+//    platsen, skada = (v^2 >> 16 >> 6) + 1, hastighet = -v/4) gav ett skepp som hakade fast; se scr_wall_slide. Kollisionsmetoden (segmentskarning i
+//    varldsrymd) ar en PLACEHOLDER; originalet testar bitmappar i skarmrymd.
 if (scr_player_hits_wall())
 {
-    px = prev_px; py = prev_py; ang = prev_ang;
-    // gnistor: antal och fart okar med kraschhastigheten (1/256 px per tick)
-    scr_spark_burst(floor(px / 256), floor(py / 256), clamp(floor(sqrt(vx * vx + vy * vy) / 120), 2, 40), 1.1 + min(2.2, sqrt(vx * vx + vy * vy) / 3500), scr_slot_colour(slot));
-    if (abs(vx) > 1000 || abs(vy) > 1000) { scr_sfx_play(snd_sfx_crash, 2, 1); }   // original: ljud bara om farten ligger utanfor +-1000 (0x5dc4)
-    if (g_game_mode != 1 && g_game_mode != 2) { energy -= floor(floor((vx * vx + vy * vy) / 65536) / 64) + 1; }   // Galaxy Duel och Race: ingen vaggskada (D-053)
-    vx = floor(-vx / 4);
-    vy = floor(-vy / 4);
-    scr_player_outline();
+    scr_wall_slide();
 }
 
 // 7) Dod: energi <= 0 -> liv-1; om liv kvar: aterskapa, annars eliminerad (VERIFIERAD, kod 0x3f12)
