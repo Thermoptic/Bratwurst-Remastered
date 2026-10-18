@@ -338,3 +338,5 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | FRAME-01 | Spela en bana och flyg långt från ytterväggen, sedan närmare | Ramen är osynlig långt bort, tonar in successivt och är tydlig nära; bara delen nära skeppet lyser; innanväggar syns alltid |
 | FRAME-02 | Flyg in i ytterväggen; spela med 2 spelare och alla spellägen (Classic, Galaxy Duel, Asteroids, Race) | Kollisionen som förut; ramen tonar efter närmaste skepp; ingen ram syns i onödan |
 | RACE-S8-55 | Starta ett race | Ljudet spelas vid 3, 2, 1 och GO!; tystnar med SOUND EFFECTS av |
+
+**Testresultat (rapporterat av projektägaren, 2026-10-18, GMS-IDE, F5):** "allt funkar" efter UPDATE 43: spelarpanelens nya högra zon (HUD-01), den tonande ytterramen (FRAME-01/02) och nedräkningsljudet (RACE-S8-55). Tidigare i samma session rapporterades även Race-stegen 5–6, redigerarens zoom/panorering, väggglidningen, Race-banlistan och LCD-nedräkningen fungera i takt med att de provades; enskilda testfall är inte avbockade ett och ett.
