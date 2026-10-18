@@ -99,7 +99,7 @@ g_mv_on = false; g_mv_n = 1; g_mv_dur = 1; g_mv_frame[0] = "000000000000";
 for (g_tmp_n = 0; g_tmp_n < 12; g_tmp_n += 1) { g_mv[g_tmp_n] = 0; }
 g_SHIP_GRAV = 0;   // skeppens gravitation (originalet 31 efter skalning; D-024: 0 pa begaran)
 g_bg_t = 0; g_SV_MAP2 = 13; g_sv[g_SV_MAP2] = 0; g_lv_modes[0] = 15; g_ed_modes = 15; g_ed_dlg = 0; g_ed_dname = ""; g_ed_dmsg = ""; g_dg_x = 0; g_dg_y = 0; g_dg_w = 520; g_dg_h = 400; g_mn_mode[0] = 0;
-g_mode_name[0] = "CLASSIC"; g_mode_name[1] = "ASTRO DUEL"; g_mode_name[2] = "RACE (SOON)"; g_mode_name[3] = "CAPTURE THE BRATWURST (SOON)"; g_mw_frame[0] = "";
+g_mode_name[0] = "CLASSIC"; g_mode_name[1] = "GALAXY DUEL"; g_mode_name[2] = "RACE (SOON)"; g_mode_name[3] = "CAPTURE THE BRATWURST (SOON)"; g_mw_frame[0] = "";
 for (g_tmp_n = 0; g_tmp_n < 32; g_tmp_n += 1) { g_mw[g_tmp_n] = 0; g_mw_pk[g_tmp_n] = 0; }
 for (g_tmp_n = 0; g_tmp_n < 192; g_tmp_n += 1) { g_mw_hist[g_tmp_n] = 0; } g_lg_n[0] = 0; g_lg_s[0, 0] = 0; g_tt_sx[0] = 0; g_tt_sy[0] = 0; g_tt_st[0] = 0; g_tt_sp[0] = 0; g_tt_dx[0] = 0; g_tt_dy[0] = 0; g_tt_n = 0;
 g_DB_MAX = 40; g_db_x[0] = 0; g_db_y[0] = 0; g_db_hx[0] = 0; g_db_hy[0] = 0; g_db_vx[0] = 0; g_db_vy[0] = 0; g_db_w[0] = 0; g_db_col[0] = 0; g_db_life[0] = 0;
@@ -140,3 +140,7 @@ g_wall_gn = 1; g_wall_grp[0] = 0; g_wall_tmp[0] = 0;
 for (g_tmp_n = 0; g_tmp_n < 11; g_tmp_n += 1) { g_wcol[g_tmp_n] = c_white; }
 g_pc[0] = c_aqua; g_pc[1] = c_yellow; g_pc[2] = c_lime; g_pc[3] = c_fuchsia;
 g_f_sm = 0; g_f_md = 1; g_f_lg = 2; g_f_xl = 3; g_fs = 1; g_fk = 0; g_k = 1;   // g_fnt[] fylls i scr_font_init
+globalvar g_AD_SLOW, g_AD_DMG_TICKS, g_AD_GRACE;
+g_AD_GRACE = 25;   // Galaxy Duel: efter en traff raknas inga fler traffar under 0,5 s (en salva med flera skott ska inte doda direkt)
+g_AD_SLOW = 0.4;   // Galaxy Duel: skadat skepp har 40 % av normal fart och gas (60 % langsammare, D-051)
+g_AD_DMG_TICKS = 300;   // skadan varar 6 s (50 ticks/s) och repareras sedan sjalv

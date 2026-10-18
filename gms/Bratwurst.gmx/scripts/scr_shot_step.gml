@@ -47,7 +47,7 @@ if (g_hit_id != noone)
     scr_sfx_play(snd_sfx_hit, 2, 0.41);   // original: kanonskott traffar skepp, volym 26/64 (0x5e48)
     with (g_hit_id)
     {
-        if (g_game_mode == 1) { energy = 0; } else { energy -= 1; }   // Astro Duel: varje traff tar ett liv
+        if (g_game_mode == 1) { scr_ad_hit(); } else { energy -= 1; }   // Galaxy Duel: forsta traffen skadar, nasta dodar (D-051)
         vx += floor((other.vx - vx) / power(2, bounce));
         vy += floor((other.vy - vy) / power(2, bounce));
         if (energy <= 0)

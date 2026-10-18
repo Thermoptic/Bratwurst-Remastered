@@ -21,6 +21,8 @@ reload = 0;
 boost_timer = 0;
 ad_charges = g_AD_SHOTS;   // Astro Duel: full laddning efter respawn
 ad_cool = 0;
+ad_dmg = 0;
+ad_inv = 0;   // Galaxy Duel: inte skadad (D-051)
 sp_cool = 0;
 sp_ammo = scr_special_ammo();
 var wt, wsave;

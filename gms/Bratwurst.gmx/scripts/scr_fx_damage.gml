@@ -25,7 +25,7 @@ with (obj_player)
             other.fdone[slot] = 1;
             if (other.fkind == 4)
             {
-                if (g_game_mode == 1) { energy = 0; } else { energy -= g_sv[g_SV_PU + 5]; }   // Mini Nuke: chockvagsskada ur Powerup Editor (Astro Duel: dodar)
+                if (g_game_mode == 1) { scr_ad_hit(); } else { energy -= g_sv[g_SV_PU + 5]; }   // Mini Nuke: chockvagsskada ur Powerup Editor (Galaxy Duel: skadar / dodar)
             }
             else { energy -= 3; }
             scr_spark_burst(floor(px / 256), floor(py / 256), 8, 1.8, scr_slot_colour(slot));

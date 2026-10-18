@@ -446,3 +446,8 @@ Alla betydande projektändringar dokumenteras här.
 - Titelskärmen: krediteringsrad centrerad längst ned (ersätter BUILD-texten), "ESC = QUIT" borttagen. Ej körd.
 
 - Alt-tab i helskärm: lämnar helskärmen direkt vid Alt+Tab/Windows-tangenten och efter 2 ticks utan fokus (D-045, tillägg). Ej körd.
+
+## 2026-10-18 — Galaxy Duel
+- Astro Duel omdöpt till Galaxy Duel (menyer, banredigerare, pausruta, powerup-beskrivningar). Skadan är nu i två steg: första träffen ger 6 s skada (80 % långsammare, inga vapen, gnistor och lösa streck), en träff medan skadad dödar. `scr_ad_hit`, `scr_ad_fx`, `scr_player_step` m.fl. D-051. Ej körd.
+
+- Galaxy Duel: skadat skepp 60 % långsammare (var 80 %); reparerat skepp är som nytt och skadas igen vid nästa träff; 0,5 s skyddstid efter en träff så att en salva inte dödar direkt. Ej körd.

@@ -28,9 +28,9 @@ g_pu_pname[0, 2] = "SHOCKWAVE RADIUS"; g_pu_pdesc[0, 2] = "HOW FAR THE SHOCKWAVE
 g_pu_pmin[0, 2] = 40; g_pu_pmax[0, 2] = 800; g_pu_pstep[0, 2] = 20; g_pu_pdef[0, 2] = 220;
 g_pu_pname[0, 3] = "PARTICLES"; g_pu_pdesc[0, 3] = "HOW MANY PIXEL PARTICLES FLY OUT OF THE EXPLOSION"; g_pu_pkey[0, 3] = "particles";
 g_pu_pmin[0, 3] = 0; g_pu_pmax[0, 3] = 400; g_pu_pstep[0, 3] = 10; g_pu_pdef[0, 3] = 160;
-g_pu_pname[0, 4] = "DIRECT DAMAGE"; g_pu_pdesc[0, 4] = "DAMAGE TO A SHIP THE PROJECTILE HITS DIRECTLY (IN ASTRO DUEL ANY HIT KILLS)"; g_pu_pkey[0, 4] = "direct_damage";
+g_pu_pname[0, 4] = "DIRECT DAMAGE"; g_pu_pdesc[0, 4] = "DAMAGE TO A SHIP THE PROJECTILE HITS DIRECTLY (IN GALAXY DUEL THE FIRST HIT DAMAGES, A HIT WHILE DAMAGED KILLS)"; g_pu_pkey[0, 4] = "direct_damage";
 g_pu_pmin[0, 4] = 0; g_pu_pmax[0, 4] = 100; g_pu_pstep[0, 4] = 1; g_pu_pdef[0, 4] = 30;
-g_pu_pname[0, 5] = "SHOCKWAVE DAMAGE"; g_pu_pdesc[0, 5] = "DAMAGE TO EVERY SHIP THE SHOCKWAVE REACHES (IN ASTRO DUEL IT KILLS)"; g_pu_pkey[0, 5] = "shock_damage";
+g_pu_pname[0, 5] = "SHOCKWAVE DAMAGE"; g_pu_pdesc[0, 5] = "DAMAGE TO EVERY SHIP THE SHOCKWAVE REACHES (IN GALAXY DUEL IT DAMAGES, OR KILLS A DAMAGED SHIP)"; g_pu_pkey[0, 5] = "shock_damage";
 g_pu_pmin[0, 5] = 0; g_pu_pmax[0, 5] = 100; g_pu_pstep[0, 5] = 1; g_pu_pdef[0, 5] = 15;
 g_pu_pname[0, 6] = "CAMERA SHAKE"; g_pu_pdesc[0, 6] = "HOW HARD THE PICTURE SHAKES WHEN THE MINI NUKE EXPLODES, IN PIXELS. 0 = NO SHAKE"; g_pu_pkey[0, 6] = "camera_shake";
 g_pu_pmin[0, 6] = 0; g_pu_pmax[0, 6] = 60; g_pu_pstep[0, 6] = 1; g_pu_pdef[0, 6] = 12;
@@ -59,7 +59,7 @@ g_pu_pname[1, 3] = "BEAM FADE TIME"; g_pu_pdesc[1, 3] = "HOW LONG THE BEAM TAKES
 g_pu_pmin[1, 3] = 1; g_pu_pmax[1, 3] = 50; g_pu_pstep[1, 3] = 1; g_pu_pdef[1, 3] = 10;
 g_pu_pname[1, 4] = "BEAM WIDTH"; g_pu_pdesc[1, 4] = "THICKNESS OF THE BEAM IN MAP PIXELS. A THICKER BEAM IS EASIER TO HIT WITH AND LOOKS BIGGER"; g_pu_pkey[1, 4] = "beam_width";
 g_pu_pmin[1, 4] = 1; g_pu_pmax[1, 4] = 40; g_pu_pstep[1, 4] = 1; g_pu_pdef[1, 4] = 6;
-g_pu_pname[1, 5] = "DAMAGE"; g_pu_pdesc[1, 5] = "DAMAGE TO A SHIP THE BEAM HITS. 100 KILLS ANY SHIP AT ONCE (IN ASTRO DUEL ANY HIT KILLS)"; g_pu_pkey[1, 5] = "damage";
+g_pu_pname[1, 5] = "DAMAGE"; g_pu_pdesc[1, 5] = "DAMAGE TO A SHIP THE BEAM HITS. 100 KILLS ANY SHIP AT ONCE (IN GALAXY DUEL THE FIRST HIT DAMAGES, A HIT WHILE DAMAGED KILLS)"; g_pu_pkey[1, 5] = "damage";
 g_pu_pmin[1, 5] = 0; g_pu_pmax[1, 5] = 100; g_pu_pstep[1, 5] = 1; g_pu_pdef[1, 5] = 100;
 g_pu_pname[1, 6] = "CAMERA SHAKE"; g_pu_pdesc[1, 6] = "HOW HARD THE PICTURE SHAKES WHEN THE RAILGUN FIRES, IN PIXELS. 0 = NO SHAKE"; g_pu_pkey[1, 6] = "camera_shake";
 g_pu_pmin[1, 6] = 0; g_pu_pmax[1, 6] = 60; g_pu_pstep[1, 6] = 1; g_pu_pdef[1, 6] = 8;

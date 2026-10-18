@@ -246,3 +246,6 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | CAM-07 | Options -> ZOOM 1, 5 och 10 med två spelare långt från varandra | Zoom 1 som förut; högre zoomvärde visar mer av arenan, Zoom 10 dubbelt så mycket; kameran glider mjukt när värdet ändras (även i pausmenyns Options); valet sparas; orienteringspunkterna tonar ut vid utzoomad bild; spelet går att spela som vanligt |
 | UI-OPT-01 | Options | Ingen rad WIDE PLAYFIELD; SCANLINES AND GLOW slar bade linjer och textglod pa/av; spelytan alltid bred |
 | AUD-VOL-01 | Options VOLUME ned till 0 | Visar OFF, musiken tystnar; upp igen startar musiken; samma via - i musikspelaren; ingen MUSIC-rad |
+| GD-01 | Galaxy Duel: skjut en motståndare en gång | Skeppet blir 80 % långsammare i 6 s, kan inte skjuta/använda specialvapen/powerup, gnistor och små streck lossnar; efter 6 s normalt igen och effekterna försvinner |
+| GD-02 | Galaxy Duel: träff medan skadad | Skeppet exploderar och tappar ett liv; träff efter reparation skadar bara igen |
+| GD-03 | Galaxy Duel: träff med missil, Mini Nuke-chockvåg och railgun | Alla ger samma skada/död-regel; railgunladdning avbryts vid träff |

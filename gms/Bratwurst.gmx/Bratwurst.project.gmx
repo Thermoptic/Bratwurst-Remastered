@@ -7,7 +7,7 @@
     <datafile>
       <name>updates.txt</name>
       <exists>-1</exists>
-      <size>16664</size>
+      <size>17059</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -365,6 +365,8 @@
     <script>scripts\scr_level_asteroids.gml</script>
     <script>scripts\scr_ast_spawn_one.gml</script>
     <script>scripts\scr_ast_mult.gml</script>
+    <script>scripts\scr_ad_fx.gml</script>
+    <script>scripts\scr_ad_hit.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_lg_k10</font>

@@ -12,6 +12,12 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 32 - 2026-10-18 - Galaxy Duel
+
+- Astro Duel is now called GALAXY DUEL.
+- A hit no longer kills right away. The first hit damages your ship for 6 seconds: it is 60% slower and you cannot use any weapons, only steer and thrust. Sparks fly from the ship and little pieces fall off. After 6 seconds it is repaired and works like new.
+- If you are hit while damaged, your ship explodes.
+
 ### UPDATE 31 - 2026-10-16 - Alt-tab in fullscreen
 
 - Another fix for the window disappearing when you alt-tab out of FULLSCREEN: the game now leaves fullscreen as soon as you press Alt+Tab or the Windows key, and returns when you come back.

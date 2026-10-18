@@ -17,7 +17,7 @@ g_fs = g_f_sm;
 // kolumnrubriker
 scr_ui_text(x0 + 32, y0 + 32, "NAME", g_c[4]);
 scr_ui_text(x0 + 332, y0 + 32, "CLASSIC", g_c[4]);
-scr_ui_text(x0 + 420, y0 + 32, "ASTRO DUEL", g_c[4]);
+scr_ui_text(x0 + 420, y0 + 32, "GALAXY DUEL", g_c[4]);
 scr_ui_text(x0 + 532, y0 + 32, "RACE", g_c[4]);
 scr_ui_text(x0 + 600, y0 + 32, "CAPTURE", g_c[4]);
 draw_set_color(g_c[3]);
