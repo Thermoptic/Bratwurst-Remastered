@@ -2,7 +2,7 @@
 // Kors i obj_player, en tick. Foljer originalets spelarrutin (hunk0 0x16a4-0x18d8, docs/15 steg 3):
 //   1) svang med accelererande vinkelhastighet  2) pod-positioner  3) kanon  4) thrust  5) gravitation+motstand+integration
 //   6) vaggkrasch  7) dod/respawn.  Specialvapen (bit3) ar INTE implementerat i Fas 1.
-var a, p, fired_all, sh, shx, shy, tw, ta, tm, thr, spd, vcap, f;
+var a, p, fired_all, sh, shx, shy, tw, ta, tm, thr, spd, vcap, f, slowf, ra;
 if (!alive)
 {
     scr_trail_update();   // driftsparet tonar ut aven nar skeppet ar borta
@@ -17,6 +17,7 @@ if (!alive)
 }
 scr_player_input();
 if (ad_inv > 0) { ad_inv -= 1; }
+if (race_slow > 0) { race_slow -= 1; }   // Race: fartminskning efter vapentraff (D-055)
 if (g_game_mode == 1 && ad_dmg > 0)
 {
     // Galaxy Duel (D-051): skadat skepp, 6 s. Bara gas och svang; inga vapen (kanon, specialvapen, powerup). Skadan repareras sjalv.
@@ -25,7 +26,7 @@ if (g_game_mode == 1 && ad_dmg > 0)
     in_fire = false; in_special = false; in_powerup = false; in_pu_hold = false;
     scr_ad_fx(false);
 }
-if (in_shipcyc) { scr_player_change_ship(1); }   // test: byt skepp under matchen
+if (in_shipcyc && g_game_mode != 2) { scr_player_change_ship(1); }   // test: byt skepp under matchen
 if ((in_podcyc || in_psel) && sp_nsel > 0) { sp_pod_i = (sp_pod_i + 1) mod sp_nsel; }   // byt specialpod (position pa skeppet) under matchen
 if (in_wsel) { scr_special_switch(); }   // byt specialvapen under matchen
 
@@ -39,7 +40,7 @@ if (drift_fuel > g_DRIFT_FUEL) { drift_fuel = g_DRIFT_FUEL; }
 if (drifting)
 {
     drift_fuel -= 1;
-    if (drift_fuel <= 0) { drift_fuel = 0; drift_rc = true; }
+    if (drift_fuel <= 0) { drift_fuel = 0; if (g_game_mode != 2) { drift_rc = true; } }   // Race: ingen automatisk laddning (D-055)
 }
 else if (drift_rc)
 {
@@ -99,13 +100,14 @@ if (g_game_mode == 1)
         if (ad_charges <= 0) { ad_cool = g_AD_COOLDOWN; }
     }
 }
-else if (in_fire && reload <= 0 && instance_number(obj_shot) < g_MAX_SHOTS)
+else if (in_fire && reload <= 0 && (g_game_mode != 2 || cannon_ammo > 0) && instance_number(obj_shot) < g_MAX_SHOTS)
 {
     fired_all = true;
+    ra = (g_game_mode == 2);   // Race: ett skott (salva) kostar 1 ammo oavsett antal kanoner (D-055)
     for (p = 0; p < nk; p += 1)
     {
         if (pod_rear[p] && !rear_fire) { continue; }   // bakatpods lasta tills powerup (rear_fire)
-        if (cannon_ammo <= 0) { fired_all = false; break; }
+        if (!ra && cannon_ammo <= 0) { fired_all = false; break; }
         a = (ang + g_ship_pod_ang[ship, p]) mod 256;
         sh = instance_create(0, 0, obj_shot);
         sh.px = pod_wx[p];
@@ -114,8 +116,9 @@ else if (in_fire && reload <= 0 && instance_number(obj_shot) < g_MAX_SHOTS)
         sh.vx = vx * g_SHOT_INHERIT + g_bv_x;   // D-031: skeppets sidofart ar inte med, riktningen ar exakt skeppets
         sh.vy = vy * g_SHOT_INHERIT + g_bv_y;
         sh.owner = slot;
-        cannon_ammo -= 1;
+        if (!ra) { cannon_ammo -= 1; }
     }
+    if (ra && fired_all) { cannon_ammo -= 1; }
     if (fired_all) { reload = reload_val; scr_sfx_play(snd_sfx_shot, 0, 1); }
 }
 
@@ -128,8 +131,10 @@ if (in_powerup && pu_have == 1) { scr_powerup_fire(); }   // Mini Nuke: ett tryc
 scr_railgun_update();   // Railgun: hall inne for att ladda, slapp for att avfyra (D-036)   // B (gamepad): avfyra hallen powerup (D-035)
 
 // 4) Thrust: vx -= sin*THRUST>>3,  vy += cos*THRUST>>3 (VERIFIERAD, kod 0x184a-0x186e)
-thr = thrust;
-if (g_game_mode == 1 && ad_dmg > 0) { thr = thrust * g_AD_SLOW; }   // Galaxy Duel: skadat skepp, 60 % langsammare (D-051)
+slowf = 1;
+if (g_game_mode == 1 && ad_dmg > 0) { slowf = g_AD_SLOW; }   // Galaxy Duel: skadat skepp, 60 % langsammare (D-051)
+if (g_game_mode == 2 && race_slow > 0) { slowf = g_RACE_SLOW; }   // Race: 80 % langsammare efter vapentraff (D-055)
+thr = thrust * slowf;
 if (in_thrust)
 {
     ta = ang;
@@ -166,10 +171,10 @@ if (vx != 0 || vy != 0 || in_thrust || reversing)
     vx = ax - sign(ax) * floor(abs(ax) * drag / 256);
     vy = ay - sign(ay) * floor(abs(ay) * drag / 256);
     if (!in_thrust && !reversing && abs(vx) < 24 && abs(vy) < 24) { vx = 0; vy = 0; }
-    if (g_game_mode == 1 && ad_dmg > 0)
+    if (slowf < 1)
     {
-        // skadat skepp: fart over 44 % av normal topphastighet (gas * 160 / 8 * 256 / motstand) bromsas ned snabbt (D-051)
-        vcap = g_AD_SLOW * 1.1 * thrust * 5120 / max(1, drag);
+        // skadat/avbromsat skepp: fart over slowf * 1,1 av normal topphastighet (gas * 160 / 8 * 256 / motstand) bromsas ned snabbt (D-051, D-055)
+        vcap = slowf * 1.1 * thrust * 5120 / max(1, drag);
         spd = sqrt(vx * vx + vy * vy);
         if (spd > vcap) { f = max(vcap / spd, 0.9); vx = floor(vx * f); vy = floor(vy * f); }
     }

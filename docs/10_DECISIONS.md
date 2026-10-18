@@ -290,3 +290,11 @@
 - **Visning:** rutan ritas i matchen (grön, svag fyllning, pilar) och i redigeraren; panelen visar `LAP x / N`, `FINISHED tid` eller `NO FINISH LINE`; F1 visar `X`/`F` (passager och race_free).
 - **Logiken kontrollerad i Python** (framåt, vicka, utanför bredden, start före/efter linjen); **ej körd i GMS**.
 - **Kvarstår:** placering (steg 5), pickups, vapen, resultat och banor markerade för Race.
+
+## D-055 — Race, steg 3: icke-dödliga vapen, ingen ammo, ingen drift
+- **Ammo (RACE-010…013):** vid start och varje ny runda har alla spelare noll kanonammo och noll specialammo (`scr_player_respawn`, Race-gren). Kanonen kräver `cannon_ammo > 0`; i Race kostar ett skott (en salva, alla framåtkanoner) **1 ammo** oavsett antal kanoner, som beslutat ("Plasma" = huvudkanonen, "exakt ett skott" = ammo 1). Specialvapnen kräver redan ammo. Ammo ges först av pickups (steg 4). Test-tangenten "nästa skepp" (RB) är avstängd i Race så att den inte fyller på ammo.
+- **Drift (RACE-014/015):** drivmedlet börjar på 0 (drift avstängd) och laddas **inte** automatiskt i Race (`drift_rc` sätts aldrig); en drift-pickup ger det fulla standardmåttet (steg 4).
+- **Vapenträff (RACE-030…034):** `scr_race_hit` (anropas från `scr_shot_step`, `scr_missile_step` inkl. Mini Nuke, `scr_fx_damage` för missilring och chockvåg, `scr_beam_step`) sätter `race_slow` = 150 ticks (3 s, `g_RACE_SLOW_TICKS`). Ingen skada och ingen död från vapen. Under tiden gäller `slowf` = `g_RACE_SLOW` (0,2): gasen skalas med 0,2 och farten över 22 % av normal topphastighet bromsas snabbt (samma mekanik som Galaxy Duel). Ny träff startar om de 3 sekunderna men går aldrig under 20 %; efter 3 s är farten normal. Baskoefficienterna ändras aldrig.
+- **Väggkrasch:** ingen skada (D-053). Därmed ändras energin aldrig i Race.
+- **HUD:** raden `EN` ersätts i Race av `SL` (röd stapel som töms på 3 s, fartminskningens återstående tid); `AM` visar kanonammot, `AB` drivmedlet.
+- **Ej körd i GMS.**

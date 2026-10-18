@@ -5,6 +5,7 @@ g_race_t = 0;
 g_race_target = g_sv[g_SV_LAPS];
 with (obj_player)
 {
+    race_slow = 0;
     race_laps = 0;
     race_fin = false;
     race_ft = 0;

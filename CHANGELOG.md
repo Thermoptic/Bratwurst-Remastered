@@ -462,3 +462,6 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-18 — Race: start/målruta och varvräkning (steg 2 + 7)
 - Banredigeraren: nytt verktyg **F** för en start/målruta (en per bana, icke-solid, pilar; mushjulet vrider riktningen; X tar bort). Sparas som `finish` i `levels.ini` (valfri). I Race räknas varven när skeppet passerar rutan i pilens riktning (nettoräkning, ingen fusk genom att vicka); klara skepp får maltid. Panelen visar varv/klar/`NO FINISH LINE`. `scr_fin_cross`, `scr_fin_draw`, `scr_fin_arrows`, `scr_level_parse_finish`, `scr_ed_in_finish`, `scr_ed_step/draw`, `scr_level_read/write/apply`. D-054. Ej körd.
+
+## 2026-10-18 — Race, steg 3
+- Race: alla börjar utan ammo (kanon och specialvapen) och med drift avstängd (ingen automatisk laddning). Ett kanonskott kostar 1 ammo. Vapenträffar (skott, missil, Mini Nuke, chockvåg, stråle) skadar och dödar inte utan ger 20 % fart i 3 sekunder (förnyas, staplas inte). Panelen visar fartminskningen som `SL` i stället för energi. `scr_race_hit`, `scr_player_step`, `scr_player_respawn`, `scr_shot_step`, `scr_missile_step`, `scr_fx_damage`, `scr_beam_step`, `scr_hud_panel`. D-055. Ej körd.

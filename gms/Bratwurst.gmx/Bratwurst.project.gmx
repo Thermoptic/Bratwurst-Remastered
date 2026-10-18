@@ -7,7 +7,7 @@
     <datafile>
       <name>updates.txt</name>
       <exists>-1</exists>
-      <size>18138</size>
+      <size>18535</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -375,6 +375,7 @@
     <script>scripts\scr_fin_cross.gml</script>
     <script>scripts\scr_fin_draw.gml</script>
     <script>scripts\scr_level_parse_finish.gml</script>
+    <script>scripts\scr_race_hit.gml</script>
   </scripts>
   <fonts name="fonts">
     <font>fonts\fnt_lg_k10</font>

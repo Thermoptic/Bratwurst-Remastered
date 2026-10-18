@@ -23,7 +23,8 @@ with (obj_player)
         if (hitp)
         {
             other.fdone[slot] = 1;
-            if (other.fkind == 4)
+            if (g_game_mode == 2) { scr_race_hit(); }   // Race: chockvag och missilring ger bara fartminskning (D-055)
+            else if (other.fkind == 4)
             {
                 if (g_game_mode == 1) { scr_ad_hit(); } else { energy -= g_sv[g_SV_PU + 5]; }   // Mini Nuke: chockvagsskada ur Powerup Editor (Galaxy Duel: skadar / dodar)
             }

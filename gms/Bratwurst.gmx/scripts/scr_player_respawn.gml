@@ -4,7 +4,8 @@
 px = g_start_x[slot];
 py = g_start_y[slot];
 drifting = false;
-drift_fuel = g_DRIFT_FUEL;   // Drifting fuel (D-052): full matare vid start, ny runda och efter ett liv
+if (g_game_mode == 2) { drift_fuel = 0; } else { drift_fuel = g_DRIFT_FUEL; }   // Drifting fuel (D-052): full matare vid start, ny runda och efter ett liv; Race: tom (drift av tills en pickup, D-055)
+race_slow = 0;
 drift_rc = false;
 ast_cd = 0;   // skydd mot nya stenskador (Asteroids)
 pu_have = 0;
@@ -35,6 +36,13 @@ for (wt = 0; wt < 6; wt += 1)
     sp_pool[wt] = scr_special_ammo();
 }
 sp_wtype = wsave;
+if (g_game_mode == 2)
+{
+    // Race (D-055): ingen ammo alls vid start; pickups ger skott (steg 4)
+    cannon_ammo = 0;
+    sp_ammo = 0;
+    for (wt = 0; wt < 6; wt += 1) { sp_pool[wt] = 0; }
+}
 prev_px = px;
 prev_py = py;
 prev_ang = ang;

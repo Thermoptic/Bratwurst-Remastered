@@ -277,3 +277,13 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | RACE-075 | Rutan i matchen | Ingen väggkollision, ingen påverkan på andra lägen |
 
 **Race steg 1, 2 och 7 — testresultat (rapporterat av projektägaren, 2026-10-18, GMS-IDE, F5):** målrutan går att bygga i redigeraren, pilarna går att vrida med mushjulet, inställt antal varv fungerar och skeppet kan köra i mål. Verifierade av användaren: RACE-020 (ett varv räknas), RACE-025 (mål efter angivna varv), RACE-070 (placera/vrida ruta), delvis RACE-072 (rutan sparas och laddas). Ej rapporterat som testade: RACE-021–024, 026, 073–075, RACE-S1-01–04 (väggkrasch utan skada), RACE-001.
+| RACE-010 | Starta ett race, titta på AM och SP | Kanonammo och specialammo är 0 |
+| RACE-011 | Tryck på skjut (A) utan pickup | Ingen kanon avfyras |
+| RACE-012 | Tryck på Y (specialvapen) utan pickup | Ingen missil/styrd missil avfyras |
+| RACE-014 | Håll drift (LT) + gas | Drift startar inte; AB-mätaren är tom |
+| RACE-015 | Vänta i ett race | Drivmedlet laddas inte automatiskt |
+| RACE-030 | Träffa ett skepp med ett vapen (tills pickups finns: testa med debug/ammo) | Skeppet går 80 % långsammare i 3 s, ingen skada, SL-staplen tömmer sig |
+| RACE-031 | Vänta 3 s efter träffen | Normal fart igen |
+| RACE-032 | Träffa igen under de 3 s | Tiden startar om; inte långsammare än 20 % |
+| RACE-033 | Träffa med skott, missil, Mini Nuke, chockvåg och railgun | Ingen dör eller förlorar energi; alla ger samma slow |
+| RACE-034 | Classic, Galaxy Duel och Asteroids | Vapenträffar och energi som förut |

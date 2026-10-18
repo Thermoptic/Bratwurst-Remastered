@@ -78,7 +78,8 @@ if (g_hit_id != noone)
     py -= vy;
     with (g_hit_id)
     {
-        if (g_game_mode == 1) { scr_ad_hit(); }   // Galaxy Duel: forsta traffen skadar, nasta dodar (D-051)
+        if (g_game_mode == 1) { scr_ad_hit(); }
+        else if (g_game_mode == 2) { scr_race_hit(); }   // Race: icke-dodlig, bara fartminskning (D-055)   // Galaxy Duel: forsta traffen skadar, nasta dodar (D-051)
         else if (other.mtype == 3) { energy -= g_sv[g_SV_PU + 4]; }   // Mini Nuke: direktskada ur Powerup Editor
         else if (other.mtype == 1) { energy -= 12; } else { energy -= 5; }
         vx += floor((other.vx - vx) * 16 / power(2, bounce));

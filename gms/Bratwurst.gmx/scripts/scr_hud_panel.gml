@@ -45,9 +45,18 @@ if (g_game_mode == 1)
 }
 else
 {
-scr_ui_text(px + 12, y0, "EN", g_c[4]);
-fr = max(0, p.energy) / max(1, p.energy_max);
-scr_ui_bar(px + 42, y0 + 4, bw, 10, fr, c);
+if (g_game_mode == 2)
+{
+    // Race (D-055): ingen energi (inget skadar); raden visar i stallet fartminskningen efter en vapentraff (rod stapel som tomms pa 3 s)
+    scr_ui_text(px + 12, y0, "SL", g_c[4]);
+    scr_ui_bar(px + 42, y0 + 4, bw, 10, p.race_slow / g_RACE_SLOW_TICKS, g_c[8]);
+}
+else
+{
+    scr_ui_text(px + 12, y0, "EN", g_c[4]);
+    fr = max(0, p.energy) / max(1, p.energy_max);
+    scr_ui_bar(px + 42, y0 + 4, bw, 10, fr, c);
+}
 scr_ui_text(px + 12, y0 + 18, "AM", g_c[4]);
 fr = p.cannon_ammo / max(1, p.ammo_max);
 scr_ui_bar(px + 42, y0 + 22, bw, 10, fr, c);

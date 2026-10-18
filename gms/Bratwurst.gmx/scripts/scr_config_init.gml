@@ -154,3 +154,6 @@ g_sv[g_SV_MAP3] = 0; g_sv[g_SV_LAPS] = 3; g_sv[g_SV_PURA] = 0;
 globalvar g_ed_fon, g_ed_fx0, g_ed_fy0, g_ed_fx1, g_ed_fy1, g_ed_fdir, g_fin_on, g_fin_x0, g_fin_y0, g_fin_x1, g_fin_y1, g_fin_cx, g_fin_cy, g_fin_dx, g_fin_dy, g_fin_hw, g_fin_dir;
 g_ed_fon = false; g_ed_fx0 = 0; g_ed_fy0 = 0; g_ed_fx1 = 0; g_ed_fy1 = 0; g_ed_fdir = 1;   // Race (D-054): start/malrutan i redigeraren (varldspixlar, riktning 0 upp, 1 hoger, 2 ner, 3 vanster)
 g_fin_on = false; g_fin_x0 = 0; g_fin_y0 = 0; g_fin_x1 = 0; g_fin_y1 = 0; g_fin_cx = 0; g_fin_cy = 0; g_fin_dx = 1; g_fin_dy = 0; g_fin_hw = 0; g_fin_dir = 1;
+globalvar g_RACE_SLOW, g_RACE_SLOW_TICKS;
+g_RACE_SLOW = 0.2;   // Race (D-055): ett vapen som traffar ger 20 % av normal fart ...
+g_RACE_SLOW_TICKS = 150;   // ... i 3 s (50 ticks/s); ny traff startar om tiden

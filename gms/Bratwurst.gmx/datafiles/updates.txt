@@ -1,6 +1,11 @@
 BRATWURST REHEATED - UPDATES
 Newest first. Only the big changes and new features are listed.
 
+== UPDATE 35 - 2026-10-18 - Race weapons ==
+* In Race everyone starts with no ammo and no drift. The cannon uses one ammo per shot, and drift fuel does not recharge on its own.
+* Weapons no longer damage or kill in Race. A hit makes the ship 80% slower for 3 seconds (a new hit restarts the time). The player panel shows the slow time as SL.
+* Pickups that give ammo and drift are still to come.
+
 == UPDATE 34 - 2026-10-18 - Race (first part) ==
 * New game mode: RACE. Pick laps, map, rounds and powerups (off by default) in the menu. The player panel shows your lap and the top bar shows the race time.
 * Map editor: new tool F draws a start/finish box. The box has arrows for the racing direction (turn them with the mouse wheel), and ships fly straight through it. Cross it in the arrow direction to finish a lap. Race maps without a finish box show a warning.
