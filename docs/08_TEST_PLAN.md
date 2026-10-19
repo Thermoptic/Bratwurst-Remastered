@@ -357,3 +357,5 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | PAUSE-03 | Y (eller C) i pausen | Kontrollrutan visas; B, Y eller OK stänger den; menyn är kvar efteråt |
 | PAUSE-04 | 1–4 spelare, Race, Galaxy Duel, Asteroids | Korten ryms; Race visar placering och varv; utslagen/respawn visas rätt |
 | PAUSE-05 | LB/RB i pausen, Options inne i pausen | Låtbyte och Options fungerar som förut |
+
+**Testresultat (rapporterat av projektägaren, 2026-10-19, GMS-IDE, F5):** den nya pausmenyn (D-071) fungerar och ser bra ut efter storleksjusteringen (PAUSE-01 till PAUSE-05 inte avbockade ett och ett). Tidigare rapporterat som fungerande: missilringens skada och knuff (D-068, D-070), CANNON- och MISSILE-sidorna i Powerup Editor (D-069) och nedräkningsljudet (D-067).
