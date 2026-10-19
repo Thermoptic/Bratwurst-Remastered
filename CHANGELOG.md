@@ -511,3 +511,8 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-18 — Powerup Editor: CANNON och MISSILE
 - Två nya sidor i den hemliga Powerup Editor: CANNON (skada, hastighet, gravitation, laddtid, knuff) och MISSILE (hastighet, explosionstid, direktskada, ringens skada, ringens storlek, skadeavstånd, partiklar, knuff, väntetid). Missilens ring har nu fast storlek i världspixlar (som Mini Nuke). Race-inställningarnas g_sv-index flyttade till 100–102. D-069. Ej körd.
+
+## 2026-10-19 — Explosionsringar knuffar bort skepp
+- Missilens, den styrda missilens och Mini Nukens explosionsring puttar bort skeppen den når, starkast nära mitten (nya rader BLAST KNOCKBACK i MISSILE och MINI NUKE i Powerup Editor). D-070. Ej körd.
+
+- Missilringens knuff tredubblad (standard 1500 -> 4500; ny ini-nyckel blast_push). Styrd missil och Mini Nuke oförändrade. D-070 tillägg. Ej körd.

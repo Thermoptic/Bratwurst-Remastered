@@ -12,6 +12,11 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 45 - 2026-10-19 - Explosion knockback
+
+- Explosions now push ships away. When the red ring from a missile, a guided missile or a Mini Nuke reaches a ship, the ship is thrown away from the centre of the explosion, hardest close to the centre.
+- The missile knockback is strong by default. Both the missile and the Mini Nuke have a BLAST KNOCKBACK setting in the secret Powerup Editor (0 turns it off).
+
 ### UPDATE 44 - 2026-10-18 - Missile blast and weapon settings
 
 - The red ring from a missile explosion now hurts as much as a direct hit (12 energy for a missile, 5 for a guided missile). A ship that is hit directly does not take both.

@@ -18,3 +18,4 @@ g_ML_DRAD = g_sv[b + 5];
 g_ML_PART = g_sv[b + 6];
 g_ML_KNOCK = g_sv[b + 7] / 100;
 g_ML_COOL = g_sv[b + 8] / 100;
+g_ML_BKNOCK = g_sv[b + 9];   // explosionsringens knuff (D-070)

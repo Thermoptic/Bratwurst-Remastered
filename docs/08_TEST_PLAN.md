@@ -349,3 +349,6 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | PE-CM-04 | Missile: DIRECT DAMAGE och BLAST DAMAGE på olika värden | Direktträff tar direktskadan, andra skepp i ringen tar ringens skada, det träffade tar inte båda |
 | PE-CM-05 | Cannon: DAMAGE, SHOT SPEED, GRAVITY, RELOAD TIME, KNOCKBACK | Varje värde syns i spelet; 100 % = originalet |
 | PE-CM-06 | Race och Galaxy Duel | Fungerar som förut (slow respektive tvåstegsskada), kanon- och missilhastighet följer inställningarna |
+| BLAST-01 | Spränga en missil (av sig själv eller mot en vägg) nära ett skepp | Skeppet puttas bort från explosionens mitt en bit när den röda ringen når det; närmare mitten = hårdare knuff |
+| BLAST-02 | Mini Nuke och styrd missil | Knuff från chockvågen (Mini Nuke hårdare), styrd missil svagare |
+| BLAST-03 | Powerup Editor: BLAST KNOCKBACK 0 respektive högt värde på MISSILE och MINI NUKE | 0 = ingen knuff; högt värde = långt kast |

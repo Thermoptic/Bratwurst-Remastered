@@ -2,13 +2,18 @@
 // Kors i obj_fx, en tick. Missilexplosionens expanderande ring (samma radie som scr_match_draw ritar: 6 + 4 per tick i utpixlar) skadar varje skepp
 // som den nar, en gang per skepp och explosion: 3 energi (D-029; sedan D-068 lika mycket som en direktraff: 12 for missil, 5 for guidad missil). Ett skepp raknas som nadd nar nagon av dess hornpunkter ligger inom radien.
 // Bara missil (1) och guidad missil (2), inte krockringen (3); ingen splash i Astro Duel (dar tar bara direktraffar liv).
-var rw, p, j, dxw, dyw, hitp;
+var rw, p, j, dxw, dyw, hitp, rfull, bdx, bdy, bd, bmag, bf;
 if (fkind != 1 && fkind != 2 && fkind != 4) { exit; }
 if (g_game_mode == 1 && fkind != 4) { exit; }
 if (fkind == 4) { rw = rmax * (1 - power(1 - ftimer / fmax, 2)); }   // Mini Nuke: chockvagen vaxer i varldspixlar och bromsar in
 else if (fkind == 1) { rw = drad * ftimer / fmax; }   // missilen: skadeavstandet vaxer till DAMAGE RADIUS (D-069)
 else { rw = ((6 + ftimer * 4) * fsize / g_SCALE) * 32768 / g_zoom; }   // radie i varldspixlar
 if (fkind == 4 && g_game_mode == 4) { scr_ast_blast(floor(px / 256), floor(py / 256), rw); }   // Asteroids: chockvagen forintar stenar
+// explosionens fulla rackvidd (varldspixlar) och knuffens styrka (D-070): missil BLAST KNOCKBACK, guidad missil fast 900, Mini Nuke egen installning
+if (fkind == 4) { rfull = rmax; bmag = g_sv[g_SV_PU + 7]; }
+else if (fkind == 1) { rfull = drad; bmag = g_ML_BKNOCK; }
+else { rfull = ((6 + fmax * 4) * fsize / g_SCALE) * 32768 / g_zoom; bmag = 900; }   // guidad missil: fast 900 (oforandrad)
+rfull = max(1, rfull);
 rw = rw * rw;
 with (obj_player)
 {
@@ -31,6 +36,14 @@ with (obj_player)
             }
             else if (other.fkind == 1) { energy -= g_ML_BDMG; }   // BLAST DAMAGE i Powerup Editor (D-069)   // ringen skadar lika mycket som en direktraff (D-068)
             else { energy -= g_DMG_GUIDED; }
+            // knuff: explosionen puttar skeppet bort fran mitten, starkast nara mitten (D-070)
+            bdx = px - other.px;
+            bdy = py - other.py;
+            bd = sqrt(bdx * bdx + bdy * bdy);
+            if (bd < 1) { bdx = random_range(-1, 1); bdy = random_range(-1, 1); bd = max(0.01, sqrt(bdx * bdx + bdy * bdy)); }
+            bf = clamp(1.2 - 0.7 * (bd / 256) / rfull, 0.5, 1.2);
+            vx += bdx / bd * bmag * bf;
+            vy += bdy / bd * bmag * bf;
             scr_spark_burst(floor(px / 256), floor(py / 256), 8, 1.8, scr_slot_colour(slot));
             if (energy <= 0) { scr_player_lose_life(); }
         }

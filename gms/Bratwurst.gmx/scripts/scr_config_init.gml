@@ -179,3 +179,5 @@ g_DMG_MSL = 12; g_DMG_GUIDED = 5;   // missilens och den styrda missilens skada 
 globalvar g_CN_DMG, g_CN_SPD, g_CN_GRAV, g_CN_RELOAD, g_CN_KNOCK, g_ML_SPD, g_ML_FUSE, g_ML_BDMG, g_ML_BRAD, g_ML_DRAD, g_ML_PART, g_ML_KNOCK, g_ML_COOL;
 g_CN_DMG = 1; g_CN_SPD = 1; g_CN_GRAV = 1; g_CN_RELOAD = 1; g_CN_KNOCK = 1;   // kanonen (D-069): standardvarden = originalet; satts om fran Powerup Editor i scr_weapon_apply
 g_ML_SPD = 32; g_ML_FUSE = 50; g_ML_BDMG = 12; g_ML_BRAD = 60; g_ML_DRAD = 60; g_ML_PART = 100; g_ML_KNOCK = 1; g_ML_COOL = 1;   // missilen (g_DMG_MSL = direktskada)
+globalvar g_ML_BKNOCK;
+g_ML_BKNOCK = 4500;   // missilens explosionsring puttar bort skepp den nar med den har farten (D-070, tredubblad efter test); Mini Nuke egen installning, guidad missil fast 900

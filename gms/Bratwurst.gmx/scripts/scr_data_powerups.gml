@@ -19,7 +19,7 @@ g_pu_icon[0, 7] = "..#######..";
 g_pu_icon[0, 8] = ".##.###.##.";
 g_pu_icon[0, 9] = "....#.#....";
 g_pu_icon[0, 10] = ".....#.....";
-g_pu_np[0] = 7;
+g_pu_np[0] = 8;
 g_pu_pname[0, 0] = "PROJECTILE SIZE"; g_pu_pdesc[0, 0] = "SIZE OF THE MINI NUKE PROJECTILE IN MAP PIXELS. A BIGGER ONE IS EASIER TO HIT WITH"; g_pu_pkey[0, 0] = "size";
 g_pu_pmin[0, 0] = 1; g_pu_pmax[0, 0] = 20; g_pu_pstep[0, 0] = 1; g_pu_pdef[0, 0] = 4;
 g_pu_pname[0, 1] = "SPEED"; g_pu_pdesc[0, 1] = "SPEED OF THE PROJECTILE. A NORMAL MISSILE IS 32"; g_pu_pkey[0, 1] = "speed";
@@ -34,6 +34,8 @@ g_pu_pname[0, 5] = "SHOCKWAVE DAMAGE"; g_pu_pdesc[0, 5] = "DAMAGE TO EVERY SHIP 
 g_pu_pmin[0, 5] = 0; g_pu_pmax[0, 5] = 100; g_pu_pstep[0, 5] = 1; g_pu_pdef[0, 5] = 15;
 g_pu_pname[0, 6] = "CAMERA SHAKE"; g_pu_pdesc[0, 6] = "HOW HARD THE PICTURE SHAKES WHEN THE MINI NUKE EXPLODES, IN PIXELS. 0 = NO SHAKE"; g_pu_pkey[0, 6] = "camera_shake";
 g_pu_pmin[0, 6] = 0; g_pu_pmax[0, 6] = 60; g_pu_pstep[0, 6] = 1; g_pu_pdef[0, 6] = 12;
+g_pu_pname[0, 7] = "BLAST KNOCKBACK"; g_pu_pdesc[0, 7] = "HOW HARD THE SHOCKWAVE PUSHES A SHIP IT REACHES AWAY FROM THE EXPLOSION (SPEED GIVEN TO THE SHIP). 0 = NO PUSH. STRONGEST CLOSE TO THE CENTRE"; g_pu_pkey[0, 7] = "blast_knockback";
+g_pu_pmin[0, 7] = 0; g_pu_pmax[0, 7] = 6000; g_pu_pstep[0, 7] = 100; g_pu_pdef[0, 7] = 2500;
 // ---- 1: RAILGUN (halls inne for att ladda, slapp for att avfyra en stral genom hela banan) ----
 g_pu_name[1] = "RAILGUN";
 g_pu_key[1] = "railgun";
@@ -106,7 +108,7 @@ g_pu_pmin[3, 4] = 0; g_pu_pmax[3, 4] = 400; g_pu_pstep[3, 4] = 10; g_pu_pdef[3, 
 // ---- 4: MISSILE (den vanliga missilen; styrda missilen har egna vardena) ----
 g_pu_name[4] = "MISSILE";
 g_pu_key[4] = "missile";
-g_pu_np[4] = 9;
+g_pu_np[4] = 10;
 g_pu_pname[4, 0] = "SPEED"; g_pu_pdesc[4, 0] = "SPEED OF THE MISSILE. THE ORIGINAL IS 32 (IN GALAXY DUEL IT IS DOUBLED)"; g_pu_pkey[4, 0] = "speed";
 g_pu_pmin[4, 0] = 8; g_pu_pmax[4, 0] = 96; g_pu_pstep[4, 0] = 4; g_pu_pdef[4, 0] = 32;
 g_pu_pname[4, 1] = "EXPLOSION TIME"; g_pu_pdesc[4, 1] = "HOW LONG THE MISSILE FLIES BEFORE IT EXPLODES BY ITSELF, IN TENTHS OF A SECOND (10 = 1 SECOND, THE ORIGINAL)"; g_pu_pkey[4, 1] = "fuse";
@@ -125,3 +127,5 @@ g_pu_pname[4, 7] = "KNOCKBACK"; g_pu_pdesc[4, 7] = "HOW HARD A DIRECT HIT PUSHES
 g_pu_pmin[4, 7] = 0; g_pu_pmax[4, 7] = 400; g_pu_pstep[4, 7] = 10; g_pu_pdef[4, 7] = 100;
 g_pu_pname[4, 8] = "COOLDOWN"; g_pu_pdesc[4, 8] = "TIME BETWEEN MISSILES IN PERCENT OF THE ORIGINAL. MORE = SLOWER FIRING"; g_pu_pkey[4, 8] = "cooldown";
 g_pu_pmin[4, 8] = 25; g_pu_pmax[4, 8] = 400; g_pu_pstep[4, 8] = 5; g_pu_pdef[4, 8] = 100;
+g_pu_pname[4, 9] = "BLAST KNOCKBACK"; g_pu_pdesc[4, 9] = "HOW HARD THE EXPLOSION RING PUSHES A SHIP IT REACHES AWAY FROM THE EXPLOSION (SPEED GIVEN TO THE SHIP). 0 = NO PUSH. STRONGEST CLOSE TO THE CENTRE"; g_pu_pkey[4, 9] = "blast_push";
+g_pu_pmin[4, 9] = 0; g_pu_pmax[4, 9] = 12000; g_pu_pstep[4, 9] = 250; g_pu_pdef[4, 9] = 4500;
