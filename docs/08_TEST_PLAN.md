@@ -352,3 +352,8 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | BLAST-01 | Spränga en missil (av sig själv eller mot en vägg) nära ett skepp | Skeppet puttas bort från explosionens mitt en bit när den röda ringen når det; närmare mitten = hårdare knuff |
 | BLAST-02 | Mini Nuke och styrd missil | Knuff från chockvågen (Mini Nuke hårdare), styrd missil svagare |
 | BLAST-03 | Powerup Editor: BLAST KNOCKBACK 0 respektive högt värde på MISSILE och MINI NUKE | 0 = ingen knuff; högt värde = långt kast |
+| PAUSE-01 | Pausa en match (Start/Esc) | Band över skärmen med PAUSED, tre val på en rad, matchinfo, spelarkort och knapphjälp; inget överlappar |
+| PAUSE-02 | Vänster/höger (och upp/ner), A, B, Esc | Valet byts; RESUME fortsätter, OPTIONS öppnar inställningarna, QUIT TO MENU avslutar; B/Esc fortsätter |
+| PAUSE-03 | Y (eller C) i pausen | Kontrollrutan visas; B, Y eller OK stänger den; menyn är kvar efteråt |
+| PAUSE-04 | 1–4 spelare, Race, Galaxy Duel, Asteroids | Korten ryms; Race visar placering och varv; utslagen/respawn visas rätt |
+| PAUSE-05 | LB/RB i pausen, Options inne i pausen | Låtbyte och Options fungerar som förut |

@@ -38,11 +38,11 @@ if (g_state == 1)
     }
     if (keyboard_check_pressed(vk_escape))
     {
-        g_paused = true; g_pause_sel = 0; exit;
+        g_paused = true; g_pause_sel = 0; g_pause_ctrl = false; exit;
     }
     for (gi = 0; gi < 4; gi += 1)
     {
-        if (gamepad_is_connected(gi) && gamepad_button_check_pressed(gi, gp_start)) { g_paused = true; g_pause_sel = 0; exit; }
+        if (gamepad_is_connected(gi) && gamepad_button_check_pressed(gi, gp_start)) { g_paused = true; g_pause_sel = 0; g_pause_ctrl = false; exit; }
     }
 }
 // Skeppsval och rundresultat: Esc = huvudmenyn

@@ -181,3 +181,5 @@ g_CN_DMG = 1; g_CN_SPD = 1; g_CN_GRAV = 1; g_CN_RELOAD = 1; g_CN_KNOCK = 1;   //
 g_ML_SPD = 32; g_ML_FUSE = 50; g_ML_BDMG = 12; g_ML_BRAD = 60; g_ML_DRAD = 60; g_ML_PART = 100; g_ML_KNOCK = 1; g_ML_COOL = 1;   // missilen (g_DMG_MSL = direktskada)
 globalvar g_ML_BKNOCK;
 g_ML_BKNOCK = 4500;   // missilens explosionsring puttar bort skepp den nar med den har farten (D-070, tredubblad efter test); Mini Nuke egen installning, guidad missil fast 900
+globalvar g_pause_ctrl;
+g_pause_ctrl = false;   // pausmenyn: kontrollrutan visas (D-071)

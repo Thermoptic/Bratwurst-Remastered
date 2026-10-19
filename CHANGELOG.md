@@ -516,3 +516,8 @@ Alla betydande projektändringar dokumenteras här.
 - Missilens, den styrda missilens och Mini Nukens explosionsring puttar bort skeppen den når, starkast nära mitten (nya rader BLAST KNOCKBACK i MISSILE och MINI NUKE i Powerup Editor). D-070. Ej körd.
 
 - Missilringens knuff tredubblad (standard 1500 -> 4500; ny ini-nyckel blast_push). Styrd missil och Mini Nuke oförändrade. D-070 tillägg. Ej körd.
+
+## 2026-10-19 — Ny pausmeny (band)
+- Pausmenyn är ett vågrätt band med valen på en rad, matchinfo, spelarkort under och knapphjälp; kontrollerna visas med Y. `scr_pause_draw`, `scr_pause_step`, `scr_pause_controls_draw`, `scr_game_step`. D-071. Ej körd.
+
+- Pausmenyn: PAUSED och valen större, matchinfo mindre, knapprutorna kvadratiska (1:1) med tecknet centrerat. D-071 tillägg. Ej körd.
