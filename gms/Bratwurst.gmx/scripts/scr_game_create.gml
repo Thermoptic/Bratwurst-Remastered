@@ -1,6 +1,7 @@
 /// scr_game_create()
 // Initiering (kors en gang i obj_game Create).
 scr_config_init();
+scr_ftest_data();   // FONT TEST (D-073, tillfalligt)
 scr_data_trig();
 scr_data_arena();
 scr_data_ships();

@@ -12,6 +12,11 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 47 - 2026-10-20 - Map editor in the main menu, font test
+
+- The MAP EDITOR is now in the main menu, right under CONTROLS, instead of in Options.
+- A temporary FONT TEST page in Options shows several fonts in different sizes, with and without anti-aliasing, so a new font can be picked.
+
 ### UPDATE 46 - 2026-10-19 - New pause menu
 
 - The pause menu is now a band across the screen: PAUSED on top, the choices (RESUME, OPTIONS, QUIT TO MENU) on one row, a line with match info, small player cards below and a button help row.

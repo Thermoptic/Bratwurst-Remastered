@@ -50,6 +50,7 @@ if (g_nv_ok)
         if (g_mn_act[item] == 5) { g_game_mode = 1; scr_menu_enter(); }
         if (g_mn_act[item] == 6) { g_game_mode = 4; scr_menu_enter(); }
         if (g_mn_act[item] == 7 && scr_race_maps() > 0) { g_game_mode = 2; scr_menu_enter(); }   // Race kraver minst en Race-bana (D-062)
+        if (g_mn_act[item] == 8 && !g_pause_opts) { g_state = 40; g_ft_page = 0; }   // FONT TEST (D-073, tillfalligt)
         if (g_mn_act[item] == 2) { game_end(); }
         if (g_mn_act[item] == 4 && !g_pause_opts) { scr_ed_enter(g_sv[g_SV_MAP]); }   // banredigeraren finns inte under en match
         if (g_mn_act[item] == 3)

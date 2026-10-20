@@ -521,3 +521,9 @@ Alla betydande projektändringar dokumenteras här.
 - Pausmenyn är ett vågrätt band med valen på en rad, matchinfo, spelarkort under och knapphjälp; kontrollerna visas med Y. `scr_pause_draw`, `scr_pause_step`, `scr_pause_controls_draw`, `scr_game_step`. D-071. Ej körd.
 
 - Pausmenyn: PAUSED och valen större, matchinfo mindre, knapprutorna kvadratiska (1:1) med tecknet centrerat. D-071 tillägg. Ej körd.
+
+## 2026-10-19 — MAP EDITOR i huvudmenyn
+- MAP EDITOR ligger nu i huvudmenyn under CONTROLS i stället för i Options. D-072. Ej körd.
+
+## 2026-10-20 — FONT TEST (tillfällig)
+- Ny tillfällig sida Options -> FONT TEST: sju typsnitt (Cascadia Mono, Rodchenko Light och Cond Light, Bebas Neue, Doto, Pixelify Sans, Intel One Mono) i fem storlekar med och utan kantutjämning, numrerade prover. Rodchenko är kommersiellt: atlasfilerna är gitignorerade. D-073. Ej körd.

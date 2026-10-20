@@ -4,6 +4,7 @@ scr_ui_clear();
 if (g_state == 10) { scr_title_draw(); }
 else if (g_state == 11) { scr_mn_draw(); }
 else if (g_state == 20) { scr_ed_draw(); }
+else if (g_state == 40) { scr_ftest_draw(); }   // FONT TEST (D-073, tillfalligt)
 else if (g_state == 30) { scr_results_draw(); }
 else if (g_state == 0) { scr_menu_draw(); }
 else { scr_match_draw(); }

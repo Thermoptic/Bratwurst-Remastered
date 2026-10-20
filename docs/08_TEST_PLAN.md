@@ -359,3 +359,5 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | PAUSE-05 | LB/RB i pausen, Options inne i pausen | Låtbyte och Options fungerar som förut |
 
 **Testresultat (rapporterat av projektägaren, 2026-10-19, GMS-IDE, F5):** den nya pausmenyn (D-071) fungerar och ser bra ut efter storleksjusteringen (PAUSE-01 till PAUSE-05 inte avbockade ett och ett). Tidigare rapporterat som fungerande: missilringens skada och knuff (D-068, D-070), CANNON- och MISSILE-sidorna i Powerup Editor (D-069) och nedräkningsljudet (D-067).
+| MENU-01 | Huvudmenyn | Raderna kommer i ordningen GAME MODES, OPTIONS, CONTROLS, MAP EDITOR, QUIT; MAP EDITOR öppnar banredigeraren; Options innehåller ingen MAP EDITOR-rad (inte heller i pausmenyns Options) |
+| FONT-01 | Options -> FONT TEST | Sidan öppnas; vänster/höger byter typsnitt (7 sidor); fem storlekar med kantutjämning till vänster och utan till höger med numrerade prover; Esc/B tillbaka |

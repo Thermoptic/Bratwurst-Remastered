@@ -1,15 +1,17 @@
 /// scr_mn_build()
 // Bygger huvudmenyn som data (noder + barn). Att lagga till en rad = en rad har. Noderna: root = 0.
 // Typer: 0 undermeny, 1 handling (g_mn_act: 1 start, 2 avsluta, 3 aterstall val), 2 av/pa, 3 tal, 4 val ur lista, 5 text.
-var root, modes, opts, ctrls, quit, n, p, c, classic, pe, pt, pk;
+var root, modes, opts, ctrls, med, quit, n, p, c, classic, pe, pt, pk;
 g_mn_cnt = 0;
 root = scr_mn_add(0, "MAIN", "BRATWURST - REHEATED");
 modes = scr_mn_add(0, "GAME MODES", "CHOOSE A GAME MODE");
 opts = scr_mn_add(0, "OPTIONS", "COLOUR THEME, SCREEN MODE AND SCREEN EFFECTS");
 ctrls = scr_mn_add(0, "CONTROLS", "KEYS AND GAMEPAD BUTTONS. PLACEHOLDER MAPPING, THE ORIGINAL IS UNKNOWN. READ ONLY FOR NOW");
+med = scr_mn_add(1, "MAP EDITOR", "DRAW SOLID WALLS AND BOXES WITH THE MOUSE, PLACE START POSITIONS, A FINISH LINE AND PICKUPS, AND SAVE YOUR OWN MAPS");   // huvudmenyn, under CONTROLS (D-072)
+g_mn_act[med] = 4;
 quit = scr_mn_add(1, "QUIT", "EXIT TO WINDOWS");
 g_mn_act[quit] = 2;
-scr_mn_link(root, modes); scr_mn_link(root, opts); scr_mn_link(root, ctrls); scr_mn_link(root, quit);
+scr_mn_link(root, modes); scr_mn_link(root, opts); scr_mn_link(root, ctrls); scr_mn_link(root, med); scr_mn_link(root, quit);
 
 // GAME MODES
 // Spellagen: Classic ar dagens match (START). De andra ar tomma platshallare tills de byggs.
@@ -131,8 +133,8 @@ scr_mn_link(opts, n);
 n = scr_mn_add(2, "SCANLINES AND GLOW", "OLD CRT LINES OVER THE WHOLE PICTURE AND A SOFT GLOW AROUND TEXT");
 scr_mn_setting(n, g_SV_SCAN, 0, 1, "display.scanlines");
 scr_mn_link(opts, n);
-n = scr_mn_add(1, "MAP EDITOR", "DRAW SOLID WALLS AND BOXES WITH THE MOUSE, PLACE START POSITIONS AND SAVE YOUR OWN MAPS");
-g_mn_act[n] = 4;
+n = scr_mn_add(1, "FONT TEST", "TEMPORARY PAGE: SHOWS FONTS IN SEVERAL SIZES, WITH AND WITHOUT ANTI-ALIASING, EVERY SAMPLE NUMBERED");   // D-073, tillfalligt
+g_mn_act[n] = 8;
 scr_mn_link(opts, n);
 n = scr_mn_add(5, "DATA FOLDER", "WHERE SETTINGS.INI AND THEMES.INI ARE SAVED");
 g_mn_text[n] = game_save_id;
