@@ -409,3 +409,11 @@
 - **Ej körd i GMS.**
 
 **D-073, tillägg (2026-10-20):** projektägaren uppger att hen har licens för Rodchenko Light; `.gitignore`-raderna för Rodchenko-atlaserna togs bort och FONT TEST-resurserna committades som återställningspunkt före typsnittsbytet (D-074). Sidan tas bort när typsnittet är införda och godkänt.
+
+## D-074 — Spelets typsnitt: Rodchenko Light
+- **Beslut (användaren):** efter FONT TEST (D-073) valdes **Rodchenko Light** (ParaType; projektägaren har licens, se docs/09) med kantutjämning och storlekarna 10, 14 och 20 punkter. De ersätter Cascadia Mono i hela spelet.
+- **Genomförande:** `tools/gen_gms_fonts.ps1` läser TTF-filen och renderar glyfatlaserna `fnt_sm/md/lg/xl_k10/15/20/30` på nytt (nu proportionellt: en breddtabell per tecken; kantutjämning `AntiAliasGridFit`, ingen fet stil). Storlekarna (k = 1): **sm 10 pt** (småtext), **md 14 pt** (menyval, rubriker), **lg 20 pt** (stora rubriker) och **xl 28 pt** (används inte i dag, behålls som reserv); UI-skalorna 1, 1,5, 2 och 3 skalar punktstorleken så att varje glyfbildpunkt hamnar på en skärmpixel som förut. Förut: sm 10, md 12, lg 24 fet, xl 60 fet i Cascadia Mono. Den gamla generatorn ligger kvar som `tools/gen_gms_fonts_cascadia.ps1` och återställning görs också med `git revert`/den återställningspunkt som pushades före bytet (commit `aa6a757`, backup `Bratwurst_Remastered_backup_2026-10-20_fore_typsnitt.zip`).
+- **Följder:** typsnittet är proportionellt och smalare än Cascadia (texten tar mindre plats; `I` är smal och `W` bred); punktstorleken för md är större och lg mindre än förut. TTF-filen följer inte med i spelet eller projektet, bara glyfbilderna. Skalan `g_TXT_SMALL` (redigerarens verktygstext och pausmenyns matchinfo) ändrades från 0,85 till 1 eftersom den tunna typen blir svårläst i 85 %.
+- **FONT TEST-sidan** ligger kvar tills typsnittet är godkänt; den tas sedan bort med `tools/remove_font_test.ps1` (D-073). Ej körd i GMS.
+
+**D-073, avslutad (2026-10-20):** typsnittet valdes (D-074) och FONT TEST-sidan togs bort: resurserna `fnt_ft_*`, `scr_ftest_*`, de fem raderna i menyn och spelkoden och projektfilens rader. Skripten `tools/gen_font_test.ps1` och `tools/remove_font_test.ps1` raderades (finns i git-historiken, commit `aa6a757`).

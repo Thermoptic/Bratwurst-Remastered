@@ -1,6 +1,10 @@
 BRATWURST REHEATED - UPDATES
 Newest first. Only the big changes and new features are listed.
 
+== UPDATE 48 - 2026-10-20 - New font ==
+* The whole game now uses the Rodchenko Light font (by ParaType), a thin constructivist-style typeface, with smooth edges. Small text, menu choices and headings use three sizes.
+* The temporary FONT TEST page in Options is gone again.
+
 == UPDATE 47 - 2026-10-20 - Map editor in the main menu, font test ==
 * The MAP EDITOR is now in the main menu, right under CONTROLS, instead of in Options.
 * A temporary FONT TEST page in Options shows several fonts in different sizes, with and without anti-aliasing, so a new font can be picked.

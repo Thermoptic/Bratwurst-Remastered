@@ -17,7 +17,7 @@ h1 = string_height("A") / g_k;
 draw_set_font(g_fnt[g_fk * 4 + g_f_lg]);
 h2 = string_height("A") / g_k;
 draw_set_font(g_fnt[g_fk * 4 + g_f_sm]);
-h3 = string_height("A") * 0.85 / g_k;
+h3 = string_height("A") * g_TXT_SMALL / g_k;
 bh = 12 + h1 + 14 + h2 + 16 + h3 + 14;
 by = g_vy + floor(g_vh / 2) - floor(bh / 2) - 70;
 draw_set_color(g_c[0]);
@@ -62,7 +62,7 @@ ty += h2 + 16;
 tx = floor(g_tick / 3000);
 info = scr_mode_name() + " // ROUND " + string(g_round) + " OF " + string(g_rounds_total) + " // " + string_upper(g_match_map) + " // " + scr_pad2(tx) + ":" + scr_pad2(floor(g_tick / 50) mod 60);
 draw_set_font(g_fnt[g_fk * 4 + g_f_sm]);
-scr_ed_txt(cx - string_width(info) * 0.85 / g_k / 2, ty, info, g_c[4]);
+scr_ed_txt(cx - string_width(info) * g_TXT_SMALL / g_k / 2, ty, info, g_c[4]);
 
 // spelarkort under bandet
 g_fs = g_f_sm;

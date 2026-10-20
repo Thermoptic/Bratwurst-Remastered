@@ -1,39 +1,47 @@
-# Genererar GMS 1.4-typsnittsresurser ur ett installerat monospace-typsnitt (Cascadia Mono, SIL OFL 1.1).
-# Kor: powershell -ExecutionPolicy Bypass -File tools/gen_gms_fonts.ps1
-# Skriver gms/Bratwurst.gmx/fonts/fnt_<storlek>_k<skala>.font.gmx + .png (glyfatlas, vit text med alfa) och en lista pa resursnamn.
-# Spelet ritar text 1:1 mot skarmpixlarna: UI-skalan k (1, 1.5, 2 eller 3, se scr_display_apply) valjer typsnittsuppsattning, sa att
-# varje glyf-texel hamnar pa exakt en skarmpixel (inga skalade/suddiga bokstaver). Designstorlek (k=1) i punkter: sm 10, md 12, lg 24, xl 60.
+# Genererar GMS 1.4-typsnittsresurser ur en TTF-fil (D-074: Rodchenko Light, ParaType; projektagaren har licens). Den gamla Cascadia Mono-generatorn finns kvar som
+# tools/gen_gms_fonts_cascadia.ps1 (och i git-historiken) for att kunna aterga.
+# Kor: powershell -ExecutionPolicy Bypass -File tools/gen_gms_fonts.ps1 [-FontFile <sokvag till .ttf>]
+# Skriver gms/Bratwurst.gmx/fonts/fnt_<storlek>_k<skala>.font.gmx + .png (glyfatlas, vit text med alfa, breddtabell per tecken eftersom typsnittet ar proportionellt).
+# TTF-filen laggs inte i projektet och foljer inte med spelet: bara glyfbilderna.
+# Spelet ritar text 1:1 mot skarmpixlarna: UI-skalan k (1, 1.5, 2 eller 3, se scr_display_apply) valjer typsnittsuppsattning, sa att varje glyf-texel hamnar pa exakt en
+# skarmpixel (inga skalade/suddiga bokstaver). Designstorlek (k=1) i punkter: sm 10, md 14, lg 20, xl 28 (valda pa FONT TEST-sidan, D-073), alla med kantutjamning.
+param([string]$FontFile = (Join-Path $env:LOCALAPPDATA "Microsoft\Windows\Fonts\Rodchenko-Light.ttf"))
 Add-Type -AssemblyName System.Drawing
-$family = "Cascadia Mono"
-$installed = (New-Object System.Drawing.Text.InstalledFontCollection).Families | ForEach-Object { $_.Name }
-if ($installed -notcontains $family) { Write-Error "Typsnittet '$family' ar inte installerat"; exit 1 }
+if (-not (Test-Path $FontFile)) { Write-Error "Hittar inte typsnittsfilen: $FontFile"; exit 1 }
+$pfc = New-Object System.Drawing.Text.PrivateFontCollection
+$pfc.AddFontFile($FontFile)
+$fam = $pfc.Families[0]
+$family = $fam.Name
 $root = Split-Path -Parent $PSScriptRoot
 $outDir = Join-Path $root "gms\Bratwurst.gmx\fonts"
 New-Item -ItemType Directory -Force -Path $outDir | Out-Null
-Get-ChildItem $outDir -Filter "fnt_*" | Remove-Item -Force
+Get-ChildItem $outDir -Filter "fnt_??_k*" | Remove-Item -Force
 $sizes = @(
-    @{ id = "sm"; pt = 10; bold = $false; last = 127; cols = 16 },
-    @{ id = "md"; pt = 12; bold = $false; last = 127; cols = 16 },
-    @{ id = "lg"; pt = 24; bold = $true; last = 127; cols = 16 },
-    @{ id = "xl"; pt = 60; bold = $true; last = 90; cols = 12 }
+    @{ id = "sm"; pt = 10; last = 127; cols = 16 },
+    @{ id = "md"; pt = 14; last = 127; cols = 16 },
+    @{ id = "lg"; pt = 20; last = 127; cols = 16 },
+    @{ id = "xl"; pt = 28; last = 127; cols = 16 }
 )
 $ks = @(@{ id = "10"; k = 1.0 }, @{ id = "15"; k = 1.5 }, @{ id = "20"; k = 2.0 }, @{ id = "30"; k = 3.0 })
-$names = @()
 foreach ($kk in $ks) {
     foreach ($s in $sizes) {
         $pt = [int]($s.pt * $kk.k)
         $name = "fnt_{0}_k{1}" -f $s.id, $kk.id
-        $names += $name
-        $style = [System.Drawing.FontStyle]::Regular
-        if ($s.bold) { $style = [System.Drawing.FontStyle]::Bold }
-        $font = New-Object System.Drawing.Font($family, [single]$pt, $style, [System.Drawing.GraphicsUnit]::Point)
+        $font = New-Object System.Drawing.Font($fam, [single]$pt, [System.Drawing.FontStyle]::Regular, [System.Drawing.GraphicsUnit]::Point)
         $tmp = New-Object System.Drawing.Bitmap 8, 8
         $tmp.SetResolution(96, 96)
         $g0 = [System.Drawing.Graphics]::FromImage($tmp)
         $fmt = [System.Drawing.StringFormat]::GenericTypographic
         $fmt.FormatFlags = $fmt.FormatFlags -bor [System.Drawing.StringFormatFlags]::MeasureTrailingSpaces
-        $adv = $g0.MeasureString("MMMMMMMMMM", $font, 4000, $fmt).Width / 10.0
-        $cw = [int][math]::Round($adv)
+        $adv = @{}
+        $cw = 1
+        for ($c = 32; $c -le $s.last; $c++) {
+            $a = [int][math]::Round($g0.MeasureString([string][char]$c, $font, 4000, $fmt).Width)
+            if ($a -lt 1) { $a = 1 }
+            $adv[$c] = $a
+            if ($a -gt $cw) { $cw = $a }
+        }
+        $cw = $cw + 2
         $ch = [int][math]::Ceiling($font.GetHeight($g0))
         $g0.Dispose(); $tmp.Dispose()
         $count = $s.last - 32 + 1
@@ -54,21 +62,19 @@ foreach ($kk in $ks) {
             $x = $pad + ($i % $cols) * ($cw + $pad)
             $y = $pad + [math]::Floor($i / $cols) * ($ch + $pad)
             if ($c -gt 32 -and $c -lt 127) {
-                $g.DrawString([string][char]$c, $font, $brush, [single]$x, [single]$y, $fmt)
+                $g.DrawString([string][char]$c, $font, $brush, [single]($x + 1), [single]$y, $fmt)
             }
-            [void]$glyphs.AppendLine(('    <glyph character="{0}" x="{1}" y="{2}" w="{3}" h="{4}" shift="{3}" offset="0"/>' -f $c, $x, $y, $cw, $ch))
+            [void]$glyphs.AppendLine(('    <glyph character="{0}" x="{1}" y="{2}" w="{3}" h="{4}" shift="{5}" offset="0"/>' -f $c, $x, $y, $cw, $ch, $adv[$c]))
         }
         $g.Dispose()
         $bmp.Save((Join-Path $outDir ($name + ".png")), [System.Drawing.Imaging.ImageFormat]::Png)
         $bmp.Dispose()
-        $boldVal = 0
-        if ($s.bold) { $boldVal = -1 }
         $xml = @"
 <!--This Document is generated by GameMaker, if you edit it by hand then you do so at your own risk!-->
 <font>
   <name>$family</name>
   <size>$pt</size>
-  <bold>$boldVal</bold>
+  <bold>0</bold>
   <renderhq>-1</renderhq>
   <italic>0</italic>
   <charset>0</charset>

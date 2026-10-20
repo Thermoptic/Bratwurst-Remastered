@@ -527,3 +527,8 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-20 — FONT TEST (tillfällig)
 - Ny tillfällig sida Options -> FONT TEST: sju typsnitt (Cascadia Mono, Rodchenko Light och Cond Light, Bebas Neue, Doto, Pixelify Sans, Intel One Mono) i fem storlekar med och utan kantutjämning, numrerade prover. Rodchenko är kommersiellt: atlasfilerna är gitignorerade. D-073. Ej körd.
+
+## 2026-10-20 — Nytt typsnitt: Rodchenko Light
+- Hela spelet använder nu Rodchenko Light (kantutjämnat; 10, 14 och 20 punkter, plus en reserv på 28) i stället för Cascadia Mono. Proportionellt typsnitt med breddtabell per tecken. `tools/gen_gms_fonts.ps1`, `g_TXT_SMALL`. Återställningspunkt: commit aa6a757. D-074. Ej körd.
+
+- FONT TEST-sidan borttagen efter att typsnittet valts. D-073 avslutad.

@@ -183,5 +183,5 @@ globalvar g_ML_BKNOCK;
 g_ML_BKNOCK = 4500;   // missilens explosionsring puttar bort skepp den nar med den har farten (D-070, tredubblad efter test); Mini Nuke egen installning, guidad missil fast 900
 globalvar g_pause_ctrl;
 g_pause_ctrl = false;   // pausmenyn: kontrollrutan visas (D-071)
-globalvar g_ft_n, g_ft_name, g_ft_lic, g_ft_f, g_ft_pt, g_ft_page, g_ft_h;
-g_ft_n = 0; g_ft_name[0] = ""; g_ft_lic[0] = ""; g_ft_f[0] = 0; g_ft_pt[0] = 0; g_ft_page = 0; g_ft_h = 0;   // FONT TEST (D-073, tillfalligt)
+globalvar g_TXT_SMALL;
+g_TXT_SMALL = 1;   // skala for redigerarens verktygstext och pausmenyns matchinfo (scr_ed_txt): 1 = lilla typsnittets storlek. Var 0,85 med Cascadia Mono; Rodchenko Light ar tunnare och smalare (D-074)

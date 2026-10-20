@@ -18,7 +18,6 @@ if (g_state == 10)
     exit;
 }
 if (g_state == 11) { scr_mn_step(); exit; }
-if (g_state == 40) { scr_ftest_step(); exit; }   // FONT TEST (D-073, tillfalligt)
 if (g_state == 20) { scr_ed_step(); exit; }   // banredigeraren
 if (g_state == 30) { scr_results_step(); exit; }   // slutresultat
 

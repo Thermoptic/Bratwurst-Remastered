@@ -12,6 +12,11 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 48 - 2026-10-20 - New font
+
+- The whole game now uses the Rodchenko Light font (by ParaType), a thin constructivist-style typeface, with smooth edges. Small text, menu choices and headings use three sizes.
+- The temporary FONT TEST page in Options is gone again.
+
 ### UPDATE 47 - 2026-10-20 - Map editor in the main menu, font test
 
 - The MAP EDITOR is now in the main menu, right under CONTROLS, instead of in Options.

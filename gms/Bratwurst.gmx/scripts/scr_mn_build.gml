@@ -133,9 +133,6 @@ scr_mn_link(opts, n);
 n = scr_mn_add(2, "SCANLINES AND GLOW", "OLD CRT LINES OVER THE WHOLE PICTURE AND A SOFT GLOW AROUND TEXT");
 scr_mn_setting(n, g_SV_SCAN, 0, 1, "display.scanlines");
 scr_mn_link(opts, n);
-n = scr_mn_add(1, "FONT TEST", "TEMPORARY PAGE: SHOWS FONTS IN SEVERAL SIZES, WITH AND WITHOUT ANTI-ALIASING, EVERY SAMPLE NUMBERED");   // D-073, tillfalligt
-g_mn_act[n] = 8;
-scr_mn_link(opts, n);
 n = scr_mn_add(5, "DATA FOLDER", "WHERE SETTINGS.INI AND THEMES.INI ARE SAVED");
 g_mn_text[n] = game_save_id;
 scr_mn_link(opts, n);
