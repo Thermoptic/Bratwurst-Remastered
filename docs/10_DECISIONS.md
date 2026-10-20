@@ -417,3 +417,8 @@
 - **FONT TEST-sidan** ligger kvar tills typsnittet är godkänt; den tas sedan bort med `tools/remove_font_test.ps1` (D-073). Ej körd i GMS.
 
 **D-073, avslutad (2026-10-20):** typsnittet valdes (D-074) och FONT TEST-sidan togs bort: resurserna `fnt_ft_*`, `scr_ftest_*`, de fem raderna i menyn och spelkoden och projektfilens rader. Skripten `tools/gen_font_test.ps1` och `tools/remove_font_test.ps1` raderades (finns i git-historiken, commit `aa6a757`).
+
+## D-075 — Skeppsvalet: skeppen skalas att rymmas i radarringen
+- **Problem (användaren):** några av de stora skeppen ritades så stora i skeppsvalet att de gick utanför ramen. Dessutom låg skeppets namn (till exempel CRUISER) i bildrutan.
+- **Beslut (användaren):** alla skepp skalas automatiskt så att de ryms inom cirkeln, och skeppets namn tas bort ur bildrutan (namnet visas fortfarande på SHIP-raden).
+- **Implementation (`scr_menu_draw`):** skeppets största radie `R` räknas ut (hornpunkten eller podden längst från mitten, i skeppsenheter) och skalan blir `min(0,5, vh / 230, 0,92 × (yttre ringens radie) / R)`, där yttre ringens radie är `min(cw, vh) × 0,46`. Eftersom skeppet roterar används största radien, så det ryms i alla vinklar. Skepp som redan ryms behåller sin tidigare storlek (taket 0,5); de största (radie 190–285) blir ungefär 0,2–0,3. Skeppet ritas nu centrerat på ringens mittpunkt. Ej körd i GMS.

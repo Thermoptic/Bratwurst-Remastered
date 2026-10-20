@@ -364,3 +364,4 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | FONT-02 | Starta spelet och gå igenom titel, huvudmeny, Options, Controls, skeppsval, match (HUD), pausmeny, banredigerare, resultat | Allt är i Rodchenko Light; ingen text är klippt, överlappar eller ligger fel; små texter går att läsa; siffror och `/ : % < >` syns |
 | FONT-03 | Testa fönsterlägena 1X, 1.5X, 2X och FULLSCREEN | Texten är skarp i alla skalor (en glyfbildpunkt per skärmpixel) |
 | FONT-04 | Kolumner och staplar (spelarpanelen, DATA, musikspelaren, pausens spelarkort) | Justeringen fungerar med proportionell text |
+| SEL-01 | Bläddra genom alla 15 skepp i skeppsvalet | Inget skepp går utanför ramen vid rotation; ingen namntext i bildrutan; små skepp ser ut som förut |

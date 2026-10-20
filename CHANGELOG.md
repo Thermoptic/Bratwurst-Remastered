@@ -532,3 +532,6 @@ Alla betydande projektändringar dokumenteras här.
 - Hela spelet använder nu Rodchenko Light (kantutjämnat; 10, 14 och 20 punkter, plus en reserv på 28) i stället för Cascadia Mono. Proportionellt typsnitt med breddtabell per tecken. `tools/gen_gms_fonts.ps1`, `g_TXT_SMALL`. Återställningspunkt: commit aa6a757. D-074. Ej körd.
 
 - FONT TEST-sidan borttagen efter att typsnittet valts. D-073 avslutad.
+
+## 2026-10-20 — Skeppsval: skalning och namn
+- Skeppen i skeppsvalet skalas automatiskt så att de ryms inom radarringen i alla vinklar, och skeppets namn är borttaget ur bildrutan. `scr_menu_draw`. D-075. Ej körd.

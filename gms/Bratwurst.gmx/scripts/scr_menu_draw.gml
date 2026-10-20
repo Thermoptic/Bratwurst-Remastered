@@ -4,7 +4,7 @@
 // originalets exe (docs/13); layout, taplar och farger ar PLACEHOLDERS. Statstaplarna visar skeppets parametrar (g_ship_par) i forhallande
 // till det basta skeppet. Ledig plats visar "PRESS FIRE TO JOIN" (spelare laggs till har).
 var i, px, py, pw, ph, c, st, ssh, pn, rdy, n, r, ry, rx, rw, rc, lbl, vtxt, t, a, hp, active, yy, s;
-var lw, cx0, cw, vh, vy, rowh, bx, bw, k, sf, chx, chy, ctw, sel, avail, pcx, pcy, sx, ex, mxth, mxen, mxtu, mxam, mnrl, rlv;
+var lw, cx0, cw, vh, vy, rowh, bx, bw, k, sf, chx, chy, ctw, sel, avail, pcx, pcy, sx, ex, mxth, mxen, mxtu, mxam, mnrl, rlv, shr, jj;
 pw = floor((g_vw - 32 - 12) / 2);
 ph = floor((g_vh - 44 - 32 - 12) / 2);
 scr_bg_draw();   // samma bakgrund som titelskarmen och huvudmenyn
@@ -209,11 +209,14 @@ for (i = 0; i < 4; i += 1)
     a = (g_menu_tick * 2) mod 256;
     hp = -1;
     if (st >= 2) { if (st != 2 || (g_menu_tick mod 20) < 14) { hp = scr_sel_pod(ssh, g_sel_pod[i]); } }   // pods visas nar raden POD eller senare ar vald
-    scr_ui_ship(ssh, pcx, pcy - 4, min(0.5, vh / 230), a, c, hp, true);
+    // skeppets storsta radie (hornpunkt eller pod langst fran mitten): skalan valjs sa att skeppet ryms inom den yttre radarringen i alla vinklar (D-075)
+    shr = 1;
+    for (jj = 0; jj < g_ship_np[ssh]; jj += 1) { shr = max(shr, sqrt(g_ship_pts[ssh, 2 * jj] * g_ship_pts[ssh, 2 * jj] + g_ship_pts[ssh, 2 * jj + 1] * g_ship_pts[ssh, 2 * jj + 1])); }
+    for (jj = 0; jj < g_ship_nk[ssh]; jj += 1) { shr = max(shr, sqrt(g_ship_pods[ssh, 2 * jj] * g_ship_pods[ssh, 2 * jj] + g_ship_pods[ssh, 2 * jj + 1] * g_ship_pods[ssh, 2 * jj + 1])); }
+    scr_ui_ship(ssh, pcx, pcy, min(0.5, vh / 230, 0.92 * min(cw, vh) * 0.46 / shr), a, c, hp, true);
     g_fs = g_f_sm;
     scr_ui_text(cx0 + 6, vy + 4, scr_pad2(ssh + 1) + "/" + scr_pad2(g_ship_count), g_c[4]);
     scr_ui_text_r(cx0 + cw - 6, vy + 4, "PODS " + string(n), g_c[4]);
-    scr_ui_text_c(pcx, vy + vh - 18, string_upper(g_ship_name[ssh]), c);
 
     // statstaplar fran skeppets parametrar
     yy = vy + vh + 8;

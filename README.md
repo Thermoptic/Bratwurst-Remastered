@@ -12,6 +12,11 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 49 - 2026-10-20 - Ship select
+
+- On the ship select screen every ship is now scaled automatically so it fits inside the radar circle, also when it rotates. The big ships no longer stick out of the frame.
+- The ship name is no longer shown inside the picture (it is still on the SHIP row).
+
 ### UPDATE 48 - 2026-10-20 - New font
 
 - The whole game now uses the Rodchenko Light font (by ParaType), a thin constructivist-style typeface, with smooth edges. Small text, menu choices and headings use three sizes.
