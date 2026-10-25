@@ -12,4 +12,6 @@ for (k = 0; k < 16; k += 1)
 }
 ini_close();
 g_acc = g_c[8 + g_sv[g_SV_ACCENT]];
+g_dot_col = g_acc;
+if (g_th_dot[t] >= 0) { g_dot_col = g_th_dot[t]; }   // Chromostereopsis (D-076): orienteringspunkterna i morkbla
 scr_theme_players();

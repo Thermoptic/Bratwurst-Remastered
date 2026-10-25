@@ -37,12 +37,84 @@ THEMES = [  # (id, namn, 16 hex-varden base00..base0F)
     ('tube', 'London Tube', '231f201c3f955a5758737171959ca1d9d8d8e7e7e8ffffffee2e24f386a1ffd20400853e85cebc009ddc98005db06110'),
 ]
 
+# --- Chromostereopsis-serien (D-076): ror pa svart, rod = nara (vaggar, skott, explosioner), bla = langt bort (skepp, linjer, prickar).
+# Bakgrunden (base00) ar alltid #000000. Rodton och blaton har konstant nyans; bara ljusstyrkan varierar. Se docs/10_DECISIONS.md D-076.
+REDS = [(255, 45, 45), (214, 34, 34), (180, 28, 28), (150, 24, 24)]         # R1..R4, nyans 0 grader
+BLUES = [(92, 134, 255), (63, 104, 240), (46, 82, 208), (38, 66, 172)]       # B1..B4, nyans ca 227 grader
+
+
+def _hex(c):
+    return "%02x%02x%02x" % tuple(int(round(v)) for v in c)
+
+
+def _mix(a, b, f):   # f = 0 -> a, f = 1 -> b
+    return tuple(a[i] + (b[i] - a[i]) * f for i in range(3))
+
+
+def _dim(c, f):      # ljusstyrka mot svart (samma teknik som motorns merge_colour mot bakgrunden)
+    return tuple(v * f for v in c)
+
+
+def _resample(pool, n):   # n jamnt fordelade steg langs en rampa av farger (linjar interpolation)
+    out = []
+    for i in range(n):
+        u = i * (len(pool) - 1) / float(n - 1)
+        j = min(len(pool) - 2, int(u))
+        out.append(_mix(pool[j], pool[j + 1], u - j))
+    return out
+
+
+def chromo(nred, nblue):
+    """Bygger ett Chromostereopsis-tema med nred rodtoner och nblue blatoner. Returnerar (16 hex-varden, spelarfarger[4], vaggfarger[11], prickfarg)."""
+    reds = {1: [REDS[0]], 2: [REDS[0], REDS[2]], 3: REDS[:3], 4: REDS[:4]}[nred]
+    blues = {1: [BLUES[0]], 2: [BLUES[0], BLUES[2]], 3: BLUES[:3], 4: BLUES[:4]}[nblue]
+    ext = blues if len(blues) > 1 else [blues[0], _dim(blues[0], 0.55)]   # X2: den morka bla ar samma bla med lagre ljusstyrka
+    rh, rm, rl = reds[0], reds[min(1, len(reds) - 1)], reds[-1]
+    rm2 = reds[2] if len(reds) > 2 else rm
+    bh, bm, bd = ext[0], ext[1], ext[-1]
+    bm2 = ext[2] if len(ext) > 2 else bm
+    slot = [
+        (0, 0, 0),            # 00 bakgrund: absolut svart
+        _dim(bd, 0.30),       # 01 rutnat och ytor i granssnittet (morkaste bla, nedtonad)
+        bd,                   # 02 menybakgrundens skepp, hover, asteroidfyllning
+        bm,                   # 03 dampad text, arenans ram
+        bh,                   # 04 vanlig text
+        bh,                   # 05 text
+        rh,                   # 06 markering, explosionskarna
+        rh,                   # 07
+        rh,                   # 08 explosionsringar, accent 0
+        rm,                   # 09 missilglod, pickups
+        rh,                   # 0A skott, missilkarna
+        rm2,                  # 0B standardaccent (rubriker, hornmarkeringar)
+        bm,                   # 0C
+        bh,                   # 0D
+        rl,                   # 0E Mini Nuke yttre ring
+        bm2,                  # 0F
+    ]
+    pool = ext if len(ext) >= 3 or nblue == 1 else ext + [BLUES[3]]   # spelarnas rampa; X4 forlangs med det morkaste blatt
+    players = _resample(pool, 4)                     # P1..P4: bla, ljusast forst
+    walls = [reds[m % len(reds)] for m in range(11)]  # 11 vaggobjekt, rodtonerna i tur och ordning
+    return "".join(_hex(c) for c in slot), [_hex(c) for c in players], [_hex(c) for c in walls], _hex(bd)
+
+
+CHROMO = {}   # id -> (spelare, vaggar, prickar)
+for _n, _r, _b in ((2, 1, 1), (4, 2, 2), (6, 3, 3), (8, 4, 4)):
+    _h, _p, _w, _d = chromo(_r, _b)
+    THEMES.append(('chromostereopsis-x%d' % _n, 'ChromostereopsisX%d' % _n, _h))
+    CHROMO['chromostereopsis-x%d' % _n] = (_p, _w, _d)
+
+
+def _bgr(hx):
+    return "$" + (hx[4:6] + hx[2:4] + hx[0:2]).upper()
+
+
 def main():
     here = os.path.dirname(os.path.abspath(__file__))
     dst = os.path.join(here, "..", "gms", "Bratwurst.gmx", "scripts", "scr_data_themes.gml")
     L = ["/// scr_data_themes()",
-         "// GENERERAD av tools/gen_gms_themes.py - redigera inte for hand. 30 morka Base16-teman (tinted-theming/schemes).",
+         "// GENERERAD av tools/gen_gms_themes.py - redigera inte for hand. 30 morka Base16-teman (tinted-theming/schemes) + 4 Chromostereopsis-teman (D-076).",
          "// g_th_hex[t,k] = hex-text (utan #), g_th_col[t,k] = GM-farg (BGR). k = 0..15 = base00..base0F.",
+         "// g_th_pl[t,0..3] = spelarfarger, g_th_wl[t,0..10] = vaggfarger, g_th_dot[t] = prickfarg; -1 = temat anvander scr_theme_players urval (alla utom Chromostereopsis).",
          "g_th_count = %d;" % len(THEMES)]
     for t, (tid, name, h) in enumerate(THEMES):
         L.append('g_th_id[%d] = "%s"; g_th_name[%d] = "%s";' % (t, tid, t, name))
@@ -50,6 +122,15 @@ def main():
             hx = h[k * 6:k * 6 + 6]
             bgr = hx[4:6] + hx[2:4] + hx[0:2]
             L.append('g_th_hex[%d,%d] = "%s"; g_th_col[%d,%d] = $%s;' % (t, k, hx, t, k, bgr.upper()))
+        if tid in CHROMO:
+            pl, wl, dot = CHROMO[tid]
+            for i in range(4):
+                L.append('g_th_pl[%d,%d] = %s;' % (t, i, _bgr(pl[i])))
+            for m in range(11):
+                L.append('g_th_wl[%d,%d] = %s;' % (t, m, _bgr(wl[m])))
+            L.append('g_th_dot[%d] = %s;' % (t, _bgr(dot)))
+        else:
+            L.append('g_th_pl[%d,0] = -1; g_th_wl[%d,0] = -1; g_th_dot[%d] = -1;' % (t, t, t))
     with open(dst, "w", newline="\n") as f:
         f.write("\n".join(L) + "\n")
     print("skrev", dst, len(THEMES), "teman")

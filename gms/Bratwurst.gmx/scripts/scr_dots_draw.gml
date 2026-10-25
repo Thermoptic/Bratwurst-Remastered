@@ -16,7 +16,7 @@ i1 = min(g_dot_i0 + g_dot_ni - 1, ceil(wxb / g_DOT_STEP));
 j0 = max(g_dot_j0, floor(wya / g_DOT_STEP));
 j1 = min(g_dot_j0 + g_dot_nj - 1, ceil(wyb / g_DOT_STEP));
 sz = max(1, g_SCALE);
-draw_set_color(g_acc);
+draw_set_color(g_dot_col);
 draw_set_alpha(al * 0.75);
 for (i = i0; i <= i1; i += 1)
 {

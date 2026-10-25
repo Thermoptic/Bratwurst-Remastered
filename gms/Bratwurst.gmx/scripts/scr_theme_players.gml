@@ -39,3 +39,12 @@ for (m = 0; m < 4; m += 1) { g_pc[m] = g_c[pick[m]]; }
 wpal[0] = 8; wpal[1] = 11; wpal[2] = 13; wpal[3] = 9; wpal[4] = 12; wpal[5] = 14; wpal[6] = 10; wpal[7] = 15; wpal[8] = 7; wpal[9] = 5; wpal[10] = 4;
 for (m = 0; m < 11; m += 1) { g_wcol[m] = merge_colour(g_c[0], g_c[wpal[m]], 0.8); }
 
+// Chromostereopsis-teman (D-076): skeppen i bla och vaggarna i rott med fasta farger ur temats data i stallet for urvalet ovan.
+// Rod = nara, bla = langt bort. Ovriga teman har g_th_pl[t,0] = -1 och beror inte.
+m = g_sv[g_SV_THEME];
+if (g_th_pl[m, 0] >= 0)
+{
+    for (i = 0; i < 4; i += 1) { g_pc[i] = g_th_pl[m, i]; }
+    for (i = 0; i < 11; i += 1) { g_wcol[i] = g_th_wl[m, i]; }
+}
+

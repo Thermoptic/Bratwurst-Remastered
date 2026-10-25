@@ -365,3 +365,10 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | FONT-03 | Testa fönsterlägena 1X, 1.5X, 2X och FULLSCREEN | Texten är skarp i alla skalor (en glyfbildpunkt per skärmpixel) |
 | FONT-04 | Kolumner och staplar (spelarpanelen, DATA, musikspelaren, pausens spelarkort) | Justeringen fungerar med proportionell text |
 | SEL-01 | Bläddra genom alla 15 skepp i skeppsvalet | Inget skepp går utanför ramen vid rotation; ingen namntext i bildrutan; små skepp ser ut som förut |
+
+| CHROMO-01 | Options -> COLOUR THEME: välj ChromostereopsisX2, X4, X6, X8 (tema 31–34 av 34), starta om spelet | Alla fyra finns i listan; valet sparas och återställs efter omstart; äldre teman ser ut som förut |
+| CHROMO-02 | Titel, huvudmeny, Options, ship select i varje tema | Bakgrunden är helsvart överallt; text läsbar; inga gröna, gula eller lila färger |
+| CHROMO-03 | Match i Classic med 2 spelare: väggar, skepp, skott, missil, explosion, orienteringsprickar (zooma in) | Väggar röda (X4+ i flera röda toner), skepp blå, skott och explosioner röda, prickar mörkblå men synliga; djupintrycket syns |
+| CHROMO-04 | 4 spelare i X2, X4, X6, X8 | Spelarna går att skilja åt (X2/X4: bara ljusstyrkesteg, se D-076); skriv om det är för svårt |
+| CHROMO-05 | Banredigerare, Race (mål, pickups), Asteroids, Galaxy Duel, pausmeny, resultat | Läsbara, inga tomma eller osynliga element |
+| CHROMO-06 | Jämför X2 -> X8 | X2 minimalistisk, rikare lager och djup upp till X8; ingen överdriven glöd |

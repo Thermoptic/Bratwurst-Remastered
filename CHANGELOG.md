@@ -535,3 +535,6 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-20 — Skeppsval: skalning och namn
 - Skeppen i skeppsvalet skalas automatiskt så att de ryms inom radarringen i alla vinklar, och skeppets namn är borttaget ur bildrutan. `scr_menu_draw`. D-075. Ej körd.
+
+## 2026-10-25 — Temaserien Chromostereopsis
+- Fyra nya teman ChromostereopsisX2, X4, X6 och X8 (röd = närmare: väggar, skott, explosioner; blå = längre bort: skepp, text, prickar; helsvart bakgrund). Nya datatabeller `g_th_pl`, `g_th_wl`, `g_th_dot` i `scr_data_themes` (genereras av `tools/gen_gms_themes.py`), `scr_theme_players` använder dem för de nya temana, `g_dot_col` i `scr_theme_apply` och `scr_dots_draw`. Äldre teman oförändrade. D-076. Ej körd i GMS.
