@@ -38,9 +38,11 @@ THEMES = [  # (id, namn, 16 hex-varden base00..base0F)
 ]
 
 # --- Chromostereopsis-serien (D-076): ror pa svart, rod = nara (vaggar, skott, explosioner), bla = langt bort (skepp, linjer, prickar).
-# Bakgrunden (base00) ar alltid #000000. Rodton och blaton har konstant nyans; bara ljusstyrkan varierar. Se docs/10_DECISIONS.md D-076.
-REDS = [(255, 45, 45), (214, 34, 34), (180, 28, 28), (150, 24, 24)]         # R1..R4, nyans 0 grader
-BLUES = [(92, 134, 255), (63, 104, 240), (46, 82, 208), (38, 66, 172)]       # B1..B4, nyans ca 227 grader
+# Bakgrunden (base00) ar alltid #000000. Grundfargerna ar exakt #FF0000 och #0000FF (anvandarens referensbild); X2 anvander bara dem.
+# X4-X8 blandar in nara nyanser: rodtonerna har nyans 0, blatonerna nyans 240 (bara ljusstyrka och lite uppljusning varierar).
+# Se docs/10_DECISIONS.md D-076.
+def _rgb(h):
+    return tuple(int(h[i:i + 2], 16) for i in (0, 2, 4))
 
 
 def _hex(c):
@@ -64,22 +66,31 @@ def _resample(pool, n):   # n jamnt fordelade steg langs en rampa av farger (lin
     return out
 
 
-def chromo(nred, nblue):
-    """Bygger ett Chromostereopsis-tema med nred rodtoner och nblue blatoner. Returnerar (16 hex-varden, spelarfarger[4], vaggfarger[11], prickfarg)."""
-    reds = {1: [REDS[0]], 2: [REDS[0], REDS[2]], 3: REDS[:3], 4: REDS[:4]}[nred]
-    blues = {1: [BLUES[0]], 2: [BLUES[0], BLUES[2]], 3: BLUES[:3], 4: BLUES[:4]}[nblue]
-    ext = blues if len(blues) > 1 else [blues[0], _dim(blues[0], 0.55)]   # X2: den morka bla ar samma bla med lagre ljusstyrka
+# reds: rodtoner, ljusast forst (vaggar tar dem i tur och ordning). text = blatt for text; bh = skeppens/huvudbla; bm, bm2 = mellanbla;
+# bd = morkaste bla (linjer, prickar); players = explicit lista (annars jamn rampa bh -> pend).
+SPEC = {
+    2: dict(reds=['ff0000'], text='0000ff', bh='0000ff', bm='0000ff', bm2='0000ff', bd='0000ff', players=['0000ff'] * 4),
+    4: dict(reds=['ff0000', 'bb0000'], text='3c3cff', bh='0000ff', bm='0000d2', bm2='0000d2', bd='0000b8', pend='6464ff'),
+    6: dict(reds=['ff0000', 'dd0000', 'bb0000'], text='4646ff', bh='0000ff', bm='0000e0', bm2='0000d0', bd='0000c0', pend='6464ff'),
+    8: dict(reds=['ff0000', 'dd0000', 'bb0000', '990000'], text='5050ff', bh='0000ff', bm='2828ff', bm2='0000d2', bd='0000b0',
+            players=['0000ff', '3c3cff', '6464ff', '0000d8']),
+}
+
+
+def chromo(n):
+    """Bygger ett Chromostereopsis-tema. Returnerar (16 hex-varden, spelarfarger[4], vaggfarger[11], prickfarg)."""
+    s = SPEC[n]
+    reds = [_rgb(x) for x in s['reds']]
     rh, rm, rl = reds[0], reds[min(1, len(reds) - 1)], reds[-1]
     rm2 = reds[2] if len(reds) > 2 else rm
-    bh, bm, bd = ext[0], ext[1], ext[-1]
-    bm2 = ext[2] if len(ext) > 2 else bm
+    tx, bh, bm, bm2, bd = (_rgb(s[k]) for k in ('text', 'bh', 'bm', 'bm2', 'bd'))
     slot = [
         (0, 0, 0),            # 00 bakgrund: absolut svart
         _dim(bd, 0.30),       # 01 rutnat och ytor i granssnittet (morkaste bla, nedtonad)
         bd,                   # 02 menybakgrundens skepp, hover, asteroidfyllning
         bm,                   # 03 dampad text, arenans ram
-        bh,                   # 04 vanlig text
-        bh,                   # 05 text
+        tx,                   # 04 vanlig text
+        tx,                   # 05 text
         rh,                   # 06 markering, explosionskarna
         rh,                   # 07
         rh,                   # 08 explosionsringar, accent 0
@@ -91,15 +102,17 @@ def chromo(nred, nblue):
         rl,                   # 0E Mini Nuke yttre ring
         bm2,                  # 0F
     ]
-    pool = ext if len(ext) >= 3 or nblue == 1 else ext + [BLUES[3]]   # spelarnas rampa; X4 forlangs med det morkaste blatt
-    players = _resample(pool, 4)                     # P1..P4: bla, ljusast forst
-    walls = [reds[m % len(reds)] for m in range(11)]  # 11 vaggobjekt, rodtonerna i tur och ordning
+    if 'players' in s:
+        players = [_rgb(x) for x in s['players']]
+    else:
+        players = _resample([bh, _rgb(s['pend'])], 4)    # P1..P4: bla, jamn uppljusning
+    walls = [reds[m % len(reds)] for m in range(11)]     # 11 vaggobjekt, rodtonerna i tur och ordning
     return "".join(_hex(c) for c in slot), [_hex(c) for c in players], [_hex(c) for c in walls], _hex(bd)
 
 
 CHROMO = {}   # id -> (spelare, vaggar, prickar)
-for _n, _r, _b in ((2, 1, 1), (4, 2, 2), (6, 3, 3), (8, 4, 4)):
-    _h, _p, _w, _d = chromo(_r, _b)
+for _n in (2, 4, 6, 8):
+    _h, _p, _w, _d = chromo(_n)
     THEMES.append(('chromostereopsis-x%d' % _n, 'ChromostereopsisX%d' % _n, _h))
     CHROMO['chromostereopsis-x%d' % _n] = (_p, _w, _d)
 
