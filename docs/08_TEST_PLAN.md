@@ -246,7 +246,7 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | CAM-07 | Options -> ZOOM 1, 5 och 10 med två spelare långt från varandra | Zoom 1 som förut; högre zoomvärde visar mer av arenan, Zoom 10 dubbelt så mycket; kameran glider mjukt när värdet ändras (även i pausmenyns Options); valet sparas; orienteringspunkterna tonar ut vid utzoomad bild; spelet går att spela som vanligt |
 | UI-OPT-01 | Options | Ingen rad WIDE PLAYFIELD; SCANLINES AND GLOW slar bade linjer och textglod pa/av; spelytan alltid bred |
 | AUD-VOL-01 | Options VOLUME ned till 0 | Visar OFF, musiken tystnar; upp igen startar musiken; samma via - i musikspelaren; ingen MUSIC-rad |
-| GD-01 | Galaxy Duel: skjut en motståndare en gång | Skeppet blir 80 % långsammare i 6 s, kan inte skjuta/använda specialvapen/powerup, gnistor och små streck lossnar; efter 6 s normalt igen och effekterna försvinner |
+| GD-01 | Galaxy Duel: skjut en motståndare en gång | Skeppet blir 80 % långsammare i 4 s (var 6 s, D-077), kan inte skjuta/använda specialvapen/powerup, gnistor och små streck lossnar; efter 4 s normalt igen och effekterna försvinner |
 | GD-02 | Galaxy Duel: träff medan skadad | Skeppet exploderar och tappar ett liv; träff efter reparation skadar bara igen |
 | GD-03 | Galaxy Duel: träff med missil, Mini Nuke-chockvåg och railgun | Alla ger samma skada/död-regel; railgunladdning avbryts vid träff |
 | DR-01 | Starta match, titta på panelens AB-mätare | Full mätare (blå) för varje spelare; RF LOCKED finns inte längre |
@@ -372,3 +372,7 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | CHROMO-04 | 4 spelare i X2, X4, X6, X8 | Spelarna går att skilja åt (X2/X4: bara ljusstyrkesteg, se D-076); skriv om det är för svårt |
 | CHROMO-05 | Banredigerare, Race (mål, pickups), Asteroids, Galaxy Duel, pausmeny, resultat | Läsbara, inga tomma eller osynliga element |
 | CHROMO-06 | Jämför X2 -> X8 | X2 minimalistisk, rikare lager och djup upp till X8; ingen överdriven glöd |
+
+| GD-BLINK-01 | Galaxy Duel, 2 spelare: träffa en motståndare en gång | Skeppet blinkar snabbt i tre färger i 4 s medan det är långsamt, utan vapen och med partiklar; efter 4 s slutar blinkandet och skeppet har sin vanliga färg, vapen och fart igen |
+| GD-BLINK-02 | Samma, men en ny träff under blinkandet | Skeppet dör som förut (D-051); det nya skeppet efter respawn blinkar inte |
+| GD-BLINK-03 | Blinkandet med Solid colors på/av, olika teman, och i Classic/Asteroids/Race | Konturen (och fyllningen) blinkar; inga andra lägen blinkar; pausa stoppar blinkandet |

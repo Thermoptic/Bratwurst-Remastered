@@ -12,6 +12,7 @@ for (k = 0; k < 16; k += 1)
 }
 ini_close();
 g_acc = g_c[8 + g_sv[g_SV_ACCENT]];
+g_ad_blink[0] = g_c[8]; g_ad_blink[1] = g_c[11]; g_ad_blink[2] = g_c[13];   // Galaxy Duel: blinkfarger for skadat skepp (base08, 0B, 0D = rod, gron, bla i vanliga Base16-teman)
 g_dot_col = g_acc;
 if (g_th_dot[t] >= 0) { g_dot_col = g_th_dot[t]; }   // Chromostereopsis (D-076): orienteringspunkterna i morkbla
 scr_theme_players();

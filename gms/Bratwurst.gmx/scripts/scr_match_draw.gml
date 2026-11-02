@@ -48,7 +48,7 @@ with (obj_player)
 {
     if (alive)
     {
-        var sn, cs, bx, by, j, xs, ys, rx, ry;
+        var sn, cs, bx, by, j, xs, ys, rx, ry, scol;
         dsx[0] = 0; dsy[0] = 0;   // skapa arrayerna (GMS 1.4)
         sn = g_sin_tab[ang];
         cs = g_cos_tab[ang];
@@ -63,8 +63,10 @@ with (obj_player)
             dsx[j] = bx + rx;
             dsy[j] = by + ry;
         }
-        if (g_sv[g_SV_SOLID]) { scr_ship_fill(ship, scr_slot_colour(slot)); }   // Solid colors: fyllt skrov under konturen
-        draw_set_color(scr_slot_colour(slot));
+        scol = scr_slot_colour(slot);
+        if (g_game_mode == 1 && ad_dmg > 0) { scol = g_ad_blink[floor(g_tick / g_AD_BLINK_TICKS) mod 3]; }   // Galaxy Duel: skadat skepp blinkar i tre temafarger tills det repareras (D-077)
+        if (g_sv[g_SV_SOLID]) { scr_ship_fill(ship, scol); }   // Solid colors: fyllt skrov under konturen
+        draw_set_color(scol);
         for (j = 0; j < nl; j += 1)
         {
             draw_line(g_OX + dsx[g_ship_lines[ship, 2 * j]] * g_SCALE, g_OY + dsy[g_ship_lines[ship, 2 * j]] * g_SCALE,

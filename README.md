@@ -113,7 +113,7 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 ### UPDATE 32 - 2026-10-18 - Galaxy Duel
 
 - Astro Duel is now called GALAXY DUEL.
-- A hit no longer kills right away. The first hit damages your ship for 6 seconds: it is 60% slower and you cannot use any weapons, only steer and thrust. Sparks fly from the ship and little pieces fall off. After 6 seconds it is repaired and works like new.
+- A hit no longer kills right away. The first hit damages your ship for 4 seconds: it is 60% slower and you cannot use any weapons, only steer and thrust. Sparks fly from the ship and little pieces fall off, and the ship flashes in three theme colours. After 4 seconds it is repaired and works like new.
 - If you are hit while damaged, your ship explodes.
 
 ### UPDATE 31 - 2026-10-16 - Alt-tab in fullscreen

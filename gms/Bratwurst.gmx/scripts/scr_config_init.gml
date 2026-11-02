@@ -140,10 +140,12 @@ g_wall_gn = 1; g_wall_grp[0] = 0; g_wall_tmp[0] = 0;
 for (g_tmp_n = 0; g_tmp_n < 11; g_tmp_n += 1) { g_wcol[g_tmp_n] = c_white; }
 g_pc[0] = c_aqua; g_pc[1] = c_yellow; g_pc[2] = c_lime; g_pc[3] = c_fuchsia;
 g_f_sm = 0; g_f_md = 1; g_f_lg = 2; g_f_xl = 3; g_fs = 1; g_fk = 0; g_k = 1;   // g_fnt[] fylls i scr_font_init
-globalvar g_AD_SLOW, g_AD_DMG_TICKS, g_AD_GRACE;
+globalvar g_AD_SLOW, g_AD_DMG_TICKS, g_AD_GRACE, g_AD_BLINK_TICKS, g_ad_blink;
+g_AD_BLINK_TICKS = 3;   // Galaxy Duel: skadat skepp byter blinkfarg var 3:e tick (ca 17 byten/s, 50 ticks/s); farger satta av scr_theme_apply
+g_ad_blink[0] = c_red; g_ad_blink[1] = c_lime; g_ad_blink[2] = c_blue;
 g_AD_GRACE = 25;   // Galaxy Duel: efter en traff raknas inga fler traffar under 0,5 s (en salva med flera skott ska inte doda direkt)
 g_AD_SLOW = 0.4;   // Galaxy Duel: skadat skepp har 40 % av normal fart och gas (60 % langsammare, D-051)
-g_AD_DMG_TICKS = 300;   // skadan varar 6 s (50 ticks/s) och repareras sedan sjalv
+g_AD_DMG_TICKS = 200;   // skadan varar 4 s (50 ticks/s; var 6 s, D-077) och repareras sedan sjalv
 globalvar g_DRIFT_FUEL, g_DRIFT_RECHARGE;
 g_DRIFT_FUEL = 400;   // Drifting fuel (D-052): full matare = 8 s (400 ticks), andras av Powerup Editor -> DRIFT -> DRIFTING FUEL (scr_drift_apply)
 g_DRIFT_RECHARGE = 300;   // tom matare laddas pa exakt 6 s (300 ticks) och drift ar avstangd under tiden

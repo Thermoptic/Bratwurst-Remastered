@@ -32,7 +32,7 @@ if (race_slow > 0) { race_slow -= 1; }
 if (race_msg_t > 0) { race_msg_t -= 1; }   // Race: fartminskning efter vapentraff (D-055)
 if (g_game_mode == 1 && ad_dmg > 0)
 {
-    // Galaxy Duel (D-051): skadat skepp, 6 s. Bara gas och svang; inga vapen (kanon, specialvapen, powerup). Skadan repareras sjalv.
+    // Galaxy Duel (D-051): skadat skepp, 4 s. Bara gas och svang; inga vapen (kanon, specialvapen, powerup). Skadan repareras sjalv.
     ad_dmg -= 1;
     if (ad_dmg <= 0) { ad_dmg = 0; ad_inv = 0; energy = energy_max; }   // reparerad: som nytt, en ny traff skadar igen
     in_fire = false; in_special = false; in_powerup = false; in_pu_hold = false;

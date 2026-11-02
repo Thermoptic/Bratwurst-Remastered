@@ -540,3 +540,6 @@ Alla betydande projektändringar dokumenteras här.
 - Fyra nya teman ChromostereopsisX2, X4, X6 och X8 (röd = närmare: väggar, skott, explosioner; blå = längre bort: skepp, text, prickar; helsvart bakgrund). Nya datatabeller `g_th_pl`, `g_th_wl`, `g_th_dot` i `scr_data_themes` (genereras av `tools/gen_gms_themes.py`), `scr_theme_players` använder dem för de nya temana, `g_dot_col` i `scr_theme_apply` och `scr_dots_draw`. Äldre teman oförändrade. D-076. Ej körd i GMS.
 
 - Chromostereopsis: färgerna justerade till användarens referensbild, exakt `#FF0000` och `#0000FF` (X2 bara dem; X4–X8 med nära nyanser). Alla fyra spelare är samma blå i X2. D-076 uppdaterad. Ej körd i GMS.
+
+## 2026-10-28 — Galaxy Duel: skadat skepp blinkar
+- Ett skadat skepp i Galaxy Duel blinkar snabbt i tre temafärger (`base08`, `base0B`, `base0D`) tills det repareras. `scr_match_draw`, `scr_theme_apply`, `scr_config_init` (`g_ad_blink`, `g_AD_BLINK_TICKS`). D-077. Skadetiden ändrad från 6 till 4 sekunder (`g_AD_DMG_TICKS` 300 -> 200). Ej körd i GMS.
