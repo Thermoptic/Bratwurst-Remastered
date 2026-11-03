@@ -7,6 +7,7 @@ var i, c, cx, cy, ox, oy, nx, ny, d, n, t, wx, wy, hit, z, tgx, tgy, sp;
 g_ct_t -= 1;
 if (g_ct_t <= 0) { scr_ctb_round_end(); exit; }
 if (g_ct_zero > 0) { g_ct_zero -= 1; }
+if (g_sa_lockt > 0) { g_sa_lockt -= 1; }
 // 2) faserna efter en leverans: skeppen far flyga och skjuta, men korven finns inte, sa ingen kan plocka upp eller poangsatta
 if (g_ct_phase == 1)
 {
@@ -63,7 +64,8 @@ if (g_sa_st == 1)
     // upplockning: det forsta levande skeppet (lagsta spelarplats vinner om flera ar lika nara) vars mitt ligger inom g_CT_PICK fran korven (D-081, svar 2)
     for (i = 0; i < g_n_players; i += 1)
     {
-        c = scr_ctb_find(i);
+        c = noone;
+        if (!(i == g_sa_lock && g_sa_lockt > 0)) { c = scr_ctb_find(i); }   // den som just tappat korven (missiltraff) kan inte ta den direkt igen (D-084)
         if (c != noone)
         {
             if (point_distance(c.px / 256, c.py / 256, g_sa_x, g_sa_y) <= g_CT_PICK)

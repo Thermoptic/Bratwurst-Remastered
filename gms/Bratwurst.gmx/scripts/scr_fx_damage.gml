@@ -29,7 +29,7 @@ with (obj_player)
         if (hitp)
         {
             other.fdone[slot] = 1;
-            if (g_game_mode == 3) { scr_ctb_hurt(other.fowner); }   // Capture the Bratwurst: kills och bararens reaktion (D-082)
+            if (g_game_mode == 3) { scr_ctb_hurt(other.fowner, true); }   // missilring och Mini Nuke-chockvag: bararen tappar korven (D-084)   // Capture the Bratwurst: kills och bararens reaktion (D-082)
             if (g_game_mode == 2) { scr_race_hit(); }   // Race: chockvag och missilring ger bara fartminskning (D-055)
             else if (other.fkind == 4)
             {

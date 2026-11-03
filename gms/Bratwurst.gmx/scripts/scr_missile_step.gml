@@ -80,7 +80,7 @@ if (g_hit_id != noone)
     if (mtype == 1) { kmul = g_ML_KNOCK; }   // KNOCKBACK i Powerup Editor (D-069)
     with (g_hit_id)
     {
-        if (g_game_mode == 3) { scr_ctb_hurt(other.owner); }   // Capture the Bratwurst (D-082)
+        if (g_game_mode == 3) { scr_ctb_hurt(other.owner, true); }   // missil: bararen tappar korven (D-084)   // Capture the Bratwurst (D-082)
         if (g_game_mode == 1) { scr_ad_hit(); }
         else if (g_game_mode == 2) { scr_race_hit(); }   // Race: icke-dodlig, bara fartminskning (D-055)   // Galaxy Duel: forsta traffen skadar, nasta dodar (D-051)
         else if (other.mtype == 3) { energy -= g_sv[g_SV_PU + 4]; }   // Mini Nuke: direktskada ur Powerup Editor

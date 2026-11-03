@@ -12,6 +12,11 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 54 - 2026-11-07 - Capture the Bratwurst: missiles knock the sausage loose
+
+- If you carry the sausage and get hit by a missile (a direct hit, the red explosion ring, a guided missile or a Mini Nuke), you drop it. The sausage keeps its speed and either team can grab it, but you cannot pick it up again for one second.
+- Cannon shots and the railgun still only make the sausage spin extra fast. A missile from a teammate does nothing, as before.
+
 ### UPDATE 53 - 2026-11-06 - Capture the Bratwurst, first playable version
 
 - Game Modes -> CAPTURE THE BRATWURST is now a real game mode. Choose PLAYERS (2 to 4), MAP, ROUNDS, SCORE LIMIT (default 5 points), TIME LIMIT (default 5 minutes) and POWERUPS. START checks that the map has a sausage spawn and both zones.

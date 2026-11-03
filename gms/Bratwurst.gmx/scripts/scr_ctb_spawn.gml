@@ -9,3 +9,5 @@ g_sa_vx = 0;
 g_sa_vy = 0;
 g_sa_car = -1;
 g_sa_spin = 0;
+g_sa_lock = -1;
+g_sa_lockt = 0;

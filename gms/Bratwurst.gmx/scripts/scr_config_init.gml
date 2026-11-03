@@ -155,7 +155,8 @@ g_mn_map_node4 = -1; g_mn_ctb_start = -1; g_ctb_desc = "";
 // g_ct_* = runda och match (tid kvar i ticks, fas 0 spel / 1 meddelande / 2 nedrakning, poang, kills, barform i ticks, rundvinster per lag); g_sa_* = korven (st 0 spawn, 1 fri, 2 buren, 3 borta)
 globalvar g_ctz_on, g_ctz_x0, g_ctz_y0, g_ctz_x1, g_ctz_y1, g_cts_on, g_cts_x, g_cts_y;
 globalvar g_ct_t, g_ct_phase, g_ct_pt, g_ct_zero, g_ct_lim, g_ct_scorer, g_ct_win, g_ct_tie, g_ct_score, g_ct_rw, g_ct_kills, g_ct_carry, g_ct_fs;
-globalvar g_sa_st, g_sa_x, g_sa_y, g_sa_vx, g_sa_vy, g_sa_ang, g_sa_t, g_sa_car, g_sa_spin;
+globalvar g_sa_st, g_sa_x, g_sa_y, g_sa_vx, g_sa_vy, g_sa_ang, g_sa_t, g_sa_car, g_sa_spin, g_sa_lock, g_sa_lockt;
+g_sa_lock = -1; g_sa_lockt = 0;   // D-084: spelaren som just tappat korven kan inte plocka upp den igen under g_sa_lockt ticks
 globalvar g_CT_SIZE, g_CT_PICK, g_CT_TRAIL, g_CT_FOLLOW, g_CT_FRIC, g_CT_BOUNCE;
 g_CT_SIZE = 0.8;     // korvmodellens skala (modellen ar ca 300 enheter lang; 0,8 = ett medelstort skepp, ca 120 varldspixlar)
 g_CT_PICK = 60;      // upplockningsradie i varldspixlar (D-081, svar 2: halva korvens langd)

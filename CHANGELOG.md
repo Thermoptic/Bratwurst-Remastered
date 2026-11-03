@@ -558,3 +558,6 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-11-06 — Capture the Bratwurst visar bara sina egna banor
 - Banlistan i Capture the Bratwurst visar nu bara banor som sparats för läget. Äldre banor hade läget ikryssat av misstag (`modes = 15`); en engångsmigrering `v3 -> v4` (`scr_levels_ctb_migrate`) tar bort det från banor utan korvstart, och standardvärdet för saknad `modes` är 7. D-083. Ej körd i GMS.
+
+## 2026-11-07 — Capture the Bratwurst: missiler slår loss korven
+- Den som bär korven och träffas av en missil (direktträff, missilring, guidad missil eller Mini Nuke) tappar den. Korven behåller sin fart och kan tas av båda lagen, utom av den som tappade den under 1 s. Skott och railgun släpper den inte. D-084. Ej körd i GMS.

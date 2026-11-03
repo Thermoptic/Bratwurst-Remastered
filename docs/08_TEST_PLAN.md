@@ -413,3 +413,5 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | CTB-MAP-01 | Starta spelet (första gången efter migreringen), Game Modes -> Capture the Bratwurst -> MAP | Bara banor som sparats för läget (din bana) listas; de gamla banorna syns inte; har ingen bana läget står "NO CTB MAPS" |
 | CTB-MAP-02 | Öppna de gamla banorna i banredigeraren, tryck S | Capture the Bratwurst är inte ikryssat; Classic, Galaxy Duel och Race som förut; din bana har bara Capture the Bratwurst ikryssat och visas inte i de andra lägena |
 | CTB-MAP-03 | Kryssa i Capture the Bratwurst på en gammal bana utan korv och zoner, spara | Banan syns i läget men START vägrar med orsak; lägg till korv och zoner: START fungerar |
+
+| CTB-PLAY-14 | Bär korven och bli träffad av en missil (direkt, av ringen, guidad missil, Mini Nuke); gör samma med skott och railgun | Missil: korven släpps direkt, gnistor, glider vidare med sin fart; en annan spelare kan ta den genast, du själv först efter ca 1 s. Skott och railgun: korven snurrar extra snabbt men bärs kvar. En lagkamrats missil ger varken skada eller tapp. Dör du av missilen släpps den bara en gång |
