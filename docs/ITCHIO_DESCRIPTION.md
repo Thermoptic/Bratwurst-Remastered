@@ -36,7 +36,7 @@ The goal of this project is to keep the feel of the original: the movement, the 
 The camera zooms in and out to keep every player in view, like the original. A **ZOOM option (1 to 10)** lets you zoom further out, up to twice as much of the arena. Navigation dots show where off-screen players are.
 
 ### Terminal look and a built-in music player
-- A **command-deck / terminal style** interface: 30 dark colour themes (Base16), accent colours, scanlines and glow, sharp text at every resolution, and a wide playfield.
+- A **command-deck / terminal style** interface: 34 colour themes (30 dark Base16 themes and the four red and blue Chromostereopsis themes), accent colours, scanlines and glow, sharp text at every resolution, and a wide playfield.
 - Optional **solid colours**: fill ships and walls instead of outlines only.
 - **Music player** in the main menu with a live spectrum, timeline, shuffle, repeat, volume and mouse control. A new song starts every round, and you can change song with LB / RB, even from the pause menu.
 - Pause menu with match stats, controls and Options.

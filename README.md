@@ -4,13 +4,42 @@
 
 # Bratwurst Reheated
 
-A fan remake of the Amiga shooter **Bratwurst**, built in GameMaker Studio 1.4 as a stand-alone Windows game. Float, shoot, crash and repeat, with one to four players, keyboard and Xbox controllers, and a terminal-style look with 30 colour themes.
+A fan remake of the Amiga shooter **Bratwurst**, built in GameMaker Studio 1.4 as a stand-alone Windows game. Float, shoot, crash and repeat, with one to four players, keyboard and Xbox controllers, and a terminal-style look with 34 colour themes and a team mode, Capture the Bratwurst.
 
 The goal is to keep the feel and the physics of the original wherever it can be verified, and then grow it with new maps, game modes, ships, weapons and music.
 
 ## What's new
 
 <!-- UPDATES:START -->
+
+### UPDATE 53 - 2026-11-06 - Capture the Bratwurst, first playable version
+
+- Game Modes -> CAPTURE THE BRATWURST is now a real game mode. Choose PLAYERS (2 to 4), MAP, ROUNDS, SCORE LIMIT (default 5 points), TIME LIMIT (default 5 minutes) and POWERUPS. START checks that the map has a sausage spawn and both zones.
+- One sausage, two teams. Fly close to the sausage to pick it up; it trails softly behind you. Carry it into the OTHER team's zone to score one point. Your own zone never scores.
+- After a point: RED or BLUE TEAM SCORES for 3 seconds, then a big countdown 3, 2, 1, and the sausage grows back at its spawn. The round timer keeps running and ships can still fly and shoot, but the sausage cannot be picked up until it is back.
+- Hit the carrier and the sausage spins extra fast for a second. If the carrier is destroyed the sausage is dropped, keeps its speed, slows down and bounces off walls, and either team can grab it.
+- Teammates cannot hurt each other: shots, missiles, explosions and the railgun pass through them.
+- A round ends at the score limit or when the time runs out. Most points wins; if the points are level, the team that carried the sausage longest wins; if that is level too, it is a draw.
+- The round result shows the winning team, the score, kills (most kills marked) and the carry time of every player. After the last round you see the match result with round wins per team. Kills are statistics only and never give points.
+- This is a first version that is still being tested, so the feel (sausage speed, pick-up distance) may change.
+
+### UPDATE 52 - 2026-11-04 - Capture the Bratwurst: map editor and teams
+
+- The map editor has three new tools for Capture the Bratwurst: C places the sausage spawn (one per map), R draws the red team's zone and V draws the blue team's zone. The zones are not solid, ships fly straight through them. Everything is saved with the map.
+- The editor shows CTB READY, or what is missing, and warns when you save a Capture the Bratwurst map that is not finished.
+- Capture the Bratwurst only lists maps that were saved for it. Older maps no longer show up there by mistake.
+- Two teams: P1 and P3 are red, P2 and P4 are blue. The team colours are taken from the colour theme.
+
+### UPDATE 51 - 2026-10-28 - Galaxy Duel damage flash
+
+- A damaged ship in Galaxy Duel now flashes quickly in three colours from the theme until it is repaired, so you can see at a glance who is hurt.
+- The damage now lasts 4 seconds instead of 6.
+
+### UPDATE 50 - 2026-10-25 - Chromostereopsis themes
+
+- Four new colour themes: ChromostereopsisX2, X4, X6 and X8. They use a pure black background with red for things that should look close (walls, shots, explosions) and blue for things that should look far away (ships, text, dots). Many people see red as closer than blue, which gives a feeling of depth with colour alone.
+- X2 uses only pure red and pure blue. X4, X6 and X8 add more shades close to those colours.
+- There are now 34 colour themes.
 
 ### UPDATE 49 - 2026-10-20 - Ship select
 
