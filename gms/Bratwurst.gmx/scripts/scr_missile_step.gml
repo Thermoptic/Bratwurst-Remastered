@@ -44,12 +44,12 @@ for (sk = 0; sk < 2; sk += 1)
     ss = random(0.35) * 32768 / max(1, g_zoom);
     scr_spark_one((px - vx * sk / 2) / 256, (py - vy * sk / 2) / 256, cos(sa) * ss, sin(sa) * ss, 8 + irandom(16), 1 + irandom(1), choose(g_c[10], g_c[9], g_c[6]));
 }
-if (expired) { scr_fx_spawn(px, py, kd, 1); instance_destroy(); exit; }
+if (expired) { ffx = scr_fx_spawn(px, py, kd, 1); ffx.fowner = owner; instance_destroy(); exit; }   // fowner: vems explosion ringen ar (kills och friendly fire, D-082)
 
 wxp = floor(px / 256);
 wyp = floor(py / 256);
 tol = max(1, 32768 / g_zoom);
-if (scr_seg_hits_wall(floor((px - vx) / 256), floor((py - vy) / 256), wxp, wyp, tol)) { scr_fx_spawn(px, py, kd, g_FX_IMPACT); instance_destroy(); exit; }
+if (scr_seg_hits_wall(floor((px - vx) / 256), floor((py - vy) / 256), wxp, wyp, tol)) { ffx = scr_fx_spawn(px, py, kd, g_FX_IMPACT); ffx.fowner = owner; instance_destroy(); exit; }
 
 hx = wxp;
 hy = wyp;
@@ -66,7 +66,7 @@ else
 {
     with (obj_player)
     {
-        if (alive && !race_fin && g_hit_id == noone)
+        if (alive && !race_fin && g_hit_id == noone && !scr_ctb_friend(other.owner, slot))   // Capture the Bratwurst: missiler gar igenom lagkamrater (D-082)
         {
             if (scr_point_in_ship(other.hx, other.hy)) { g_hit_id = id; }
         }
@@ -80,6 +80,7 @@ if (g_hit_id != noone)
     if (mtype == 1) { kmul = g_ML_KNOCK; }   // KNOCKBACK i Powerup Editor (D-069)
     with (g_hit_id)
     {
+        if (g_game_mode == 3) { scr_ctb_hurt(other.owner); }   // Capture the Bratwurst (D-082)
         if (g_game_mode == 1) { scr_ad_hit(); }
         else if (g_game_mode == 2) { scr_race_hit(); }   // Race: icke-dodlig, bara fartminskning (D-055)   // Galaxy Duel: forsta traffen skadar, nasta dodar (D-051)
         else if (other.mtype == 3) { energy -= g_sv[g_SV_PU + 4]; }   // Mini Nuke: direktskada ur Powerup Editor
@@ -89,6 +90,7 @@ if (g_hit_id != noone)
     }
     scr_spark_burst(wxp, wyp, 12 + irandom(5), 2.2, scr_slot_colour(g_hit_id.slot));
     ffx = scr_fx_spawn(px, py, kd, g_FX_IMPACT);
+    ffx.fowner = owner;
     if (mtype != 3) { ffx.fdone[g_hit_id.slot] = 1; }   // skeppet som traffades direkt far inte ringens skada ocksa (D-068; Mini Nuke oforandrad: direktskada + chockvag)
     instance_destroy();
 }

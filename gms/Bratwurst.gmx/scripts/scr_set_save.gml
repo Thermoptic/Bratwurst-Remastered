@@ -28,10 +28,14 @@ ini_write_real("audio", "sfx", g_sv[g_SV_SFX]);
 ini_write_real("display", "widescreen", g_sv[g_SV_WIDE]);
 ini_write_real("gameplay", "players", g_sv[g_SV_PLAYERS]);
 ini_write_real("gameplay", "rounds", g_sv[g_SV_ROUNDS]);
+ini_write_real("ctb", "score_limit", g_sv[g_SV_CTSC]);   // Capture the Bratwurst (D-080)
+ini_write_real("ctb", "round_minutes", g_sv[g_SV_CTTM]);
+ini_write_real("ctb", "powerups", g_sv[g_SV_PUCT]);
 if (g_lv_count > 0)
 {
     ini_write_string("gameplay", "map", g_lv_id[clamp(g_sv[g_SV_MAP], 0, g_lv_count - 1)]);
     ini_write_string("gameplay", "map_astro", g_lv_id[clamp(g_sv[g_SV_MAP2], 0, g_lv_count - 1)]);
     ini_write_string("gameplay", "map_race", g_lv_id[clamp(g_sv[g_SV_MAP3], 0, g_lv_count - 1)]);
+    ini_write_string("gameplay", "map_ctb", g_lv_id[clamp(g_sv[g_SV_MAP4], 0, g_lv_count - 1)]);
 }
 ini_close();

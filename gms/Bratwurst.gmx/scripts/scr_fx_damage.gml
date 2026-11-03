@@ -17,7 +17,7 @@ rfull = max(1, rfull);
 rw = rw * rw;
 with (obj_player)
 {
-    if (alive && !race_fin && other.fdone[slot] == 0)
+    if (alive && !race_fin && other.fdone[slot] == 0 && !scr_ctb_friend(other.fowner, slot))   // Capture the Bratwurst: ringar skadar och knuffar inte lagkamrater (D-082)
     {
         hitp = false;
         for (j = 0; j < np; j += 1)
@@ -29,6 +29,7 @@ with (obj_player)
         if (hitp)
         {
             other.fdone[slot] = 1;
+            if (g_game_mode == 3) { scr_ctb_hurt(other.fowner); }   // Capture the Bratwurst: kills och bararens reaktion (D-082)
             if (g_game_mode == 2) { scr_race_hit(); }   // Race: chockvag och missilring ger bara fartminskning (D-055)
             else if (other.fkind == 4)
             {

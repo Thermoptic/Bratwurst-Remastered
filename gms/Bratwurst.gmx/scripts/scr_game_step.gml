@@ -79,6 +79,7 @@ with (obj_shot) { scr_shot_step(); }
 if (g_game_mode == 4) { scr_ast_step(); }   // Asteroids (D-046)
 scr_powerup_step();   // powerup-orben: spawn, upplockning, nedrakning (D-035)
 scr_beam_step();   // railgunstralar (D-036)
+if (g_game_mode == 3) { scr_ctb_step(); }   // Capture the Bratwurst: timer, korv, poang (D-082); efter skott, missiler och stralar sa att en dod hunnit slappa korven
 g_shake_amp *= 0.9;   // kameraskakningen klingar av (ca 0,4 s)
 if (g_shake_amp < 0.3) { g_shake_amp = 0; }
 with (obj_fx) { scr_fx_damage(); ftimer += 1; if (ftimer > fmax) { instance_destroy(); } }
@@ -87,7 +88,7 @@ scr_camera_update();
 // Slutkontroll (bara om fler an en spelare): den sista overlevande vinner (originalet: kod 0x498).
 // Nar bara en (eller ingen) ar kvar startar en nedrakning pa g_END_DELAY ticks (4 s); spelet fortsatt som vanligt under tiden (explosionen spelas
 // klart, man kan flyga runt). Nar den ar slut visas rundresultatet; vinnaren ar den som da ar kvar (ingen om ingen ar kvar).
-if (g_n_players > 1 && g_game_mode != 2)   // Race avgor sjalv (scr_race_step, D-058)
+if (g_n_players > 1 && g_game_mode != 2 && g_game_mode != 3)   // Race avgor sjalv (scr_race_step, D-058); Capture the Bratwurst avgors av poang och tid, inte av sista skeppet (D-080)
 {
     if (g_end_timer < 0 && scr_count_alive() <= 1) { g_end_timer = g_END_DELAY; }
     if (g_end_timer >= 0)

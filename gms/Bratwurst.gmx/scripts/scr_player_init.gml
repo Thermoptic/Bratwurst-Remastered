@@ -14,6 +14,8 @@ race_fin = false;   // Race (D-058): finns i alla lagen sa att traff- och kollis
 race_dnf = false;
 race_ft = 0; race_laps = 0; race_x = 0; race_free = 0; race_ct = 0; race_s0 = 0; race_slow = 0; race_msg = ""; race_msg_t = 0;
 respawn_t = 0;
+hit_by = -1;      // Capture the Bratwurst (D-082): vem som senast skadade skeppet med ett vapen, och nar (kill-statistik)
+hit_tick = -100;
 drifting = false;
 dr_snd = -1;
 rg_snd = -1;

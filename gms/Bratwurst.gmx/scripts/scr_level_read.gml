@@ -11,7 +11,7 @@ g_ed_fon = false;
 g_ed_pk_n = 0;
 ini_open("levels.ini");
 g_ed_name = ini_read_string(sec, "name", sec);
-g_ed_modes = round(ini_read_real(sec, "modes", 15));
+g_ed_modes = round(ini_read_real(sec, "modes", 7));   // saknas nyckeln: aldrig Capture the Bratwurst (D-083)
 n = clamp(round(ini_read_real(sec, "shapes", 0)), 0, 64);
 g_ed_n = 0;
 for (s = 0; s < n; s += 1)
@@ -22,4 +22,7 @@ for (s = 0; s < n; s += 1)
 for (k = 0; k < 4; k += 1) { scr_level_parse_spawn(ini_read_string(sec, "p" + string(k), ""), k); }
 scr_level_parse_finish(ini_read_string(sec, "finish", ""));
 scr_level_parse_pickups(ini_read_string(sec, "pickups", ""));   // Race: pickuppunkter (valfria, D-056)   // Race: start/malruta (valfri, D-054)
+scr_level_parse_ctb(ini_read_string(sec, "ctb_spawn", ""), 0);   // Capture the Bratwurst: korvens startpunkt och lagens zoner (valfria, D-078)
+scr_level_parse_ctb(ini_read_string(sec, "ctb_red", ""), 1);
+scr_level_parse_ctb(ini_read_string(sec, "ctb_blue", ""), 2);
 ini_close();

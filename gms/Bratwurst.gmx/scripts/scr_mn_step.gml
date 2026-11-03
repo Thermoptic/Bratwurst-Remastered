@@ -1,6 +1,6 @@
 /// scr_mn_step()
 // En tick i huvudmenyn. Upp/ner = rad, vanster/hoger = andra varde (eller tillbaka/in), Enter = OK, Esc = tillbaka.
-var node, sel, cnt, item, t, ok_adj, i;
+var node, sel, cnt, item, t, ok_adj, i, ctbe;
 g_menu_tick += 1;
 scr_mp_mouse();   // musen i musikspelarpanelen (D-044)
 node = g_mn_stk_node[g_mn_depth];
@@ -50,6 +50,29 @@ if (g_nv_ok)
         if (g_mn_act[item] == 5) { g_game_mode = 1; scr_menu_enter(); }
         if (g_mn_act[item] == 6) { g_game_mode = 4; scr_menu_enter(); }
         if (g_mn_act[item] == 7 && scr_race_maps() > 0) { g_game_mode = 2; scr_menu_enter(); }   // Race kraver minst en Race-bana (D-062)
+        if (g_mn_act[item] == 8)
+        {
+            // Capture the Bratwurst (D-080): kraver en bana med korvstart och bada zonerna, och minst 2 spelare (ett lag mot ett lag)
+            g_mn_desc[item] = g_ctb_desc;
+            scr_levels_fix_selection();
+            if (scr_ctb_maps() == 0) { ctbe = "NO MAP IS MARKED FOR CAPTURE THE BRATWURST. IN THE MAP EDITOR, PRESS S AND TICK THE MODE, AND PLACE THE SAUSAGE (C) AND BOTH ZONES (R, V)"; }
+            else
+            {
+                scr_level_read(g_sv[g_SV_MAP4]);
+                g_pv_idx = -1;
+                ctbe = scr_ctb_validate();
+                if (ctbe != "") { ctbe = "THE MAP " + string_upper(g_ed_name) + " IS NOT READY: " + ctbe; }
+            }
+            if (ctbe != "") { g_mn_desc[item] = "CANNOT START. " + ctbe; }
+            else
+            {
+                g_game_mode = 3;
+                g_sv[g_SV_PLAYERS] = max(2, g_sv[g_SV_PLAYERS]);
+                g_n_players = g_sv[g_SV_PLAYERS];
+                scr_set_save();
+                scr_menu_enter();
+            }
+        }
         if (g_mn_act[item] == 2) { game_end(); }
         if (g_mn_act[item] == 4 && !g_pause_opts) { scr_ed_enter(g_sv[g_SV_MAP]); }   // banredigeraren finns inte under en match
         if (g_mn_act[item] == 3)

@@ -43,6 +43,7 @@ for (k = 0; k < g_wall_n; k += 1)
 if (g_game_mode == 2) { scr_fin_draw(); scr_pickup_draw(); }   // Race: start/malrutan (D-054)
 scr_powerup_draw();   // powerup-orben pa kartan
 scr_trail_draw();   // driftspar bakom skeppen
+if (g_game_mode == 3) { scr_ctb_draw(); }   // Capture the Bratwurst: lagens zoner och korven, fore skeppen (D-082)
 // Skepp (vertexar skalas med Z>>16 och roteras med sin/cos-tabellerna, som hunk0 0x18da)
 with (obj_player)
 {
@@ -194,8 +195,10 @@ if (g_debug)
     scr_ui_text(g_OX + 10, g_OY + 28, "ESC MENU  F2 SHIP SELECT  TICK " + string(g_tick) + "  Z=" + string(g_zoom) + "  shots=" + string(instance_number(obj_shot)) + "  F1 debug", g_c[3]);
 }
 if (g_game_mode == 2) { scr_race_cd_draw(); }   // Race: startnedrakning 3, 2, 1, GO! (D-060)
+if (g_game_mode == 3) { scr_ctb_overlay_draw(); }   // Capture the Bratwurst: poang, tid, meddelanden och nedrakning (D-082)
 if (g_state == 2 && g_game_mode == 2) { scr_race_results_draw(); }   // Race: egen resultatruta (D-058)
-if (g_state == 2 && g_game_mode != 2)
+if (g_state == 2 && g_game_mode == 3) { scr_ctb_results_draw(); }   // Capture the Bratwurst: resultatruta efter varje runda (D-082)
+if (g_state == 2 && g_game_mode != 2 && g_game_mode != 3)
 {
     // rundresultat: vinnaren far stor rubrik "WELL HOT DOG, WE HAVE A WEINER!" och spelarens namn under; ingen vinnare ger bara NO WINNER
     var rw, rh, rtx, rcx, rcy;

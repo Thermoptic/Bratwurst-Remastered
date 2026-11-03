@@ -376,3 +376,40 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | GD-BLINK-01 | Galaxy Duel, 2 spelare: träffa en motståndare en gång | Skeppet blinkar snabbt i tre färger i 4 s medan det är långsamt, utan vapen och med partiklar; efter 4 s slutar blinkandet och skeppet har sin vanliga färg, vapen och fart igen |
 | GD-BLINK-02 | Samma, men en ny träff under blinkandet | Skeppet dör som förut (D-051); det nya skeppet efter respawn blinkar inte |
 | GD-BLINK-03 | Blinkandet med Solid colors på/av, olika teman, och i Classic/Asteroids/Race | Konturen (och fyllningen) blinkar; inga andra lägen blinkar; pausa stoppar blinkandet |
+
+| CTB-ED-01 | Banredigeraren: tryck C och klicka två gånger på olika ställen | Det finns bara en korv (den flyttas vid andra klicket); STATUS visar vad som saknas |
+| CTB-ED-02 | R och V: rita varsin zon, rita sedan om den röda | Båda zonerna syns med sina färger och namn; den omritade ersätter den gamla; zonerna blockerar inte skepp i spelet (de är inga väggar) |
+| CTB-ED-03 | Spara (S) med Capture the Bratwurst markerat, stäng och öppna banan igen | Korv och zoner ligger kvar på samma platser; ändra något, spara igen: allt bevaras |
+| CTB-ED-04 | Spara med Capture the Bratwurst markerat men utan zon, med överlappande zoner, och med korven inne i en zon | Spara går, men meddelandet varnar med rätt text (NO RED ZONE, THE ZONES OVERLAP, SPAWN INSIDE A ZONE); STATUS visar samma text |
+| CTB-ED-05 | X-verktyget: klicka på korven och på varje zon | Respektive del tas bort (SAUSAGE SPAWN REMOVED, RED/BLUE ZONE REMOVED); väggar och Race-objekt fungerar som förut |
+| CTB-ED-06 | Öppna äldre banor, spela Classic, Galaxy Duel, Race, Asteroids; verktygspanelen ryms i alla fönsterstorlekar | Allt som förut; inga fel; de tre nya raderna i PLACE syns utan att panelen kapas |
+
+| CTB-TEAM-01 | Banredigeraren, olika teman (bl.a. Dracula, Ashes, Green Screen, ChromostereopsisX2): rita en röd och en blå zon | De två zonerna har tydligt olika färger i alla teman; i de flesta är de röd och blå |
+| CTB-TEAM-02 | (När läget går att starta) 4 spelare: ship select och match | P1 och P3 har lagets ena färg, P2 och P4 den andra; spelarpaneler, gnistor och vinsttext följer samma färger |
+| CTB-TEAM-03 | Classic, Galaxy Duel, Race, Asteroids efter ändringen | Spelarfärgerna är som förut (fyra olika färger per tema) |
+
+| CTB-MENU-01 | Game Modes -> CAPTURE THE BRATWURST | Raderna START, PLAYERS, MAP, ROUNDS, SCORE LIMIT, TIME LIMIT, POWERUPS finns; standard 2 spelare, 5 poäng, 5 MIN; ingen "COMING SOON"; övriga lägens menyer oförändrade |
+| CTB-MENU-02 | MAP-raden | Bara banor med läget ikryssat listas; din bana visas med korv, zoner och startplatser i lagfärger; utan sådan bana står "NO CTB MAPS" |
+| CTB-MENU-03 | START med en bana som saknar zon / har överlappande zoner / saknar markering | Inget startar; beskrivningsrutan säger "CANNOT START." med orsaken; ändra bana eller rätta i editorn och försök igen: felet är borta |
+| CTB-MENU-04 | START med din färdiga bana, 2, 3 och 4 spelare | Skeppsvalet öppnas; skepp har lagfärg (P1+P3 en färg, P2+P4 en annan); matchen startar på banans startplatser |
+| CTB-MENU-05 | Spela, dö flera gånger, vänta | Skeppet respawnar efter 3 s varje gång (liv tar inte slut); rundan avslutas inte av att bara ett skepp är kvar; Esc-pausmenyn och QUIT fungerar |
+| CTB-MENU-06 | Ändra SCORE LIMIT, TIME LIMIT, POWERUPS, MAP, starta om spelet | Värdena och vald bana är kvar (används inte än i spelet) |
+| CTB-MENU-07 | Classic, Galaxy Duel, Race, Asteroids efter ändringen | Som förut, inklusive banval och liv |
+
+| CTB-PLAY-01 | Starta Capture the Bratwurst med din bana | Banderollen visar RED 0, 5:00 och BLUE 0; korven växer fram på startpunkten på 1 s och snurrar ett varv per 4 s; zonerna syns i lagfärg och blockerar inte skepp |
+| CTB-PLAY-02 | Flyg in i korven (och prova att bara nästan nudda den) | Plockas upp när skeppets mitt är nära (ca 60 världspixlar); korven släpar mjukt bakom skeppet och är synlig; ingen annan kan ta den medan den bärs |
+| CTB-PLAY-03 | Bär korven in i den *egna* zonen, sedan in i den *andra* zonen (flyg snabbt rakt igenom också) | Egen zon: ingenting. Motståndarens zon, även i full fart: exakt ett poäng; TEAM SCORES! i 3 s, nedräkning 3-2-1, "0", korven spawnar igen i 1 s; timern gick hela tiden och skeppen kunde skjuta |
+| CTB-PLAY-04 | Under TEAM SCORES! och nedräkningen: försök plocka upp / göra poäng | Går inte (korven finns inte); bärtid och kills ändras inte av själva återställningen |
+| CTB-PLAY-05 | Skjut på bäraren (skott, missil, railgun) utan att döda | Korven snurrar extra snabbt i 1 s och sedan normalt; flera träffar förnyar tiden; bäraren tappar inte korven |
+| CTB-PLAY-06 | Döda bäraren medan hen rör sig | Korven släpps, behåller sin fart, glider, bromsar in och studsar mot väggar; båda lagen kan plocka upp den; en korv som tappas i en zon ger inget poäng medan ingen bär den |
+| CTB-PLAY-07 | Skjut på en lagkamrat (och låt en lagkamrat skjuta på dig), missiler och explosioner nära lagkamrat | Ingen skada och ingen knuff på lagkamrater; skotten går igenom; fiender skadas som i Classic; din egen missilring kan fortfarande skada dig själv |
+| CTB-PLAY-08 | Nå poänggränsen (sätt SCORE LIMIT 1 eller 2) | Efter TEAM SCORES! (3 s) avslutas rundan direkt, ingen nedräkning; resultatrutan visar rätt lag, poäng, kills och bärtid |
+| CTB-PLAY-09 | Låt tiden ta slut (TIME LIMIT 1 minut): a) olika poäng, b) lika poäng, olika bärtid, c) 0-0 utan bärtid | a) högst poäng vinner b) mest bärtid vinner ("WON ON SAUSAGE CARRY TIME") c) DRAW, ingen rundvinst |
+| CTB-PLAY-10 | Flera rundor (ROUNDS 3), fortsätt med bekräfta-knappen | Poäng, kills, bärtid, timer, korv nollas varje runda; rundvinster per lag bevaras; efter sista rundan visas slutresultatet med REMATCH / MAIN MENU |
+| CTB-PLAY-11 | Kills: döda en fiende, dö själv i en vägg, låt en lagkamrat... | Bara fiendekills räknas och visas (flest markerade med *); självdöd och väggkrasch ger ingen kill; kills ger aldrig poäng |
+| CTB-PLAY-12 | Pausa under TEAM SCORES! och i vanligt spel | Timer, nedräkning och korv står stilla i pausen |
+| CTB-PLAY-13 | Classic, Galaxy Duel, Race, Asteroids efter ändringen | Som förut (inklusive att skott skadar alla, missiler, Mini Nuke och railgun i de lägena) |
+
+| CTB-MAP-01 | Starta spelet (första gången efter migreringen), Game Modes -> Capture the Bratwurst -> MAP | Bara banor som sparats för läget (din bana) listas; de gamla banorna syns inte; har ingen bana läget står "NO CTB MAPS" |
+| CTB-MAP-02 | Öppna de gamla banorna i banredigeraren, tryck S | Capture the Bratwurst är inte ikryssat; Classic, Galaxy Duel och Race som förut; din bana har bara Capture the Bratwurst ikryssat och visas inte i de andra lägena |
+| CTB-MAP-03 | Kryssa i Capture the Bratwurst på en gammal bana utan korv och zoner, spara | Banan syns i läget men START vägrar med orsak; lägg till korv och zoner: START fungerar |

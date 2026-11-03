@@ -2,7 +2,7 @@
 // Banredigeraren (D-061): ritytan till vanster (hela varlden, zoom med mushjulet, panorera med mellanslag + drag eller mittenknappen) och verktygspanelen
 // till hoger (status, verktyg i kategorier med farger, vy och fil). Verktyg: B rektangel, P polygon, X radera, T startplats, F start/malruta (Race),
 // O pickuppunkt (Race). Ritytan ritas forst och allt som hamnar utanfor den tacks sedan av bakgrunden (GMS 1.4 har ingen klippning).
-var s, i, j, k, sx0, sy0, sx1, sy1, px0, py0, tx, ty, ex, tool_name, col, hs, tpw, hint, wxa, wxb, wya, wyb, ra, yy, cbg;
+var s, i, j, k, sx0, sy0, sx1, sy1, px0, py0, tx, ty, ex, tool_name, col, hs, tpw, hint, wxa, wxb, wya, wyb, ra, yy, cbg, ctbm;
 scr_ed_layout();
 tx = g_ed_x0 + g_ed_w + 16;
 tpw = g_vx + g_vw - 20 - tx;
@@ -66,6 +66,35 @@ if (g_ed_fon)
     scr_fin_arrows(sx0, sy0, sx1, sy1, g_ed_fdir, col, g_ed_x0, g_ed_y0, g_ed_x0 + g_ed_w, g_ed_y0 + g_ed_h, 4);
 }
 
+// Capture the Bratwurst (D-078): lagens zoner (icke-solida, rod = base08, bla = base0D) och korvens startpunkt (korvmodellen)
+g_fs = g_f_sm;
+for (k = 0; k < 2; k += 1)
+{
+    if (g_ed_zon[k])
+    {
+        sx0 = g_ed_cxs + g_ed_zx0[k] * g_ed_es; sy0 = g_ed_cys + g_ed_zy0[k] * g_ed_es;
+        sx1 = g_ed_cxs + g_ed_zx1[k] * g_ed_es; sy1 = g_ed_cys + g_ed_zy1[k] * g_ed_es;
+        if (g_ed_tool == 2 && g_ed_inside && hs < 0 && scr_ed_in_zone(k, g_ed_wx, g_ed_wy)) { col = g_c[6]; }
+        else { col = g_team_col[k]; }
+        draw_set_color(col);
+        draw_set_alpha(0.14);
+        draw_rectangle(sx0, sy0, sx1, sy1, false);
+        draw_set_alpha(1);
+        draw_rectangle(sx0, sy0, sx1, sy1, true);
+        if (k == 0) { scr_ui_text(sx0 + 6, sy0 + 4, "RED ZONE", col); } else { scr_ui_text(sx0 + 6, sy0 + 4, "BLUE ZONE", col); }
+    }
+}
+if (g_ed_son)
+{
+    sx0 = g_ed_cxs + g_ed_sox * g_ed_es;
+    sy0 = g_ed_cys + g_ed_soy * g_ed_es;
+    if (g_ed_tool == 2 && g_ed_inside && point_distance(g_ed_wx, g_ed_wy, g_ed_sox, g_ed_soy) < 150) { col = g_c[6]; } else { col = g_c[10]; }
+    scr_ui_ship(g_SAUSAGE, sx0, sy0, 0.12, 0, col, -1, false);
+    draw_set_color(col);
+    draw_circle(sx0, sy0, 20, true);
+    scr_ui_text(sx0 + 24, sy0 - 22, "SAUSAGE", col);
+}
+
 // Race: pickuppunkter (runda markorer; den som flyttas ar vit)
 ra = max(7, 36 * g_ed_es);
 for (i = 0; i < g_ed_pk_n; i += 1)
@@ -92,7 +121,7 @@ if (g_ed_tool == 1 && g_ed_cn > 0 && g_ed_inside)
 {
     draw_line(g_ed_cxs + g_ed_cx[g_ed_cn - 1] * g_ed_es, g_ed_cys + g_ed_cy[g_ed_cn - 1] * g_ed_es, g_ed_cxs + g_ed_mx * g_ed_es, g_ed_cys + g_ed_my * g_ed_es);
 }
-if ((g_ed_tool == 0 || g_ed_tool == 4) && g_ed_bset && g_ed_inside)
+if ((g_ed_tool == 0 || g_ed_tool == 4 || g_ed_tool == 7 || g_ed_tool == 8) && g_ed_bset && g_ed_inside)
 {
     draw_rectangle(g_ed_cxs + g_ed_bx * g_ed_es, g_ed_cys + g_ed_by * g_ed_es, g_ed_cxs + g_ed_mx * g_ed_es, g_ed_cys + g_ed_my * g_ed_es, true);
 }
@@ -136,9 +165,12 @@ scr_ui_pane(tx, g_ed_y0, tpw, g_ed_h, "TOOLS", g_c[4]);
 if (g_ed_tool == 0) { tool_name = "BOX"; hint = "BOX: CLICK TWO CORNERS. IT BECOMES A SOLID WALL"; }
 if (g_ed_tool == 1) { tool_name = "POLYGON"; hint = "POLYGON: CLICK POINTS, ENTER OR THE FIRST POINT CLOSES IT"; }
 if (g_ed_tool == 2) { tool_name = "ERASE"; hint = "ERASE: CLICK A WALL, A PICKUP POINT OR THE FINISH BOX"; }
-if (g_ed_tool == 3) { tool_name = "SPAWN P" + string(g_ed_spawn + 1); hint = "SPAWN: CLICK TO PLACE, WHEEL OVER THE SHIP OR Q / E TURNS IT, 1-4 PICKS A PLAYER"; }
+if (g_ed_tool == 3) { tool_name = "SPAWN P" + string(g_ed_spawn + 1); hint = "SPAWN: CLICK TO PLACE, WHEEL OR Q / E TURNS IT, 1-4 PICKS A PLAYER. IN CTB P1+P3 ARE THE RED TEAM, P2+P4 THE BLUE"; }
 if (g_ed_tool == 4) { tool_name = "FINISH LINE"; hint = "FINISH LINE (RACE): CLICK TWO CORNERS, WHEEL OVER THE BOX TURNS THE ARROWS"; }
 if (g_ed_tool == 5) { tool_name = "PICKUP POINT"; hint = "PICKUP POINT (RACE): CLICK TO PLACE, CLICK A POINT TO MOVE IT"; }
+if (g_ed_tool == 6) { tool_name = "SAUSAGE SPAWN"; hint = "SAUSAGE SPAWN (CAPTURE THE BRATWURST): CLICK TO PLACE OR MOVE IT. ONE PER MAP"; }
+if (g_ed_tool == 7) { tool_name = "RED ZONE"; hint = "RED ZONE (CAPTURE THE BRATWURST): CLICK TWO CORNERS. A NEW BOX REPLACES THE OLD. BLUE SCORES HERE"; }
+if (g_ed_tool == 8) { tool_name = "BLUE ZONE"; hint = "BLUE ZONE (CAPTURE THE BRATWURST): CLICK TWO CORNERS. A NEW BOX REPLACES THE OLD. RED SCORES HERE"; }
 yy = g_ed_y0 + 14;
 // status
 scr_ed_head(tx + 14, yy, tpw - 28, "STATUS", g_acc);
@@ -151,6 +183,10 @@ scr_ed_txt(tx + 74, yy, string(g_ed_n) + " / 64     PICKUPS " + string(g_ed_pk_n
 yy += 14;
 scr_ed_txt(tx + 14, yy, "GRID", g_c[4]);
 scr_ed_txt(tx + 74, yy, string(g_ed_snap) + " PX     ZOOM " + string(round(g_ed_zoom * 100)) + "%", g_c[5]);
+yy += 14;
+scr_ed_txt(tx + 14, yy, "CTB", g_c[4]);   // Capture the Bratwurst: ar banan klar for lagets (D-078)?
+ctbm = scr_ctb_validate();
+if (ctbm == "") { scr_ed_txt(tx + 74, yy, "READY", g_c[11]); } else { scr_ed_txt(tx + 74, yy, ctbm, g_c[3]); }
 yy += 14;
 scr_ed_txt(tx + 14, yy, "CURSOR", g_c[4]);
 if (g_ed_inside) { scr_ed_txt(tx + 74, yy, string(g_ed_mx) + ", " + string(g_ed_my), g_c[5]); }
@@ -168,7 +204,10 @@ scr_ed_head(tx + 14, yy, tpw - 28, "PLACE", g_c[11]);
 yy += 16;
 scr_ed_row(tx + 8, yy, tpw - 16, "T", "SPAWN  (1-4 PICK, Q/E TURN)", g_c[11], g_ed_tool == 3); yy += 15;
 scr_ed_row(tx + 8, yy, tpw - 16, "F", "FINISH LINE  (RACE)", g_c[11], g_ed_tool == 4); yy += 15;
-scr_ed_row(tx + 8, yy, tpw - 16, "O", "PICKUP POINT  (RACE)", g_c[9], g_ed_tool == 5); yy += 20;
+scr_ed_row(tx + 8, yy, tpw - 16, "O", "PICKUP POINT  (RACE)", g_c[9], g_ed_tool == 5); yy += 15;
+scr_ed_row(tx + 8, yy, tpw - 16, "C", "SAUSAGE SPAWN  (CTB)", g_c[10], g_ed_tool == 6); yy += 15;
+scr_ed_row(tx + 8, yy, tpw - 16, "R", "RED ZONE  (CTB)", g_team_col[0], g_ed_tool == 7); yy += 15;
+scr_ed_row(tx + 8, yy, tpw - 16, "V", "BLUE ZONE  (CTB)", g_team_col[1], g_ed_tool == 8); yy += 20;
 // vy
 scr_ed_head(tx + 14, yy, tpw - 28, "VIEW", g_c[14]);
 yy += 16;

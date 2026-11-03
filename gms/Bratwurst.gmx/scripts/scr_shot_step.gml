@@ -35,7 +35,7 @@ else
 {
     with (obj_player)
     {
-        if (alive && !race_fin && g_hit_id == noone)
+        if (alive && !race_fin && g_hit_id == noone && !scr_ctb_friend(other.owner, slot))   // Capture the Bratwurst: skott gar igenom lagkamrater (D-082)
         {
             if (scr_point_in_ship(other.hx, other.hy)) { g_hit_id = id; }
         }
@@ -47,6 +47,7 @@ if (g_hit_id != noone)
     scr_sfx_play(snd_sfx_hit, 2, 0.41);   // original: kanonskott traffar skepp, volym 26/64 (0x5e48)
     with (g_hit_id)
     {
+        if (g_game_mode == 3) { scr_ctb_hurt(other.owner); }   // Capture the Bratwurst: minns vem som traffade (kills) och later en barad korv snurra extra snabbt (D-082)
         if (g_game_mode == 1) { scr_ad_hit(); } else if (g_game_mode == 2) { scr_race_hit(); } else { energy -= g_CN_DMG; }   // DAMAGE i Powerup Editor (D-069)   // Galaxy Duel: forsta traffen skadar, nasta dodar (D-051)
         vx += floor((other.vx - vx) * g_CN_KNOCK / power(2, bounce));   // KNOCKBACK i Powerup Editor (D-069)
         vy += floor((other.vy - vy) * g_CN_KNOCK / power(2, bounce));

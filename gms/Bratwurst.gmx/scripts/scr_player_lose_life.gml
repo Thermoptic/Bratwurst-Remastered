@@ -2,8 +2,9 @@
 // Kors i obj_player nar energin ar slut. Tar ett liv; finns liv kvar startar en nedrakning (g_RESPAWN_DELAY ticks, 3 s) och skeppet aterskapas
 // pa startplatsen nar den ar slut (se scr_player_step). Utan liv kvar ar spelaren eliminerad. Under nedrakningen ar skeppet inte i spel (alive = false)
 // men raknas som kvar i rundan (scr_count_alive). Panelen visar siffran i stallet for skeppsbilden.
+if (g_game_mode == 3) { scr_ctb_death(); }   // Capture the Bratwurst: slapp korven, kill-statistik (D-082)
 scr_ship_explode();
-p_lives -= 1;
+if (g_game_mode != 3) { p_lives -= 1; }   // Capture the Bratwurst: obegransad respawn, inga liv tar slut (D-080)
 pu_have = 0;      // en hallen powerup (och en pagaende railgunladdning) forloras
 pu_charge = 0;
 pu_auto = 0;

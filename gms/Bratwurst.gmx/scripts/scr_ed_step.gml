@@ -16,6 +16,9 @@ if (keyboard_check_pressed(ord("X"))) { g_ed_tool = 2; g_ed_cn = 0; g_ed_bset = 
 if (keyboard_check_pressed(ord("T"))) { g_ed_tool = 3; g_ed_cn = 0; g_ed_bset = false; }
 if (keyboard_check_pressed(ord("O"))) { g_ed_tool = 5; g_ed_cn = 0; g_ed_bset = false; g_ed_pkmv = -1; }   // Race: pickuppunkter (D-056)
 if (keyboard_check_pressed(ord("F"))) { g_ed_tool = 4; g_ed_cn = 0; g_ed_bset = false; }   // Race: start/malruta (D-054)
+if (keyboard_check_pressed(ord("C"))) { g_ed_tool = 6; g_ed_cn = 0; g_ed_bset = false; }   // Capture the Bratwurst: korvens startpunkt (D-078)
+if (keyboard_check_pressed(ord("R"))) { g_ed_tool = 7; g_ed_cn = 0; g_ed_bset = false; }   // Capture the Bratwurst: roda zonen
+if (keyboard_check_pressed(ord("V"))) { g_ed_tool = 8; g_ed_cn = 0; g_ed_bset = false; }   // Capture the Bratwurst: bla zonen
 for (k = 0; k < 4; k += 1)
 {
     if (keyboard_check_pressed(ord("1") + k)) { g_ed_tool = 3; g_ed_spawn = k; g_ed_cn = 0; g_ed_bset = false; }
@@ -202,6 +205,9 @@ if (g_ed_inside && mouse_check_button_pressed(mb_left) && !keyboard_check(vk_spa
         }
         else if (s >= 0) { scr_ed_delete_shape(s); }
         else if (scr_ed_in_finish(g_ed_wx, g_ed_wy)) { g_ed_fon = false; g_ed_dirty = true; scr_ed_msg("FINISH LINE REMOVED"); }
+        else if (g_ed_son && point_distance(g_ed_wx, g_ed_wy, g_ed_sox, g_ed_soy) < 150) { g_ed_son = false; g_ed_dirty = true; scr_ed_msg("SAUSAGE SPAWN REMOVED"); }   // Capture the Bratwurst (D-078)
+        else if (scr_ed_in_zone(0, g_ed_wx, g_ed_wy)) { g_ed_zon[0] = false; g_ed_dirty = true; scr_ed_msg("RED ZONE REMOVED"); }
+        else if (scr_ed_in_zone(1, g_ed_wx, g_ed_wy)) { g_ed_zon[1] = false; g_ed_dirty = true; scr_ed_msg("BLUE ZONE REMOVED"); }
     }
     else if (g_ed_tool == 5)
     {
@@ -249,5 +255,30 @@ if (g_ed_inside && mouse_check_button_pressed(mb_left) && !keyboard_check(vk_spa
         g_ed_sx[g_ed_spawn] = g_ed_mx * 256;
         g_ed_sy[g_ed_spawn] = g_ed_my * 256;
         g_ed_dirty = true;
+    }
+    else if (g_ed_tool == 6)
+    {
+        // Capture the Bratwurst (D-078): korvens startpunkt, exakt en per bana; ett nytt klick flyttar den
+        g_ed_sox = g_ed_mx;
+        g_ed_soy = g_ed_my;
+        g_ed_son = true;
+        g_ed_dirty = true;
+    }
+    else if (g_ed_tool == 7 || g_ed_tool == 8)
+    {
+        // Capture the Bratwurst (D-078): lagens zon (icke-solid ruta), tva hornklick; en ny ruta ersatter lagets gamla (en per lag)
+        if (!g_ed_bset) { g_ed_bx = g_ed_mx; g_ed_by = g_ed_my; g_ed_bset = true; }
+        else
+        {
+            if (g_ed_mx != g_ed_bx && g_ed_my != g_ed_by)
+            {
+                k = g_ed_tool - 7;
+                g_ed_zx0[k] = min(g_ed_bx, g_ed_mx); g_ed_zx1[k] = max(g_ed_bx, g_ed_mx);
+                g_ed_zy0[k] = min(g_ed_by, g_ed_my); g_ed_zy1[k] = max(g_ed_by, g_ed_my);
+                g_ed_zon[k] = true;
+                g_ed_dirty = true;
+            }
+            g_ed_bset = false;
+        }
     }
 }

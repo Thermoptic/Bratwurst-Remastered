@@ -543,3 +543,18 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-10-28 — Galaxy Duel: skadat skepp blinkar
 - Ett skadat skepp i Galaxy Duel blinkar snabbt i tre temafärger (`base08`, `base0B`, `base0D`) tills det repareras. `scr_match_draw`, `scr_theme_apply`, `scr_config_init` (`g_ad_blink`, `g_AD_BLINK_TICKS`). D-077. Skadetiden ändrad från 6 till 4 sekunder (`g_AD_DMG_TICKS` 300 -> 200). Ej körd i GMS.
+
+## 2026-11-04 — Capture the Bratwurst, fas 2: banredigeraren
+- Banredigeraren kan placera korvens startpunkt (C) och en röd och en blå leveranszon (R, V). Data sparas som `ctb_spawn`, `ctb_red` och `ctb_blue` i `levels.ini`, valideras (`scr_ctb_validate`) och visas i STATUS-rutan. Själva läget är inte byggt än. D-078. Ej körd i GMS.
+
+## 2026-11-04 — Capture the Bratwurst: lag och lagfärger
+- Två lag: P1 och P3 röda, P2 och P4 blå (`scr_team_of`). Lagfärgerna `g_team_col` väljs ur temat (helst `base08`/`base0D`, annars det mest olika paret); `scr_slot_colour` ger lagfärgen i läge 3, och banredigerarens zoner använder samma färger. Läget går inte att starta än. D-079. Ej körd i GMS.
+
+## 2026-11-05 — Capture the Bratwurst: menyn och start
+- Game Modes -> CAPTURE THE BRATWURST har nu START, PLAYERS, MAP, ROUNDS, SCORE LIMIT, TIME LIMIT och POWERUPS (sparas i `settings.ini`). START kontrollerar att banan har korvstart och båda zonerna. Matchen startar med lag, lagfärger och obegränsad respawn; korven, poängen och timern är inte byggda än. D-080. Ej körd i GMS.
+
+## 2026-11-06 — Capture the Bratwurst: spelet byggt
+- Korven (spawn-animation, snurr, bärande med mjuk eftersläpning, tappad korv med fart), leveranszoner med poäng, meddelande och nedräkning, rundtimer och poänggräns, tie-break på bärtid, kills (bara statistik), friendly fire av, resultatruta efter varje runda och slutresultat per lag. D-082. Ej körd i GMS.
+
+## 2026-11-06 — Capture the Bratwurst visar bara sina egna banor
+- Banlistan i Capture the Bratwurst visar nu bara banor som sparats för läget. Äldre banor hade läget ikryssat av misstag (`modes = 15`); en engångsmigrering `v3 -> v4` (`scr_levels_ctb_migrate`) tar bort det från banor utan korvstart, och standardvärdet för saknad `modes` är 7. D-083. Ej körd i GMS.

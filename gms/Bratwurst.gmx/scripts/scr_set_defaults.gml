@@ -34,3 +34,7 @@ for (pt = 0; pt < g_PU_COUNT; pt += 1)
 }
 g_sv[g_SV_LIVES] = g_START_LIVES;   // Classic: liv per runda, hogst originalets 6
 g_sv[g_SV_SFX] = 1;
+g_sv[g_SV_MAP4] = 0;   // Capture the Bratwurst (D-080): bana, poanggrans 5, rundtid 5 minuter, powerups pa
+g_sv[g_SV_CTSC] = 5;
+g_sv[g_SV_CTTM] = 5;
+g_sv[g_SV_PUCT] = 1;

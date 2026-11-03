@@ -46,6 +46,9 @@ g_sv[g_SV_LIVES] = clamp(round(ini_read_real("gameplay", "lives", g_sv[g_SV_LIVE
 g_sv[g_SV_SFX] = clamp(ini_read_real("audio", "sfx", g_sv[g_SV_SFX]), 0, 1);
 g_sv[g_SV_PLAYERS] = clamp(round(ini_read_real("gameplay", "players", g_sv[g_SV_PLAYERS])), 1, 4);
 g_sv[g_SV_ROUNDS] = clamp(round(ini_read_real("gameplay", "rounds", g_sv[g_SV_ROUNDS])), 1, 15);
+g_sv[g_SV_CTSC] = clamp(round(ini_read_real("ctb", "score_limit", g_sv[g_SV_CTSC])), 1, 20);   // Capture the Bratwurst (D-080)
+g_sv[g_SV_CTTM] = clamp(round(ini_read_real("ctb", "round_minutes", g_sv[g_SV_CTTM])), 1, 30);
+g_sv[g_SV_PUCT] = clamp(round(ini_read_real("ctb", "powerups", g_sv[g_SV_PUCT])), 0, 1);
 ini_close();
 scr_drift_apply();   // drift/reverse-installningarna till spelkodens variabler
 scr_weapon_apply();   // kanon- och missilinstallningarna (D-069)
@@ -69,6 +72,13 @@ ini_close();
 for (t = 0; t < g_lv_count; t += 1)
 {
     if (g_lv_id[t] == s) { g_sv[g_SV_MAP3] = t; }
+}
+ini_open("settings.ini");
+s = ini_read_string("gameplay", "map_ctb", "");
+ini_close();
+for (t = 0; t < g_lv_count; t += 1)
+{
+    if (g_lv_id[t] == s) { g_sv[g_SV_MAP4] = t; }
 }
 scr_levels_fix_selection();
 g_n_players = g_sv[g_SV_PLAYERS];

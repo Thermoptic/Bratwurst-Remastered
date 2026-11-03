@@ -1,7 +1,7 @@
 /// scr_ed_dlg_step()
 // Sparfonstret (modalt): skriv namnet, GENERATE NAME slumpar ett (stjarna + korv), klicka pa rutorna for att valja spellagen banan ska finnas i,
 // SAVE / Enter sparar, CANCEL / Esc avbryter. Minst en bana per spellage maste finnas (Classic och Astro Duel).
-var i, s, ch, clean, mx, my, click, m, k, ok, hasother, need;
+var i, s, ch, clean, mx, my, click, m, k, ok, hasother, need, ctbw;
 g_menu_tick += 1;
 scr_ed_dlg_layout();
 // namnet: bara ASCII 32..126, max 30 tecken
@@ -69,5 +69,8 @@ if (ok)
     g_ed_dirty = false;
     g_ed_dlg = 0;
     if ((g_ed_modes & 4) != 0 && !g_ed_fon) { scr_ed_msg("WARNING: THIS RACE MAP HAS NO FINISH LINE (TOOL F)"); }   // D-054
-    scr_ed_msg("SAVED " + string_upper(g_ed_name));
+    ctbw = "";
+    if ((g_ed_modes & 8) != 0) { ctbw = scr_ctb_validate(); }   // Capture the Bratwurst (D-078): varna om banan inte ar klar for laget
+    if (ctbw != "") { scr_ed_msg("SAVED " + string_upper(g_ed_name) + ".  WARNING, CAPTURE THE BRATWURST: " + ctbw); }
+    else { scr_ed_msg("SAVED " + string_upper(g_ed_name)); }
 }

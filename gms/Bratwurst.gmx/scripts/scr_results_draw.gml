@@ -1,6 +1,7 @@
 /// scr_results_draw()
 // Slutresultatskarmen: rundvinster per spelare, vinnaren (eller oavgjort) och valen REMATCH / MAIN MENU.
 var px, py, pw, ph, i, best, nbest, row_y, c, k, line, ry, vtxt, sel, nm;
+if (g_game_mode == 3) { scr_ctb_final_draw(); exit; }   // Capture the Bratwurst: lagens slutresultat (D-082)
 scr_ui_header("BRATWURST // MATCH RESULT", string(g_rounds_total) + " ROUNDS PLAYED");
 pw = min(g_vw - 80, 760);
 ph = g_vh - 70 - 56;

@@ -38,7 +38,7 @@ for (s = 1; s <= n; s += 1)
 
         {
 
-            if (!(slot == g_pj_owner && g_pj_age < 8))
+            if (!(slot == g_pj_owner && g_pj_age < 8) && !scr_ctb_friend(g_pj_owner, slot))   // Capture the Bratwurst: Mini Nuke gar igenom lagkamrater (D-082)
 
             {
 

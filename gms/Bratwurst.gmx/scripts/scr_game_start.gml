@@ -33,6 +33,7 @@ for (i = 0; i < g_n_players; i += 1)
     with (p) { scr_player_init(i, g_pship[i]); }
 }
 if (g_game_mode == 2) { scr_race_reset(); }   // Race (D-053)
+if (g_game_mode == 3) { g_ct_rw[0] = 0; g_ct_rw[1] = 0; scr_ctb_reset(); }   // Capture the Bratwurst: ny match, inga rundvinster (D-082)
 scr_powerup_reset();
 scr_music_round_start();
 g_cam_n_prev = -1;   // ny match: kameran hoppar direkt till ratt vy

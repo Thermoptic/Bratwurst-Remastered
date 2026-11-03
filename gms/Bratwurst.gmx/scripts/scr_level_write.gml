@@ -22,6 +22,10 @@ for (k = 0; k < 4; k += 1)
     ini_write_string(argument0, "p" + string(k), string(round(g_ed_sx[k])) + "," + string(round(g_ed_sy[k])) + "," + string(round(g_ed_sa[k])));
 }
 if (g_ed_fon) { ini_write_string(argument0, "finish", string(round(g_ed_fx0)) + "," + string(round(g_ed_fy0)) + "," + string(round(g_ed_fx1)) + "," + string(round(g_ed_fy1)) + "," + string(g_ed_fdir)); }   // Race (D-054)
+// Capture the Bratwurst (D-078): korvens startpunkt och lagens zoner, bara om de finns
+if (g_ed_son) { ini_write_string(argument0, "ctb_spawn", string(round(g_ed_sox)) + "," + string(round(g_ed_soy))); }
+if (g_ed_zon[0]) { ini_write_string(argument0, "ctb_red", string(round(g_ed_zx0[0])) + "," + string(round(g_ed_zy0[0])) + "," + string(round(g_ed_zx1[0])) + "," + string(round(g_ed_zy1[0]))); }
+if (g_ed_zon[1]) { ini_write_string(argument0, "ctb_blue", string(round(g_ed_zx0[1])) + "," + string(round(g_ed_zy0[1])) + "," + string(round(g_ed_zx1[1])) + "," + string(round(g_ed_zy1[1]))); }
 if (g_ed_pk_n > 0)
 {
     str = "";

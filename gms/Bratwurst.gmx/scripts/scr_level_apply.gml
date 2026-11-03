@@ -52,6 +52,16 @@ for (k = 0; k < g_pk_n; k += 1)
     g_pk_on[k] = true;
     g_pk_t[k] = 0;
 }
+// Capture the Bratwurst (D-082): zonerna och korvens startpunkt (icke-solida, ingen vagg)
+for (k = 0; k < 2; k += 1)
+{
+    g_ctz_on[k] = g_ed_zon[k];
+    g_ctz_x0[k] = g_ed_zx0[k]; g_ctz_y0[k] = g_ed_zy0[k];
+    g_ctz_x1[k] = g_ed_zx1[k]; g_ctz_y1[k] = g_ed_zy1[k];
+}
+g_cts_on = g_ed_son;
+g_cts_x = g_ed_sox;
+g_cts_y = g_ed_soy;
 for (k = 0; k < 4; k += 1)
 {
     g_start_x[k] = g_ed_sx[k];

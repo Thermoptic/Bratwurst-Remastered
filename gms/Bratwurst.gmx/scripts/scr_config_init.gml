@@ -99,7 +99,7 @@ g_mv_on = false; g_mv_n = 1; g_mv_dur = 1; g_mv_frame[0] = "000000000000";
 for (g_tmp_n = 0; g_tmp_n < 12; g_tmp_n += 1) { g_mv[g_tmp_n] = 0; }
 g_SHIP_GRAV = 0;   // skeppens gravitation (originalet 31 efter skalning; D-024: 0 pa begaran)
 g_bg_t = 0; g_SV_MAP2 = 13; g_sv[g_SV_MAP2] = 0; g_lv_modes[0] = 15; g_ed_modes = 15; g_ed_dlg = 0; g_ed_dname = ""; g_ed_dmsg = ""; g_dg_x = 0; g_dg_y = 0; g_dg_w = 520; g_dg_h = 400; g_mn_mode[0] = 0;
-g_mode_name[0] = "CLASSIC"; g_mode_name[1] = "GALAXY DUEL"; g_mode_name[2] = "RACE"; g_mode_name[3] = "CAPTURE THE BRATWURST (SOON)"; g_mw_frame[0] = "";
+g_mode_name[0] = "CLASSIC"; g_mode_name[1] = "GALAXY DUEL"; g_mode_name[2] = "RACE"; g_mode_name[3] = "CAPTURE THE BRATWURST"; g_mw_frame[0] = "";
 for (g_tmp_n = 0; g_tmp_n < 32; g_tmp_n += 1) { g_mw[g_tmp_n] = 0; g_mw_pk[g_tmp_n] = 0; }
 for (g_tmp_n = 0; g_tmp_n < 192; g_tmp_n += 1) { g_mw_hist[g_tmp_n] = 0; } g_lg_n[0] = 0; g_lg_s[0, 0] = 0; g_tt_sx[0] = 0; g_tt_sy[0] = 0; g_tt_st[0] = 0; g_tt_sp[0] = 0; g_tt_dx[0] = 0; g_tt_dy[0] = 0; g_tt_n = 0;
 g_DB_MAX = 40; g_db_x[0] = 0; g_db_y[0] = 0; g_db_hx[0] = 0; g_db_hy[0] = 0; g_db_vx[0] = 0; g_db_vy[0] = 0; g_db_w[0] = 0; g_db_col[0] = 0; g_db_life[0] = 0;
@@ -143,6 +143,34 @@ g_f_sm = 0; g_f_md = 1; g_f_lg = 2; g_f_xl = 3; g_fs = 1; g_fk = 0; g_k = 1;   /
 globalvar g_AD_SLOW, g_AD_DMG_TICKS, g_AD_GRACE, g_AD_BLINK_TICKS, g_ad_blink;
 g_AD_BLINK_TICKS = 3;   // Galaxy Duel: skadat skepp byter blinkfarg var 3:e tick (ca 17 byten/s, 50 ticks/s); farger satta av scr_theme_apply
 g_ad_blink[0] = c_red; g_ad_blink[1] = c_lime; g_ad_blink[2] = c_blue;
+// Capture the Bratwurst (D-078): banredigerarens data. g_ed_son = korvens startpunkt finns (g_ed_sox/soy, varldspixlar); zon 0 = rod, 1 = bla (g_ed_zon = finns, zx0/zy0/zx1/zy1 = normaliserad ruta)
+globalvar g_ed_son, g_ed_sox, g_ed_soy, g_ed_zon, g_ed_zx0, g_ed_zy0, g_ed_zx1, g_ed_zy1, g_team_col;
+g_team_col[0] = c_red; g_team_col[1] = c_blue;   // lagfarger (D-079), satta ur temat av scr_theme_players
+// Capture the Bratwurst (D-080): installningar (g_sv-index efter Race), menyrad och start. MAP4 = bana, CTSC = poanggrans, CTTM = rundtid i minuter, PUCT = powerups pa/av
+globalvar g_SV_MAP4, g_SV_CTSC, g_SV_CTTM, g_SV_PUCT, g_mn_map_node4, g_mn_ctb_start, g_ctb_desc;
+g_SV_MAP4 = 103; g_SV_CTSC = 104; g_SV_CTTM = 105; g_SV_PUCT = 106;
+g_sv[g_SV_MAP4] = 0; g_sv[g_SV_CTSC] = 5; g_sv[g_SV_CTTM] = 5; g_sv[g_SV_PUCT] = 1;
+g_mn_map_node4 = -1; g_mn_ctb_start = -1; g_ctb_desc = "";
+// Capture the Bratwurst (D-082): matchens tillstand. g_ctz_* = zonerna i spelet (0 rod, 1 bla) och g_cts_* korvens startpunkt (kopieras ur banan av scr_level_apply);
+// g_ct_* = runda och match (tid kvar i ticks, fas 0 spel / 1 meddelande / 2 nedrakning, poang, kills, barform i ticks, rundvinster per lag); g_sa_* = korven (st 0 spawn, 1 fri, 2 buren, 3 borta)
+globalvar g_ctz_on, g_ctz_x0, g_ctz_y0, g_ctz_x1, g_ctz_y1, g_cts_on, g_cts_x, g_cts_y;
+globalvar g_ct_t, g_ct_phase, g_ct_pt, g_ct_zero, g_ct_lim, g_ct_scorer, g_ct_win, g_ct_tie, g_ct_score, g_ct_rw, g_ct_kills, g_ct_carry, g_ct_fs;
+globalvar g_sa_st, g_sa_x, g_sa_y, g_sa_vx, g_sa_vy, g_sa_ang, g_sa_t, g_sa_car, g_sa_spin;
+globalvar g_CT_SIZE, g_CT_PICK, g_CT_TRAIL, g_CT_FOLLOW, g_CT_FRIC, g_CT_BOUNCE;
+g_CT_SIZE = 0.8;     // korvmodellens skala (modellen ar ca 300 enheter lang; 0,8 = ett medelstort skepp, ca 120 varldspixlar)
+g_CT_PICK = 60;      // upplockningsradie i varldspixlar (D-081, svar 2: halva korvens langd)
+g_CT_TRAIL = 130;    // korven ligger sa har langt bakom den som bar den (varldspixlar)
+g_CT_FOLLOW = 0.18;  // andel av avstandet till malpunkten som korven dras per tick (mjuk efterslapning, D-081, svar 3)
+g_CT_FRIC = 0.985;   // fri korv: fart kvar per tick (halveras pa ca 46 ticks)
+g_CT_BOUNCE = 0.6;   // fri korv: farten kvar efter en studs mot en vagg
+g_ctz_on[0] = false; g_ctz_on[1] = false; g_ctz_x0[0] = 0; g_ctz_x0[1] = 0; g_ctz_y0[0] = 0; g_ctz_y0[1] = 0; g_ctz_x1[0] = 0; g_ctz_x1[1] = 0; g_ctz_y1[0] = 0; g_ctz_y1[1] = 0;
+g_cts_on = false; g_cts_x = 0; g_cts_y = 0;
+g_ct_t = 0; g_ct_phase = 0; g_ct_pt = 0; g_ct_zero = 0; g_ct_lim = false; g_ct_scorer = -1; g_ct_win = -1; g_ct_tie = false; g_ct_fs = 0;
+g_ct_score[0] = 0; g_ct_score[1] = 0; g_ct_rw[0] = 0; g_ct_rw[1] = 0;
+g_ct_kills[0] = 0; g_ct_kills[1] = 0; g_ct_kills[2] = 0; g_ct_kills[3] = 0; g_ct_carry[0] = 0; g_ct_carry[1] = 0; g_ct_carry[2] = 0; g_ct_carry[3] = 0;
+g_sa_st = 3; g_sa_x = 0; g_sa_y = 0; g_sa_vx = 0; g_sa_vy = 0; g_sa_ang = 0; g_sa_t = 0; g_sa_car = -1; g_sa_spin = 0;
+g_ed_son = false; g_ed_sox = 0; g_ed_soy = 0;
+g_ed_zon[0] = false; g_ed_zon[1] = false; g_ed_zx0[0] = 0; g_ed_zx0[1] = 0; g_ed_zy0[0] = 0; g_ed_zy0[1] = 0; g_ed_zx1[0] = 0; g_ed_zx1[1] = 0; g_ed_zy1[0] = 0; g_ed_zy1[1] = 0;
 g_AD_GRACE = 25;   // Galaxy Duel: efter en traff raknas inga fler traffar under 0,5 s (en salva med flera skott ska inte doda direkt)
 g_AD_SLOW = 0.4;   // Galaxy Duel: skadat skepp har 40 % av normal fart och gas (60 % langsammare, D-051)
 g_AD_DMG_TICKS = 200;   // skadan varar 4 s (50 ticks/s; var 6 s, D-077) och repareras sedan sjalv

@@ -32,6 +32,7 @@ f.ftimer = 0;
 f.fkind = argument2;
 f.fsize = argument3;
 f.fdone[0] = 0; f.fdone[1] = 0; f.fdone[2] = 0; f.fdone[3] = 0;   // vilka skepp ringen redan skadat
+f.fowner = -1;   // vems explosion det ar (spelarplats, -1 = ingens, t.ex. krockringen); satts av missilen (Capture the Bratwurst: kills och friendly fire, D-082)
 if (argument2 == 1) { f.fmax = 14; } else { f.fmax = 9; }
 if (argument2 == 1) { f.rmax = g_ML_BRAD * argument3; f.drad = g_ML_DRAD * argument3; }   // missilens ring och skadeavstand i varldspixlar (D-069)
 if (argument2 == 4) { f.fmax = 32; f.rmax = g_sv[g_SV_PU + 2]; }   // chockvagens slutradie i varldspixlar

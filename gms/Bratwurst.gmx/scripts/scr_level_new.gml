@@ -5,6 +5,7 @@ g_ed_name = scr_level_name_random();
 g_ed_modes = 3;   // nya banor: Classic och Galaxy Duel; Race valjs i sparfonstret (D-062)
 g_ed_fon = false;
 g_ed_pk_n = 0;
+g_ed_son = false; g_ed_zon[0] = false; g_ed_zon[1] = false;   // Capture the Bratwurst: ingen korvstart eller zoner (D-078)
 g_ed_n = 1;
 g_ed_pn[0] = 4;
 g_ed_px[0, 0] = -2904; g_ed_py[0, 0] = -2159; g_ed_px[0, 1] = 2847; g_ed_py[0, 1] = -2159;
