@@ -44,4 +44,5 @@ g_sv[g_SV_SWOB] = 5;
 g_sv[g_SV_SWCN] = 1;
 g_sv[g_SV_SWML] = 10;
 g_sv[g_SV_SWPU] = 0;
+g_sv[g_SV_SWPS] = 5;   // PUSH STRENGTH: 5 = 100 % knuff (D-088)
 scr_sw_default_map();   // standardbana: Proxima Merguez (D-086)

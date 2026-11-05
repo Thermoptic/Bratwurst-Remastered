@@ -11,6 +11,7 @@ if (t == 3 && s == g_SV_VOL) { return string(g_sv[s] * 10) + "%"; }
 if (t == 3 && s == g_SV_CTTM) { return string(g_sv[s]) + " MIN"; }   // Capture the Bratwurst: rundtid i minuter (D-080)
 if (t == 3 && s == g_SV_SWOB) { return string(g_sv[s]) + " S"; }   // Super Smashwurst: sekunder utanfor gransen (D-085)
 if (t == 3 && (s == g_SV_SWCN || s == g_SV_SWML)) { return string(g_sv[s]) + "%"; }   // Push i procent
+if (t == 3 && s == g_SV_SWPS) { return string(g_sv[s]) + " (" + string(g_sv[s] * 20) + "%)"; }   // Push strength: 5 = 100 %, +20 % per steg (D-088)
 if (t == 3) { return string(g_sv[s]); }
 if (t == 4)
 {

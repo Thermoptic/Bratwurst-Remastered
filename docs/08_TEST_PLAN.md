@@ -436,3 +436,5 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | MSL-03 | Skjut en missil rakt ut från ditt eget skepp, och med ett skepp precis framför | Missilen skadar inte dig själv direkt vid avfyrning; ett skepp framför träffas |
 | MSL-04 | Galaxy Duel, Race, Capture the Bratwurst (lagkamrat), Super Smashwurst: missiler | Som förut förutom träffen: Galaxy Duel skadar första träffen, Race ger fartminskning, lagkamrater i Capture the Bratwurst träffas inte, Push och knuff i Super Smashwurst |
 | MSL-05 | Missil nära en vägg och ett skepp, kanonskott på skepp | Väggen exploderar missilen som förut; kanonskott beter sig som förut (oförändrade) |
+
+| SW-14 | Super Smashwurst-menyn: PUSH STRENGTH 5, 6, 10, 1; spela och träffa ett skepp med samma Push | Raden visar 5 (100%), 6 (120%), 10 (200%), 1 (20%); 5 = som förut, 10 = dubbelt så kraftig knuff, 1 = en femtedel; Push-procenten räknas upp lika mycket; ingen knuff vid 0 % oavsett värde; värdet sparas efter omstart |

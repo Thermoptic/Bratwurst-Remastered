@@ -12,7 +12,7 @@ if (old > 0)
     dl = sqrt(argument1 * argument1 + argument2 * argument2);
     if (dl > 0.0001)
     {
-        k = scr_sw_knock(sw_push);
+        k = scr_sw_knock(sw_push) * g_sv[g_SV_SWPS] / 5;   // PUSH STRENGTH (D-088): 5 = 100 % av kurvan, +20 % per steg (10 = dubbelt, 1 = en femtedel)
         vx += argument1 / dl * k;
         vy += argument2 / dl * k;
     }

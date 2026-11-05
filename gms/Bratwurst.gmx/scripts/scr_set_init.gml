@@ -54,6 +54,7 @@ g_sv[g_SV_SWOB] = clamp(round(ini_read_real("smash", "oob_seconds", g_sv[g_SV_SW
 g_sv[g_SV_SWCN] = clamp(round(ini_read_real("smash", "cannon_push", g_sv[g_SV_SWCN])), 0, 10);
 g_sv[g_SV_SWML] = clamp(round(ini_read_real("smash", "missile_push", g_sv[g_SV_SWML])), 0, 50);
 g_sv[g_SV_SWPU] = clamp(round(ini_read_real("smash", "powerups", g_sv[g_SV_SWPU])), 0, 1);
+g_sv[g_SV_SWPS] = clamp(round(ini_read_real("smash", "push_strength", g_sv[g_SV_SWPS])), 1, 20);   // D-088
 ini_close();
 scr_drift_apply();   // drift/reverse-installningarna till spelkodens variabler
 scr_weapon_apply();   // kanon- och missilinstallningarna (D-069)

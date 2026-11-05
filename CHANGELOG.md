@@ -569,3 +569,6 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-11-09 — Missiler träffar skeppets linjer
 - Missiler (missil, guidad missil, Mini Nuke) träffar nu så fort de rör någon av linjerna som utgör skeppet, även om de rör sig snabbt förbi (nytt `scr_missile_hits_ship`, missilens hela väg provas mot skeppets linjer med en liten radie). Förut kunde de passera genom skeppet. D-087. Ej körd i GMS.
+
+## 2026-11-10 — Super Smashwurst: PUSH STRENGTH
+- Ny inställning PUSH STRENGTH (1–20, standard 5 = 100 % knuff, 20 % per steg) som skalar knuffens styrka utan att ändra Push-procenten. D-088. Ej körd i GMS.

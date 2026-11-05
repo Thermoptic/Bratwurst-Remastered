@@ -159,10 +159,10 @@ globalvar g_sa_st, g_sa_x, g_sa_y, g_sa_vx, g_sa_vy, g_sa_ang, g_sa_t, g_sa_car,
 g_sa_lock = -1; g_sa_lockt = 0;   // D-084: spelaren som just tappat korven kan inte plocka upp den igen under g_sa_lockt ticks
 // Super Smashwurst (D-085): speltyp 5. Installningar (g_sv-index efter Capture the Bratwurst): bana, liv, utanforzonens tid (sekunder), kanonens och missilens Push (procent), powerups.
 // g_wall_gh[linje] = spoklinje: ytterramen (den roda gransen) i Super Smashwurst, som skepp, skott och missiler flyger igenom men som fortfarande ritas. g_sw_b* = gransens polygon (varldspixlar).
-globalvar g_SV_MAP5, g_SV_SWLV, g_SV_SWOB, g_SV_SWCN, g_SV_SWML, g_SV_SWPU, g_mn_map_node5, g_mn_sw_start, g_sw_desc;
+globalvar g_SV_MAP5, g_SV_SWLV, g_SV_SWOB, g_SV_SWCN, g_SV_SWML, g_SV_SWPU, g_SV_SWPS, g_mn_map_node5, g_mn_sw_start, g_sw_desc;
 globalvar g_wall_gh, g_sw_bn, g_sw_bx, g_sw_by, g_sw_msg, g_sw_msgt, g_sw_msgc;
-g_SV_MAP5 = 107; g_SV_SWLV = 108; g_SV_SWOB = 109; g_SV_SWCN = 110; g_SV_SWML = 111; g_SV_SWPU = 112;
-g_sv[g_SV_MAP5] = 0; g_sv[g_SV_SWLV] = 3; g_sv[g_SV_SWOB] = 5; g_sv[g_SV_SWCN] = 1; g_sv[g_SV_SWML] = 10; g_sv[g_SV_SWPU] = 0;
+g_SV_MAP5 = 107; g_SV_SWLV = 108; g_SV_SWOB = 109; g_SV_SWCN = 110; g_SV_SWML = 111; g_SV_SWPU = 112; g_SV_SWPS = 113;
+g_sv[g_SV_MAP5] = 0; g_sv[g_SV_SWLV] = 3; g_sv[g_SV_SWOB] = 5; g_sv[g_SV_SWCN] = 1; g_sv[g_SV_SWML] = 10; g_sv[g_SV_SWPU] = 0; g_sv[g_SV_SWPS] = 5;   // PUSH STRENGTH 5 = 100 % knuff (D-088)
 g_mn_map_node5 = -1; g_mn_sw_start = -1; g_sw_desc = "";
 g_wall_gh[0] = false; g_sw_bn = 0; g_sw_bx[0] = 0; g_sw_by[0] = 0; g_sw_msg = ""; g_sw_msgt = 0; g_sw_msgc = c_white;
 globalvar g_CT_SIZE, g_CT_PICK, g_CT_TRAIL, g_CT_FOLLOW, g_CT_FRIC, g_CT_BOUNCE;

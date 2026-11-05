@@ -12,6 +12,10 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 57 - 2026-11-10 - Super Smashwurst: Push Strength
+
+- New setting PUSH STRENGTH in the Super Smashwurst menu. It sets how hard a hit throws a ship, without changing the Push percentage. 5 is normal (100%), every step up adds 20% more knockback and every step down takes 20% away. At 10 (200%) a ship with 100% Push is thrown twice as far.
+
 ### UPDATE 56 - 2026-11-09 - Missiles hit the whole ship
 
 - Missiles (normal, guided and Mini Nuke) now hit as soon as they touch any of the lines that make up a ship. Before, a fast missile could slip straight through a ship or you had to hit almost the exact middle. Cannon shots work as before.

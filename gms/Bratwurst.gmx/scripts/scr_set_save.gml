@@ -36,6 +36,7 @@ ini_write_real("smash", "oob_seconds", g_sv[g_SV_SWOB]);
 ini_write_real("smash", "cannon_push", g_sv[g_SV_SWCN]);
 ini_write_real("smash", "missile_push", g_sv[g_SV_SWML]);
 ini_write_real("smash", "powerups", g_sv[g_SV_SWPU]);
+ini_write_real("smash", "push_strength", g_sv[g_SV_SWPS]);   // D-088
 ini_write_real("smash", "map_default", 1);   // standardbanan (Proxima Merguez) har satts en gang (D-086)
 if (g_lv_count > 0)
 {
