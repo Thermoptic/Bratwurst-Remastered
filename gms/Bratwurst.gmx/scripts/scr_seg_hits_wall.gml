@@ -8,6 +8,7 @@ ly = min(argument1, argument3) - argument4;
 hy = max(argument1, argument3) + argument4;
 for (w = 0; w < g_wall_n; w += 1)
 {
+    if (g_wall_gh[w]) { continue; }   // spoklinje (D-085)
     if (hx < g_wall_minx[w] || lx > g_wall_maxx[w]) { continue; }
     if (hy < g_wall_miny[w] || ly > g_wall_maxy[w]) { continue; }
     a = g_wall_a[w];

@@ -10,5 +10,6 @@ if (s == g_SV_PLAYERS) { g_n_players = g_sv[g_SV_PLAYERS]; }
 if (s >= g_SV_PU + g_PU_STRIDE * 3 && s < g_SV_PU + g_PU_STRIDE * 5) { scr_weapon_apply(); }   // kanon och missil (D-069)
 if (s >= g_SV_PU + g_PU_STRIDE * 2 && s < g_SV_PU + g_PU_STRIDE * 3) { scr_drift_apply(); }   // drift- och reverseinstallningar
 if (s == g_SV_MAP4 && g_mn_ctb_start >= 0) { g_mn_desc[g_mn_ctb_start] = g_ctb_desc; }   // Capture the Bratwurst: gammalt startfel ar inte langre sant for ny bana (D-080)
+if (s == g_SV_MAP5 && g_mn_sw_start >= 0) { g_mn_desc[g_mn_sw_start] = g_sw_desc; }   // Super Smashwurst: gammalt startfel galler inte ny bana (D-085)
 if (s == g_SV_ZOOM) { g_cam_tr = g_CAM_TRANS; }   // zoomandringen glider in mjukt (D-037)
 scr_set_save();

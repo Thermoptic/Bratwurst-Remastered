@@ -27,6 +27,7 @@ for (s = 0; s < g_ed_n; s += 1)
     }
 }
 g_wall_n = lc;
+for (k = 0; k < lc; k += 1) { g_wall_gh[k] = false; }   // inga spoklinjer; Super Smashwurst markerar ytterramen efterat (scr_sw_prepare, D-085)
 // Race (D-054): start/malrutan (normaliserad ruta, riktningsvektor och halv bredd tvars riktningen)
 g_fin_on = g_ed_fon;
 if (g_fin_on)

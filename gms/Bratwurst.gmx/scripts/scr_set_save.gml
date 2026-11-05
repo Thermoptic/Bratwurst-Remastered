@@ -31,11 +31,18 @@ ini_write_real("gameplay", "rounds", g_sv[g_SV_ROUNDS]);
 ini_write_real("ctb", "score_limit", g_sv[g_SV_CTSC]);   // Capture the Bratwurst (D-080)
 ini_write_real("ctb", "round_minutes", g_sv[g_SV_CTTM]);
 ini_write_real("ctb", "powerups", g_sv[g_SV_PUCT]);
+ini_write_real("smash", "lives", g_sv[g_SV_SWLV]);   // Super Smashwurst (D-085)
+ini_write_real("smash", "oob_seconds", g_sv[g_SV_SWOB]);
+ini_write_real("smash", "cannon_push", g_sv[g_SV_SWCN]);
+ini_write_real("smash", "missile_push", g_sv[g_SV_SWML]);
+ini_write_real("smash", "powerups", g_sv[g_SV_SWPU]);
+ini_write_real("smash", "map_default", 1);   // standardbanan (Proxima Merguez) har satts en gang (D-086)
 if (g_lv_count > 0)
 {
     ini_write_string("gameplay", "map", g_lv_id[clamp(g_sv[g_SV_MAP], 0, g_lv_count - 1)]);
     ini_write_string("gameplay", "map_astro", g_lv_id[clamp(g_sv[g_SV_MAP2], 0, g_lv_count - 1)]);
     ini_write_string("gameplay", "map_race", g_lv_id[clamp(g_sv[g_SV_MAP3], 0, g_lv_count - 1)]);
     ini_write_string("gameplay", "map_ctb", g_lv_id[clamp(g_sv[g_SV_MAP4], 0, g_lv_count - 1)]);
+    ini_write_string("gameplay", "map_smash", g_lv_id[clamp(g_sv[g_SV_MAP5], 0, g_lv_count - 1)]);
 }
 ini_close();

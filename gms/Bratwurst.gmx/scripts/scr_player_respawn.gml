@@ -6,6 +6,8 @@ py = g_start_y[slot];
 drifting = false;
 if (g_game_mode == 2) { drift_fuel = 0; } else { drift_fuel = g_DRIFT_FUEL; }   // Drifting fuel (D-052): full matare vid start, ny runda och efter ett liv; Race: tom (drift av tills en pickup, D-055)
 race_slow = 0;
+sw_push = 0;   // Super Smashwurst (D-085): Push nollas vid start, ny runda och efter varje liv; ingen nedrakning
+sw_oob = -1;
 race_msg = "";
 race_msg_t = 0;
 drift_rc = false;

@@ -51,6 +51,13 @@ if (g_game_mode == 2)
     scr_ui_text(px + 12, y0, "SL", g_c[4]);
     scr_ui_bar(px + 42, y0 + 4, bw, 10, p.race_slow / g_RACE_SLOW_TICKS, g_c[8]);
 }
+else if (g_game_mode == 5)
+{
+    // Super Smashwurst (D-085): ingen energi; PUSH i procent i en farg som gar fran cyan via gult och orange till rott, med en stapel som fylls till 100 % (scr_sw_colour)
+    shr = scr_ui_tw("PUSH 999%");
+    scr_ui_text(px + 12, y0, "PUSH " + string(min(999, p.sw_push)) + "%", scr_sw_colour(p.sw_push));
+    if (bw > shr - 20) { scr_ui_bar(px + 20 + shr, y0 + 4, max(24, bw + 22 - shr), 10, min(1, p.sw_push / 100), scr_sw_colour(p.sw_push)); }
+}
 else
 {
     scr_ui_text(px + 12, y0, "EN", g_c[4]);

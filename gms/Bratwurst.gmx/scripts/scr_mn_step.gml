@@ -73,6 +73,25 @@ if (g_nv_ok)
                 scr_menu_enter();
             }
         }
+        if (g_mn_act[item] == 9)
+        {
+            // Super Smashwurst (D-085): kraver en bana med ytterram (den roda gransen) och minst 2 spelare
+            g_mn_desc[item] = g_sw_desc;
+            scr_levels_fix_selection();
+            scr_level_read(g_sv[g_SV_MAP5]);
+            g_pv_idx = -1;
+            ctbe = "";
+            if (scr_sw_find() < 0) { ctbe = "THE MAP " + string_upper(g_ed_name) + " HAS NO OUTER FRAME (THE RED BOUNDARY). PICK A MAP WITH ONE"; }
+            if (ctbe != "") { g_mn_desc[item] = "CANNOT START. " + ctbe; }
+            else
+            {
+                g_game_mode = 5;
+                g_sv[g_SV_PLAYERS] = max(2, g_sv[g_SV_PLAYERS]);
+                g_n_players = g_sv[g_SV_PLAYERS];
+                scr_set_save();
+                scr_menu_enter();
+            }
+        }
         if (g_mn_act[item] == 2) { game_end(); }
         if (g_mn_act[item] == 4 && !g_pause_opts) { scr_ed_enter(g_sv[g_SV_MAP]); }   // banredigeraren finns inte under en match
         if (g_mn_act[item] == 3)

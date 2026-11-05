@@ -12,6 +12,19 @@ The goal is to keep the feel and the physics of the original wherever it can be 
 
 <!-- UPDATES:START -->
 
+### UPDATE 56 - 2026-11-09 - Missiles hit the whole ship
+
+- Missiles (normal, guided and Mini Nuke) now hit as soon as they touch any of the lines that make up a ship. Before, a fast missile could slip straight through a ship or you had to hit almost the exact middle. Cannon shots work as before.
+
+### UPDATE 55 - 2026-11-08 - New game mode: Super Smashwurst
+
+- Game Modes -> SUPER SMASHWURST is a new last-ship-standing mode for 2 to 4 players, inspired by Super Smash Bros. There is no energy bar. Every hit raises the Push percentage of the ship that was hit (a cannon shot +1%, a missile +10%), and the higher the Push, the farther a hit throws the ship. At 0% a hit does not move you at all, at 100% or more it can launch you far outside the arena.
+- The red arena boundary no longer stops you: ships, shots and missiles fly straight through it. Once a ship is outside, it gets its own countdown (5 seconds by default) next to the ship. Fly back inside in time and the countdown is cancelled; fly out again and a new one starts. When it reaches zero the ship explodes and you lose a life.
+- Everyone starts with 3 lives. At zero lives you are out. The last ship standing wins the round; if everyone is out at once it is a draw.
+- Each player's panel shows PUSH in a colour that goes from blue to red as it rises, plus the lives left. Settings: STARTING LIVES, OUT-OF-BOUNDS TIME, CANNON PUSH and MISSILE PUSH, along with players, map, rounds and powerups (off by default). Guided missiles, Mini Nukes and the railgun count as missiles.
+- The default map is Proxima Merguez. You can pick any other Classic map on the MAP row.
+- This is a first version that is still being tested, so the knockback feel may change.
+
 ### UPDATE 54 - 2026-11-07 - Capture the Bratwurst: missiles knock the sausage loose
 
 - If you carry the sausage and get hit by a missile (a direct hit, the red explosion ring, a guided missile or a Mini Nuke), you drop it. The sausage keeps its speed and either team can grab it, but you cannot pick it up again for one second.

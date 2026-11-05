@@ -48,9 +48,12 @@ if (g_hit_id != noone)
     with (g_hit_id)
     {
         if (g_game_mode == 3) { scr_ctb_hurt(other.owner, false); }   // Capture the Bratwurst: minns vem som traffade (kills) och later en barad korv snurra extra snabbt (D-082)
-        if (g_game_mode == 1) { scr_ad_hit(); } else if (g_game_mode == 2) { scr_race_hit(); } else { energy -= g_CN_DMG; }   // DAMAGE i Powerup Editor (D-069)   // Galaxy Duel: forsta traffen skadar, nasta dodar (D-051)
-        vx += floor((other.vx - vx) * g_CN_KNOCK / power(2, bounce));   // KNOCKBACK i Powerup Editor (D-069)
-        vy += floor((other.vy - vy) * g_CN_KNOCK / power(2, bounce));
+        if (g_game_mode == 5) { scr_sw_hit(0, other.vx, other.vy); } else if (g_game_mode == 1) { scr_ad_hit(); } else if (g_game_mode == 2) { scr_race_hit(); } else { energy -= g_CN_DMG; }   // Super Smashwurst: +Push och knuff i skottets riktning, ingen energi (D-085)   // DAMAGE i Powerup Editor (D-069)   // Galaxy Duel: forsta traffen skadar, nasta dodar (D-051)
+        if (g_game_mode != 5)   // Super Smashwurst har egen knuff (scr_sw_hit)
+        {
+            vx += floor((other.vx - vx) * g_CN_KNOCK / power(2, bounce));   // KNOCKBACK i Powerup Editor (D-069)
+            vy += floor((other.vy - vy) * g_CN_KNOCK / power(2, bounce));
+        }
         if (energy <= 0)
         {
             scr_player_lose_life();   // exploderar, tar ett liv och startar nedrakningen

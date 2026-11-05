@@ -30,7 +30,8 @@ with (obj_player)
         {
             other.fdone[slot] = 1;
             if (g_game_mode == 3) { scr_ctb_hurt(other.fowner, true); }   // missilring och Mini Nuke-chockvag: bararen tappar korven (D-084)   // Capture the Bratwurst: kills och bararens reaktion (D-082)
-            if (g_game_mode == 2) { scr_race_hit(); }   // Race: chockvag och missilring ger bara fartminskning (D-055)
+            if (g_game_mode == 5) { scr_sw_hit(1, px - other.px, py - other.py); }   // Super Smashwurst: ringar och chockvag raknas som missiler, knuff bort fran mitten (D-085)
+            else if (g_game_mode == 2) { scr_race_hit(); }   // Race: chockvag och missilring ger bara fartminskning (D-055)
             else if (other.fkind == 4)
             {
                 if (g_game_mode == 1) { scr_ad_hit(); } else { energy -= g_sv[g_SV_PU + 5]; }   // Mini Nuke: chockvagsskada ur Powerup Editor (Galaxy Duel: skadar / dodar)
@@ -43,8 +44,11 @@ with (obj_player)
             bd = sqrt(bdx * bdx + bdy * bdy);
             if (bd < 1) { bdx = random_range(-1, 1); bdy = random_range(-1, 1); bd = max(0.01, sqrt(bdx * bdx + bdy * bdy)); }
             bf = clamp(1.2 - 0.7 * (bd / 256) / rfull, 0.5, 1.2);
-            vx += bdx / bd * bmag * bf;
-            vy += bdy / bd * bmag * bf;
+            if (g_game_mode != 5)   // Super Smashwurst: knuffen kommer fran Push (scr_sw_hit), inte fran ringens fasta styrka
+            {
+                vx += bdx / bd * bmag * bf;
+                vy += bdy / bd * bmag * bf;
+            }
             scr_spark_burst(floor(px / 256), floor(py / 256), 8, 1.8, scr_slot_colour(slot));
             if (energy <= 0) { scr_player_lose_life(); }
         }

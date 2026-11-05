@@ -8,7 +8,7 @@ with (obj_shot) { instance_destroy(); }
 with (obj_missile) { instance_destroy(); }
 with (obj_fx) { instance_destroy(); }
 g_n_players = argument0;
-if (g_game_mode == 1) { g_lives_max = g_sv[g_SV_ADLIVES]; } else { g_lives_max = g_sv[g_SV_LIVES]; }   // Classic: valt antal liv (hogst g_START_LIVES)
+if (g_game_mode == 1) { g_lives_max = g_sv[g_SV_ADLIVES]; } else if (g_game_mode == 5) { g_lives_max = g_sv[g_SV_SWLV]; } else { g_lives_max = g_sv[g_SV_LIVES]; }   // Super Smashwurst: STARTING LIVES (D-085)   // Classic: valt antal liv (hogst g_START_LIVES)
 g_state = 1;
 g_winner = -1;
 g_tick = 0;
@@ -20,10 +20,15 @@ for (i = 0; i < 4; i += 1) { g_wins[i] = 0; }
 if (g_game_mode == 4) { scr_level_asteroids(); }   // Asteroids har en egen, helt tom bana (D-046)
 else { scr_level_read(scr_cur_map()); }   // vald bana (levels.ini)
 scr_level_apply();
+g_sw_bn = 0;
+g_sw_msgt = 0;
+if (g_game_mode == 5) { scr_sw_prepare(); }   // Super Smashwurst: den roda gransen blir en spoklinje som skeppen flyger igenom (D-085)
 scr_solid_build();   // fyllningstrianglar for vaggarna (Solid colors)
 g_match_map = g_ed_name;   // matchens banamn (visas i spelytans horn)
 scr_arena_prepare();
 scr_frame_prepare();   // arenans ytterram tonar fram nar man narmar sig (D-066)
+if (g_game_mode == 5) { g_FR_NEAR = 100000000; g_FR_FAR = 200000000; }   // Super Smashwurst: den roda gransen syns alltid, aven langt bort (D-085)
+else { g_FR_NEAR = 400; g_FR_FAR = 1400; }
 if (g_game_mode == 4) { scr_ast_reset(); }   // tom bana, forsta stenvagen efter 1 s
 scr_dots_prepare();   // orienteringspunkter (D-043), efter att vaggarna ar klara
 scr_spark_clear();

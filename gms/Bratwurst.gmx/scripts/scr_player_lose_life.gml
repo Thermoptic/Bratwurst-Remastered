@@ -12,3 +12,8 @@ if (rg_snd >= 0) { audio_stop_sound(rg_snd); rg_snd = -1; }
 alive = false;
 if (p_lives > 0) { respawn_t = g_RESPAWN_DELAY; }
 else { respawn_t = 0; }
+if (g_game_mode == 5)
+{
+    sw_oob = -1;   // Super Smashwurst (D-085): nedrakningen avslutas vid varje dod
+    if (p_lives <= 0) { g_sw_msg = "PLAYER " + string(slot + 1) + " IS ELIMINATED"; g_sw_msgt = 150; g_sw_msgc = scr_slot_colour(slot); }
+}

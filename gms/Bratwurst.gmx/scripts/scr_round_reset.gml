@@ -21,6 +21,7 @@ g_round_timer = 0;
 g_end_timer = -1;
 if (g_game_mode == 4) { scr_ast_reset(); }   // Asteroids: ny runda borjar med tom bana
 if (g_game_mode == 2) { scr_race_reset(); }   // Race: ny runda, tid och varv nollas (D-053)
+g_sw_msgt = 0;   // Super Smashwurst: inget kvarstaende elimineringsmeddelande (D-085)
 if (g_game_mode == 3) { scr_ctb_reset(); }   // Capture the Bratwurst: ny runda: poang, kills, barform, tid och korv nollas; rundvinsterna bevaras (D-082)
 scr_powerup_reset();
 scr_music_round_start();

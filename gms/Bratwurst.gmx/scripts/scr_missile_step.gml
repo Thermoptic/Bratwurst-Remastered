@@ -4,7 +4,7 @@
 //   GUIDED:   timer += 1; timer < 0: rakt; timer >= 225: borta utan att rora sig; annars styr mot narmaste levande spelare
 //             (OBS: inklusive agaren, som i originalet): v -= (d * F) >> 8, F = (108e6 + timer*0x493e0)/(d2 + 60000), |v| <= 0x1400.
 //   Traff i vagg: explosion. Traff i skepp: position -= v, energi -12 (MISSILE) / -5 (GUIDED), impuls (v_obj - v)*16 >> BOUNCE.
-var expired, wxp, wyp, tol, ff, sk, sa, ss, kd, hr, ffx, kmul;
+var expired, wxp, wyp, tol, ff, sk, sa, ss, kd, hr, ffx, kmul, mx1, my1, mr;
 kd = mtype;
 if (mtype == 3) { kd = 4; }   // Mini Nuke (powerup): explosionstyp 4
 expired = false;
@@ -62,13 +62,22 @@ if (g_game_mode == 1 || mtype == 3)
     if (mtype == 3) { hr = msize; }   // Mini Nuke: traffradie = projektilens storlek (Powerup Editor)
     g_hit_id = scr_proj_hit(floor((px - vx) / 256), floor((py - vy) / 256), wxp, wyp, hr, owner, mage);
 }
-else
+// Traff pa skeppets linjer (D-087): i alla lagen provas missilens vag sedan forra tickens position mot skeppens linjer (scr_missile_hits_ship), inte bara punkten i slutpositionen,
+// sa att en missil som ror vid en linje eller hoppar over en tunn del traffar. Missilens egen agare hoppas over de forsta 8 tickens liv (missilen skapas vid skeppets pod).
+if (g_hit_id == noone)
 {
+    mx1 = floor((px - vx) / 256);
+    my1 = floor((py - vy) / 256);
+    mr = 2.4 * 32768 / max(1, g_zoom);   // missilens ritade karna (2,4 skarmenheter) i varldspixlar
+    if (mtype == 3) { mr = msize; }      // Mini Nuke: storleken ur Powerup Editor, som forut
     with (obj_player)
     {
         if (alive && !race_fin && g_hit_id == noone && !scr_ctb_friend(other.owner, slot))   // Capture the Bratwurst: missiler gar igenom lagkamrater (D-082)
         {
-            if (scr_point_in_ship(other.hx, other.hy)) { g_hit_id = id; }
+            if (!(slot == other.owner && other.mage < 8))
+            {
+                if (scr_missile_hits_ship(mx1, my1, other.hx, other.hy, mr)) { g_hit_id = id; }
+            }
         }
     }
 }
@@ -81,12 +90,16 @@ if (g_hit_id != noone)
     with (g_hit_id)
     {
         if (g_game_mode == 3) { scr_ctb_hurt(other.owner, true); }   // missil: bararen tappar korven (D-084)   // Capture the Bratwurst (D-082)
-        if (g_game_mode == 1) { scr_ad_hit(); }
+        if (g_game_mode == 5) { scr_sw_hit(1, other.vx, other.vy); }   // Super Smashwurst: +Push (MISSILE PUSH) och knuff i missilens riktning (D-085)
+        else if (g_game_mode == 1) { scr_ad_hit(); }
         else if (g_game_mode == 2) { scr_race_hit(); }   // Race: icke-dodlig, bara fartminskning (D-055)   // Galaxy Duel: forsta traffen skadar, nasta dodar (D-051)
         else if (other.mtype == 3) { energy -= g_sv[g_SV_PU + 4]; }   // Mini Nuke: direktskada ur Powerup Editor
         else if (other.mtype == 1) { energy -= g_DMG_MSL; } else { energy -= g_DMG_GUIDED; }
-        vx += floor((other.vx - vx) * 16 * kmul / power(2, bounce));
-        vy += floor((other.vy - vy) * 16 * kmul / power(2, bounce));
+        if (g_game_mode != 5)
+        {
+            vx += floor((other.vx - vx) * 16 * kmul / power(2, bounce));
+            vy += floor((other.vy - vy) * 16 * kmul / power(2, bounce));
+        }
     }
     scr_spark_burst(wxp, wyp, 12 + irandom(5), 2.2, scr_slot_colour(g_hit_id.slot));
     ffx = scr_fx_spawn(px, py, kd, g_FX_IMPACT);

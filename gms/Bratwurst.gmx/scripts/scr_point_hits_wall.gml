@@ -5,6 +5,7 @@ var xx, yy, tol, w, a, b, x1, y1, x2, y2, dx, dy, t, cx, cy;
 xx = argument0; yy = argument1; tol = argument2;
 for (w = 0; w < g_wall_n; w += 1)
 {
+    if (g_wall_gh[w]) { continue; }   // spoklinje (D-085)
     if (xx < g_wall_minx[w] - tol || xx > g_wall_maxx[w] + tol) { continue; }
     if (yy < g_wall_miny[w] - tol || yy > g_wall_maxy[w] + tol) { continue; }
     a = g_wall_a[w]; b = g_wall_b[w];

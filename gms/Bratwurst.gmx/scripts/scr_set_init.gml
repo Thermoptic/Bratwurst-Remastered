@@ -1,6 +1,6 @@
 /// scr_set_init()
 // Laser settings.ini over standardvardena (okanda/ogiltiga varden ger standard), skapar themes.ini vid forsta start och applicerar temat.
-var t, k, s, pt, pk;
+var t, k, s, pt, pk, dm;
 scr_set_defaults();
 ini_open("settings.ini");
 s = ini_read_string("theme", "name", "");
@@ -49,6 +49,11 @@ g_sv[g_SV_ROUNDS] = clamp(round(ini_read_real("gameplay", "rounds", g_sv[g_SV_RO
 g_sv[g_SV_CTSC] = clamp(round(ini_read_real("ctb", "score_limit", g_sv[g_SV_CTSC])), 1, 20);   // Capture the Bratwurst (D-080)
 g_sv[g_SV_CTTM] = clamp(round(ini_read_real("ctb", "round_minutes", g_sv[g_SV_CTTM])), 1, 30);
 g_sv[g_SV_PUCT] = clamp(round(ini_read_real("ctb", "powerups", g_sv[g_SV_PUCT])), 0, 1);
+g_sv[g_SV_SWLV] = clamp(round(ini_read_real("smash", "lives", g_sv[g_SV_SWLV])), 1, 10);   // Super Smashwurst (D-085)
+g_sv[g_SV_SWOB] = clamp(round(ini_read_real("smash", "oob_seconds", g_sv[g_SV_SWOB])), 1, 15);
+g_sv[g_SV_SWCN] = clamp(round(ini_read_real("smash", "cannon_push", g_sv[g_SV_SWCN])), 0, 10);
+g_sv[g_SV_SWML] = clamp(round(ini_read_real("smash", "missile_push", g_sv[g_SV_SWML])), 0, 50);
+g_sv[g_SV_SWPU] = clamp(round(ini_read_real("smash", "powerups", g_sv[g_SV_SWPU])), 0, 1);
 ini_close();
 scr_drift_apply();   // drift/reverse-installningarna till spelkodens variabler
 scr_weapon_apply();   // kanon- och missilinstallningarna (D-069)
@@ -80,6 +85,15 @@ for (t = 0; t < g_lv_count; t += 1)
 {
     if (g_lv_id[t] == s) { g_sv[g_SV_MAP4] = t; }
 }
+ini_open("settings.ini");
+s = ini_read_string("gameplay", "map_smash", "");
+dm = ini_read_real("smash", "map_default", 0);
+ini_close();
+for (t = 0; t < g_lv_count; t += 1)
+{
+    if (g_lv_id[t] == s) { g_sv[g_SV_MAP5] = t; }
+}
+if (dm != 1) { scr_sw_default_map(); }   // Super Smashwurst: Proxima Merguez som standardbana, en gang for installningar som skapades fore detta (flaggan sparas av scr_set_save, D-086)
 scr_levels_fix_selection();
 g_n_players = g_sv[g_SV_PLAYERS];
 scr_theme_ini_write();

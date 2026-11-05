@@ -79,6 +79,7 @@ with (obj_shot) { scr_shot_step(); }
 if (g_game_mode == 4) { scr_ast_step(); }   // Asteroids (D-046)
 scr_powerup_step();   // powerup-orben: spawn, upplockning, nedrakning (D-035)
 scr_beam_step();   // railgunstralar (D-036)
+if (g_game_mode == 5) { scr_sw_step(); }   // Super Smashwurst: gransen och utanfor-nedrakningen per skepp (D-085)
 if (g_game_mode == 3) { scr_ctb_step(); }   // Capture the Bratwurst: timer, korv, poang (D-082); efter skott, missiler och stralar sa att en dod hunnit slappa korven
 g_shake_amp *= 0.9;   // kameraskakningen klingar av (ca 0,4 s)
 if (g_shake_amp < 0.3) { g_shake_amp = 0; }

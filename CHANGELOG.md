@@ -561,3 +561,11 @@ Alla betydande projektändringar dokumenteras här.
 
 ## 2026-11-07 — Capture the Bratwurst: missiler slår loss korven
 - Den som bär korven och träffas av en missil (direktträff, missilring, guidad missil eller Mini Nuke) tappar den. Korven behåller sin fart och kan tas av båda lagen, utom av den som tappade den under 1 s. Skott och railgun släpper den inte. D-084. Ej körd i GMS.
+
+## 2026-11-08 — Nytt spelläge: Super Smashwurst
+- Super Smashwurst: sista skeppet kvar, ingen energi. Varje träff höjer skeppets Push (kanon +1 %, missil +10 %) och ju högre Push desto längre kastas skeppet. Den röda gränsen går att flyga igenom; utanför startar en egen nedräkning (standard 5 s) och vid noll förlorar man ett liv (standard 3). Meny, inställningar, HUD med PUSH-mätare och nedräkning vid skeppet. D-085. Ej körd i GMS.
+
+- Super Smashwurst: Proxima Merguez är standardbana (`scr_sw_default_map`; en gång även för redan sparade inställningar). D-086. Ej körd i GMS.
+
+## 2026-11-09 — Missiler träffar skeppets linjer
+- Missiler (missil, guidad missil, Mini Nuke) träffar nu så fort de rör någon av linjerna som utgör skeppet, även om de rör sig snabbt förbi (nytt `scr_missile_hits_ship`, missilens hela väg provas mot skeppets linjer med en liten radie). Förut kunde de passera genom skeppet. D-087. Ej körd i GMS.

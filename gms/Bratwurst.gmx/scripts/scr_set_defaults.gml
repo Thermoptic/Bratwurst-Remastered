@@ -38,3 +38,10 @@ g_sv[g_SV_MAP4] = 0;   // Capture the Bratwurst (D-080): bana, poanggrans 5, run
 g_sv[g_SV_CTSC] = 5;
 g_sv[g_SV_CTTM] = 5;
 g_sv[g_SV_PUCT] = 1;
+g_sv[g_SV_MAP5] = 0;   // Super Smashwurst (D-085): bana, 3 liv, 5 s utanfor gransen, Push 1 % (kanon) och 10 % (missil), powerups av
+g_sv[g_SV_SWLV] = 3;
+g_sv[g_SV_SWOB] = 5;
+g_sv[g_SV_SWCN] = 1;
+g_sv[g_SV_SWML] = 10;
+g_sv[g_SV_SWPU] = 0;
+scr_sw_default_map();   // standardbana: Proxima Merguez (D-086)

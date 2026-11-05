@@ -415,3 +415,24 @@ Projektet öppnas utan fel och spelet startar: vektorbana och två skepp (XWing,
 | CTB-MAP-03 | Kryssa i Capture the Bratwurst på en gammal bana utan korv och zoner, spara | Banan syns i läget men START vägrar med orsak; lägg till korv och zoner: START fungerar |
 
 | CTB-PLAY-14 | Bär korven och bli träffad av en missil (direkt, av ringen, guidad missil, Mini Nuke); gör samma med skott och railgun | Missil: korven släpps direkt, gnistor, glider vidare med sin fart; en annan spelare kan ta den genast, du själv först efter ca 1 s. Skott och railgun: korven snurrar extra snabbt men bärs kvar. En lagkamrats missil ger varken skada eller tapp. Dör du av missilen släpps den bara en gång |
+
+| SW-01 | Game Modes -> SUPER SMASHWURST | Raderna START, PLAYERS (2–4), MAP, ROUNDS, STARTING LIVES (3), OUT-OF-BOUNDS TIME (5 S), CANNON PUSH (1%), MISSILE PUSH (10%), POWERUPS (OFF) finns; värdena sparas efter omstart; övriga lägens menyer oförändrade |
+| SW-02 | START med en vanlig bana och 2–4 spelare | Skeppsval, sedan match; panelerna visar PUSH 0%, liv-rutor, ingen energirad; den röda ytterramen syns hela tiden |
+| SW-03 | Skjut en fiende med kanon, sedan med missil | PUSH går upp exakt 1 % per skott och 10 % per missil (en gång per träff); en träff på 0 % ger ingen knuff; därefter knuffas offret mer ju högre Push |
+| SW-04 | Bygg upp Push till ca 100 % och träffa | Offret slungas mycket långt, ut genom den röda ramen (ramen stoppar inte skepp, skott eller missiler); kameran zoomar ut och följer |
+| SW-05 | Flyg ut genom ramen och stanna utanför | Stor nedräkning vid skeppet från 5, gul sedan röd och blinkande, pip de sista 3 s, "RETURN TO THE ARENA"; PUSH syns fortfarande i panelen |
+| SW-06 | Flyg in igen innan noll, flyg ut igen | Nedräkningen försvinner direkt; ny nedräkning börjar på hela 5 s |
+| SW-07 | Låt nedräkningen nå noll | Skeppet exploderar, ett liv bort, återuppstår efter 3 s på sin startplats med PUSH 0%; nedräkningen är borta |
+| SW-08 | Förlora sista livet | PLAYER n IS ELIMINATED visas, panelen visar ELIMINATED/OUT, ingen nedräkning eller PUSH, skeppet kommer inte tillbaka |
+| SW-09 | Sista spelaren kvar / alla elimineras samtidigt | Vinnaren får rundresultatet; samtidigt = NO WINNER; flera rundor och slutresultat som i Classic |
+| SW-10 | Ändra STARTING LIVES, OUT-OF-BOUNDS TIME, CANNON PUSH, MISSILE PUSH och spela | Värdena gäller (liv, tid, Push per träff); CANNON PUSH 0 stänger av kanonens Push |
+| SW-11 | START med en bana utan ytterram | Inget startar: "CANNOT START. THE MAP ... HAS NO OUTER FRAME" |
+| SW-12 | Classic, Galaxy Duel, Race, Asteroids, Capture the Bratwurst efter ändringen | Som förut: energi, väggskada, ramen stoppar skepp och skott, kanon och missil som förut |
+
+| SW-13 | Starta spelet (första gången efter ändringen, även med gamla inställningar), Game Modes -> SUPER SMASHWURST -> MAP | Proxima Merguez är vald; byt bana, starta om: det egna valet är kvar; Options/Game Modes RESET (om du kör den) väljer Proxima Merguez igen |
+
+| MSL-01 | Skjut missiler (vanlig, guidad, Mini Nuke) mot ett stillastående skepp från olika håll och avstånd; sikta på vingspetsar, kanter och tunna delar | Missilen exploderar så fort den rör någon av skeppets linjer; den passerar inte genom skeppet och du behöver inte träffa mitten |
+| MSL-02 | Skjut missiler på skepp som rör sig snabbt (tvärs över flygriktningen) | Träffar lika bra; inga missiler går igenom |
+| MSL-03 | Skjut en missil rakt ut från ditt eget skepp, och med ett skepp precis framför | Missilen skadar inte dig själv direkt vid avfyrning; ett skepp framför träffas |
+| MSL-04 | Galaxy Duel, Race, Capture the Bratwurst (lagkamrat), Super Smashwurst: missiler | Som förut förutom träffen: Galaxy Duel skadar första träffen, Race ger fartminskning, lagkamrater i Capture the Bratwurst träffas inte, Push och knuff i Super Smashwurst |
+| MSL-05 | Missil nära en vägg och ett skepp, kanonskott på skepp | Väggen exploderar missilen som förut; kanonskott beter sig som förut (oförändrade) |

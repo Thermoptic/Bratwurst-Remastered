@@ -7,7 +7,7 @@
     <datafile>
       <name>updates.txt</name>
       <exists>-1</exists>
-      <size>27800</size>
+      <size>29522</size>
       <exportAction>2</exportAction>
       <exportDir></exportDir>
       <overwrite>0</overwrite>
@@ -399,6 +399,16 @@
     <script>scripts\scr_ctb_results_draw.gml</script>
     <script>scripts\scr_ctb_final_draw.gml</script>
     <script>scripts\scr_levels_ctb_migrate.gml</script>
+    <script>scripts\scr_sw_find.gml</script>
+    <script>scripts\scr_sw_prepare.gml</script>
+    <script>scripts\scr_sw_inside.gml</script>
+    <script>scripts\scr_sw_knock.gml</script>
+    <script>scripts\scr_sw_hit.gml</script>
+    <script>scripts\scr_sw_step.gml</script>
+    <script>scripts\scr_sw_colour.gml</script>
+    <script>scripts\scr_sw_overlay_draw.gml</script>
+    <script>scripts\scr_sw_default_map.gml</script>
+    <script>scripts\scr_missile_hits_ship.gml</script>
     <script>scripts\scr_pickup_draw.gml</script>
     <script>scripts\scr_pickup_grant.gml</script>
     <script>scripts\scr_pickup_step.gml</script>

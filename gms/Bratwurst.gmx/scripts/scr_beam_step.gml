@@ -33,7 +33,8 @@ for (k = 0; k < g_BM_MAX; k += 1)
                         g_bm_hit[g_bm_cur] = g_bm_hit[g_bm_cur] | (1 << slot);
                         scr_spark_burst(floor(px / 256), floor(py / 256), 30, 4, scr_slot_colour(slot));
                         if (g_game_mode == 3) { scr_ctb_hurt(g_bm_owner[g_bm_cur], false); }   // Capture the Bratwurst (D-082)
-                        if (g_game_mode == 1) { scr_ad_hit(); } else if (g_game_mode == 2) { scr_race_hit(); } else { energy -= g_bm_dmg[g_bm_cur]; }
+                        if (g_game_mode == 5) { scr_sw_hit(1, g_bm_dx[g_bm_cur], g_bm_dy[g_bm_cur]); }   // Super Smashwurst: railgun raknas som missil, knuff along stralen (D-085)
+                        else if (g_game_mode == 1) { scr_ad_hit(); } else if (g_game_mode == 2) { scr_race_hit(); } else { energy -= g_bm_dmg[g_bm_cur]; }
                         if (energy <= 0) { scr_player_lose_life(); }
                     }
                 }

@@ -24,7 +24,7 @@ spd0 = sqrt(vx * vx + vy * vy);
 newc = (wall_c <= 0);
 wall_c = 3;   // raknas som kontakt i tre ticks (ny kontakt = forsta tick efter fri flygning)
 // skada (originalets formel pa normalfarten) och ljud
-if (g_game_mode != 1 && g_game_mode != 2)
+if (g_game_mode != 1 && g_game_mode != 2 && g_game_mode != 5)   // Super Smashwurst: ingen energi, vaggar skadar inte (D-085)
 {
     dmg = floor(floor((vn * vn) / 65536) / 64);
     if (newc) { dmg += 1; }

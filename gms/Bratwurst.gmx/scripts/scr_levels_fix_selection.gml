@@ -16,3 +16,15 @@ for (m = 0; m < 4; m += 1)
         }
     }
 }
+// Super Smashwurst (D-085) delar Classics banlista (bit 0) men har eget val
+g_sv[g_SV_MAP5] = clamp(g_sv[g_SV_MAP5], 0, max(0, g_lv_count - 1));
+if (g_lv_count > 0)
+{
+    if (!scr_level_allowed(0, g_sv[g_SV_MAP5]))
+    {
+        for (k = 0; k < g_lv_count; k += 1)
+        {
+            if (scr_level_allowed(0, k)) { g_sv[g_SV_MAP5] = k; break; }
+        }
+    }
+}

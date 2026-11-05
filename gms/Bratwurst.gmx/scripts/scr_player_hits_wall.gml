@@ -3,6 +3,7 @@
 var k, w, a, b, x1, y1, x2, y2, dxw, dyw, wl, da, db;
 for (w = 0; w < g_wall_n; w += 1)
 {
+    if (g_wall_gh[w]) { continue; }   // spoklinje (ytterramen i Super Smashwurst): skeppet flyger igenom (D-085)
     // snabb avvisning med avgransningsboxar
     if (g_wall_maxx[w] < ob_minx || g_wall_minx[w] > ob_maxx) { continue; }
     if (g_wall_maxy[w] < ob_miny || g_wall_miny[w] > ob_maxy) { continue; }
